@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "recover the files back to older version, work on the files under current dir"
+echo "version number = "
+read version
+echo "filename to recover"
+read filename
+
+echo "sure to continure? (y/n)"
+read yesno
+
+if [ "$yesno" = "y" ]; then
+   svn up -r $version $filename 
+else
+  echo "did nothing"
+fi

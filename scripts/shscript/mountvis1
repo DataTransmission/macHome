@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir /Volumes/vis1
+/Users/ginochen/Documents/software/mount_sshfs gchen@vis1.ccs.miami.edu: /Volumes/vis1
+

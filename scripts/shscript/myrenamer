@@ -1,0 +1,87 @@
+#!/bin/sh
+#chmod +x filename
+# just use this one line syntax
+#ls *.pdf | awk '{print "mv "$0  "  addwhateveruwantinfront"$0""}' | csh
+#rm name.txt
+echo "always make an original filenamelist.txt before doing any thing unless you lost all your filenames, then you don't want to overwrite filenamelist.txt"
+ncount=$( ls *.pdf | wc -l )
+ncount=$(( $ncount + 1 ))
+echo "# of file = "$ncount
+echo "What do you want to do (0) make an original filenamelist.txt list (1)append name in front of all .pdf files (2)remove the append name (3) remove the blanks in filename (4) substitute blank with _ "
+read choice 
+case $choice in
+"0")
+    ls -1 *.pdf | cat > filenamelist.txt
+    ;;
+"1") 
+    echo "What do you want to append in front of all .pdf files"
+    read append
+    count=1
+    ls -1 *.pdf | cat > filenamelist.txt
+    until [ ${count} == ${ncount} ]
+    do 
+      filename=`cat filenamelist.txt | sed -n $count'p'`
+      #ls -1 *.pdf | head -1`
+      mv "${filename}" ${append}_"${filename}"
+      count=$(( $count + 1 ))
+    done
+    ;;     
+"2") 
+    echo "Do you really want to remove the append? (y or n)"
+    read ans
+    if [ "$ans" = "y" ]
+    then
+      count=1
+      ls -1 *.pdf | cat > appendfilenamelist.txt
+      until [ ${count} == ${ncount} ]
+      do
+        oldfilename=`cat filenamelist.txt | sed -n $count'p'`
+        # p is the line number in filenamelist.txt to pick for the oldfilename
+        filename=`cat appendfilenamelist.txt | sed -n $count'p'`
+        mv "${filename}" "${oldfilename}"
+        count=$(( $count + 1 ))
+      done
+    else echo "done"
+    fi
+    ;;
+"3")
+    echo "Do you want to remove blanks? (y or n)"
+    read ans
+    if [ "$ans" = "y" ]
+    then 
+      count=1
+      ls -1 *.pdf | cat > filenamelist.txt
+      until [ ${count} == ${ncount} ]
+      do
+       oldfilename=`cat filenamelist.txt | sed -n $count'p'`
+       filename=`cat filenamelist.txt | sed -n $count'p' | sed -e 's/[\ ]//g'`
+       # blank has to be two spaces
+       mv "${oldfilename}" "${filename}"
+       count=$(( $count + 1 ))
+      done
+    else echo "done"
+    fi
+    ;;
+"4")
+    echo "Do you want to subs blanks with _ ? (y or n)"
+    read ans
+    if [ "$ans" = "y" ]
+    then 
+      count=1
+      ls -1 *.pdf | cat > filenamelist.txt
+      until [ ${count} == ${ncount} ]
+      do
+       oldfilename=`cat filenamelist.txt | sed -n $count'p'`
+       filename=`cat filenamelist.txt | sed -n $count'p' | sed -e 's/[\ ]/_/g'`
+       # if you want to remove more than a blank then the last part
+       # sed -e 's/[\ \word1\word2]/_/g'`
+       #for instance substitute the word 'test' and blank in a filename with '_'
+       # sed -e 's/[\ \test]/_/g'`
+       mv "${oldfilename}" "${filename}"
+       count=$(( $count + 1 ))
+      done
+    else echo "done"
+    fi
+    ;;
+    
+esac

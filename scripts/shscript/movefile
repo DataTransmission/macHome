@@ -1,0 +1,10 @@
+#!/bin/sh
+ls > 1.txt
+cat 1.txt | 
+while read line
+do ls "$line" >> 2.txt
+done
+cat 2.txt |
+while read line1
+do mv "$line1" file
+done

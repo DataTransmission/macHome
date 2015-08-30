@@ -1,0 +1,23 @@
+#!/bin/bash
+# to use this file type in command line "bash 
+fr=$2 #specify numbers of frame per second
+br=4096k
+opts='-y -f image2 -r '$fr' -i img%03d.png -pix_fmt yuv420p -vcodec '
+
+x=0
+for i in ${1}*.png; do
+  counter=$(printf %03d $x)
+  ln -sf "$i" img"$counter".png
+  x=$(($x+1))
+done
+
+#ffmpeg $opts libtheora -b:v $br -r $fr ${1}.ogg
+#ffmpeg $opts libx264 -vf 'scale=864:-1' -b:v $br -r $fr ${1}.mp4
+ffmpeg $opts libx264 -b:v $br -r $fr ${1}.mp4
+#convert -delay 10 img*.png ${1}.gif
+
+rm img*.png
+
+
+
+# written by Milan Curcic

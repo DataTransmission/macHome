@@ -1,0 +1,6 @@
+#/bin/bash
+echo 'Enter the text'
+read text
+echo 'Enter the folder'
+read folder
+grep -r $text $folder

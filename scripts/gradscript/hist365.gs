@@ -1,0 +1,248 @@
+***************************************************************************************
+*	$Id: hist365.gs,v 1.1 2009/07/03 00:38:45 bguan Exp bguan $
+*	Copyright (C) 2009 Bin Guan.
+*	Distributed under GNU/GPL.
+***************************************************************************************
+function hist365(arg)
+*
+* Histogram; same as hist.gs except for a 365-day calendar (i.e., no leap years).
+*
+rc=gsfallow('on')
+
+tmpdir='/tmp'
+whoamifile='./.whoami.bGASL'
+'!whoami>'whoamifile
+whoami=sublin(read(whoamifile),2)
+rc=close(whoamifile)
+'!unlink 'whoamifile
+mytmpdir=tmpdir'/bGASL-'whoami
+'!mkdir -p 'mytmpdir
+
+input=subwrd(arg,1)
+output=subwrd(arg,2)
+edge_s=subwrd(arg,3)
+edge_e=subwrd(arg,4)
+bin_size=subwrd(arg,5)
+if(bin_size='')
+usage()
+return
+endif
+
+*
+* Ensure x-coordinates are integers and there are no redundant grid points.
+*
+qdims()
+_xs_old=_xs
+_xe_old=_xe
+if(math_int(_xs)!=_xs | math_int(_xe)!=_xe)
+xs_new=math_nint(_xs)
+xe_new=math_nint(_xe)
+'set x 'xs_new' 'xe_new
+qdims()
+endif
+if(_lone-_lons>=360)
+rddnt_points=(_lone-_lons-360)/_dlon+1
+'set x '_xs' '_xe-rddnt_points
+qdims()
+endif
+
+*
+* Ensure y-coordinates are integers.
+*
+qdims()
+_ys_old=_ys
+_ye_old=_ye
+if(math_int(_ys)!=_ys | math_int(_ye)!=_ye)
+ys_new=math_nint(_ys)
+ye_new=math_nint(_ye)
+'set y 'ys_new' 'ye_new
+qdims()
+endif
+
+'set t '_ts' '_te
+'hsttmp=maskout('input','edge_e'-'input')'
+
+'set gxout fwrite'
+'set fwrite 'mytmpdir'/hist365.dat~'
+
+'hstII=hsttmp/hsttmp'
+*
+* First to next-to-last bin
+*
+left=edge_s
+right=left+bin_size;if(right>edge_e);right=edge_e;endif
+nz=1
+zdef=left
+while(left<edge_e)
+'set t '_ts' '_te
+'hstIIa=const(maskout(hstII,hsttmp-'left'),0,-u)'
+'hstIIb=const(maskout(hstII,'right'-hsttmp),0,-u)'
+'hstIIc=const(maskout(hstII,hsttmp-'right'),0,-u)'
+'hstIIz=hstIIa*hstIIb*(1-hstIIb*hstIIc)'
+'set t '_ts
+'hstouttmp=sum(hstIIz,t='_ts',t='_te')'
+'display const(hstouttmp,'default_undef()',-u)'
+left=left+bin_size;if(left>edge_e);left=edge_e;endif
+right=right+bin_size;if(right>edge_e);right=edge_e;endif
+nz=nz+1
+zdef=zdef' 'left
+endwhile
+zdef='ZDEF 'nz' LEVELS 'zdef
+*
+* Last bin (i.e., when input equals to right edge)
+*
+left=edge_e
+right=edge_e
+'set t '_ts' '_te
+'hstIIa=const(maskout(hstII,hsttmp-'left'),0,-u)'
+'hstIIb=const(maskout(hstII,'right'-hsttmp),0,-u)'
+'hstIIz=hstIIa*hstIIb'
+'set t '_ts
+'hstouttmp=sum(hstIIz,t='_ts',t='_te')'
+'display const(hstouttmp,'default_undef()',-u)'
+
+writectl(mytmpdir,nz,zdef,output)
+
+'disable fwrite'
+'undefine hsttmp'
+'undefine hstII'
+'undefine hstIIa'
+'undefine hstIIb'
+'undefine hstIIc'
+'undefine hstIIz'
+'undefine hstouttmp'
+'set gxout contour'
+
+dfile_old=dfile()
+'open 'mytmpdir'/hist365.ctl~'
+file_num=file_number()
+'set x '_xs_old' '_xe_old
+* The above line is needed to ensure that there will not be a gap near the prime meridian in global maps if unintended.
+'set y '_ys_old' '_ye_old
+'set lev 'edge_s' 'edge_e
+'set t '_ts
+'set dfile 'file_num
+output'='output'.'file_num
+'set dfile 'dfile_old
+
+*
+* Restore original dimension environment.
+*
+*'set x '_xs_old' '_xe_old
+*'set y '_ys_old' '_ye_old
+'set z '_zs' '_ze
+'set t '_ts' '_te
+
+return
+***************************************************************************************
+function dfile()
+*
+* Get the default file number.
+*
+'q file'
+
+line1=sublin(result,1)
+dfile=subwrd(line1,2)
+
+return dfile
+***************************************************************************************
+function file_number()
+*
+* Get the number of files opened.
+*
+'q files'
+if(result='No Files Open')
+return 0
+endif
+
+lines=1
+while(sublin(result,lines+1)!='')
+lines=lines+1
+endwhile
+
+return lines/3
+***************************************************************************************
+function default_undef()
+*
+* Get undef value from the default .ctl file.
+*
+'q ctlinfo'
+if(result='No Files Open')
+return 'unknown'
+endif
+
+lines=1
+while(1)
+lin=sublin(result,lines)
+if(subwrd(lin,1)='undef'|subwrd(lin,1)='UNDEF')
+return subwrd(lin,2)
+endif
+lines=lines+1
+endwhile
+***************************************************************************************
+function default_tims()
+*
+* Get the beginning time step of the default file.
+*
+'set t 1'
+'query dims'
+lt=sublin(result,5)
+tims=subwrd(lt,6)
+
+return tims
+***************************************************************************************
+function writectl(mytmpdir,nz,zdef,output)
+*
+* Write the .ctl file for the temporary .dat file
+*
+lines=9
+line.1='DSET ^hist365.dat~'
+line.2='UNDEF 'default_undef()
+line.3='OPTIONS 365_day_calendar'
+line.4=_xdef
+line.5=_ydef
+line.6=zdef
+line.7='TDEF 1 LINEAR '_tims' '_dtim
+line.8='VARS 1'
+line.9='ENDVARS'
+cnt=1
+while(cnt<=lines-1)
+status=write(mytmpdir'/hist365.ctl~',line.cnt)
+cnt=cnt+1
+endwhile
+cnt=1
+while(cnt<=1)
+varline=output' 'nz' 99 Add description here.'
+status=write(mytmpdir'/hist365.ctl~',varline)
+cnt=cnt+1
+endwhile
+status=write(mytmpdir'/hist365.ctl~',line.lines)
+status=close(mytmpdir'/hist365.ctl~')
+
+return
+***************************************************************************************
+function usage()
+*
+* Print usage information.
+*
+say '  Histogram; same as hist.gs except for a 365-day calendar (i.e., no leap years).'
+say ''
+say '  Usage: hist365 <input> <output> <left_edge> <right_edge> <bin_size>'
+say '     <input>: input field (can have horizontal dimensions; NO vertical dimension).'
+say '     <output>: histogram.'
+say '     <left_edge>: left edge.'
+say '     <right_edge>: right edge.'
+say '     <bin_size>: bin size.'
+say ''
+say '  Example: set time Jan1901 Dec2000'
+say '           hist365 precip preciphist -2 2 0.25'
+say '           set time Jan1901'
+say '           set lev -2 2' 
+say '           set xyrev on'
+say '           display preciphist'
+say ''
+say '  Dependencies: qdims.gsf'
+say ''
+say '  Copyright (C) 2009 Bin Guan.'
+say '  Distributed under GNU/GPL.'
+return

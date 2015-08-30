@@ -1,0 +1,23 @@
+***************************************************************************************
+*	$Id: smth9x.gsf,v 1.1 2008/07/02 02:00:45 bguan Exp bguan $
+*	Copyright (C) 2008 Bin Guan.
+*	Distributed under GNU/GPL.
+***************************************************************************************
+function smth9x(expr,x)
+*
+* Run smth9() on an expression for a number of times.
+*
+str=''
+cnt=1
+while(cnt<=x)
+str=str'smth9('
+cnt=cnt+1
+endwhile
+str=str''expr
+cnt=1
+while(cnt<=x)
+str=str')'
+cnt=cnt+1
+endwhile
+
+return str

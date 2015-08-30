@@ -1,0 +1,9 @@
+#/bin/bash
+
+echo 'Enter text to search'
+read text
+echo 'Enter exclude directory'
+read excludDir
+echo 'Enter search directory'
+read searchDir
+grep -r $text --exclude-dir=$excludeDir $searchDir

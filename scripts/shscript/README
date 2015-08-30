@@ -1,0 +1,5 @@
+**************************************************
+Only sync this folder from my computer to server !
+**************************************************
+
+use 'rsync2server' to backup this folder, 'rsync2server' will not be sync'd

@@ -1,0 +1,57 @@
+***************************************************************************************
+*       $Id: parseopt.gsf,v 1.10 2005/05/06 23:33:02 bguan Exp $
+*       Copyright (C) 2005 Bin Guan.
+*       Distributed under GNU/GPL.
+***************************************************************************************
+function parseopt(input,prefix,optname,outname)
+*
+* Parse an option, store argument(s) in global variable array.
+*   input: input string. May contain any characters, including blank spaces.
+*   prefix: prefix indicating start of an option. E.g., a minus sign.
+*   optname: name of option.
+*   outname: name of output global variable array.
+*
+* Example: num_arg=parseopt('run test -t Copyright (C) 2005 "Bin Guan"','-','t','text')
+* In above example:
+*   input='run test -t Copyright (C) 2005 "Bin Guan"'.
+*   prefix='-'.
+*   optname='t'.
+*   outname='text'.
+* Two output variables are defined:
+*   num_arg is number of arguments to option '-t', here 4.
+*   arguments to option '-t' are stored in global variable array _.text, with
+*   _.text.1='Copyright'
+*   _.text.2='(C)'
+*   _.text.3='2005'
+*   _.text.4='Bin Guan'
+*
+* Note 1: Combination of prefix and optname must NOT be purely numeric, which will otherwide be treated as an argument.
+*         WRONG: num_arg=parseopt('run test -2 yes -3 no','-','2','text')
+* Note 2: Double-quoted string will be treated as a single argument, which is necessary when an argument begins with
+*         the prefix and/or containing blank spaces. However, double-quoting is never necessary for numeric numbers.
+*         CORRECT: num_arg=parseopt('run test -lat -23.5','-','lat','latitude')
+* Note 3: Leading/trailing blank spaces and/or other redundant blank spaces in an argument will be ignored.
+* Note 4: Arguments to an option terminate at another prefix or end of input string. Therefore, consistent prefix should
+*         be used throughout the input string.
+*         WRONG: num_arg=parseopt('run test -x 7 8 9 +y 7 8 9 -z 7 8 9','-','x','xaxis')
+* Note 5: 0 will be returned as number of arguments if no arguments were specified and/or the option does not exist.
+*         The global variable array, on the other hand, will be left undefined (NOT empty string '').
+*
+rc=gsfallow('on')
+
+cnt=1
+cnt2=0
+while(subwrd(input,cnt)!='')
+if(subwrd(input,cnt)=prefix''optname)
+cnt=cnt+1
+word=subwrd(input,cnt)
+while((word!='' & substr(word,1,1)''999!=prefix''999) | valnum(word)!=0)
+cnt2=cnt2+1
+_.outname.cnt2=parsestr(input,cnt)
+cnt=_end_word+1
+word=subwrd(input,cnt)
+endwhile
+endif
+cnt=cnt+1
+endwhile
+return cnt2

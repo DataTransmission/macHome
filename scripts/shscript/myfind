@@ -1,0 +1,4 @@
+
+echo "what text to find in this folder's files"
+read text
+find . -type f -print | xargs grep "${text}"

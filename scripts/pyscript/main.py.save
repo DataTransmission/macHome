@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+# If more than one function needs to be used in 'main.py' from 'mod.py', then 
+#   do 'import mod' and access the functions as 'mod.func1()', 'mod.func2()', etc.
+# By doing 'from mod import func1, func2', the functions in 'mod.py' 
+#   can be used directly as 'func1()' and 'func2()' in 'main.py'.
+
+from myATT_monthly_est import myATT_monthly_est 
+
+(actualPayment,estPayment) = myATT_monthly_est(136,[],3,[]);
+
+print 'Estimated Payment (${}) == Actual Payment (${}) ?\n'.format(actualPayment,estPayment) # sum over the rows (axis=0)

@@ -1,0 +1,77 @@
+***************************************************************************************
+*       $Id: parsestr.gsf,v 1.7 2007/07/30 20:06:04 bguan Exp $
+*       Copyright (C) 2005 Bin Guan.
+*       Distributed under GNU/GPL.
+***************************************************************************************
+function parsestr(string,start_word)
+*
+* Parse a string, extract first word (may or may not be double quoted) or phrase (must be double quoted).
+* Usage: output=parsestr(string,start_word)
+*   string: input string. May contain any characters, including blank spaces.
+*   start_word: parsing starts at start_word'th word of input string.
+*   _end_word: parsing ends at _end_word'th word of input string.
+*   output: output string containing first word or phrase, with leading/trailing blank spaces and/or other redundant blank spaces truncated, if any.
+*
+* Note 1: Word may or may not be double quoted. Phrase MUST be double quoted.
+* Note 2: Leading/trailing blank spaces and/or other redundant blank spaces in a double-quoted word or phrase will be truncated.
+* Note 3: Outermost double quotes will NOT be included in output string.
+* Note 4: Inner double quotes immediately adjacent to outermost double quotes will be retained.
+* Note 5: Unexpected results may occur if double quotes, whether matched or not, are used deep inside a phrase.
+* Note 6: Empty string '' will be returned whenever applicable.
+*
+text=''
+cnt=start_word
+cnt2=1
+wrd.cnt=subwrd(string,cnt)
+if(substr(wrd.cnt,1,1)!='"')
+text=wrd.cnt
+else
+if(wrd.cnt='""')
+_end_word=cnt
+return ''
+endif
+if(wrd.cnt='"')
+cnt=cnt+1
+wrd.cnt=subwrd(string,cnt)
+endif
+if(wrd.cnt='"')
+_end_word=cnt
+return ''
+endif
+if(wrd.cnt='')
+errmsg='PARSESTR Error: Unmatched quote.'
+say errmsg
+_end_word=-9999
+return errmsg
+endif
+if(substr(wrd.cnt,1,1)='"')
+wrd.cnt=substr(wrd.cnt,2,math_strlen(wrd.cnt)-1)
+endif
+while(substr(wrd.cnt,math_strlen(wrd.cnt),1)!='"')
+if(cnt2=1)
+text=wrd.cnt
+else
+text=text' 'wrd.cnt
+endif
+cnt=cnt+1
+cnt2=cnt2+1
+wrd.cnt=subwrd(string,cnt)
+if(wrd.cnt='')
+errmsg='PARSESTR Error: Unmatched quote.'
+say errmsg
+_end_word=-9999
+return errmsg
+endif
+endwhile
+if(wrd.cnt!='"')
+wrd.cnt=substr(wrd.cnt,1,math_strlen(wrd.cnt)-1)
+if(cnt2=1)
+text=wrd.cnt
+else
+text=text' 'wrd.cnt
+endif
+endif
+endif
+
+_end_word=cnt
+return text

@@ -1,0 +1,13 @@
+#!/bin/sh
+#chmod +x filename
+# 1. create a .txt with all the http links to download
+# 2. chmod +x mydownloader
+filename="weak.txt"
+count=1
+ncount=$( cat "${filename}" | wc -l ) #this counts how many lines/http in weak.txt
+until [ ${count} == ${ncount} ]
+do
+  httpname=`sed -n ${count}'p' "${filename}"` # sed output the ${count} line in .txt file and curl reads in that line (http)
+  curl -O "${httpname}" # curl functions as ftp -O is the flag to save as the name online 
+count=$(( $count + 1 ))
+done

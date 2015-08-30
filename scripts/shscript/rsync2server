@@ -1,0 +1,16 @@
+#/bin/bash
+
+source='/Users/ginochen/shscript/'
+echo 'server 1) pegasus2 2) yellowstone'
+read n_server
+if [ $n_server -eq 1 ]; then 
+  destination='gchen@pegasus2.ccs.miami.edu:~/shscript'
+elif [ $n_server -eq 2 ]; then
+  destination='ginochen@yellowstone.ucar.edu:~/shscript'
+else
+  echo 'exit'
+  exit 
+fi
+
+
+rsync -av --exclude 'rsync2server' $source $destination

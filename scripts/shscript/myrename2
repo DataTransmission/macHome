@@ -1,0 +1,42 @@
+#!/bin/sh
+#this is a shell script for renaming all book filename in one folder
+# just use this one line syntax
+#ls *.pdf | awk '{print "mv "$0  "  addwhateveruwantinfront"$0""}' | csh
+#rm name.txt
+ncount=$( ls *.pdf | wc -l )
+ncount=$(( $ncount + 1 ))
+echo $ncount
+echo "do you want to remove append (y or n)"
+read ans
+
+if [ "$ans" = "n" ]
+then
+  ls -1 *.pdf | cat > name.txt
+  echo "What do you want to append in front of all .pdf files"
+  read append
+  count=1
+  until [ ${count} == ${ncount} ]
+  do 
+    filename=`cat name.txt | sed -n $count'p'`
+#ls -1 *.pdf | head -1`
+    mv ${filename} ${append}_${filename} 
+    count=$(( $count + 1 ))
+  done
+else
+  echo "Do you really want to remove the append? (y or n)"
+  read ans
+  if [ "$ans" = "y" ]
+  then
+   count=1
+#   ncouut=$((ncount + 1))
+   until [ ${count} == ${ncount} ]
+   do
+     oldfilename=`cat name.txt | sed -n $count'p'`
+# p is the line number in name.txt to pick for the oldfilename
+     filename=`ls -1 *.pdf | sed -n $count'p'`
+     mv ${filename} ${oldfilename} 
+     count=$(( $count + 1 ))
+   done
+  else echo "done"
+  fi
+fi  

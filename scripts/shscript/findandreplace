@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "the directory of files to find and replace texts (e.g. for current dir just type .):"
+read dir
+echo "file extension (e.g. m for .m files):"
+read filetype
+echo "find the text, use \ to escape special character :"
+read before
+echo "replace the text:"
+read after
+echo "sure you want to replace? (y/n)"
+read yesno
+
+if [ "$yesno" = "y" ]; then
+  find "$dir" -name '*.'"$filetype" -exec sed -i.bak 's/'"$before"'/'"$after"'/g' {} \;
+else
+  echo "did nothing"
+fi
