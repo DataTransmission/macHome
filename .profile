@@ -12,7 +12,7 @@ export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-alias ls='ls --color=auto -F'
+alias lsf='ls -F'
 alias safari='open /Applications/Safari.app/'
 alias iphone='ssh -XY root@192.168.1.69'
 alias kaos='ssh -YC gchen@kaos.rsmas.miami.edu'
@@ -27,10 +27,10 @@ alias tree='tree -C'
 
 alias cdqj='cd ~/Gino/Paper/Paper_QJRMS/paper_revision2/'
 alias cdnote='cd ~/Github/gino/notes'
-alias cdconvex='cd ~/Github/gino/Notes/convex'
-alias cdlinearalg='cd ~/Github/gino/Notes/linearAlg'
-alias cdbook='cd /Users/ginochen/books_collection'
-alias cdpaper='cd /Users/ginochen/paper'
+alias cdconvex='cd ~/Github/gino/notes/convex'
+alias cdlinearalg='cd ~/Github/gino/notes/linearAlg'
+#alias cdbook='cd /Users/ginochen/books'
+#alias cdpaper='cd /Users/ginochen/paper'
 alias cdmvim='cd /Users/ginochen/vimfiles/MacVim-snapshot-74/./mvim'
 alias cdreciept='cd ~/Documents/Reciept'
 
