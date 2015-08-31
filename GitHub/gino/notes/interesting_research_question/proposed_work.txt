@@ -1,0 +1,94 @@
+
+
+- stochastic tendency or stochastic field
+	- Issue: 
+		The truth and model provides error, but in the simple model case, we 
+			parameterized the truth output and provided the error.
+			Here if we want the field difference between the model (CAM) and truth (SPCAM)
+			to be the error, then we need to fix the issue of error growth caused 
+			by nonlinearity during model integration.
+	- Solution: 
+		1. Induce additional stochastiscity when calculating model error?
+		2. Some kind of relative error, normalizing the error with time 
+			by generating perturbed IC ensemble in CAM and figure out the
+			error caused by nonlinearity at each time step and subtract out
+			from the model.
+		3. Use all the error time samples to calculate the eigenvector of Cov Mat, this eigenvector 
+			represents the error pattern which has max variance.
+			The eigenvalue representing the error variance are contaminated 
+			by nonlinearity while model evolves (TBD).
+				- Select tiny variance for all modes, since the most important is
+					to give different weights to each modes proportional to the 
+					magnitudes of eigenvalues, as long as this differential 
+					weighting is given correctly, it's all good.
+			- Now we know Psi = sum(Psi_k E_k), where E_k are the eigenvectors.
+				Psi_k follow some stochastic process, assuming it's an AR1 process
+				which has cov coeff calculated from the data. Since the data
+				variance grows with time by nonlinearity, the variance calculation
+				becomes a challenge (TBD). 
+			- We can further decompose E_K = sum(A_kj e_j), where A_kj is perturbed by
+				KE backscatter propotional to e_j (i.e. larger e_j recieves more
+				perturbation). Thus the magnitude of Psi_k preserves the strenth of
+				E_k, thus max Psi_k gives the most perturbation in the small scale
+				e_j, which statistically and physically gives some feedback.
+	- Issue:
+		Can we combine energy back scatter at the area most needed (e.g., with SVD)
+	- Solution:
+		Heavy weight the KE backscattering at higher variance area where most error occurs.
+		
+		
+	- Berner fixed the issue of upscale KE transfer with stochastic kinetic energy 
+		backscatter by multi-scl streamfunction perturbation. 
+		Scl separated each dPsi field into different spherical harmonic modes.
+		The modes are prescribed (large scl mode to small scl mode), and the amplitude evolution is 
+		is a AR1 stochastic process assuming that the autocorr coeff follows a six-days decorrelation time-scale, 
+		instead of from the "truth error" (maybe from weather predicatibility).
+		The noise scale is a power-law function of modes (larger scl modes have smaller noise, vice versa). 
+		The power law is to match the spectrum of coarse-grained streamfunction power spectrum.
+%	- Berner further assumes that the perturbed streamfunction (dPsi) amplitude could be scale-separated 
+%		by orth Spherical Harmonics. Each Spherical coeff has the same noise amplitude \sigma, 
+%		but my thought is the small scale should be assumed to have more error than large scale.
+%		Hence should put more perturbation (as gn \prop n^p).
+%		- variance in small scl has smaller noise/anomaly amplitude, so assuming the same noise amplitude 
+%			should work.
+	- Assumption that autocorrel \alpha is smaller in smaller scl is strange (although eventually Berner 
+		assumed it to be constant throughout different scl).
+		Errors have less memory (more white) in smaller scl since most error comes from subgrid-scl?
+		But errors transfer up-scale causing large scl error losing memory? 
+		Is this why Berner assumed a constant decorrelation timescale for all scl?
+	- What about spatial pattern of error variance? Berner's or Shutts's method considers 
+		separating scale perturbation to inject KE to the flow.
+		But didn't consider separating spatial error, like mountainous area should have more error.
+		Maybe they did. I didn't look into where they injected the dPsi.
+		But our method should take into account spatial error pattern, and directly inject
+		error based on spatial error pattern. 
+	- Although Spherical coeff gives good approximation on the observational correlation on each mode,
+		but when you want to inject the KE pert back to the flow, you don't consider spacial variation.
+		It's injected homogeneously every where!! What about mountainous area.
+	- We can still use the same \alpha and \sigma to martch forward the PC1,PC2,.... 
+		Do we have to consider scl seperatation and dissipation, why?
+		Combine SKEB and SVD?
+		e = sum(e_k phi_k) where each e_k = dPsi = sum(dPsi_ij q_ij) 
+		we know that e_1 = PC1 has the highest variance, hence the magnitude of g_n will be scl'd accordingly.
+
+	
+
+
+ 
+		
+
+
+
+		could be derived by a power-law assumption which is proportionate to the perturbed KE (dKE).
+		This means that the dPsi spatial pattern has
+		This assumption is allowing the error/jump of stochastic process (AR1) to follow the perturbed KE. 
+		She assumed that dPsi is the subgrid process, and missing in the large scale.
+		It is assumed 
+		Which is weird, since why did the error between truth and
+		model become a streamfunction perturbation propotional to perturbed KE ? 
+		We know that dKE gives dPsi, a legit approximation, but the dKE is between truth and model and gives
+		dPsi between truth and model. So while forecasting, we do not know the dKE,
+		otherwise we will be running the SP-CAM and CAM in parallel, which makes no sense.
+		Therefore, we need to come up with a way to generate error 
+		stochastic process between truth and model.
+		

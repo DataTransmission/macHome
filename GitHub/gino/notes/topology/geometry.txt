@@ -1,0 +1,11 @@
+how to shift coordinate and keep the same basis intact?
+In cartesian coordinate {e1,e2,e3} as the basis in 3D, then the 
+"coordinate" is the points (x1,x2,x3) relative to zero origin (0,0,0). 
+
+Shifting the old coordinate relative to the point (3,3,3) returns the
+"new coordinate" (y1,y2,y3)=(x1-3,x2-3,x3-3) relative to the origin (0,0,0) 
+and the basis is unchanged, since xi-3-0=xi-3. 
+
+e.g. Suppose (y1,y2,y3) = (1,2,3), then in the old coordinate (x1,x2,x3)=(-2,-1,0),
+the new coordinate can be seen as the old coordinate translating the origin to (3,3,3),
+that's it, the basis is the same {e1,e2,e3}.

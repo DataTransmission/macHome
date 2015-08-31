@@ -1,0 +1,70 @@
+k = 2pi/入 = 2pi/2pir = 1/r (# of radius per unit distance, and 1 radius corresponds to 1 radian, so # of radius = # of radians)
+
+
+1 rad           = degrees required for an arc to extend a unit radius r 
+                = (180/pi) degrees {one r relates to one rad}
+
+1 steradian(sr) = squared degrees required for a r^2 area on a sphere surface 
+                = (180/pi)^2 square degrees
+                or 
+                = fractional area required for a r^2 area on a unit sphere 
+                = r^2/(4pi*r^2) 
+                = 1/4pi fractional area {one r^2 relates to one sr}
+
+x steradian = solid angle = area A cut out in a sphere with radius r measured in sr 
+            = A/r^2 (sr) 
+            {x numbers of r^2 area contained in a surface area A, since one r^2 relates to one sr}  
+
+solid angle of a sphere (measured from interior) = 4pir^2/r^2 (sr) = 4pi (sr)
+
+surface element dS = r^2sinΘdΘdφ
+differential solid angle dΩ = dS/r^2 = sinΘdΘdφ 
+
+
+____________________________________________________________________________
+
+Directional derivative (rate of change of f(x) in the magnitude and direction of the flow velocity)
+____________________________________________________________________________
+
+D_u f = lim_{dt->0} [f(x+udt) - f(x)]/dt 
+      = df(x_1,x_2)/dt
+      = σf/σx_1 σx_1/σt + σf/σx_2 σx_2/σt
+      = σf/σx_1 u_1 + σf/σx_2 u_2 =>
+D_u f = u。Df (where u。D is the advection operator used in Navier Stokes eq)
+
+
+
+__________________________________
+
+Buoyancy Frequency (Brunt-Vaisala)
+__________________________________
+
+only gravitational force matters in Navier-Stoke's eq
+
+for a small displacement z' = z+z' -z of a small parcel of density ρ_o and the environment with density ρ(z)
+ρ_o δ^2(z+z')/δt = -ρ(z+z')g
+ρ_o δ^2(z)/δt = -ρ(z)g => subtract above
+
+ρ_o δ^2z'/δt = -(ρ(z+z')-ρ(z))g
+
+making linear approximation of ρ(z+z') = ρ(z) + dρ/dz (z+z'-z)
+
+δ^2z'/δt = -g/ρ_ο dρ(z)/dz z'
+
+gives the solution
+z' = z_o'exp(iNt),
+where N = sqrt(-g/ρ_o dρ(z)/dz) is the angular frequency of the parcel.
+
+(ω: angular fruency (rad/s), f: frequency (cycle/s= Hz), where ω= 2pif, and 1 cycle = 2pi rad, hence 1 cycle/s= 2pi rad/s)
+
+
+
+______________________
+
+Upscale Energy Cascade
+______________________
+
+Vorticity equation
+
+E= int_A((Dψ)^2)
+

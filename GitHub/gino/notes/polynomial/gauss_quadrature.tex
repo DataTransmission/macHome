@@ -1,0 +1,70 @@
+
+\subsection{\bf Prove that a $n$ point Gauss-quadrature is exact for a polynomial up to order $(2n-1)$} 
+{\bf Quadrature Exactness for polynomial of order $n-1$}: \\
+The integration of the form
+\begin{equation}
+  I(f) = \int_{a}^{b} \omega(x) f(x) dx
+\end{equation}
+is exact when 
+\begin{equation} \label{eq:qep}
+  I(f) \approx Q(f) = \sum_{i=1}^{n} w(x_i) f(x_i).
+\end{equation}
+A function approximated by the $n$ point Lagrange interpolant can be represented as a $(n-1)$th order polynomial
+\begin{equation}
+  f(x) \approx \sum_{i=1}^{n} f(x_i) \prod\limits_{j=1,j\neq i}^{n}\frac{x-x_j}{x_i-x_j}
+\end{equation}
+Substituting into 
+\begin{equation}
+  \begin{aligned}
+    I(f) & = \int \omega(x) f(x) dx  \\
+         & \approx \int \omega(x)\sum_{i=1}^{n} f(x_i) \prod\limits_{j=1,j \neq
+	 i}^{n}\frac{x-x_j}{x_i-x_j}dx \\
+         & = \sum_{i=1}^{n} \Big( \int \omega(x) \prod\limits_{j=1,j \neq
+	 i}^{n}\frac{x-x_j}{x_i-x_j} dx \Big) f(x_i) \\
+         & = \sum_{i=1}^{n} w(x_i) f(x_i),
+  \end{aligned}
+\end{equation}
+and don't forget $w$ is not a continuous function of the domain $x$, instead only has discrete
+values as a function of $x_i$.
+Therefore this shows that the {\bf\emph{quadrature is exact when the function $f$ is a polynomial of order
+$(n-1)$}}. \\
+
+{\noindent \bf Orthogonality}: \\
+Let $p_i$'s be orthogonal polynomials of maximum order $n$ over $[a b]$ such that
+\begin{equation}
+  \int_{a}^{b} \omega(x) p_i(x) p_j(x) dx = c \delta_{ij},
+\end{equation}
+where $c$ is a constant factor. 
+Any polynomial $h_k(x)$ with order $k \le (n-1)$ is a linear combination
+of $p_k$'s such that
+\begin{equation} \label{eq:orth}
+   \int_a^b \omega(x) h_k(x) p_n(x)dx= 0 \text{ for all } k= 0,1, \dotsc, n-1,
+\end{equation}
+shows the terms in $h_k$ are all orthogonal to $p_n$. \\
+
+{\noindent \bf Quadrature Exactness for Orthogonality}: \\
+The orthogonality integration \eqref{eq:orth} is ``exact'' if it is done over the roots of $p_n(x)$, 
+\begin{equation} \label{eq:qe}
+  \sum_{i=1}^n \omega(x_i) h_k(x_i)p_n(x_i) = \int_a^b \omega(x) h_k(x) p_n(x)dx = 0.
+\end{equation}
+
+{\noindent \bf Proof}: \\
+Using the two exactness conditions (\eqref{eq:qep} and \eqref{eq:qe}) and the orthogonal polynomials, we will prove that $I(f) \approx
+Q(f)$ for $f$ of order $2n-1$. 
+The quotient form of polynomial $f(x) = p_n(x)q(x) + r(x)$, where $q$ and $r$ are both order $\le n-1$,
+\begin{equation}
+   \begin{aligned}
+   I(f) & =  \int_a^b \omega f dx & &  \\
+   & = \int_a^b \omega q p_n dx & + \int_a^b \omega r dx \ \ \ \ \ \ \ & \text{ (quotient form) } \\
+   & = 0 & + \int_a^b \omega r dx \ \ \ \ \ \ \ & \text{ (orthogonality) }\\
+   & \approx \sum w(x_i) q(x_i) p_n(x_i) & + \sum w(x_i) r(x_i) & \text{ (exactness \eqref{eq:qe} + \eqref{eq:qep}) } \\
+   & = \sum w(x_i) f(x_i) = Q(f). \\
+   \end{aligned}
+\end{equation}
+
+{\noindent \bf Concluding Remarks}: \\
+\begin{itemize}
+  \item The quadrature exactness can go up to order $2n-1$ for $f$, and the weights are on the roots of
+    orthogonal polynomials. \\
+  \item If $\omega(x)=1$ (associated with the Legendre orthogonal polynomials), then $I(f)=\int f dx$ is the regular integration for $f$.
+\end{itemize}

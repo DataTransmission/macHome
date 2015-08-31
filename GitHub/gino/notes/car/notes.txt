@@ -1,0 +1,18 @@
+ -----
+|TIRES|
+ -----
+Tire code (http://auto.howstuffworks.com/buying-selling/cg-tire-buying-tips2.htm) :
+  P195/60R16 63S M+S
+  P(type of tire) 195(width (mm)) / 60(aspect ratio(%) = sidewall/width) R(radial construction) 
+  16(rim diameter) 63(load rating) S(speed rating H,T) M+S(all season)
+
+Nissan versa recommend (https://answers.yahoo.com/question/index?qid=20130626093858AAC9vXI) : 
+   195/65-16 (Firestone Precision Touring or General Altimax HP); 
+   185/65-15 (Michelin Defender or Firestone Precision Touring)
+
+Best tires (http://www.consumerreports.org/cro/news/2015/03/what-brands-make-the-best-tires/index.htm)
+   1.Michelin, 2.Continental, 3.Goodyear, 4.Pirelli, 5.Hankook, Cooper, Nokian, Yokohama
+   
+Controversial tires (https://answers.yahoo.com/question/index?qid=20120104153437AAlGDXr) :
+   Firestone (incidents in 2000, otherwise highly recommended)
+

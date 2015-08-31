@@ -1,0 +1,28 @@
+Run SCAM:
+1. find out the iop (forcing file) of RCE 
+2. find out the initial field from "run-scam.csh"
+
+Don't Run SCAM (don't bother the IOP thing):
+1. find the input variables X and Y of the rhs Q1(X) and Q2(Y) of CAM
+2. Plug in X(t_i) and Y(t_i) and compare with the instantaneous tendency output of SAM Q1(X(t_i)), Q2(Y(t_i))
+3. From Yanai73, the rhs for Q1 consists of "condensative" and "evaporative" tendencies, FIND IT!
+4. Find the modules/subroutines before physics_update() since we want to calculate the instananeous tendency "ptend" & "tend", not the updated "states"
+5. Is the "physics_ptend_sum","ptend" or "tend" what I want?
+6. check for where (subroutines) ptend, tend, and physics_ptend_sum are updated
+
+
+
+
+Better modify the Inputdata for IOP in:
+/glade/p/cesmdata/cseg/inputdata/atm/cam/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc
+
+
+
+*********
+Websites information for SCAM
+*********
+IOP discussion:
+https://bb.cgd.ucar.edu/could-single-column-model-be-run-through-cesm
+
+User Guide:
+http://www.cesm.ucar.edu/models/atm-cam/docs/scam/

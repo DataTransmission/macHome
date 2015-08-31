@@ -1,0 +1,457 @@
+
+This is a note of CAM module dependency (gchen@rsmas.miami.edu)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ADJUST PAGE TO THE WIDTH OF THIS LINE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CAM CODE HEIRARCHY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ _____________________________________________________________
+|                                                             |
+| |~SUBROUTINE(INOUTVAR) [BASEDIR/SUBDIR/MOD~]                |
+| | |        ! .F90 is omitted from MOD.F90                   |
+| | |        ! BASEDIR : [models/atm/cam/src/]                |
+| | |~SUBROUTINE(INOUTVAR) [BASEDIR/SUBDIR/MOD~]              |
+| |   |~( Subroutines in words and separated                  |
+| |       by commas if not too important for my experiment )  |
+|                                                             |
+| Vim Tips :                                                  |
+| 1. Search \~ to highlight the branches and MOD              |
+|_____________________________________________________________|
+
+
+ |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
+ | |~init_pio_subsystem(filein) [utils/cam_pio_utils~]   
+ | |                  ! Do appropriate dynamics and history initialization depending on whether initial, restart, or 
+ | |                  ! branch.  On restart run intht need not be called because all the info is on restart dataset.
+ | |~cam_initfiles_open() [control/cam_initfiles~]     
+ | | |                ! IF NO RESTART
+ | | |                ! Open the initial conditions and topography files.
+ | | |~getfil(ncdata, ncdata_loc) [control/ioFileMod~]
+ | | |                ! Open initial, topography, and landfrac datasets
+ | | |                ! Determine whether file is on local disk. First check current working directory, next check full pathname[fulpath] on disk.
+ | | |~cam_pio_openfile(fh_ini, ncdata_loc, PIO_NOWRITE, .TRUE.) [utils/cam_pio_utils~]
+ | | | |               (file, fname, mode, is_init)
+ | | | |~pio_openfile(pio_subsystem, file, pio_iotype, fname, mode) [../../../utils/pio/pio. & piolib_mod~] 
+ | | |                ! brief open an existing file using pio
+ | | |~read_initial(fh_ini) [control/readinitial~]
+ | |                  ! Ensure that requisite netcdf variables are on the initial dataset.
+ | |                  ! Set base day and date info using the "current" values from it.
+ | |~cam_initial(dyn_in, dyn_out, NLFileName=filein) [dynamics/eul/inital~]
+ | | |~dyn_init(initial_file_get_id(), dyn_state, dyn_in, dyn_out, NLFileName) [dynamics/fv/dyn_comp~]
+ | | |                ! Initialize the FV dynamical core
+ | | |~initial_conds(dyn_in) [control/startup_initialconds~]
+ | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/fv/inidat~] 
+ | |   |              ! Read initial dataset (PS,PHIS,US,VS,T) and spectrally truncate as appropriate.
+ | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/eul/inidat~]  
+ | |     |            ! Read initial dataset and process fields as appropriate.
+ | |     |~setiopupdate() [dynamics/eul/iop~]
+ | |     |            ! Open and read netCDF file to extract time information
+ | |     |~readiopdata() [dynamics/eul/iop~]
+ | |                  ! Open and read netCDF file containing initial IOP conditions
+ | |                  ! if the dataset is a CAM generated dataset set use_camiop to true
+ | |                  ! CAM IOP datasets have a global attribute called CAM_GENERATED_IOP      
+ | |~cam_read_restart(cam_out, dyn_in, dyn_out, pbuf2d, stop_ymd, stop_tod, NLFileName=filein) [control/cam_restart~]     
+ | | |                ! IF RESTART
+ | | |                ! Read the master restart file in 
+ | | |~initialize_iop_history() [control/history_defaults~]
+ | |~phys_init(phys_state, phys_tend, pbuf2d, cam_out) [physics/cam/physpkg~]
+ | | |                ! Initialization of physics package, phys_state and phys_tend are null pointer inputs
+ | | |~physics_type_alloc(phys_state, phys_tend, begchunk, endchunk, pcols) [physics/cam/physics_types~]   
+ | |   |              ! this is the only place it's used, and the only place "phys_state", "phys_tend" and "state" are defined as pointer 
+ | |   |~allocate(phys_state(begchunk:endchunk), stat=ierr) 
+ | |                  ! allocate the proper chunk size for phys_state and phys_tend
+ | |~scm_intht() [control/history_scam~]
+ |                    ! add master list fields for single_column model 
+ |                    ! (TDIFF,TOBS,QDIFF,QOBS,PRECOBS,DIVQ,DIVQ3D,DIVV,DIVU,DIVT,DIVT3D,SHFLXOBS,LHFLXOBS,TRELAX,QRELAX,TAURELAX,TDIFF,QDIFF) to scm
+ |~cam_run1(cam_in,cam_out) [control/cam_comp]  
+ | |~stepon_run1( dtime, phys_state, phys_tend, pbuf2d, dyn_in, dyn_out ) [dynamics/eul/stepon~]
+ | | |                ! First phase of dynamics (at least couple from dynamics to physics)
+ | | |                ! Return time-step for physics from dynamics.
+ | | |~d_p_coupling(ps, t3, u3, v3, q3, omga, phis, phys_state, phys_tend,  pbuf2d, pdeld) [dynamics/eul/dp_coupling~]
+ | |                  ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
+ | |                  ! also writes dynamics variables (on physics grid) to history file
+ | |~phys_run1(phys_state, ztodt, phys_tend, pbuf2d,  cam_in, cam_out) [physics/cam/physpkg~]             
+ |   |                ! (inout) phys_state,phys_tend (pointer) pbuf2d (unknown) cam_in,cam_out (in) ztodt
+ |   |~pbuf_allocate(pbuf2d, 'physpkg') [physics/cam/physics_buffer~]
+ |   |~phys_timestep_init(phys_state, cam_out, pbuf2d) [physics/cam/physpkg~]      
+ |   | |              ! (inout) cam_out,pbuf2d,phys_state
+ |   | |              ! The place for parameterizations to call per timestep initializations. 
+ |   | |              ! Generally this is used to update time interpolated fields from boundary datasets.                   
+ |   | |~( Chemistry surface values, Solar irradiance, Time interpolate for chemistry, a bunch of prescribed tracers, 
+ |   |     prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
+ |   |     CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
+ |   |     Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
+ |   |     Time interpolate for tracers if appropriate, age of air tracers )
+ |   |~tphysbc(ztodt, fsns, fsnt, flns, flnt, state, tend, pbuf, fsds, landm, sgh30, cam_out, cam_in) [physics/cam/physpkg~]  
+ |     |              ! (inout) cam_out,flns,flnt,fsns,fsnt,pbuf,state,tend, (in) cam_in,landm,sgh30,ztodt
+ |     |              ! before coupling (bc) to surface (land, sea, ice)
+ |     |~pbuf_get_field [physics/cam/physics_buffer~]    
+ |     | |            ! Given a pbuf2d chunk and an index return a pointer to a field chunk  
+ |     | |~get_pbuf1d_field_by_index_1d_int(pbuf, index, field, start,kount) [physics/cam/physics_buffer~]
+ |     |   |~buffer_get_field_ptr_1d_int(bfg, field, start,kount) [utils/buffer~]
+ |     |~diag_conv_tend_ini(state,pbuf) [physics/cam/cam_diagnostics~]   
+ |     |              ! Save state for convective tendency calculations.
+ |     |~convect_deep_tend(cmfmc, cmfcme, dlf, pflx, zdu, rliq, ztodt, state, ptend, cam_in%landfrac, pbuf) [physics/cam/convect_deep~]
+ |     | convect_deep_tend(mcon, cme, dlf, pflx, zdu, rliq, ztodt, state, ptend,landfrac ,pbuf)
+ |     | |            !(out) : cmfmc, cmfcme, dlf, pflx, zdu, rliq, ptend, (in) : ztodt, state, cam_in%landfrac, (inout) : pbuf
+ |     | |~zm_conv_tend(pblh, mcon, cme, tpert, dlf, pflx, zdu, rliq, ztodt, jctop, jcbot , state, ptend, landfrac, pbuf) [physics/cam/zm_conv_intr~]
+ |     |   |          ! local tendencies (ptend_loc) are separately calculated !!    FIND HOW TO JUST USE THIS AS A FUNCTION
+ |     |   |~zm_convr(lchnk,ncol,t,qh,prec,jctop,jcbot,pblh,zm,geos,zi,qtnd,heat,pap,paph,dpp,delt,
+ |     |     |        mcon,cme,cape,tpert,dlf,pflx,zdu,rprd,mu,md,du,eu,ed,dp,dsubcld,jt,maxg,ideep,lengath,ql,rliq,landfrac) [physics/cam/zm_conv~]
+ |     |     |        ! (in) lchnk,ncol,t,qh,pap,paph,dpp,zm,goes,zi,pblh,tpert,landfrac, 
+ |     |     |        ! (out) qtnd,heat,mcon,dlf,pflx,cme,cape,zdu,rprd,mu,eu,du,md,ed,dp,dsubcld,jctop,jcbot,prec,rliq,
+ |     |     |        ! Main driver for zhang-mcfarlane convection scheme  
+ |     |     |        ! performs deep convective adjustment based on mass-flux closure algorithm.
+ |     |     |~q1q2_pjr(lchnk,dqdt,dsdt,qg,qs,qu,su,du,qhat,shat,dp,mu,md,sd,qd,qlg,dsubcld,jt,maxg,1,lengath,cpres,rl,msg,dlg,evpg,cug) [physics/cam/zm_conv~]
+ |     |     |        ! (in) lchnk,il1g,il2g,msg,q,qs,qu,su,du,qhat,shat,dp,mu,md,sd,qd,ql,evp,cu,dsubcld (out) others
+ |     |     |        ! compute temperature and moisture changes due to convection.
+ |     |     |~buayan(lchnk,ncol,q,t,p,z,pf,tp,qstp,tl,rl,cape,pblt,lcl,lel,lon,maxi,rgas,grav,cpres,msg,tpert) [physics/cam/zm_conv~]
+ |     |              ! Evaluate Tparcel, qs(Tparcel), buoyancy and CAPE, lcl, lel, parcel launch level at index maxi()=hmax          
+ |     |~physics_update(state, ptend, ztodt, tend) [physics/cam/physics_types~]  
+ |     | |            ! (inout) ptend, state, tend, ...
+ |     | |            ! Update the state (or tendency) with parameterization tendencies, 
+ |     | |~state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt 
+ |     |              ! update dry static energy here
+ |     |~convect_shallow_tend [physics/cam/convect_shallow~]
+ |     |~physics_update [physics/cam/physics_types~]
+ |     |~( a bunch of different micro-macro-physics scheme )
+ |     |~physics_ptend_sum(ptend_aero, ptend, ncol) [physics/cam/physics_types~]   
+ |     |              ! combine aero and micro tendencies
+ |     |              ! Overwrites ptend with the sum of ptend (aero and micro tendencies), done once at cloud microphysics 
+ |     |~physics_update [physics/cam/physics_types~]
+ |     |~physics_ptend_dealloc(ptend_aero) [physics/cam/physics_types~]      
+ |     |~( Aerosol wet chemistry determines scavenging fractions, and transformations )      
+ |     |~diag_phys_writeout(state, cam_out%psl) [physics/cam/cam_diagnostics~]   
+ |     |              ! Moist physical parameteriztions complete!!       
+ |     |~diag_conv(state, ztodt, pbuf) [physics/cam/cam_diagnostics~]      
+ |     | |~outfld('DTCOND'...) 
+ |     |              ! total convection tendency state%s
+ |     |~cloud_diagnostics_calc(state, pbuf) [physics/cam/cloud_diagnostics~]  
+ |     |              ! Write cloud diagnostics on history file      
+ |     |~radiation_tend(state,ptend, pbuf, & [physics/cam/radiation~] 
+ |     | |~radheat_tend [physics/cam/radheat~] 
+ |     |   |~ptend%s(:ncol,:) = (qrs(:ncol,:) + qrl(:ncol,:)) 
+ |     |              ! output ptend%s from radiation
+ |     |~physics_update [physics/cam/physics_types~]
+ |     |~cam_export (state,cam_out,pbuf) [physics/cam/camsrfexch~]    
+ |     |              ! Save atmospheric fields to force surface models
+ |     |~diag_export(cam_out) [physics/cam/cam_diagnostics~]    
+ |                    ! Write export state to history file
+ |~cam_run2(cam_in,cam_out) [control/cam_comp~]    
+ | |~phys_run2(phys_state, dtime, phys_tend, pbuf2d,  cam_out, cam_in) [physics/cam/physpkg~]    
+ | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
+ | |                  ! Tendency physics after coupling to land, sea, and ice models.
+ | |                  ! Computes (1) Radon surface flux and decay (optional) (2) Vertical diffusion and planetary boundary layer (3) Multiple gravity wave drag
+ | |~stepon_run2(phys_state, phys_tend, dyn_in, dyn_out) [dynamics/fv/stepon~]    
+ |                    ! Phase 2 run method of dynamics. Couple from physics to dynamics.  
+ |~cam_run3(cam_out) [control/cam_comp~]
+ | |~stepon_run3(dtime, etamid, cam_out, phys_state, dyn_in, dyn_out) [dynamics/eul/stepon~]
+ | | |                ! Final phase of dynamics run method. Run the actual dynamics.  
+ | | |                ! Determine whether it is time for an IOP update; doiopupdate set to true if model time step > next available IOP
+ | | |~dynpkg( adv_state,t2,fu,fv,etamid,cwava,detam,flx_net ,ztodt) [dynamics/eul/dynpkg~]
+ | |   |~scan2run (ztodt,cwava,etamid,t2,fu,fv) [dynamics/eul/scan2~]
+ | |     |            ! Module for second gaussian latitude scan, to convert from spectral coefficients to grid point values.
+ | |     |            ! Second gaussian latitude scan, converts from spectral coefficients to grid point values, from poles to equator, with read/calculate/write cycle.
+ | |     |~forecast(lat, psm1, psm2,ps, u3, u3m1, u3m2, v3, v3m1, v3m2, t3, t3m1, t3m2, q3, q3m1, q3m2,
+ | |                ztodt,t2,fu,fv,qfcst,etamid,cwava,qminus,hw2al,hw2bl,hw3al,hw3bl,hwxal,hwxbl,nlon)  [dynamics/eul/forecast~]
+ | |                  ! Eularian forecast of t, u, and v. Advection terms are also converted to flux form and integrated to check conservation
+
+ 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CAM CODE VARIABLE DEFINITION ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ __________________________________________________________________________________________________________________________________________________________
+|                |                                                                                                                                         |
+| VARIABLE       | VARIABLE DESCRIPTION      [MODULEName1, MODULEName2,..~]                                                                                |
+|________________|_________________________________________________________________________________________________________________________________________|
+
+begchunk         : defined in [ppgrid] and updated in [phys_grid]
+c                : chunk index
+cam_in           : pointer, Merged input state of sea-ice, land and ocean surface parameterizations to CAM, with type cam_in_t 
+cam_in_t         : the type for cam_in [control/camsrfexch]  
+cam_out          : pointer, Output from CAM to surface (Atmosphere to surface input)
+cflx_srf(:,:)    : constituent flux at surface (kg/m2/s) [physics/cam/physics_type]
+cflx_top(:,:)    : constituent flux at top of model (kg/m2/s) [physics/cam/physics_type]
+cme(pcols,pver)  : cmf condensation - evaporation [convect_deep]
+DTCORE           : T tendency due to dynamical core
+dyn_in           : Dynamics import container, intent(out), with type dyn_import_t
+dyn_import_t     : The type for dyn_in, with variables (phis, ps, u, v, p, phi, T) [dynamics/fv/dyn_comp]
+dyn_out          : Similar to dyn_in, intent(out) with type dyn_export_t
+dyn_export_t     : The type for dyn_out, with additional variables (omega, mfx, mfy) [dynamics/fv/dyn_comp]
+dlf(pcols,pver)  : scattrd version of the detraining cld h2o tend [convect_deep]
+evapcdp          : Evaporation of deep convective precipitation [convect_deep]
+filein           : Determine input namelist filename (e.g. filein= "atm_in" // trim(inst_suffix))
+fh_ini           : ncid, with type file_desc_t
+file_desc_t      : the type for fh_ini. [../../../utils/pio/pio]
+fracis           : fraction of transported species that are insoluble [physics/cam/convect_deep]
+hflux_srf(:)     : net heat flux at surface (W/m2) [physics/cam/physics_type]
+hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_type]
+lchnk            : chunk identifier
+mcon(pcols,pverp):  Convective mass flux--m sub c [convect_deep]
+NLFileName       : Input namelist filename, "atm_in"
+pflx(pcols,pverp): scattered precip flux at each level [convect_deep]
+pblh(:)          : Planetary boundary layer height [convect_deep]
+phys_ptend       : tendencies returned from individual parameterizations, (s,u,v,q,hflux_srf,hflux_top,taux_srf,taux_top,tauy_srf,tauy_top,cflx_srf,cflx_top)
+phys_tend        : the parameterized tendency on the rhs (dtdt,dudt,dvdt,flx_net,te_tnd,tw_tnd,psetcols) [physics/cam/physics_type]
+phys_state       : has the type of physics_state [physics/cam/physics_type]
+physics_state    : ( lchnk,ngrdcol,nsubcol,psetcols,ncol,indcol,lat,lon,ps,psdry,phis,ulat,ulon,
+                     t,u,v,s,omega,pmid,pmiddry,pdel,pdeldry,rpdel,rpdeldry,lnpmid,lnpmiddry,exner,zm,
+                     q,pint,pintdry,lnpint,lnpintdry,zi,te_ini,te_cur,tw_ini,tw_cur,latmapback,lonmapback,cid,ulatcnt,uloncnt ) [physics/cam/physics_type]
+prec(:)          : total precipitation [convect_deep]
+psetcols         : max number of columns set- if subcols = pcols*psubcols, else = pcols [physics/cam/physics_type]
+ptend            : 
+q(:,:,:)         : consituent tendencies (kg/kg/s) [physics/cam/physics_type]
+ql               : wg grid slice of cloud liquid water. [convect_deep]
+rliq(pcols)      : reserved liquid (not yet in cldliq) for energy integrals [convect_deep]
+rprd             : rain production rate [convect_deep]
+s(:,:)           : dry static energy, heating rate (J/kg/s) [physics/cam/physics_type]
+snow(:)          : snow from ZM convection [convect_deep]
+state            : could be the current state or the forward state depending whether it is updated
+taux_srf(:)      : net zonal stress at surface (Pa) [physics/cam/physics_type]
+taux_top(:)      : net zonal stress at top of model (Pa) [physics/cam/physics_type]
+tauy_srf(:)      : net meridional stress at surface (Pa) [physics/cam/physics_type]
+tauy_top(:)      : net meridional stress at top of model (Pa) [physics/cam/physics_type]
+tend             : Physics tendencies over timestep, the tendency on the rhs (not the forward state yet), has the type of physics_ptend [physics/cam/physics_type]          
+tpert(:)         : Thermal temperature excess [convect_deep]
+te_tnd(:)        : cumulative boundary flux of total energy
+tw_tnd(:)        : cumulative boundary flux of total water
+u(:,:)           : u momentum tendency (m/s/s) [physics/cam/physics_type]
+v(:,:)           : v momentum tendency (m/s/s) [physics/cam/physics_type]
+zdu(pcols,pver)  : detraining mass flux [convect_deep]
+ztodt            : timestep for computing physics tendencies
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+------------------------------------------------------------------------------------------------
+                            
+                                       websites
+
+------------------------------------------------------------------------------------------------
+
+namelist
+--------
+http://www.cesm.ucar.edu/cgi-bin/eaton/namelist/nldef2html-pub
+http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/nl_cam.html
+
+history field
+-------------
+http://www.cesm.ucar.edu/models/cesm1.0/cam/docs/ug5_0/hist_flds_fv_cam5.html
+
+IOP Description File
+--------------------
+/glade/p/work/ginochen/cesm1_3_beta07/models/atm/cam/bld/namelist_files/use_cases/scam_arm95.xml
+
+IC ncdata
+---------
+/glade/p/cesmdata/cseg/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L30_c031210.nc
+
+iopfile
+-------
+/glade/p/cesmdata/cseg/inputdata/atm/cam/scam/iop/ARM95_4scam.nc
+
+cloud fraction
+--------------
+http://www.cesm.ucar.edu/models/atm-cam/docs/description/node21.html
+
+1. set '*.run' BSUB -q premium' to test the code
+2. use SAM output as CAM input : /glade/p/work/ihu/SAM/SAM_OUTPUT/*TQ.nc
+2.1 Run SAM and output the 3D fields, modify 'writefields3D.f90'. 'statistics.f90' gives the variable name : 'tabs'
+3 What are the input 'X' for Q_cloud(X) in cam ?
+
+SAM outputs Q1C : convective heating
+
+'/src/dynamics/eul/iop.F90' 'readiopdata' contains what the input of SCAM is.
+'/glade/scratch/ihu/SCAM' contains the idealized prescribed input of SCAM.
+. figure out the f90 file to output the heating rate. 
+
+
+
+Q = Q_rad + Q_diff + +Q_lrgscl + Q_cld
+
+
+
+Interface blocks (reminder of what's defined in subprograms) :
+1. When exterior modules/subroutines/functions (subprograms, and their defined variables) are used in a main program.
+2. Reminder of what module procedures (subprograms/subroutines) are contained in a module.
+
+
+Three interface blocks defining the module procedures (subroutines) contained in the module physics_buffer.F90 are:
+      pbuf_get_field
+      pbuf_set_field
+      pbuf_add_field : this outputs the index for each buffered field
+
+
+     
+
+
+
+Model equations:
+
+Q1 = DsDt = Q_rad + Q_latent 
+
+
+Preliminary conclusion:
+
+* Change the heating profile in 'radheat.F90' for 'ptend%s(:ncol,:) = (qrs(:ncol,:) + qrl(:ncol,:))'.
+* Do a one time-step output for any input, set output frequency for SCAM to 1-time-step and stop.
+* Check whether the heating rate (HR) is evaluated and output at the same time instead of integrated one step forward.
+
+Assume hydrostasy in the large scale and ideal gas for DSE:
+* 'state%s' is the next time step dry static energy, 'ptend%s' is the dry static energy heating rate, 'pysics_update' sums whatever process contributed tendency to the next time step state, 'physics_ptend_sum' sums up different processes ptend which includes 'ptend%s'.
+* change the heating profile in 'radheat.F90' and track 'state%s' to the end and subtract the \{ heating of qsr+qsl (Joule/s/kg) divided by c_p \} from the 't_ttend' from 'cam_diagnostic'.
+
+* CAM STANDALONE RUN: F_2000 (F) compset with prescribed ocn/ice, problem is we need the boundary conditions of the SAM domain since CAM is a global model
+
+* Find the input variables X and Y of the rhs Q1(X) and Q2(Y) of CAM
+* Plug in X(t_i) and Y(t_i) and compare with the instantaneous tendency output of SAM Q1(X(t_i)), Q2(Y(t_i))
+* From Yanai73, the rhs for Q1 consists of "condensative" and "evaporative" tendencies, FIND IT!
+* Find the modules/subroutines before physics_update() since we want to calculate the instananeous "tendency outputs", not the updated "states"
+* Is the "physics_ptend_sum","ptend" or "tend" what I want?
+* check for where (subroutines) ptend, tend, and physics_ptend_sum are updated
+
+
+Set the purpose of obtaining error statistics:
+perturb CAM randomly based on the output of SAM and the error, the error timesteps might be days apart in the operational seasonal forecast, so is there need to obtain error timesteps smaller than operational outputs during integration?
+
+
+20150601      
+TODO
+1. Check timestep size for SAM and SCAM (6 hourly IC outputs), SAM outputs statistics (domain average) instead of the entire instantaneous 3D field, try to make it 
+2. List all IC inputdata variables 
+3. Use the same hourly output initial condition from CAM 
+4. Zhiming Kuang (2010) linear response of the anomaly using Karhunen Lueve Decomp: dx'dt = Ax' = 入x' => Cov(x',x')q =
+5. 
+
+
+20150704 
+TODO 
+1. Find the ptend input subroutine, Q_i(s_{i-1},T_{i-1},Phi_{i-1})
+2. Find if tphysbc.F90 reads in state that are advective updated, and why? Or is it the intial state and later added to the advective tendency.
+
+
+20150706 
+ISSUE
+1. What is 'dtcore(:ncol,k) = (state%s(:ncol,k) - dtcore(:ncol,k))/(cpair*ztodt)' calculating?
+
+20150707 
+FINDING
+1. 'chunks' is defined as a collection of vertical column (not necessary neighbors), 
+   it's information could be queried from phys_grid.F90,
+   which shows the (lon,lat) and the # of columns in a chunk.
+2. 'buffer_get_field_ptr' : Given a physics_buffer chunk and an index return a pointer to a field chunk : field => ptr%data ! where ptr = transfer(bfg,ptr)
+3. set_field sets the ptr
+
+20150713 
+TODO
+Decide how to get the cloud heating :
+1. run one timestep with initial state (s1) or restart state. 
+    - Use the updated state (s2) to get (s2 - s1)/dt and subtract the rad heating term.  
+   STRENGTH: easier to apply
+   WEAKNESS: done once per run, need to find a way to submit multiple runs efficiently.
+2. directly use the subroutine with the input state. 
+   STRENGTH: might be more efficient in evaluating the function
+   WEAKNESS: harder to apply, need a lot of pointers
+THOUGHTS: use each process subroutine and evaluate the heating separately?
+
+20150718 
+CONCLUSION
+1. Don't use cam standalone compset since it needs the global data input which is not available in an idealized SAM test over the ocean.
+TODO
+1. Find the info to build and run SCAM with the GUI interface <-----IMPORTANT
+http://www.cesm.ucar.edu/models/atm-cam/docs/scam
+
+20150719 
+TODO
+1. Use SAM output as the IOP input for SCAM and run 1 timestep
+
+ISSUE
+1. Is the IOP input for SCAM the initial condition and boundary condition?
+
+20150721 
+CONCLUSION
+1. SCAM has the IOP initial condition (IOP ic) shown in 
+   'IOPDESC = /glade/p/work/ginochen/cesm1_3_beta07/models/atm/cam/bld/namelist_files/use_cases/scam_arm95.xml' [run-scam.csh]
+   IC 
+   '/glade/p/cesmdata/cseg/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L30_c031210.nc'
+   IOP (a single column)
+   '/glade/p/cesmdata/cseg/inputdata/atm/cam/scam/iop/ARM95_4scam.nc'
+2. Need to modify the IOP ic to the coarse-grained (cg) output of SAM 
+3. Simply default the IOP ic grid point (lat-lon) in run-scam.csh and substitute the SAM cg vertical columns into that specific grid point and run-scam.csh
+
+20150723 
+TODO
+1. Modify the IOP tendency terms to zero in the IOP nc files so that the state will not go through dynamics update (adding a zero to the total tendency)?
+  - if this is done then the Q_ls large-scale advection term should not be in the total heating (extract just the cloud heating?)
+2. Modify the IOP ic nc file to the SAM at the lat-lon grid point.
+3. Change the ocean forcing to the SAM idealized experiment ocean forcing. 
+4. Find the boundary forcing inputdata in the heirarchy.
+ISSUE
+1. Ocean forcing in the cami*.nc file or a boundary *.nc file?
+CONCLUSION
+1. Don't need to go further than cam_run1, since the surface (cam_run2) and the dynamics (cam_run3) is not the interest of my experiment.
+2. Output the cloud heating (Shallow and Deep separately?) directly from SAM
+
+20150724
+CAUTION
+From http://www.cesm.ucar.edu/models/atm-cam/docs/scam/ :
+Basically, the BC and IC are set to climatology at the location of the IOP.
+Might not matter to me that much if I modify the IC to the SAM input.
+
+20150725
+TODO
+Importance sampling (sample at higher sensitivity space, reduce the amount of sampled runs) + PC + compressive sensing
+
+20150726
+TODO
+Condition the heating error on large-scale variables CAPE, CIN, and middle troposphere RH as a HMM 
+"A_data-driven_multi-cloud_model_for_stochastic_parametrization_of_deep_convection_DorrestijnETAL13.pdf"
+
+20150727
+ISSUE
+How to obtain middle trop RH?
+TODO
+1. History field needed (CAPE,CIN,mid-level RH, heating rate, tendencies, ZM terms, cloud terms)
+ fincl1= 'CAPE', 'CIN', 'CLDICEADJ', 'CLDICELIM', 'CLDLIQADJ', 'CLDLIQLIM', 'CLDVAPADJ', 'CMFDICE', 'CMFDLIQ', 'CMFDQ',
+         'CMFDQR', 'CMFDQR', 'CMFDT', 'CMFMCDZM',  'CONCLD&IC', 'DCQ', 'DPDLFT', 'DQP',
+         'DTCOND', 'DTCORE', 'EVAPQCM', 'EVAPQZM', 'EVAPTCM', 'EVAPTZM', 'EVSNTCM', 'EVSNTZM', 'QC', 'RELHUM',
+         'FZSNTCM', 'FZSNTZM',   'HKEIHEAT', 'HPROGCLD', 'HR',
+         'LPSTEN', 'MACPDICE', 'MACPDLIQ', 'MACPDQ', 'MACPDT', 'MELTSDT', 'MPDI2P', 'MPDI2V', 'MPDI2W', 'MPDICE',
+         'MPDLIQ', 'MPDQ', 'MPDT', 'MPDW2I', 'MPDW2P', 'MPDW2V', 'PTECLDICE', 'PTECLDLIQ', 'PTEQ', 'PTTEND',
+         'QC', 'QCSEDTEN', 'QISEDTEN', 'QRL', 'QRS', 'SHDLFT', 'TTEND',
+         'TTGWORO', 'UTEND', 'UTGWORO', 'VAT', 'VTEND', 'VTGWORO', 'ZMDICE', 'ZMDLF', 'ZMDLIQ', 'ZMDQ',
+         'ZMDT', 'ZMEIHEAT', 'ZMFLXPRC', 'ZMFLXSNW', 'ZMICUD', 'ZMICUU', 'ZMICVD', 'ZMICVU', 'ZMMD', 'ZMMTT',
+         'ZMMTU', 'ZMMTV', 'ZMMU', 'ZMNTPRPD', 'ZMNTSNPD', 'ZMUPGD', 'ZMUPGU', 'ZMVPGD', 'ZMVPGU'
+2. Modify the IOPDESC to a the local dir SCAM and change the dir (from cam_inparm and atm_in) where iopfile and ncdata for ic is reading from.
+
+20150728
+TODO
+1. sync the data over to pegasus2
+2. make a IC nc for SAM, sam_cam_out
+
+20150729
+TODO
+-1. check if the CLOUD (at the lat-lon of SCAM) shows the same value when cami*.nc has CLOUD
+2. save SAM un-updated state and physics output (CAPE,CIN), don't use the updated state to feed SCAM
+3. SAM outputs : calculate specific humidity, change units for QN (from g/kg to kg/kg as CWAT)
+4. Make sure QN/1000=CWAT
+CONCLUSIONS
+1. SCAM uses 30 levels (L30) cami*.nc ncdata, which contains the minimal amount of initial variables compared to (L26) in the same path.
+2. http://www.cesm.ucar.edu/models/atm-cam/docs/description/node21.html 
+
+20150730
+CONCLUSIONS
+1. TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;
+2. lat lon is not important anymore, just use the lat-lon from the SCAM IOP
+3. Domain average for SAM is required to match the grid box size of the SCAM
+TODO
+2. Define subdomain to do the grid-box average for SAM output? or maybe just use ncl to finish that, but does subdomain calculate more variables?
+
+20150731
+ISSUE
+1. What is the CAM grid point size (Gaussian latitudes?) I should use to transform SAM into? <---- not a problem anymore 
+
+20150804
+TODO
+1. run SAM in a large domain and take subdomain average with 156 boxes (2000x2000 m^2 per box)
+CONCLUSIONS
+1. CAM grid point size = 312km <--------------------- shrink to 120km for practicality

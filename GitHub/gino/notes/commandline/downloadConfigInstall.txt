@@ -1,0 +1,21 @@
+(http://stackoverflow.com/questions/26597527/how-to-install-libpython2-7-so)
+
+An Example to download python, configure, and install
+------------------------------------------------------
+$ wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2
+$ tar -xvjf Python-2.7.5.tar.bz2
+$ cd Python-2.7.5
+$ ./configure --prefix=/usr/local/python2.7 --with-threads --enable-shared
+$ make
+$ make install altinstall
+
+
+ISSUE DESC : cannot find './configure' file instead of './configure.ac', this needed 'autoconf' to resolve
+SOLUTION : install autoconf newest version and add /mypath/autoconf/bin/ it to the $PATH
+
+
+
+
+
+
+

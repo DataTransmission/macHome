@@ -1,0 +1,168 @@
+
+
+Original main.f90 is in main_original.f90, main.f90 is modified as following
+
+************************************************************
+Obtain Q1C over all grid points (instead of statistics)
+************************************************************
+
+                              tt(k) = (1-coef)*tsnd(k,i) + coef*tsnd(k,i+1) ; tt(i)=tt(i)+(tt1(i)-tt(i))/(rrr2-rrr1+1.e-5)*(day-rrr1)                                 
+                              t0(k)=tt(iz-1)+(tt(iz)-tt(iz-1))/(zz(iz)-zz(iz-1))*(z(k)-zz(iz-1)) ; tabs0(k)=ratio_t2/ratio_t1*tabs0(k-1) ; prespot(k)=(1000./pres(k))**(rgas/cp) ; 
+                              : tabs0(k)=t0(k)/prespot(k) ; t0(k)=tabs0(k)+gamaz(k) ; gamaz(k)=ggr/cp*z(k) ; tabs0(k)=sum(dble(tabs(1:nx,1:ny,k)))/float(nx*ny)
+                              :  
+                              :              qpl + qpi (precip (liquid + ice)) + qcl + qci (condensation (liquid + ice))                      
+                              :              :                                            (liquid/ice water static energy/C_p)         
+                              :              :                                            :       (gamaz=g*z/C_p=dT/dz*z=gama*z dry lapse rate)            
+                              :              :                                            :        :        fac_cond=lcond/cp             fac_sub=lsub/cp 
+                              :              :                                            :        :       (Latent heat of condensation) (lsub: Latent heat of sublimation, (J/kg))
+                              :              :                                            :        :         :          nonprcp liquid   prcp liquid :   nonprcp ice  prcp ice   
+			      :              :                                            :        :         :          :                :           :   :            :   
+                              :              :                diagnose.f90: tabs(i,j,k) = t(i,j,k)-gamaz(k)+ fac_cond*(qcl(i,j,k)+qpl(i,j,k)) + fac_sub*(qci(i,j,k)+qpi(i,j,k))
+                              :              :                  :           (liquid/ice water static energy E = c_p*T+g*z-L*q => T = (E-g*z+L*q)/c_p = t-gama*z+fac*q )
+                              :              :                  :                                                                                               
+                              :              :                  :           (previous timestep tabs0 (i.e., tabs averaged over nx ny))
+                              :              :                  :           diagnose.f90: t01(k)=tabs0(k); tabs0(k)=0; tabs0(k)=tabs0(k)+tabs(i,j,k); tabs0(k)=tabs0(k)/(nx*ny)   
+                              :              :                  :           :
+                              :              :                  :           :       tmp(1)=1./dt 
+                              :              :                  :           :       :      (largeScale forcing) forcing.f90: ttend(k)=tt(k,1)+(tt(k,2)-tt(k,1))*coef; 
+         .......setparm.f90   :              :                  :           :       :      :                   ; tt(iz,n)=dtls(i-1,m)+(dtls(i,m)-dtls(i-1,m))*coef 
+         :.......setdata.f90..:              :                  :           :       :      :
+         :.......forcing.f90                 :                  :           :       :      :        (rad heating: SW + LW)  
+         :........radiation.f90              :                  :           :       :      :        :prof1(k)=(radqrlw(k)+radqrsw(k))*factor_xy        
+  main.f90.........diagnose.f90              :                  :           :       :      :        : tabs_rad is probably just accumulating total tabs over rad subroutines
+            :.......stepout.f90              :                  :           :       :      :        : 
+                     :......statistics.f90 : prof2(k)=prof2(k)+(tabs(i,j,k)-t01(k))*tmp(1)-ttend(k)-prof1(k)  ! should be the rhs of DT/Dt (without the advection tendency)
+		                                                       !why average here instead of using tabs0(k) - t01(k)?  
+                                            ! 'Large-scale' is defined as a result of averaging over a domain    
+0) save the previous timestep 3D tabs (=t01_3D) at the first line of the Main loop in main.f90 to substitute t01(k) 
+1) In main.f90, output tabs with Q1C_3D(:,:,k) =
+  (tabs(:,:,k)-t01_3D(:,:,k))/dt-ttend(k) (as in diagnose.f90, but without rad
+  heating prof1) rightafter forcing.f90, before radiation.f90 
+2) use ttend as is
+3) write_field3D.f90 in stepout.f90 saves Q1C_3D Q2C_3D                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+************************************************************
+ Saving Q1C_3D
+************************************************************
+                                                                                                                          
+add Q1C_3D to write_field3D.f90
+
+
+
+**********************
+ Saving TKE
+**********************
+in statistics.f90 for SAM6.8.2
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+***********************************
+ ISSUE
+***********************************
+where is the advection and pressure tendency in the
+Thermodynamic Equations when calculating prof2?                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

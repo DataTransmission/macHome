@@ -1,0 +1,7 @@
+1205-1215 
+1206 arrive London
+
+Hotel:
+  London: Milennium Gloucester, London, UK (LON)
+  Paris:  Best Western Le Patio Saint Antoine, Paris, France (PAR)
+

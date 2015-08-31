@@ -1,0 +1,2 @@
+# auto-count number 
+$ ctrl + a

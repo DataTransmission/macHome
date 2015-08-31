@@ -1,0 +1,18 @@
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[user]
+        name = gchen
+        email = gchen@rsmas.miami.edu
+[alias]
+        st = status
+        co = checkout
+        br = branch
+        up = rebase
+        ci = commit
+[remote "origin"]
+        url = ssh://git@github.com/ginochen/SAM.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+

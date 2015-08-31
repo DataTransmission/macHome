@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+\usepackage{url,hyperref,breakurl}
+
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+\graphicspath{./}
+
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\nnd}{^{\text{nd}}}
+\newcommand{\nth}{^{\text{th}}}
+\newcommand{\Exp}{{\text{\bf E}}}
+\newcommand{\Var}{{\text{\bf Var}}}
+\newcommand{\rv}{\color{red}}
+
+\begin{document}
+\begin{itemize}   
+
+\item 1. $P_2(\mathcal{R})$ is a inner-product space with $<p,q>= \int_0^1 p(x)q(x)dx$. Define $T \in L(P_2(\mathcal{R}))$ by $T(a_0+a_1x+a_2x^2)=a1x$ on the basis $(1,x,x^2)$.
+a) Show that $T$ isn't self-adjoint. \\
+Proof: \\
+a) The inner product 
+$<T(a_0+a_1x+a_2x^2),b_0+b_1x+b_2x^2> = <a_1x,b_0+b_1x+b_2x^2>= \int_0^1a_1(b_0+b_1x+b_2x^2)dx= a_1b_0+1/2a_1b_1+1/3a_1b_2$.
+If $T^*=T$, then $<Tv,w>= <v,Tw>$, but
+$<a_0+a_1x+a_2x^2,T(b_0+b_1x+b_2x^2)> = <a_0+a_1x+a_2x^2,b_1x>= \int_0^1b_1(a_0+a_1x+a_2x^2)dx= b_1a_0+1/2b_1a_1+1/3b_1a_2$ implies $<Tv,w> \neq <v,Tw>$, hence $T\neq T^*$. \\
+
+b) The reason to the matrix of $T$ wrt the basis $(1,x,x^2)$ equals its conjugate transpose, but still not self-adjoint is due to the basis not being orthonormal over the inner product $\int_0^1 dx$.  ($M(T,(e_1,\dotsc,e_n)) = M(T^*,(e_1,\dotsc,e_n))^T$ if the basis vectors are orthonormal) \\
+
+%The regular inner product is done on the each coordinate separately, but the product over the integrand is done over mixed coordinates. \\
+
+\item 2. Product of two self-adjoint operators are not self-adjoint. \\
+Proof: \\
+\begin{equation}
+\begin{pmatrix}
+   1 & 1 \\
+   1 & -2
+\end{pmatrix}
+\begin{pmatrix}
+   2 & 1 \\
+   1 & 1 
+\end{pmatrix}
+=
+\begin{pmatrix}
+   3 & 2 \\
+   0 & -1
+\end{pmatrix}
+\end{equation}
+
+\item 3. The set of self-adjoint operators forms a subspace of $L(V)$. \\
+subspace
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+\end{document}

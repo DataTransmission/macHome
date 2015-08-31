@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+\usepackage{url,hyperref,breakurl}
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+\graphicspath{./}
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\nnd}{^{\text{nd}}}
+\newcommand{\nth}{^{\text{th}}}
+\newcommand{\Exp}{{\text{\bf E}}}
+\newcommand{\Var}{{\text{\bf Var}}}
+\newcommand{\rv}{\color{red}}
+\newcommand{\dkl}{\text{D}_{\text{KL}}}
+\newcommand{\sumlim}{\sum\limits}
+
+
+
+\begin{document} 
+\subsection{Holder's Inequality}
+Proof by Jensen's inequality (convexity) on convex function $g(h) = |h|^p$
+\begin{equation}
+   g(\Exp h) \le \Exp(g) \ \Rightarrow \ |\int h d\mu|^p \le \int |h|^p d\mu \ \Rightarrow \ \int h d\mu \le \Big(\int |h|^p d\mu\Big)^{1/p}
+\end{equation}
+
+\subsection{Minkowski Inequality}
+Given the measure $\mu$ on the $L^p$ space, $1\le p \le \infty$, where $f(x)$ and $g(x)$ are in $L^p(S)$, $x \in S$, we have the triangle inequality 
+\begin{equation}
+   ||f+g||_p \le ||f||_p + ||g||_p,
+\end{equation}
+where the $p$-norm of $f$ is $||f||_p = (\int_S |f|^p d\mu )^{1/p}$. \\
+Proof: \\
+First prove that $p$-norm of $f+g$ is bounded if $f$ and $g$ are both bounded, i.e., proving that $|f+g|^p$ is bounded by $|f|^p$ and $|g|^p$. \\
+$|0.5f+0.5g|^p \le |0.5|f| + 0.5|g||^p \le 0.5|f|^p + 0.5|g|^p$  (convexity of $h(x)=|x|^p$ for $p \ge 1$ gives $h(0.5|f|+0.5|g|) \le 0.5h(|f|) + 0.5h(|g|)$ $\Rightarrow$ $|0.5|f|+0.5|g||^p \le 0.5|f|^p + 0.5|g|^p$).
+Therefore the inequality becomes 
+\begin{equation}
+   |f+g|^p \le 2^{p-1}(|f|^p+|g|^p),
+\end{equation}
+finishing the boundedness proof. \\
+
+The Minkowski inequality is proven by using triangular inequality and Holder's inequality as, 
+$||f+g||_p^p = \int |f+g|^p d\mu = \int |f+g| |f+g|^{p-1} d\mu \le \int (|f| + |g|)|f+g|^{p-1} d\mu = \int|f||f+g|^{p-1} d\mu + \int|g||f+g|^{p-1} d\mu \le $
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

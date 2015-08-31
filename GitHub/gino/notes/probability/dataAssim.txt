@@ -1,0 +1,57 @@
+KF:
+Step 1:
+What is the inital error cov and state to start the forecast X^f(t1)?
+X^t(t0) = X(t0) + a, where a is the intial state error and 
+X^a(t0) = X(t0)
+hence initial cov of X^a is 
+C^a(t0) = Cov(a^2)
+
+Step 2: (tn -> tn+1)
+How does the forecast state and forecast cov evolve?
+According to the linear model operator G
+X^f(t1) = G(X^a(t0))
+with the forecast cov evolved from G
+C^f(t1) = Cov([X^t(t1) - X^f(t1)]^2) = G^2*C^a(t0)+C_qq, where C_qq is the cov of model error q 
+
+Step 3: (tn+1)
+Analysis scheme (update)
+(Use the results from KF to update)
+X^a(t1) = X^f(t1) + K*(d - M*X^f(t1))
+C^a(t1) = (I - K*M)*C^f(t1)
+
+where K = C^f(t1)*M^T*(M*C^f(t1)*M^T + C_ee)^-1, 
+(big C_ee=> big errors in measurements=> not informative=> low weight)
+(K is seen as correction term by the measurements)
+
+RECURSIVE Step 2 - 3
+
+(we can assume the measurement errors is zero mean around the measurement with cov C_ee throughout the KF resursion)
+
+
+
+=============
+ENKF
+=============
+
+ENKF solves two major issues: nonlinear equations and large storage of error cov matrix
+
+Approximate the true state so Cov matrix could be obtained without Step 2, 
+suppose X^f has an ellipse of N ensemble cloud X^f(j) surrounding with eigenvalues of cov matrix 
+representing the principle variatian directions, 
+then [X]^f (mean) of X^f(j) could be treated as the true state for forecast,
+and [X]^a of X^a(j) as the true state for analysis.
+
+Thus the difference matrix Z (n*N matrix) for a n-dim state vector becomes
+
+[ (X(1)-[X])_1 ... (X(N)-[X])_1 ]
+  .                 .
+  .                 .
+  .                 .
+[ (X(1)-[X])_n ... (X(N)-[X])_n ]
+
+So the Cov matrix for time t becomes
+C^f(t) = 1/N*(Z^f*Z^f'), (n*n matrix)
+C^a(t) = 1/N*(Z^a*Z^a')
+which doesn't require model to propagate
+
+ISSUE: how to generate ensemble? given sample mean and cov => a Gaussian r.v. generator

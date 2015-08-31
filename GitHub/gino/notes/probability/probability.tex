@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+\usepackage{url,hyperref,breakurl}
+
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+\graphicspath{./}
+
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\nnd}{^{\text{nd}}}
+\newcommand{\nth}{^{\text{th}}}
+\newcommand{\Var}{{\bf\text{Var}}}
+\newcommand{\Exp}{{\bf\text{E}}}
+\begin{document}
+
+\subsection{Law of Total Expectation}
+Suppose $X$ and $Y$ are random varialbes over the same probability space (i.e., the events or outcomes happens simultaneously, e.g., gender={girl, boy}, and haircolor={black, brown, other} happens at the same time), then the Law is
+\begin{equation}
+   \Exp(X)= \Exp_Y(\Exp_{X|Y}(X|Y))
+\end{equation}
+\subsubsection{Proof in the discrete case}
+\begin{equation}
+\begin{aligned}
+   \Exp(X) & = \Exp_Y(\sum\limits_x x P(X=x|Y)) \hspace{1cm} \text{weighted sum of the random outcomes of x}\\
+         & = \sum\limits_y (\sum\limits_x xP(X=x|Y=y)) P(Y=y) \\
+         & = \sum\limits_x x (\sum\limits_y P(X=x|Y=y)P(Y=y)) \\
+         & = \sum\limits_x x P(X=x) 
+\end{aligned}
+\end{equation}
+
+
+\subsection{Law of Total Variance (conditional variance formula)}
+\begin{equation}
+   \Var(Y)= \Exp(\Var(Y|X)) + \Var(\Exp(Y|X))
+\end{equation}
+
+\subsubsection{Proof}
+\begin{equation}
+   \Var(Y)= \Exp(Y^2)- \Exp^2(Y)
+\end{equation}
+
+
+\subsection{Kernel Density Estimation}
+Draw $n$ samples randomly from some unknown distribution $f$, the samples $(x_1,\cdots,x_n)$ are thus iid. 
+The shape of $f$ is estimated by using the $n$ samples
+\begin{equation}
+   \hat{f}_h(x) = \frac{1}{n} \sum_{i=1}^n K_h(x-x_i) = \frac{1}{hn} \sum_{i=1}^n K(\frac{x-x_i}{h}),
+\end{equation}
+where $K$ is a nonnegative kernel that integrates to one and has mean zero, $K_h(x) = \frac{1}{h}K(\frac{x}{h})$, and $h$ is a positive smoothing parameter called the bandwidth.
+Notice that $\hat{f}_h(x)$ becomes a deterministic function once the $n$ samples are determined, but changes as new $n$ samples are drawn.
+If $K$ is a standard normal kernel with $z = (x-x_i)/h \sim \mathcal{N}(0,1)$, $x$ is treated as a random variable with mean $x_i$, and standard deviation $h$. \\
+
+
+{\bf\emph{Finding the best bandwidth}} \\
+The mean integrated squared error (mean of the integrated squared error over multiple batches of $n$ samples, where each batch gives an estimation of $\hat{f}_h(x)$)
+\begin{equation}
+   \text{MISE}(h) = \Exp\int(\hat{f}_h(x) - f(x))^2 dx.
+\end{equation}
+
+
+
+
+\subsection{Subgrid-scale Parametrization with CMC (Conditional Markov Chain)}
+The Markov chain is a stochastic process/sequence indexed by $t$ with the Markov property.
+The multidimensional state $X$ has $N_x$ outcomes indexed by $i$ and $j$ as $X^i(t)$ and $X^j(t+dt)$, with a corresponding $N_b$ outcomes subgrid-scale parameter $B^n(t)$ and $B^m(t+dt)$.
+The $i$, $j$, $n$ and $m$ are the indices for the uniformly separated intervals of the domain of $X$ and $B$.
+Suppose $i = \{ 1, \cdots, N_x \}$, and $n = \{ 1, \cdots, N_B \}$
+At fixed $i$ and $j$, the stochastic transition matrix of size $N_B \times N_B$ is 
+\begin{equation}
+  {\bf P}^{ij} = P(B_j^m \ | \ B_i^n, X^i, X^j ),
+\end{equation}
+therefore there are $N_x^2$ numbers of matrices.
+Given the initial stochastic row vector of size $N_x$ with elements summed to one, we can multiply the transition matrix to get the next stochastic vector.
+The $i$th index of the vector indicates the probability of ending up at the $i$th state. \\
+
+{\bf Example}: \\
+{\emph{ 
+\begin{equation}
+  [0.3 0.7] \begin{pmatrix} 0.2 & 0.8 \\ 0.3 & 0.7 \end{pmatrix}
+\end{equation}
+The probability of ending up at the 1st state equals $0.3\times0.2 + 0.7\times0.3$, which is the transition probability of 1 to 1, and 2 to 1 added.
+}}
+\\
+
+Instead of using the transition matrix to calculate the final probability vector, we can use it to sample the states to obtain realizations of stochastic processes. \\
+{\bf Example}: \\
+{\emph{
+Suppose one given the triplet $(i,n,j)$, the $m$th state of $B$ is sampled according to the $n$th row stochastic vector of the transition matrix ${\bf P}^{ij}$. 
+If $m$ is sampled at $m=2$, then the next triplet $(j,2,k)$, where $X^k(t+dt)$ is determined from the dynamic system, samples at the 2nd row of the transition matrix ${\bf P}^{jk}$.
+}}
+
+\subsection{Hidden Markov Model}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

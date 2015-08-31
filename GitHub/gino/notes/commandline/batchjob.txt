@@ -1,0 +1,15 @@
+#check batch 10 job history (CPU hours, Memory used etc)
+$ bhist -a -l -n 10 > file.report
+
+#check batch job history by <JobID>
+$ bhist -l <JobID>
+
+#watch the error and output files of a running batch job
+$ bpeek -f <JobID> | grep <keyword>
+# -f follows the eof
+
+#checking backfill windows on yellowstone
+$ bfill
+
+#check current owner job (customized)
+$ bjobs -o "jobid project queue stat submit_time mem delimiter=','" -u $USER

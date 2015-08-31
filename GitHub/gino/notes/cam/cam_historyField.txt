@@ -1,0 +1,88 @@
+'CAPE',          J/kg     1   A   Convectively available potential energy 
+'CIN',           J/kg     1   A   Convective inhibition 
+'CLDICEADJ',     kg/kg/s  30  A   CLDICE adjustment tendency - Revised macrophysics
+'CLDICELIM',     kg/kg/s  30  A   CLDICE limiting tendency - Revised macrophysics 
+'CLDLIQADJ',     kg/kg/s  30  A   CLDLIQ adjustment tendency - Revised macrophysics
+'CLDLIQLIM',     kg/kg/s  30  A   CLDLIQ limiting tendency - Revised macrophysics
+'CLDVAPADJ',     kg/kg/s  30  A   Q tendency associated with liq/ice adjustment - Revised macrophysics
+'CMFDICE',       kg/kg/s  30  A   Cloud ice tendency - shallow convection
+'CMFDLIQ',       kg/kg/s  30  A   Cloud liq tendency - shallow convection
+'CMFDQ',         kg/kg/s  30  A   QV tendency - shallow convection        
+'CMFDQR',        kg/kg/s  30  A   Q tendency - shallow convection rainout
+'CMFDT',         K/s      30  A   T tendency - shallow convection
+'CMFMCDZM',      kg/m2/s  31  A   Convection mass flux from ZM deep
+'CONCLD&IC',     fraction 30  I   Convective cloud fraction
+'DCQ',           kg/kg/s  30  A   Q tendency due to moist processes
+'DPDLFT',        K/s      30  A   T-tendency due to deep convective detrainment
+'DQP',           kg/kg/s  30  A   Specific humidity tendency due to precipitation
+'DTCOND',        K/s      30  A   T tendency - moist processes
+'DTCORE',        K/s      30  I   T tendency due to dynamical core
+'EVAPQCM',       kg/kg/s  30  A   Q tendency - Evaporation from Hack convection
+'EVAPQZM',       kg/kg/s  30  A   Q tendency - Evaporation from Zhang-McFarlane moist convection
+'EVAPTCM',       K/s      30  A   T tendency - Evaporation/snow prod from Hack convection
+'EVAPTZM',       K/s      30  A   T tendency - Evaporation/snow prod from Zhang convection
+'EVSNTCM',       K/s      30  A   T tendency - Snow to rain prod from Hack convection
+'EVSNTZM',       K/s      30  A   T tendency - Snow to rain prod from Zhang convection
+'QC',            kg/kg/s  30  A   Q tendency - shallow convection LW export
+'RELHUM',        percent  30  A   Relative humidity
+'FZSNTCM',       K/s      30  A   T tendency - Rain to snow conversion from Hack convection
+'FZSNTZM',       K/s      30  A   T tendency - Rain to snow conversion from Zhang convection
+'HKEIHEAT',      W/kg     30  A   Heating by ice and evaporation in HK convection
+'HPROGCLD',      W/kg     30  A   Heating from prognostic clouds
+'HR',            K/s      30  A   Heating rate needed for d(theta)/dt computation
+'LPSTEN',        Pa/s     1   A   Surface pressure tendency
+'MACPDICE',      kg/kg/s  30  A   CLDICE tendency - Revised macrophysics
+'MACPDLIQ',      kg/kg/s  30  A   CLDLIQ tendency - Revised macrophysics
+'MACPDQ',        kg/kg/s  30  A   Q tendency - Revised macrophysics
+'MACPDT',        W/kg     30  A   Heating tendency - Revised macrophysics
+'MELTSDT',       W/kg     30  A   Latent heating rate due to melting of snow
+'MPDI2P',        kg/kg/s  30  A   Ice <--> Precip tendency - Morrison microphysics
+'MPDI2V',        kg/kg/s  30  A   Ice <--> Vapor tendency - Morrison microphysics
+'MPDI2W',        kg/kg/s  30  A   Ice <--> Water tendency - Morrison microphysics
+'MPDICE',        kg/kg/s  30  A   CLDICE tendency - Morrison microphysics
+'MPDLIQ',        kg/kg/s  30  A   CLDLIQ tendency - Morrison microphysics
+'MPDQ',          kg/kg/s  30  A   Q tendency - Morrison microphysics
+'MPDT',          W/kg     30  A   Heating tendency - Morrison microphysics
+'MPDW2I',        kg/kg/s  30  A   Water <--> Ice tendency - Morrison microphysics
+'MPDW2P',        kg/kg/s  30  A   Water <--> Precip tendency - Morrison microphysics
+'MPDW2V',        kg/kg/s  30  A   Water <--> Vapor tendency - Morrison microphysics
+'PTECLDICE',     kg/kg/s  30  A   CLDICE total physics tendency
+'PTECLDLIQ',     kg/kg/s  30  A   CLDLIQ total physics tendency
+'PTEQ',          kg/kg/s  30  A   Q total physics tendency
+'PTTEND',        K/s      30  A   T total physics tendency
+'QC',            kg/kg/s  30  A   Q tendency - shallow convection LW export
+'QCSEDTEN',      kg/kg/s  30  A   Cloud water mixing ratio tendency from sedimentation
+'QISEDTEN',      kg/kg/s  30  A   Cloud ice mixing ratio tendency from sedimentation
+'QRL',           K/s      30  A   Longwave heating rate
+'QRS',           K/s      30  A   Solar heating rate
+'SHDLFT',        K/s      30  A   T-tendency due to shallow convective detrainment
+'TTEND',         K/s      30  A   T tendency
+'TTGWORO',       K/s      30  A   T tendency - orographic gravity wave drag
+'UTEND',         m/s2     30  A   U tendency
+'UTGWORO',       m/s2     30  A   U tendency - orographic gravity wave drag
+'VAT',           K/s      30  A   Vertical advective tendency of T
+'VTEND',         m/s2     30  A   V tendency
+'VTGWORO',       m/s2     30  A   V tendency - orographic gravity wave drag
+'ZMDICE',        kg/kg/s  30  A   Cloud ice tendency - Zhang-McFarlane convection
+'ZMDLF',         kg/kg/s  30  A   Detrained liquid water from ZM convection
+'ZMDLIQ',        kg/kg/s  30  A   Cloud liq tendency - Zhang-McFarlane convection
+'ZMDQ',          kg/kg/s  30  A   Q tendency - Zhang-McFarlane moist convection
+'ZMDT',          K/s      30  A   T tendency - Zhang-McFarlane moist convection
+'ZMEIHEAT',      W/kg     30  A   Heating by ice and evaporation in ZM convection
+'ZMFLXPRC',      kg/m2/s  31  A   Flux of precipitation from ZM convection
+'ZMFLXSNW',      kg/m2/s  31  A   Flux of snow from ZM convection
+'ZMICUD',        m/s      30  A   ZM in-cloud U downdrafts
+'ZMICUU',        m/s      30  A   ZM in-cloud U updrafts
+'ZMICVD',        m/s      30  A   ZM in-cloud V downdrafts
+'ZMICVU',        m/s      30  A   ZM in-cloud V updrafts
+'ZMMD',          kg/m2/s  30  A   ZM convection downdraft mass flux
+'ZMMTT',         K/s      30  A   T tendency - ZM convective momentum transport
+'ZMMTU',         m/s2     30  A   U tendency - ZM convective momentum transport
+'ZMMTV',         m/s2     30  A   V tendency - ZM convective momentum transport
+'ZMMU',          kg/m2/s  30  A   ZM convection updraft mass flux
+'ZMNTPRPD',      kg/kg/s  30  A   Net precipitation production from ZM convection
+'ZMNTSNPD',      kg/kg/s  30  A   Net snow production from ZM convection
+'ZMUPGD',        m/s2     30  A   zonal force from ZM downdraft pressure gradient term
+'ZMUPGU',        m/s2     30  A   zonal force from ZM updraft pressure gradient term
+'ZMVPGD',        m/s2     30  A   merdional force from ZM downdraft pressure gradient term
+'ZMVPGU',        m/s2     30  A   meridional force from ZM updraft pressure gradient term

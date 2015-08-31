@@ -1,0 +1,4 @@
+2 versions
+$ rename 's/abc/def/' abc*
+
+$ rename abc def abc*

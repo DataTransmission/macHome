@@ -1,0 +1,76 @@
+CREATE NEW REPO
+---------------
+# create a new git repository in the <directory>
+$ git init <directory>
+
+# configure the <directory> (or go to the <directory>/.git/config to add configuration)
+$ git config --global user.name gchen
+$ git config --global user.email gchen@rsmas.miami.edu
+# for example check '/projects/rsmas/kirtman/gchen/SAM/SAM_LES_80mx80mx80mx1s_M2005/.gitconfig'
+
+# add vim as the editor when using git commit
+$ git config --global core.editor 'vim'
+
+# now add <file> to track
+$ git add <file>
+
+# now commit tracked files by skipping the message with flag -a
+$ git commit -a 
+
+# set shortcut for 'origin' (the remote origin)
+$ git remote set-url origin https://github.com/ginochen/SAM.git
+
+# List the remote connections you have to other repositories
+$ git remote -v
+
+# push to the remote repo
+$ git push -u origin master
+
+# if this ERROR pops up
+$ error: The requested URL returned error: 403 Forbidden while accessing http://github.com/ginochen/SAM.git/info/refs
+$ fatal: HTTP request failed
+# then you need to give the remote repo a SSH-KEY, follow the steps
+$ ls -al ~/.ssh
+# if 'id_rsa.pub' shows up, then vi to copy the key chain and add it to https://github.com/settings/ssh, otherwise generate a new SSH key
+$ ssh-keygen -t rsa -b 4096 -C "gchen@rsmas.miami.edu"
+# use the email as a label, and press enter, and enter a passphrase and this will pop up
+> Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+# then copy the key chain and add to https://github.com/settings/ssh
+
+REMOVE REPO
+-----------
+# just delete the .git/ folder in the master path
+
+REMOVE ADDED <file>
+------------------
+$ git rm --cached <file>
+# only rm the staged <file>
+$ git rm -f <file> 
+# used when staging and permanently deleting the <file> at the same time
+
+UNDO COMMITTED STATUS 
+---------------------
+# reset all staged files
+git reset 
+# reset specific <file>
+git reset <file>
+
+REMOVE REMOTE REPO (on github.com)
+----------------------------------
+# click the repo -> "Settings" -> "Delete this repository"
+
+go to local master dir and use "original" as a shortname for the remote git path "https://github.com/ginochen/gino.git" 
+$ cd ~/Github/gino; git remote add origin https://github.com/ginochen/gino.git
+$ cd ~/Github/Hsiaochu; git remote add origin https://github.com/ginochen/Hsiaochu.git; 
+$ vim ~/Github/Hsiaochu/.git/config # check if the shortname is added to the local repo
+
+back to older version
+$ git log #print out versionNumber
+$ git checkout versionNumber
+
+clone a "forked" gitRepoDir to local localRepoDir (fork happens when you go to that person's 
+repo and click on the fork repo, it does not allow you to push to their repo unless you are a contributer.
+So everything that are pushed are to your own remote repo)
+$ git clone gitRepoDir localRepoDir
+
+

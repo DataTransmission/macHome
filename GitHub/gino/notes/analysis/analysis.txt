@@ -1,0 +1,252 @@
+X is any metric space we refer to
+_________________________________
+
+Def: Compact
+X is "compact" if: Every open cover of X has a finite subcover
+
+THM: Closed & Bounded <=> Compact
+
+	proof: (hint: draw a car and a dot outside)
+
+========================================================================================
+Def: Cauchy Sequence
+\exists N and \eps>0 s.t. when any n,m>=N, d(n,m)<\eps
+( Purpose is to see if the sequence is coming together, not necessary converge. )
+
+THM: Convergent sequence is Cauchy
+
+========================================================================================
+Def: Complete
+X is "complete" if every Cauchy seq converges to a point of X
+(In a Complete X, Cauchy is always convergent)
+
+========================================================================================
+
+Def: Sequentially Compact
+X is "sequentially compact" if: Every sequence has a convergent subsequence
+
+THM: X is compact <=> X is sequentially compact	
+
+	proof: (hint: draw a sequence in X, prove that \exists conv. subseq. to a point of X)
+
+========================================================================================
+
+THM: Compact => Complete
+	proof: (hint: sequentially compact => triangular ineq. => every Cauchy conv. => Complete)
+
+THM: R^k complete
+	proof: (hint: Cauchy bounded by closed ball => compact => complete)
+
+THM: Bounded Monotonic Increasing sequence => Convergent Sequence
+	proof: (hint: A bounded set has a sup)
+
+THM: A set of Equivalent classes Cauchy Sequence is a complete metric space (every cauchy converges)
+	proof: (hint: define equivalence relationship on the equivalent classes)
+
+======================================================================================
+Upper limit s^*=limsup{s_n}, Lower limit s_*=liminf{s_n} of a sequence
+
+Def: if a sequence {s_n} has convergent subsequences, then the set E of limits 
+for the convergent subsequence contains the s^* = supE and s_* = infE,
+which is the same as saying s^* = limsup{s_n} and s_* = liminf{s_n} 
+
+
+======================================================================================
+
+Convergence of Series sum(a_n)
+
+=====================================================================================
+THM  Convergence of Geometric series sum(x^n) = 1/(1-x):
+	proof:(hint factor out 1+x+x^2+...x^n = (1-x^n)/(1-x))
+
+THM  Suppose {a_n} is a monotonic decreasing sequence (a_1>a_2>...), 
+     sum(a_n) converge <=> sum(2^n*a_{2^k}) = a_1+2a_2+4a_4+8a_8+... converge
+	proof: ( hint a_1+(a_2+a_3)+(a_4+a_5+a_6+a_7) < a_1+2a_2+4a_4 )
+
+THM  sum(1/n^p) converge if p>1, diverge if p<=1
+	proof: ( hint: use above THM )
+
+Convergence by a set of Partial Sums:
+	We can write a set of partial sum { Sn = sum_n=1^k{a_n} }, 
+	and if \exists e>0 and N s.t. for n,m>=N |S_n-S_m|<e => {Sn} is Cauchy
+	then sum(a_n) converges by the real being complete (every Cauchy converges)
+
+
+
+Comparison Test:
+	If an, bn are non-negative sequences, and an<bn, 
+		1. If sum(bn) converge => sum(an) converge
+			proof: (hint: an<bn => sum(an)<sum(bn) => sum(an) monotonic and bounded) 
+		2. If sum(an) diverge => sum(bn) diverge
+
+Root Test:
+	L = limsup((an)^(1/n)) 
+		1. If L<1, sum(an) converge
+			proof: (choose b s.t. L<b<1, a_n^(1/n)<b => a_n < b^n => sum(b^n) geometrically converge)
+		2. If L>1, sum(an) diverge
+		3. If L=1, depends on a_n
+
+Ratio Test:
+	L = limsup(|a_n/a_{n-1}|)
+		1. If L<1, sum(an) converge
+			proof: (choose b s.t. L<b<1, a_n/a_{n-1}<b => a_n<a_{n-1}*b<...<a_1*b^n => 
+				sum(a_n)<sum(a_1*b^n) => sum(b^n) geometrically converge ) 
+		2. If L>1, sum(an) diverge
+		3. If L=1, depends on a_n
+
+
+THM Convergence of Power Series sum(c_n*z^n):
+	If |z| < R = 1/limsup(c_n^{1/n}) (radius of convergence), then the series converge. 
+	( When centered at a, |z-a|<R will be the radius of convergence. )
+		proof: (hint: use root test)
+======================================================================================
+
+Convergence of Product Series sum(a_n*b_n)
+
+THM Summation By Parts Test:
+	Purpose: useful when {b_n} is monotonic and sum(a_n) is convergent
+	By analogy, integration by parts is int(udv) = -int(vdu) + uv|
+        Suppose u=A_n=sum_1^n(a_k) (A_n are partial sums), v=b_n, du=a_n, dv=b_{n+1}-b_n,
+	=> sum_n=p^q(a_n*b_n) = sum_n=p^q(A_n*(b_n-b_{n+1})) + A_qb_q - A_{p-1}b_p
+		proof: (just agebraically expand)
+
+=====================================================================================
+
+THM Absolute Converge sum(|a_n|):
+	Purpose: a THM handy to check if rearrangement of sequence changes the convergence
+	sum(a_n) is to converge absolutely if sum(|a_n|) converges
+		proof: (cauchy criteria)
+
+THM If sum(a_n) conv (not abs.) then a rearrangement can have any limit (s^*, s_*). <<< amazing fact
+    If sum(a_n) conv abs, then a rearrangement have only one limit.
+
+
+
+
+=====================================================================================
+
+Convergence of Function lim_{x->p}f(x)->q
+
+=====================================================================================
+
+Definition: f: E -> Y, ECX, p is a limit point of E
+	Suppose there is s-ball, N_s(p), in E and e-ball, N_e(q), in Y.
+	whenever 0<d(x,p)<\d implies d(f(x),q)<\e, this implies convergence.
+	(Notice d are sparate metrics in X and Y, i.e., d_x and d_Y)
+	(Notice pEX and p need not be in E, could be at the boundary of open set E)
+	(Notice the convergence of the function is just
+	 like sequence convergence in two metric spaces separately )
+
+Remark: To find sequence convergence, find a N satisfying n>=N, d(p_n,p)<\e => conv.
+	To find function convergence, find a \d satisfying d(x,p)<\d => d(f(x),q)<\e => conv
+
+THM function converge iff sequence of function converge
+    lim_{x->p}f(x) = q <=> limf(p_n)=q 
+    for every {p_n} in E s.t. p_n \neq p, limp_n=p
+	proof: ( backward proof will be if not then not)
+
+  
+=====================================================================================
+
+Continuous Function (Big picture, three ways to define: 
+			1. In metric sense ( close enough points gets mapped to close points)
+			2. In sequence sense limf(x_n) = f(limx_n) (function preserves limits of sequences)
+			3. In topological sense (inverse image of open (closed) sets are open (closed))
+=====================================================================================
+
+Definition of Continuous 
+	Given X,Y metric spaces, for p "in" ECX, f is continuous at p if every \e>0 \exist
+	\d>0 s.t. for all x in E, d(x,p)<\d => d(f(x),f(p))<\e. 
+	(Notice x could be p for continuous at p)
+	(Notice a single isolated point on the graph is continuous, d(f(p),f(p))=0<\e)
+
+THM f is continuous <=> every open (closed) set u in Y \exists a f^-1(u) that is open (closed)
+	proof: ((=>) open balls in both set (<=) set u open and f^-1(u) open then prove x in X has neighbor)	
+		(=>) use complement set of u 
+
+THM f: E -> Y, f is continuous, E is compact => the image(f) is compact
+	proof: ((=>) infinitely many open cover for image(f), since f continuous, the inverse
+		image is open, so infinitely many cover for E, since E compact => finite
+		subcover (covers the entire E) => the image(f) is covered by finite subcovers => compact
+		)
+
+	COR f: E -> R^k, E compact => image(f) closed and bounded, f achieves it's max and min 
+		proof: compact=> closed and bounded=> includes every points in domain 
+			(if max(f) is on the boundary of x then sup(f) = max(f))
+
+THM f: X -> Y, f is continuous and bijective, X is compact => f^-1 is continuous
+	proof: (f continuous => y open, f^-1(y) open, since f is bijective, f(f^-1(y)) = y open => f^-1 continuous)
+
+=============================================================================================
+
+Uniformly Continuous function 
+	(\exists a \d (uniform \d) over the domain that makes f continuous for all \e)
+
+=============================================================================================
+
+THM f is continous and X is compact => f is uniformly continous
+	proof: (hint: find the smallest \d that satisfies all \e, use Lebesgue covering lemma)
+	suppose finite cover {U_i} in X, then give a point x, it must be in at least one set U_i
+	define a distance function for x \in U_i with U_i^c: g(x) = d(x,U_i^c) = inf_{y \in U_i^c}(x,y), 
+	this function is continuous 
+	( proof: given x_1, x_2, \forall \e>0 \exists d(x_1,x_2)<\d => d(g(x_1),g(x_2))<\e
+	any point x' in U_i^c \in X satisfies d(x_1,x') <= d(x_1,x_2) + d(x_2,x') => 
+	|d(x_1,x')-d(x_2,x')|=d(g(x_1),g(x_2)) <= d(x_1,x_2)=\d => g(x) is continuous e.o.p ).
+	Thus define f(x) = 1/n*sum(d(x,U_i^c)), the mean of all such distance with a fixed point in x,
+	this function is continuous (sum of conti func is conti) and operating on compact X,
+	going back to the THM, and it attains the max and min by previous THM. 
+	( Give a proof that \exits a min \d for f to be uniform continous )
+	we know that this function is always greater than some min value \d, which 
+	imples the minimum distance min{d(x,U_i^c)}>=\d => 
+	the ball N_{\d}(x) lives completely in this U_i, where x \in U_i \in X => uniformly continuos
+	(Notice this applies for all x \in X)
+
+
+
+
+
+THM Maximum Modulus Principle
+
+Given domain D \in C, f: D->C nonconstant and analytic(holomorphic) ==> no max |f| in D
+
+	Lemma: D={z \in C: |z-z_0|<=r_0} the neighbor of a closed ball centered at z_0
+		f:D->C analytic and nonconstant, proof that |f(z_0)|<|f(z)| 
+	proof: 
+		prove by contradiction, assume |f(z_0)|>=|f(z)|
+		Given a smaller ball with |r|<|r_0| centered at z_0.
+		Use Gauss Mean Value THM,
+		the mean of the integral of f(z) over the circumference of the r-ball gives the value
+		at the center f(z_0) where z = r*e^i日
+			|f(z_0)| = 1/2pi*int(|f(z_0 + r*e^i日)|,日,0,2pi) <= 1/2pi*int(|f(z_0)|,日,0,2pi) = |f(z_0)|
+		since both sides equal zero, we can combine the rhs two integrals
+			1/2pi*int(|f(z_0)| - |f(z_0 + r*e^i日)|, 日, 0, 2pi) >= 0
+		by the assumption |f(z_0)|>=|f(z)| we know the integrand is >= 0
+		but any nonnegative integrand will yield a nonnegative integral, so the integrand must = 0
+			|f(z_0)| = |f(z)|,
+		since z is any r-ball, so |f(z)| must be a constant ==> f is a constant ==> contradiction	
+			
+proof: 
+	suppose a point z_0 \in D s.t. |f(z_0)| is max,
+	given a sequence of n points {z_i} from z_0 to any point z_n \in D,
+	Each point z_i has an closed ball N_d(z_i), d_i = min d(z_i,\dD), mininum distance to the domain boundary.
+	Suppose the distance between two points are chosen to be d(z_i,z_i+1) < d_i.
+	Hence using the Lemma, |f(z_1)| in N_d(z_i) is max if |f(z)| is constant over the interior of N_d(z_1),
+	Since z_2 is in N_d(z_1), hence |f(z_1)|=|f(z_2)|.
+	Using the Lemma again gives |f(z)| is constant in N_d(z_2) which contains z_3, hence |f(z_2)| = |f(z_3)|
+	Keep interating until reaching the desired point z_n,
+		|f(z_1)| = |f(z_2)| = ... = |f(z_n)| = constant
+	since z_n is an arbitrary point in D, hence the entire domain has constant |f(z)| 
+	==> no nonconstant |f(z)| \in D achieving maximum
+
+
+THM Fundamental Theorem of Algebra
+Every nonconstant polynomial with complex coeff has a root 
+
+proof:
+	proof by contradiction
+	If p has no roots p(z)~=0 (this allows 1/p(z) to be holomorphic/analytic). 
+	As z->inf ==> p(z)->inf implies 1/p(z) -> 0 which means 1/p(z) is bounded.
+	a bounded nonconstant analytic function on the domain achieves min |1/p(z)|=0 on 
+	the boundary, hence by Maximum Modulus Principle, any point in the domain has a constant |1/p(z)|,
+	which implies |p(z)| must also be a constant, but this contradicts the assumption of p(z) being nonconstant, 
+	hence p(z) must have a root #

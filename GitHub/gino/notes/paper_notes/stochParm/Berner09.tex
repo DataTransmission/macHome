@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+\usepackage{url,hyperref,breakurl}
+
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+\graphicspath{./}
+
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\nnd}{^{\text{nd}}}
+\newcommand{\nth}{^{\text{th}}}
+
+
+\begin{document}
+
+\subsection{Introduction}
+Due to subgrid-scale uncertainties and numerical errors, the kinetic energy spectra for the climate and weather models do not reproduce the observed $k^{-5/3}$ in the inertial-range {\cite{Nastrom85}} and drops off too steep for wavelengths less than $400$km. 
+
+% Truncation of the subgrid-scale flow removes the interaction between scales and renders the missing of the upscale kinetic energy transport.
+% Excessive dissipation further results in the erroneous resolved flow in terms of the kinetic energy spectra.
+% SKEB does two things, physically and numerically 
+% 1) backscatter the uniformly (in space) missing upscale KE dynamics during turbulence dissipation (physical) at the intermediate scale (find the functional dependence of streamfunction and turbulence Re=UL/\nu) (is it more important to add to places with more turbulence, stronger shear zone (related to gravity wave and deep convection associated to (2)) ?) 
+% 2) add back the energy affected by erroneous dissipation (gravity wave drag, deep convection, interpolation) at specific caluculated regions (is the add-back scale important?).
+
+The stochatic kinetic energy backscatter of the subgrid fluctuations transfers energy upscale to the resolved flow, which is an idea originated from the large-eddy simulation using dynamical subgrid parameterization based on eddy-damped quasi-normal Markoviean, direct-interaction approximation closure model, and Markov model for the subgrid scale {\cite{Frederiksen97, Frederiksen06}}.
+
+By injecting the missing subgrid kinetic energy especially to the regions of erroneous dissipation caused by deep convection, numerical interpolation, gravity wave drag, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

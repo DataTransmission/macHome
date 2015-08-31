@@ -1,0 +1,529 @@
+%\documentclass[12pt]{article} 
+%\usepackage{setspace} %\doublespacing
+%\usepackage[margin=0.5in]{geometry} \usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+%\usepackage[toc,page]{appendix} \usepackage{cancel,comment,alltt}
+%\usepackage{mathtools,amsmath,amsthm,bm,amsfonts, amssymb} %amssymb gives blacksquare
+%\usepackage{breqn} % allow equations line break \begin{dmath} \end{dmath}
+
+%\usepackage{url,hyperref,breakurl}
+
+%\usepackage{float,subfig,color,array,multirow,tikz}
+
+%\usepackage{multirow}
+%\linenumbers
+%\graphicspath{./}
+
+%\newcommand{\onehalf}{\frac{1}{2}} \newcommand{\nnd}{^{\text{nd}}} \newcommand{\nth}{^{\text{th}}}
+%\newcommand{\Exp}{{\text{\bf E}}} \newcommand{\Var}{{\text{\bf Var}}} \newcommand{\prob}{{\text{\bf
+%prob}}} \newcommand{\rv}{\color{red}} \newcommand{\dkl}{\text{D}_{\text{KL}}}
+%\newcommand{\sumlim}{\sum\limits} \newcommand{\Real}{\mathcal{R}} \newcommand{\Proof}{{\bf{Proof}}}
+%\begin{document}
+ 
+\section{Convex Functions} Check convexity: (1) definition $f(\lambda x+ (1-\lambda)y) \le \lambda
+f(x) + (1-\lambda) f(y)$ (2) 1-order, 2-order condition (3) function of any line in the domain must
+satisfy convexity conditions (4) epi$f$ must be convex.  \begin{itemize}
+
+\subsection{Definition of Convexity} \item 3.1 (a): Since the linear function $g(x)$ is always above
+the convex $f(x)$, hence applying the slope \begin{equation*} \frac{f(b)-f(a)}{b-a}=
+\frac{g(x)-f(a)}{x-a} \end{equation*} gives \begin{equation*} g(x)=f(a)+(x-a)\frac{f(b)-f(a)}{b-a}=
+\frac{b-x}{b-a}f(a) + \frac{x-a}{b-a}f(b) \ge f(x) \end{equation*} $\blacksquare$ \item 3.1 (b):
+Subtract both sides by $f(a)$ \begin{equation*} f(x)-f(a) \le (x-a) \frac{f(b)-f(a)}{b-a}
+\end{equation*} gives \begin{equation*} \frac{f(x)-f(a)}{x-a} \le \frac{f(b)-f(a)}{b-a}
+\end{equation*} $\blacksquare$ \item 3.1 (c): When $x \rightarrow a$, the lhs inequality becomes
+$f'(a)$. Likewise the rhs inequality becomes $f'(b)$.  $\blacksquare$ \item 3.1 (d): Since $f''(a) =
+\lim\limits_{x \rightarrow a} \frac{f'(x)-f'(a)}{x-a}$, and $f'(x) \ge f'(a)$ when $x \ge a$, hence
+$f''(a) \ge 0$.  $\blacksquare$
+   
+\item 3.2: {\bf\emph{Level Sets of convex, concave, quasiconvex, and quasiconcave functions.}}
+
+\item 3.3: {\bf\emph{Inverse of an ``increasing'' convex function.}} \\ $g$ is an inverse function of
+an increasing convex function $f: \Real \rightarrow \Real$, where dom$f = (a,b)$, dom$g= (f(a),f(b))$,
+and $g(f(x))=x$.  Prove that $g$ is concave. \\
+
+   \Proof: \\ Since $f$ is increasing, given $x_2 > x_1$, we know that $f(x_2)>f(x_1)$, set $x_1=
+\theta a + (1-\theta) b$ for $0< \theta< 1$.  Due to convexity of $f$, if $f(x_2)= \theta f(a) +
+(1-\theta) f(b)$ then $f(x_2) > f(\theta a + (1-\theta) b)= f(x_1)$ is satisfied.  We want to show
+that $g$ is concave by proving $g(\theta f(a) + (1-\theta) f(b)) > \theta g(f(a)) + (1-\theta)
+g(f(b))$.  From $g(f(x))=x$, we know that the lhs of the inequality is $g(f(x_2))= x_2$ and rhs is
+$\theta a + (1-\theta) b= x_1$, therefore $x_2>x_1$.  $\blacksquare$
+
+\item 3.4: {\bf\emph{$f: \Real^n \rightarrow \Real$ is continuous, show that $f$ is convex iff given
+any line segment (with endpoints $x$ and $y$)}} \\ 
+\begin{equation*} \int_0^1 f((1- \lambda)x+
+   \lambda y) d\lambda \le \frac{f(x)+ f(y)}{2}, 
+\end{equation*} 
+i.e.\, the mean of $f$ over the line
+segment is less than the average of the values on the endpoints.  (Notice that the lhs comes from the mean 
+\begin{equation*} 
+   \frac{1}{y-x}\int_x^y f(z) dz 
+\end{equation*} 
+by setting $z=(1-\lambda)x+
+\lambda y$, $dz= (y-x)d\lambda$, and $z=x$ when $\lambda=0$ and $z=y$ when $\lambda=1$, hence
+\begin{equation*} 
+   \frac{1}{y-x}\int_0^1 f(1-\lambda)x+ \lambda y) (y-x) d\lambda = \int_0^1 f((1-\lambda)x+ \lambda y) d\lambda. 
+\end{equation*}
+
+   \Proof: \\ The linear function $g(z)$ that intersects $f(x)$ and $f(y)$ is $g(z) =
+f(x)+\frac{f(y)-f(x)}{y-x}(z-x)$.  We know that convexity of $f$ gives $f(z)\le g(z)$, hence taking
+the mean of $g(z)$ over $[x y]$ gives $\frac{f(x)+f(y)}{2}$ which is $\ge$ the mean of $f$.
+$\blacksquare$
+
+\item 3.5: {\bf\emph{Running average of a convex function.}} \\ $f: \Real \rightarrow \Real$ is
+convex, show that the running avarage 
+\begin{equation} 
+   F(x) = \frac{1}{x} \int_0^x f(t) dt
+\end{equation} 
+is convex with dom$F=\Real_{++}$. \\ (Notice as 3.4, set $t= \lambda x$, $dt= x
+d\lambda$, $t=x$ when $\lambda=1$, $t=0$ when $\lambda=0$, hence 
+\begin{equation}
+   \frac{1}{x}\int_0^1 f(\lambda x) xd\lambda = \int_0^1 f(\lambda x) d\lambda 
+\end{equation} 
+is the moving average over $[0, x]$.) \\ \Proof: \\ Since for any given $\lambda$, $f(\lambda
+x)=f(g(x))$
+has a convex domain dom$f=g(x)$, where $g(x)$ is an affine function.  Therefore, given $f$ is a
+convex function, $f(g(x))$ is convex over $x$.  A nonnegative weighted (by $1$'s) sum of convex
+functions preserves convexity.  Therefore, $F(x)= \int_0^1 f(\lambda x) d\lambda $ is convex.
+$\blacksquare$
+
+\item {\bf\emph{3.6: Functions and epigraphs.}} \\ 
+When is the epigraph of a function a (1) halfspace (2) convex cone (3) polyhedron? \\
+   
+   \Proof: \\ epi$f= \{ (x,t) | t \ge f(x) \}$ 
+\begin{enumerate} 
+   \item The normal vector $(\nabla f,-1)$ is a constant over the entire domain, and the epi$f$ is
+bounded by the hyperplane formed by the graph $(x,f(x))$.  
+   \item Any conic combination of points $(x,t)$ are in the epigraph.  
+   \item Intersection of hyperplanes on the graph $(x,f(x))$ forming halfspaces with normal vectors $(\nabla
+f,-1)$.  
+\end{enumerate}
+
+\item 3.7: {\bf\emph{Prove that a convex function, with dom$f= \Real^n$, bounded above is a
+constant.}} \\ \Proof: \\ Suppose $f$ is non-differentiable and bounded above at the point $y$.  Any
+line segment in $\Real^n$ must give convexity of $f$, and suppose $z \succ y \succ x$ on this line
+segment.  If $f(z)= f(y)> f(x)$, then the convex combination $\theta f(z) + (1-\theta) f(x) < f(y)$,
+which is non-convex.  If $f(z)> f(y)> f(x)$, then $f$ is unbounded.  Therefore, $f$ must be a
+constant, since all other possibilities are non-convex.
+
+\item 3.8: {\bf\emph{2-order condition for convexity.}} \\ If $f$ is twice differentiable, then $f$
+is convex iff $\nabla^2 f(x) \succeq 0$ for all $x \in$ dom$f$. \\ 
+
+\Proof: \\ ($\Rightarrow$) (1)
+$f(\theta x+(1-\theta)y) \le \theta f(x)+ (1-\theta)f(y)$ (2) epi$f$ is convex (3) any function of a
+line segment in the domain is convex (4) 1-order condition $f(y) \ge f(x) + \nabla f(x)^T (y-x)$ (5)
+sublevel set is convex. \\ Use (4) The 2-order Taylor expansion which better approximates $f(y)$ is
+$f(x) + \nabla f(x)^T (y-x) + \nabla^2 f(x)^T(y-x)^2$, this is always greater than or equal to the
+1-order expansion if $\nabla^2 f(x) \succeq 0$.  ($\Leftarrow$) From the 2-order condition we know
+that $f(y) \ge f(x) + \nabla f(x)^T (y-x) + \nabla^2 f(x)^T(y-x)^2 \ge f(x) + \nabla f(x)^T (y-x)$,
+therefore $f$ is convex.
+
+\item 3.9: {\bf\emph{2-order conditions for convexity on an affine set.}} \\ 
+Suppose $f$ twice differentiable with a convex domain $x= Fz+\hat{x} \in$ dom$f$. \\ 1) Show that
+$\tilde{f}(z)= f(Fz+x)$ is convex iff $F^Tf(Fz+\hat{x})F \succeq 0$, where $F \in \Real^{n\times
+m}$, $\hat{x} \in \Real^n$, $z \in \Real^m$, $Fz+\hat{x} \in$ dom$f$, and $z \in$ dom$\tilde{f}$.
+(Notice, this convexity condition of $F^T\nabla^2 fF$ on $z \in$ dom$\tilde{f}$ is analogous to that
+of $\nabla^2 f(x)$ on $x \in$ dom$f$.) \\ 2) $A \in \Real^{p\times n}$ has null$A$=range$F$. Show
+that $\tilde{f}$ is convex iff there exists a $\lambda \in \Real$ such that 
+\begin{equation}
+   \nabla^2 f(Fz+\hat{x}) + \lambda A^TA \succeq 0 
+\end{equation} 
+
+\Proof: \\ 
+
+(1) Since $f$ is convex iff $\nabla^2 f(Fz+\hat{x}) \succeq 0$ for all $Fz+\hat{x} \in$ dom$f$.  For a positive semidefinite
+matrix, the rhs is satisfied when $\Big(Fz+\hat{x}\Big)^T \nabla^2 f \Big(Fz+\hat{x}\Big)=
+z^T\big(F^T\nabla^2fF\big)z+ 2\hat{x}^T\nabla^2fFz+\hat{x}\nabla^2f\hat{x} \ge 0$.  Since $\hat{x}$
+and $Fz$ are in dom$f$ satisfying $\nabla^2 f \succeq 0$, therefore the first term must satisfies
+$z^T\big(F^T\nabla^2fF\big)z \ge 0 \Rightarrow \big(F^T\nabla^2fF\big) \succeq 0$.\\ This shows that
+$\tilde{f}$ is convex iff $F^T\nabla^2fF \succeq 0$ for all $z \in$ dom$\tilde{f}$.  $\blacksquare$
+    
+   2) ($\Rightarrow$) $\lambda F^TA^TAFz$ is stricly zero for any $\lambda$, therefore from 1) we
+know that a convex $f$ implies $F^T\nabla^2fF \succeq 0 \Rightarrow$ %Given $z =$ null$F$ +
+null$F^\perp \in$ dom$f$, we know that $Az= A($null$F) + 0$, therefore $\lambda F^TA^TAFz$ is
+stricly zero for any $\lambda$.  $F^T\nabla^2fF + \lambda F^T A^TAF \succeq 0 \Rightarrow
+F^T\Big(\nabla^2f + \lambda A^TA \Big)F \succeq 0 \Rightarrow \nabla^2 f(Fz+\hat{x}) + \lambda A^TA
+\succeq 0$. \\
+%   ($\Rightarrow$) since $f$ is convex implies $\nabla^2 f \succeq 0$, and $x^TA^TAx \ge 0$ implies
+%   $A^TA \succeq 0$, therefore the rhs is satisfied.\\ 
+   ($\Leftarrow$) $F^T\Big(\nabla^2 f(Fz+\hat{x}) + \lambda A^TA\Big)F \succeq 0$ gives the previous
+result in 1).  $\blacksquare$
+
+\item 3.10: {\bf\emph{An extension of Jensen’s inequality.}} \\ Given a convex $f$ with $\Exp
+f(x_0+v) \ge f(x_0)$, where $v$ is a random variable with zero mean. \\ 1) Find a counterexample
+that a higher variance $v$ (i.e., randomization, more deviated from the mean) raises the mean value
+of $f$, i.e., $\Var(v) > \Var(w)$, but $\Exp f(x_0+v) < \Exp f(x_0+w)$.  (The general case is
+supported by supposing $\Var(w) \rightarrow 0$, then $\Exp f(x_0+w) \rightarrow \Exp f(x_0)=
+f(x_0)$, where $\Exp f(x_0+v) \ge f(x_0)$ concludes that $\Exp f(x_0+v) \ge \Exp f(x_0+w)$, i.e.,
+randomization will raise the mean of a convex function.) \\ {\rv 2) Show that $\Exp f(x_0+tv)$ is
+monotonically increasing for $t\ge0$, i.e. $w=tv$ just a scaling of the values of $v$ without
+changing distribution. \\ } \Proof: \\
+%   Possible convex functions: a)exponentials b)-log c) powers d) affine Possible distributions: a)
+%   skewed b) binomial c) normal d) exponential From 3.4 $\int_0^1 f((1- \lambda)x+ \lambda y)
+%   d\lambda \le \frac{f(x)+ f(y)}{2}$. \\
+   1) Given a convex function $ f(x) = \begin{cases} x & x \ge 0 \\ 0 & x<0 \end{cases}$ and two
+distributions, $p(v=-4)=0.1$ and $p(v=4/9)=0.9$ with $\Var(v)=1.777$, and $p(w=-1)=0.5$ and
+$p(w=1)=0.5$ with $\Var(w)=1$.  Therefore $\Var(v) > \Var(w)$, $\Exp f(v)= 0.4 < \Exp f(w)= 0.5$.
+$\blacksquare$ \\ 2) $g(t)= \Exp f(x_0+tv)= \theta_1 f_{v_1}(t) + \dotsc + \theta_n f_{v_n}(t)$ is a
+convex function of $t$, indexed by $v_i$, since a nonnegative sum of convex functions is convex.
+
+\item 3.11 {\bf\emph{Monotone Mappings}}   Definition of a ``monotone" function $\psi: \Real^n
+\rightarrow \Real^n$ 
+\begin{equation} 
+   (\psi(x)-\psi(y))^T(x-y) \ge 0.  
+\end{equation} 
+i.e. $\psi$ increases (decreases) with positive (negative) $x$, they are positively correlated. \\
+
+   Given $f$ is a differentiable convex function. 1) Prove $\nabla f$ is monotone. 2) Is the
+converse true? \\
+   
+   \Proof: \\ 1) From the 1-order condition, $f(y) \ge f(x) + \nabla f(x)^T(y-x)$ and $f(x) \ge f(y)
++ \nabla f(y)^T(x-y)$.  Adding the two equations we get $(\nabla f(x)-\nabla(y))^T(x-y) \ge 0$.
+$\blacksquare$ \\
+  
+   2) Given a monotone $(\nabla f(x)-\nabla(y))^T(x-y) \ge 0$, is $f$ convex?  (UNPROOFED)
+
+\item 3.12 {\bf\emph{Fit an affine function between a convex and concave function with the same
+domain}} \\ $g(x) \le f(x)$, $g$ is concave and $f$ is convex. \\ \Proof: \\ We know that hypo$g$
+and epi$f$ are both convex sets which does not intersect, therefore there exists a hyperplane
+between the two sets.  Suppose the two points $z_1=(x_1,f(x_1))$ and $z_2=(x_2,g(x_2)$ gives
+inf$||u-v||$, where $u \in \{(x,f(x))\}$ and $v \in \{(x,g(x))\}$.  $(\nabla f(x_1),-1)^T
+((x,h(x))-(z_1+z_2)/2)=0$ $\Rightarrow$ $h(x)= \nabla f(x_1)^Tx- (\nabla
+f(x_1),-1)^T(\frac{z_1+z_2}{2})$, where $h$ is affine.  $\blacksquare$
+
+\item 3.13 {\bf\emph{Kullback-Leibler divergence and the information inequality}} \\ KL divergence:
+\begin{equation} 
+   \text{D}_{\text{KL}}(u,v)=\sumlim_{i=1}^n(u_i\log{\frac{u_i}{v_i}}-u_i+v_i),
+\end{equation} 
+becomes relative entropy when $u$ and $v$ are $n$ dimensional probability vectors
+s.t. $1^Tu=1$ and $1^Tv=1$, $n$ is also the sample size. \\ 1) Prove \emph{infomation inequality}
+$\dkl(u,v) \ge 0$ for all $u$, $v$ $\in \Real^n_{++}$. \\ 2) $\dkl(u,v)=0$ iff $u=v$. \\ Hint: $\dkl
+= f(u)-f(v)-\nabla f(v)^T(u-v)= \sum u_i\log u_i - \sum v_i\log v_i - (\log v_1+ 1, \dotsc, \log
+v_n+ 1)^T(u_1-v_1,\dotsc, u_n-v_n)$ where $f(v)=\sumlim_{i=1}^n v_i\log v_i$ is the negative entropy
+of $v$.\\ \Proof: \\ Since negative entropy is {\rv strictly convex} and differentiable, therefore
+for $u\neq v$, $f(u) {\rv >} f(v)+ \nabla f(v)^T(u-v) \Rightarrow \dkl(u,v)= f(u)-f(v)-\nabla
+f(v)^T(u-v) > 0$.  $\blacksquare$ \\
+%   2) If $u=v$ then $\dkl=0$. If $\dkl=0$ and $u\neq v$, then $f(u)=f(v)+ \nabla f(v)^T(u-v)$ means
+%   that there is a constant slope $\nabla f(v)$ at different $v$, but this is not true since
+%   $\nabla f(v)= (\log v_1+ 1, \dotsc, \log v_n+ 1)$ varies with different $v$ which is not a
+%   constant.  Therefore $u=v$ 
+
+\item 3.14 (unproof) 
+
+\item 3.15 {\bf\emph{A family of Concave Utility functions}} \\ For $0<\alpha\le 1$,
+\begin{equation} 
+   u_\alpha(x)= \frac{x^\alpha- 1}{\alpha} 
+\end{equation} 
+with dom$u_\alpha = \Real_{+}$, and $u_0=\log x$ with domain $\Real_{++}$.  (a) Show that $\lim_{\alpha \rightarrow 0}
+u_\alpha = u_0$. \\ (b) Show that $u_\alpha$ are concave, monotone increasing, and $u_\alpha(1)=0$.
+\\ \Proof: \\ (a) $u'= x^{\alpha-1}$, at $\alpha=0$ $u'=x^{-1}=u_0'$.  $\blacksquare$  \\ (b)
+$f(x)=(x^\alpha-1)/\alpha$ is concave iff $f''\le 0$.  $f''=(\alpha-1)x^{\alpha-2}$, $0< \alpha\le
+1$ and $x\in \Real_{++}$ imply $f''\le 0$.  $x\ge y$ implies $x^\alpha \ge y^\alpha$, therefore
+$(x^\alpha-1)/\alpha \ge (y^\alpha-1)\alpha$, which indicates monotonicity.  $u_\alpha(1)=0$ is
+trivial to prove.  $\blacksquare$ \\
+
+\item 3.16 {\bf\emph{Determine convex, concave, quasi-convex, quasi-concave}} \\ (a) $f(x)=e^x-1$ on
+$\Real$. \\ (b) $f(x_1,x_2)= x_1x_2$ on $\Real^2_{++}$. \\ (c) $f(x_1,x_2)= 1/(x_1x_2)$ on
+$\Real^2_{++}$. \\ (d) $f(x_1,x_2)= x_1/x_2$ on $\Real^2_{++}$. \\ (e) $f(x_1,x_2)= x_1^2/x_2$ on
+$\Real \times \Real_{++}$. \\ (f) $f(x_1,x_2)= x_1^a x_2^{1-a}$, where $0\le a\le 1$, on
+$\Real^2_{++}$. \\ \Proof: \\ (a) Strictly convex, since $e^x-1$ is the convex $e^x$, with
+$f''=e^x>0$, shifted by a constant, and monotonically increasing.  Hence quasi-convex and
+quasi-concave (superlevel set is convex).  \\ (b) The Hessian $\begin{pmatrix} 0 & 1 \\ 1 & 0
+\end{pmatrix}$ is not a positive semidefinite nor negative semidefinite matrix, hence neither convex
+nor concave.  $f$ is quasiconcave since the superlevel set $\{x| f(x)=x_1x_2\ge t, t\in \Real \}$ is
+convex on $\Real^2_{++}$. \\ (c) The Hessian $\frac{1}{x_1x_2} \begin{pmatrix} 2x_2^{-2} &
+1/(x_1x_2) \\ 1/(x_1x_2) & 2x_1^{-2} \end{pmatrix} \succeq 0$, by row reduction the diagonal
+elements are positive eigenvalues. \\  Therefore convex, and quasi-convex. The superlevel set $\{x|
+1/(x_1x_2) \ge t, t \in \Real \}$ is not convex, hence not quasi-concave. \\ (d) The Hessian
+$\begin{pmatrix} 0 & -x_2^{-2} \\ -x_1^{-2} & 0 \end{pmatrix}$ is not PSD nor NSD\@.  The level set
+$\{x| x_1/x_2 = t \}$ is a line (hyperplane in $\Real^2$), which means $f$ is quasilinear (i.e.\, both
+quasiconvex and quasiconcave). \\ (e) The Hessian $2/x_2\begin{pmatrix} 1 & -x_1/x_2 \\ -x_1/x_2 &
+x_1^2/x_2^2 \end{pmatrix} \succeq 0$ by row reduction, thus convex and quasiconvex.  It is the
+quadratic-over-linear function. \\ (f) The Hessian $a(1-a)x_1^{a}x_2^{-a} \begin{pmatrix} -x_1^{-2}x_2
+& x_1^{-1} \\ x_1^{-1} & -x_2^{-1} \end{pmatrix} \preceq 0$ by row reduction, hence concave and
+quasi-concave.  It is not quasi-convex. \\
+
+\item 3.17 {\bf\emph{Show $f(x)= \Big( \sum\limits_{i=1}^{n} x_i^p\Big)^{\frac{1}{p}}$ is concave with
+$p<1$, $p\neq 0$, and dom$f=\Real^n_{++}$.}} \\ Special case: $f(x)=\Big(\sum\limits_{i=1}^n
+x_i^{1/2} \Big)^2$ and the \emph{harmonic mean} $f(x)=\Big(\sum\limits_{i=1}^n 1/x_i \Big)^{-1}$. \
+(Hint: prove by using Cauchy-Schwarz inequality $||a||||b|| \ge a^Tb$, which is from triangular
+inequality $||a+b|| \ \le \ ||a||+||b||$ taken squares on both sides $a^Ta+2a^Tb+b^Tb \ \le \
+a^Ta+2||a||||b||+b^Tb \ \Rightarrow \ a^Tb \ \le \ ||a||||b||$) \\ \Proof: \\ $(\nabla f)_i=
+(\sum\limits_{k=1}^n x_k^p)^{\frac{1-p}{p}}x_i^{p-1}$ \\ $(\nabla^2 f)_{ii} =
+-(1-p)x_i^{p-2}(\sum\limits_{k=1}^n x_k^p)^{\frac{1-p}{p}} + (1-p)x_i^{2p-2}(\sum\limits_{k=1}^n
+x_k^p)^{\frac{1-2p}{p}} = (1-p)(\sum\limits_{k=1}^n x_k^p)^{\frac{1-2p}{p}} \Big(
+-x_i^{p-2}\sum\limits_{k=1}^n x_k^p + x_i^{2p-2}\Big)$ \\
+%                      = (1-p)x_i^{p-2}(\sum\limits_{k=1}^n x_k^p)^{\frac{1-2p}{p}}
+%                      \Big(-\sum\limits_{k=1, k\neq i}^n x_k^p \Big)$  \\
+   $(\nabla^2 f)_{ij} = (1-p)x_i^{p-1}(\sum\limits_{k=1}^n x_k^p)^{\frac{1-2p}{p}}x_j^{p-1} =
+(1-p)(\sum\limits_{k=1}^n x_k^p)^{\frac{1-2p}{p}} \Big(x_i^{p-1}x_j^{p-1} \Big)$ \\ $\nabla^2 f =
+(1-p)(\sum\limits_{k=1}^n x_k^p)^{\frac{1-2p}{p}} \Big(
+-\text{diag}(x_i^{p-2}\sum\limits_{i=1}^nx_k^p) + zz^T \Big)$ \\ where $z =
+(x_1^{p-1},\dotsc,x_n^{p-1}) $.  The condition $v^T \nabla^2f v = (1-p)(\sum\limits_{k=1}^n
+x_k^p)^{\frac{1-2p}{p}} \Big(-\sum\limits_{i=1}^n(v_i^2x_i^{p-2}\sum\limits_{i=1}^nx_k^p) + (\sum
+v_iz_i)^2 \Big) \le 0 $ must be satisfied for $\nabla^2 f$ to be NSD for concavity. Where the
+components in the bracket must be negative.  Therefore, with $a_i = v_ix_i^{\frac{p-2}{2}}$, $b_i =
+x_i^{p/2}$ and $a_ib_i = v_ix_i^{p-1} = v_iz_i$, the component being negative becomes $||a||^2
+||b||^2 \ge (a^Tb)^2$ which complies with Cauchy-Schwarz inequality.  $\blacksquare$ \\
+
+\item 3.18 {\color{red}\bf\emph{Function of PSD matrices}} \\ Prove by using spectral theory (Hermitian
+self-adjoint matrices can be diagonalized w.r.t.\ orthonormal eigenbasis).\ \\ (a) $f(X) =
+$tr$(X^{-1})$ is convex on dom$f = S^{n}_{++}$. \\ (b) $f(X) = ($det$X)^{1/n}$ is concave on dom$f =
+S^{n}_{++}$. \\ \Proof: \\ (a) Consider an arbitrary line $X^{-1}=Y+tZ$, $g(t) = f(Y+tZ) =
+$tr$(Y+tZ) = $tr$Y^{1/2}(I+tY^{-1/2}ZY^{-1/2})Y^{1/2}$. \\ (b) (unproof). \\ \item 3.19
+{\bf\emph{Nonnegative Weighted Sum and Integrals}} \\ (a) Show that $f(x) = \sum_{i=1}^k \alpha_i
+x_{[i]}$ is convex, where $x_{[i]}$ is the $k$th largest component of $x \in \Real^n$, and $\alpha_1
+\ge \alpha_2 \ge \dotsc \ge 0$. Use the fact that $f(x) = \sum_{i=1}^k x_{[i]}$ is convex. \\ (b)
+Show that $f(x) =
+- \int_0^{2\pi} \log T(x,\omega) d\omega$ is convex on $\{x\in\Real^n| T(x,\omega)>0\}$, where
+  $T(x,\omega)= x_1+x_2\cos\omega+x_3\cos2\omega+\dotsc+x_n\cos(n-1)\omega$ \\ \Proof: \\ (a) The
+nonnegative sum of the set of convex functions $f_j = \sum_{i=1}^j x_{[i]}$ is
+$\sum_{j=1}^k\alpha_jf_j = \sum_{i=1}^k \alpha_i x_{[i]} + \sum_{j=1}^{k-1}\alpha_{j+1}f_j$.  Which
+indicates $\sum_{i=1}^k \alpha_i x_{[i]} = \sum_{j=1}^{k-1}(\alpha_j-\alpha_{j+1})f_j + \alpha_kf_k$
+is also a nonnegative sum of convex functions which must also be convex. $\blacksquare$ \\ (b)
+$T(x,\omega) = \sum_{k=1}^n x_k \cos(k-1)\omega$. \\ $(\nabla \log T)_i = -\cos(i-1)\omega/(\sum x_k
+\cos(k-1)\omega)$ \\ $(\nabla^2 \log T)_{ij} = -\cos(i-1)\omega \cos(j-1)\omega/(\sum x_k
+\cos(k-1)\omega)^2$ \\ Hence, $\nabla^2 \log T = -\frac{1}{(\sum x_k \cos(k-1)\omega)^2}
+\begin{pmatrix} 1 \\ \cos\omega \\ \vdots \\ \cos(n-1)\omega \end{pmatrix} [1, \cos\omega, \cdots,
+\cos(n-1)\omega] \preceq 0$  \\ Which shows that $\log T$ is concave, and $-\log T$ is convex.
+Therefore $f(x)$ is a continuous sum of convex functions indexed by $\omega$. $\blacksquare$ \\
+
+\item 3.20 {\bf\emph{Composition with an Affine Function}} \\ Show the followings are convex
+functions: \\ (a) $f(x) = ||Ax-b||$, norm on $\Real^m$. \\ (b) $f(x) = -($det$(A_0 + x_1A_1 + \cdots
++ x_nA_n))^{1/m} $, on $\{ x | A_0 +x_1A_1 + \cdots +x_nA_n \succ 0 \}$, where $A_i \in S^m$. \\
+
+   \Proof: \\ An affine function preserves the convexity of the points in dom$f$, i.e., $y=Ax-b$ is
+a convex set of points.  (a) Since a norm is a convex function, therefore operating on a convex set
+of points $y=Ax-b$ preserves the convexity of the function. \\ 
+   %(a) From triangular inequality $||a+b|| \le ||a|| + ||b||$, we know that $||A(\lambda x +
+   %(1-\lambda) y) - b || = ||\lambda(Ax - b) + (1-\lambda)(Ay - b)|| \le \lambda|| Ax - b|| +
+   %(1-\lambda)|| Ay - b||$. Therefore $f$ is convex. $\blacksquare$ \\
+   (b) (unproof) \\ 
+
+\item 3.21 {\bf\emph{Pointwise Maximum and Supremum}} \\ Show the followings are convex functions:
+\\ (a) $ f(x) = \max_{i=1,\cdots,k} ||A^{(i)}x - b^{(i)}||. $ \\ (b) $ f(x) = \sum_{i=1}^r
+|x|_{[i]}$ on $\Real^n$, where $|x|_{[i]}$ is the $r$th ordered maximum coordinates. \\ \Proof: \\
+(a) $f$ is a pointwise maximum function evaluated at a fixed point $x_1$ over a set of convex norm
+functions (composed over affine functions), which is convex. $\blacksquare$ \\ (b) (unproof) hint:
+An affine function $f(x) = a^Tx = [ 0, 1, 0, 1, 1 ]^T [x_1, \cdots, x_5] = x_2 + x_4 + x_5$ is
+convex. \\ $f(x) = \max_{1\le i_1 \le \cdots \le n} \{ x_{i_1} + \cdots + x_{i_r} \}$ is the
+pointwise maximum of fixed set of affine functions.  Same thing applied to the function in (b). \\
+   %(b) $\sum | \lambda x + (1-\lambda) y |_{[i]} \le \sum | \lambda |x| + (1-\lambda) |y| |_{[i]}
+   %\le \lambda \sum|x|_{[i]} + (1-\lambda) \sum|y|_{[i]}$. $\blacksquare$ \\ 
+
+
+
+\item 3.22 {\bf\emph{Composition Rule}} \\ Show the followings are convex functions: \\ (a) $f(x) =
+-\log(-\log(\sum_{i=1}^m e^{a_i^Tx+b_i}))$ on dom$f = \{ x | \sum_{i=1}^m e^{a_i^Tx+b_i} < 1 \}$.
+Notice $\log(\sum_{i=1}^m e^y_i)$ is convex by $\nabla^2 f \succeq 0$.  \\ (b) $f(x,u,v) = -\sqrt{uv
+- x^Tx}$, dom$f = \{ (x,u,v) \ | \ uv > x^Tx, u,v > 0 \}$, and $-\sqrt{x_1x_2}$ is convex on
+  $\Real_{++}^2$. Quadratic-over-linear is a convex function. \\ (c) $f(x,u,v) = -\log(uv - x^Tx)$,
+same dom$f$ as (b). \\ (d) $f(x,t) = -(t^p - ||x||_p^p)^{1/p}$ where $p > 1$ and dom$f = \{ (x, t) \
+| \ t \ge ||x||_p \}$.  \\ (e) $f(x,t) = -\log(t^p − ||x||_p^p)$ where $p > 1$ and dom$f = \{ (x,t)
+\ | \ t > ||x||_p \}$.  \Proof: \\ (a) $h(x) = \log(\sum_{i=1}^m e^{a_i^Tx+b_i})$ is a composition
+of log-sum-exp function over the affine functions $y_i = a_iTx + b_i$ (where any $x$ point is
+transformed linearly to another point $y_i(x)$ indexed by $i$), where convexity is preserved.
+$h:\Real^n \rightarrow \Real$ and $g: \Real \rightarrow \Real$.  We can restrict the domain of $h$
+to a line $x = x_0+tv$, then $f(x) = g(h(x))$, where $g(h) = -\log (-h)$, has the condition $ f'' =
+g''h'^2 + g'h'' $.  $h(x) = k(z(x))$, where $k = \log(z)$ and $z = \sum e^{a_i^Tx + b_i}$, hence
+$h'' = k'' z'^2 + k'z'' = \frac{1}{z^2}(\sum 1^Ta_ie^{a_i^Tx+b_i})^2 + (\sum 1^Ta_i^2
+e^{a_i^Tx+b_i})/z \ge 0$ since $a_i$'s are the only terms possibly negative.  Therefore, $g'' =
+1/h^2 > 0, g'=1/h>0, h''>0$, hence $f$ is convex. $\blacksquare$ \\   
+
+   (b) $-\sqrt{x_1x_2}$ is convex by the Hessian being $0.25x_1^{-1/2}x_2^{-1/2}[x_1^{-1},
+-x_2^{-1}][x_1^{-1}, -x_2^{-1}]^T \succeq 0$.  $g(x,u) = x_1^2/u + x_2^2/u + \cdots + x_n^n/u =
+g_1(x_1,u) + \cdots + g_n(x_n,u)$ is a positive sum of quadratic-over-linear functions, hence the
+nonnegative sum is convex. \\   $f(x,u,v) = -\sqrt{u(v-g(x,u))}$, where both $g_1(x,u,v) = u$ and
+$g_2(x,u,v) = v-g(x,u)$ are positive, and $v-g(x,u)$ is an affine transformation of the concave
+function $-g$, hence also concave.  Therefore, the composition $f = h(g(x,u,v))$ is convex.
+$\blacksquare$ \\ 
+   
+   (c) Suppose $h(x,y) = -\log(xy)$, $\nabla^2 h(x,y) = \begin{pmatrix} x^{-2} & 0 \\ 0 & y^{-2}
+\end{pmatrix} \succeq 0$, hence $h(x,y)$ is convex on $\Real_{++}^2$.  Following the same logic from
+(b), $f(x,u,v)=h(g(x,u,v))$ is convex. $\blacksquare$ \\
+
+
+   (d) $-(t^{p-1}(t - \frac{||x||_p^p}{t^{p-1}}))^{1/p}$, where $\frac{||x||_p^p}{t^{p-1}}$ is
+convex by 3.23 (a).  $h(x,y) = -(xy)^{1/p}$, both $x$ and $y$ are nonnegative, hence the Hessian
+\begin{equation*} 1/p^2 x^{1/p-1}y^{1/p-1} [\sqrt{(p-1)y/x}, -\sqrt{x/((p-1)y)}][\sqrt{(p-1)y/x},
+-\sqrt{x/((p-1)y)}]^T \succeq 0 \end{equation*} over the domain $\Real_+^2$.  Therefore, $t^{p-1}$
+is either convex or concave depending on $p$, and $t - \frac{||x||_p^p}{t^{p-1}}$ is concave.  The
+composition by $h$ over the convex domain gives convex $f$. $\blacksquare$ \\
+
+   (e) $f(x,t) = -\log(t^{p-1}) - \log(t - (||x||_p/t)^p)$, where $-(p-1)\log(t)$ is convex and
+$-\log(t - (||x||_p/t)^p)$ is convex (by the composition rule $f'' = h''g'^2 + g''h' \ge 0$).  The
+positive sum of convex functions is convex. $\blacksquare$ \\
+       
+
+\item 3.23 {\bf\emph{Perspective of a Function}} \\ The perspective of a function $g$ is $f(x,t) =
+tg(x/t)$ (Notice the perspective function $P(x,t) = \frac{x}{t}$ on dom$P = \Real^n \times
+\Real_{++}$ preserves convex sets, from domain to image, but is not a convex function!) (a) Show
+that for $p>1$, 
+\begin{equation} 
+f(x,t) = \frac{|x_1|^p + \cdots + |x_n|^p}{t^{p-1}} = \frac{||x||_p^p}{t^{p-1}} 
+\end{equation} 
+is convex on $\{ (x,t) | t>0 \}$. \\ (b) Show that $f(x) =
+\frac{||Ax + b||_2^2}{c^Tx + d}$ is convex on $\{x \ | \ c^T x + d > 0 \}$, where $A \in
+\Real^{m\times n}$, $b \in \Real^m$, $c \in \Real^n$ and $d \in \Real$.
+
+ 
+   \Proof: \\ (a) $f(x,t) = t(\frac{||x||_p}{t})^p = t(||\frac{x}{t}||_p)^p = tg(x/t)$ From
+Minkowski's Inequality $||\lambda x + (1-\lambda) y||_p \le ||\lambda x||_p + ||(1-\lambda)y||_p =
+\lambda||x||_p + (1-\lambda)||y||_p$, which shows that $||x/t||_p$ is convex.  Since $p>1$, $g(x/t)
+= ||x/t||_p^p$ is convex.  Therefore $f(x,t) = tg(x/t)$ is convex (proven by using perspective
+function preserving convexity by mapping epi$f = \{(x,t,v) \ | \ v \ge tg(x/t) \}$ to epi$g = \{
+(x/t,v/t) \ | \ v/t \ge g(x/t) \}$, by knowing $g$ is convex we know that $f$ must be convex).
+$\blacksquare$ \\
+
+   (b) $\frac{||Ax + b||_2^2}{c^Tx + d} = (c^Tx + d)\Big(\frac{||Ax + b||_2}{c^Tx + d}\Big)^2 =
+(c^Tx + d)\Big(||\frac{Ax + b}{c^Tx + d}||_2\Big)^2 $, $\frac{Ax + b}{c^Tx + d}$ is a perspective
+function preserving convex affine sets. From (a), the perspective of a convex function is a convex
+function.  $\blacksquare$ \\
+
+\item 3.24 {\bf\emph{Functions on the Probability Simplex}} \\ A probability simplex is the
+$n$-dim'l probability vector space that satisfies \begin{equation*} \{ p \in \Real_{+}^n \ | \ 1^T
+(p_1,\cdots,p_n) = 1,  \text{\ where \ } p_i=p(x=a_i), a_i<a_{i+1} \}, \end{equation*} which is a
+convex set (the triangular surface on a simplex spanned by $p_1$, $p_2$ and $p_3$, if $n=3$).
+Determine the convexity or quasi-convexity of the functions: \\ (a) $\Exp x$ \\ (b) $\prob(x \ge
+\alpha)$ \\ (c) $\prob(\beta \ge x \ge \alpha)$ \\ (d) $f(p) = \sum_{i=1}^n p_i \log p_i$, the
+negative entropy of the distribution. \\ (e) $\Var x = \Exp(x-\Exp x)^2$ \\ {\color{red} (f)
+quartile$(x) =$ inf$\{ \beta \ | \  \prob(x \le \beta) \ge 0.25 \}$. \\ (g) The cardinality of the
+smallest set $A \subseteq \{a_1,\cdots, a_n \}$ with $\prob(A) \ge 0.9$. (Disprove quasiconvexity by
+an example!) \\ (h) The minimum width interval that contains $90\%$ of the probability, i.e., $\inf
+\{ \beta - \alpha \ | \ \prob(\alpha \le x \le \beta) \ge 0.9 \}$.  \\ } (f),(g), and (h) is
+crutial in thinking quasi-convexity, and is proven by giving counter-examples.  {\bf Logic of proof:
+fix the $p$ used for sub- (super-) level set, then prove if given the higher- (lower-) levels
+whether the $p$'s forms a halfspace.} \\
+
+   \Proof: \\ quasiconvex function must satisfy the $1^{st}$-order condition $f(y) \le f(x) \
+\Rightarrow \ \nabla f(x)^T(y-x) \le 0$, and $2^{nd}$-order condition $y^T\nabla f(x) = 0 \
+\Rightarrow \ y^T\nabla^2 f(x) y \ge 0$ (i.e., whenever the slope is zero, the curvature is
+nonnegative).  (a) $\Exp x = f(p) = \sum_i a_i p(x=a_i)$, $f: \Real_+^n \rightarrow \Real$, is an
+affine/linear transformation on the simplex (a convex set) which preserves convexity.   Hence $f(p)$
+is a convex line in $\Real$ which satisfies convex, concave, quasi-convex and quasi-concave.
+$\blacksquare$ \\ (Notice if $f(x)$ is a convex function, a random variable of $x$, and the
+probability vector is fixed on each outcome of $x$, then $\Exp f(x)$ is just a point, we talk only
+about whether randomization will hurt the mean.)
+
+   (b) $\prob(x \ge \alpha) = f(p) =  \sum_{\{i|a_i\ge \alpha\}} p(x=a_i)$, where the set $\{p \in
+\Real^{n-m+1} \ | \ 1^T(p_m,\cdots,p_n) \le 1, \text{ and } \alpha \le a_m < \cdots < a_n  \}$ is a
+convex subset of the probability simplex set.  Hence this is just a linear function of a convex set
+of $p$, which is convex, concave, quasiconvex and quasiconcave.  To visualize the domain when part
+of the probability basis vectors are chopped off, we can focus on $n=3$, a triangular simplex set.
+If we chop off $p(x=a_3)$, we get a triangle area projected on $p_1$-$p_2$-plane with $p_1+p_2 \le
+1$, $p \in \Real_{+}^n$.  $\blacksquare$ \\
+
+   (c) $\prob(\beta \ge x \ge \alpha) = \sum_{\{i| \beta \ge a_i \ge \alpha\}} p(x=a_i)$ is a linear
+function of the set of $p$, which is convex, concave, quasiconvex and quasiconcave. $\blacksquare$
+\\ 
+
+   (d) Since $x\log x$ is a convex function, $f(p)$ is convex by a nonnegative sum of convex
+functions, quasiconvex. $\blacksquare$ \\ 
+
+   (e) $\Var x = f(p) = \sum_i x_i^2p_i - (\sum_i x_i p_i)^2$ is a linear function subtracting a sum
+of nonnegative quadratic functions, which is concave, quasiconcave. $\blacksquare$ \\
+
+   (f) quartile$(x) = \inf\{ \beta \ | \ \prob(x \le \beta) = \sum_i p_i \ge 0.25 \}$.  If $p$ is
+fixed, the quartile only give a single number.  When $p$ changes, the quartile may change, i.e.,
+different distributions may have the same or different quartiles.  If quartile is $a_1$, then
+$p_1(a_1) \ge 0.25$.  If quartile is $a_2$, then $p_1(a_1)+p_2(a_2) \ge 0.25$.  Hence this is a
+function of $p$, $f(p) =$ quartile$(x) = \inf\{ \beta \ | \ \prob(x \le \beta) = \sum_i p_i \ge 0.25
+\}$.  Given a point $p$ in the simplex set, we can find the minimum $\beta$ that satisfies the
+condition $\prob(x \le \beta) = \sum_i p_i \ge 0.25$.  Since $\beta$ is picked from one of the
+values of $a_i$'s, thus the function is not continuous, which is not convex or concave.
+$\blacksquare$ Therefore, we check if the sub-or-super-level sets are convex for
+quasi-convex-or-concave.  The superlevel set is the $p$ satisfying quartile$(x) \ge \alpha$.  If
+$p$'s satisfies quartile$(x) \ge \alpha$, then using the same $p$'s with the levels $\beta < \alpha$
+will gaurantee $\prob(x \le \beta) < 0.25$, hence defines an open halfspace in the domain, which is
+convex.  $\blacksquare$ If quartile$(x) \le \alpha$, then with $\beta > \alpha$, $\prob(x \le \beta)
+= \sum_i p_i > 0.25$ is gauranteed, hence the domain is strictly convex. $\blacksquare$ \\
+
+
+
+   (g) $C = \{$ card$(A)$ $ \ | \ A \subseteq \{a_1,\ldots, a_n \}$ with $\prob(A)= \sum_i p_i \ge
+0.9 \}$, and $f(p)$ = minimum$\{C\}$.  Same logic as (f), the function gives integer values which is
+not continuous over the domain, hence not convex or concave. $\blacksquare$
+   %Fix a $\alpha$, the sublevel set $\{ p \ | \ f(p) \le \alpha \}$ with the number of elements of
+   %A below $\alpha$ satisfying probability greater than $0.9$.
+   Given a card$(A)$, there will be multiple $A$ in the set $C$.  If $p$'s satisfy $f(p) \ge
+\alpha$, then for all card$(B) < \alpha$, $\prob(B)= \sum_i p_i < 0.9$.  Hence the superlevel set is
+a strictly convex set bounded by in a halfspace, quasiconcave. $\blacksquare$ If $p$'s satisfy $f(p)
+\le \alpha$, then for card$(B) > \alpha$, $\prob(B) = \sum_i p_i$ not necessary greater than $0.9$,
+no halfspace is defined (The solution gives an example!).  Hence the sublevel set is not convex, not
+quasiconvex. $\blacksquare$
+
+   (h) $f(p) = \inf \{ \beta - \alpha \ | \ \prob(\alpha \le x \le \beta) \ge 0.9 \}$.  Since
+$\beta$ and $\alpha$ are integers, the function cannot be convex or concave. $\blacksquare$ If $p$'s
+satisfy $f(p) \le \gamma$, then any $\beta - \alpha$ with wider range does not necessary contain the
+$90\%$ probability using the same $p$, hence not necessary quasiconvex.  Now disprove quasiconvexity
+by an example.  Suppose $n=3$, $a_1=1,a_2=2,a_3=3$, $p' = (p_1',p_2',p_3') = (0.1, 0.2, 0.7)$, $p''
+= (0.7,0.2,0.1)$, $f(p') = 1$, $f(p'')=1$.  Given $\gamma = 1$, then both $p'$ and $p''$ are in the
+sublevel set, but $p'\,''=0.5*p'+0.5*p''=(0.4,0.2,0.4)$ with $f(p''')=2$ is not in the sublevel set,
+hence not quasiconvex. $\blacksquare$ If $p$'s satsify $f(p) \ge \gamma$, then any $\beta - \alpha$
+with narrower range satisfies $\prob(\alpha \le x \le \beta) < 0.9$, which is quasiconcave.
+$\blacksquare$ 
+
+
+\item 3.25 {\bf\emph{Maximum probability distance between distributions.}} \\ 
+\begin{equation}
+   d_{mp} (p,q) = \max\{ |\prob(p,C) - \prob(q,C)| \ | \ C \subseteq \{1,\cdots,n\}  \} 
+\end{equation}
+where the two probability vectors $p, q \in \Real_+^n$, and $\prob(p,C) = \sum_{i \in C} p_i$. \\
+(a) Find an expression for $d_{mp}$ involving $||p-q||_1 = \sum_{i=1}^n |p_i - q_i|$. \\ (b) Show
+$d_{mp}$ is convex on $\Real^n \times \Real^n$. \\
+
+   \Proof \\ (a) Suppose  $C^+ = \{ i \ | \ p_i \ge q_i, \}$, $C^- = \{ i \ | \ p_i < q_i \}$, $i
+\in 1,\cdots,n$.  Since $\prob(p,C^+) + \prob(p,C^-) = 1$, then $\prob(p,C^+) + \prob(q,C^+) =
+1-\prob(p,C^-) - (1-\prob(q,C^-)) = -(\prob(p,C^-) - \prob(q,C^-))$ $d_{mp}(p,q) = ||p-q||_1^{C^+} =
+\sum_{i\in C^+} |p_i-q_i|$ $\blacksquare$ \\
+   
+   (b) Since $||p-q||_1^{C^+} = \sum_{i\in C^+} |p_i - q_i| = 1^Tp - 1^Tq$ is a linear function of
+the domain, hence convex.  To make it even more simplified, notice that since $\sum_{i\in C^+} (p_i
+- q_i) = -\sum_{i\in C^-} (p_i - q_i)$, then $d_{mp}(p,q) = 1/2 \sum_{i\in C^+} (p_i - q_i) +
+  1/2\sum_{i\in C^+} (p_i - q_i) = 1/2\sum_{i\in C^+} (p_i - q_i) - 1/2 \sum_{i\in C^-} (p_i - q_i)
+= 1/2\sum_{i\in C^+} (p_i - q_i) + 1/2 \sum_{i\in C^-} (q_i - p_i) = 1/2\sum_i |p_i - q_i| =
+1/2||p-q||_1$.  {\bf\emph{Maximum probability distance between distributions is $1/2||p-q||_1$}}
+$\blacksquare$ 
+
+
+
+
+\item 3.26 {\bf\emph{Functions of eigenvalues}} \\ Let $\lambda_1(X) \ge \lambda_2(X) \ge \cdots \ge
+\lambda_n(X)$, where $X \in S^n$.  Several convex or concave functions of the eigenvalues:
+\begin{itemize} \item {\bf{Maximum (minimum) eigenvalue of a symmetric matrix is convex (concave)}}.
+$f(X) = \lambda_{\max}(X) = \sup \{ y^T X y \ | \ ||y||_2 \}$.  Given $y=y_1$, $f_{y_1}(X) =
+y_1^TXy_1$ is linear for all $X$.  Given a point $X$, there are infinite numbers of linear functions
+indexed by unit vectors $y$, and $f(X)$ is just finding the function that gives the maximum value.
+Hence it is a pointwise maximum of linear functions, which is convex.  \item {\bf{Sum of the
+eigenvalues (trace) is linear}}  \item {\bf{Sum of the inverses of the eigenvalues (trace of the
+inverse) is convex on $S_{++}^n$}} \item {\bf{Geometric mean $(\det X)^{1/n}$, and the logorithm of
+the product of the eigenvalues $\log\det X$}} \end{itemize} 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+
+%\end{document}

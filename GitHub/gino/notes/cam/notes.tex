@@ -1,0 +1,46 @@
+
+\subsection{Thermodynamic equation}
+From \cite{boville2003heating}, the thermodynamic equation
+\begin{equation}
+    \frac{D(c_pT)}{Dt} - \alpha \frac{Dp}{Dt} = Q
+\end{equation}
+with $w=\frac{Dz}{Dt}$ and the hydrostatic condition
+\begin{equation}
+    \frac{\partial p}{\partial z} = -\frac{g}{\alpha}
+\end{equation}
+becomes
+\begin{equation}
+    \begin{aligned}
+        & \frac{D(c_pT)}{Dt} - \alpha \Big( \frac{\partial p}{\partial t} + \vec{V}_h \cdot \vec{\nabla}_h p + w\frac{\partial p}{\partial z}\Big) = Q \\
+        & \frac{D(c_pT+gz)}{Dt} = \frac{Ds}{Dt} = Q + \alpha \Big( \frac{\partial p}{\partial t} + \vec{V}_h \cdot \vec{\nabla}_h p \Big).
+    \end{aligned}
+\end{equation}
+The local tendency could be written as  
+\begin{equation}
+    \frac{\partial s}{\partial t} = \Big(\frac{\partial s}{\partial t}\Big)_{\text{advec}} + 
+    \Big(\frac{\partial s}{\partial t}\Big)_{\text{work}} + \Big(\frac{\partial s}{\partial t}\Big)_{\text{heat}}
+    = \dot{s_1} + \dot{s_2} + \dot{s_3}.
+\end{equation}
+Suppose the state is updated sequentially through each process, from advection $(\dot{s_1})$, work $(\dot{s_2})$, to apparent heating $\dot{s_3}$. 
+Then $\frac{\partial s}{\partial t} = \frac{s_I - s_0}{\delta t} = \dot{s_1} + \dot{s_2} + \dot{s_3}$ $\Rightarrow$
+$s_I = s_0 + \delta t \dot{s_1} + \delta t \dot{s_2} + \delta t \dot{s_3} = s_1 + \delta t \dot{s_2} + \delta t \dot{s_3} = s_2 + \delta t \dot{s_3}$, 
+where the accumulated state is updated according to $s_i = s_{i-1} + \delta t \dot{s_i} = s_0 + \delta t \sum_{j=1}^{i} \dot{s_j} $.
+Notice that the accumulated heating $\dot{s} = \sum_{i=1}^3 \dot{s_i} = \frac{s_I-s_0}{\delta t}$, but the individual heating
+$\dot{s_i} \neq \frac{s_i-s_0}{\delta t}$, instead $\dot{s_i} = \frac{s_i-s_0}{\delta t} - \sum_{j=1}^{i-1} \dot{s_j}$, 
+indicating that $s_i$ is the accumulated state.
+%The time update of $s$ is just the accumulated state update $s_I = s_2 + \delta t \dot{s_3}$.
+Notice that $\dot{s_3} = Q$ is a sum of different heating processes, $Q = \sum \dot{q_i}$, 
+where the accumulated states could also be sequentially updated, $q_{i} = q_{i-1} + \delta t \dot{q_i}$, and $Q = \frac{q_I-q_0}{\delta t}$. 
+
+\subsubsection{Summarize}
+\begin{itemize}
+    \item Obtain the \emph{accumulated state}, $s_i$, through each process.
+    \item Use the accumulated state as the input for the next process tendency, $\dot{s_i}(s_{i-1})$ 
+          (instead of the initial state $s_0$, e.g., radiative heating require cloud states).
+    \item Obtain the final tendency from the final accumulated state, $\frac{\partial s}{\partial t} = \frac{s_I - s_0}{\delta t}$.
+\end{itemize}
+
+
+
+\subsection{Code Dependency}
+

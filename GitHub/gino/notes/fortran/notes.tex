@@ -1,0 +1,35 @@
+\subsection{Pointers}
+Define a pointer variable and an ``associated'' target variable. \\
+
+\noindent {\bf Example} \\ 
+real, pointer, allocatable :: p(:) \\
+real, target :: t = reshape((/1,2,3,4,5,6,7,8,9/),(/3,3/)) \\
+if (.not. associated(p)) then \\
+\indent p $\Rightarrow$ t(1:3) ! this will ``associate'' p as just the first column of t \\
+end if \\
+p = (/2,2,2/) ! this will change the first column of t \\
+nullify(p) ! deallocate the memory of p \\
+
+When pointers are passed in a subroutine as an argument, then the defined dummy variable (whether it's ``inout'' or ``pointer'')
+will decide if the subroutine will pass the value ``associated'' or just a value out.
+
+
+\subsection{Interface Blocks}
+Reminder of what subprograms are used (in a main program) or defined (in a module),
+\begin{itemize}
+    \item In a main program, when exterior subroutines are used.
+    \item In a module, interior module procedures (subroutines) are defined.         
+\end{itemize}
+In cam physics-buffer.F90 module, the three interfaces (pbuf-get-field, pbuf-set-field, pbuf-add-field) 
+contained each represents a category of subroutines.
+
+
+\subsection{Intrinsic Functions}
+     \subsubsection{Transfer}
+          result = transfer(source, mold) \\
+          The ``result'' has the same type of ``mold'', but the ``source'' bit level information is transferred to the ``result''.
+          \noindent {\bf Example} \\
+              real :: source = 1.232 \\
+              integer :: mold, result \\
+              result = transfer(source,mold) ! result=10712932, this is the bit value of source in integer type  \\
+              

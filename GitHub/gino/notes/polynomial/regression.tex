@@ -1,0 +1,73 @@
+
+{\bf Proof of Regression using orthonormal basis no better then arbitrary independent basis} \\
+Suppose $f_1$, $f_2$ are ON polynomial basis w.r.t.\ the operator $<>$ and $h_2 = c_1f_1 + c_2f_2$
+is a polynomial of order $2$.
+Notice that $f_1$ and $h_2$ are independent and could become a basis of $P_2(R)$.
+
+We can approximate the true sample $y$ by least squares using both basis
+\begin{equation}
+  \begin{aligned}
+     y \approx & g = a_1f_1 + a_2f_2 \\
+               & h = b_1f_1 + b_2h_2. 
+  \end{aligned}
+\end{equation}
+Our goal is to see if $h$ induces more error while approximating $y$ by non-ON basis.
+From least squares $b = (A^TA)^{-1}A^Tf$.  
+To obtain the inverse of 
+\begin{equation}
+  A^TA =
+  \begin{pmatrix}
+     <f_1,f_1> & <f_1,h_2> \\
+     <h_2,f_1> & <h_2,h_2>
+  \end{pmatrix},
+\end{equation}
+we apply Gauss-Jordan elimination
+\begin{equation}
+  \begin{aligned}
+  &
+  \begin{pmatrix}
+    <f_1,f_1> & <f_1,h_2> & 1 & 0 \\
+    <h_2,f_1> & <h_2,h_2> & 0 & 1
+  \end{pmatrix} \\
+  \sim
+  &
+  \begin{pmatrix}
+    <f_1^2> & <f_1,h_2> & 1 & 0 \\
+    0 & \frac{<h_2^2><f_1^2> - <f_1,h_2>^2}{<f_1^2>} & \frac{-<h_2,f_1>}{<f_1^2>} & 1 
+  \end{pmatrix} \\
+  \sim
+  &
+  \begin{pmatrix}
+  <f_1^2> & 0 & \frac{<h_2^2><f_1^2>}{<f_1^2><h_2^2> - <f_1,h_2>^2} &
+  \frac{-<f_1^2><f_1,h_2>}{<f_1^2><h_2^2> - <f_1,h_2>^2} \\
+  0 & \frac{<h_2^2><f_1^2> - <f_1,h_2>^2}{<f_1^2>} & \frac{-<h_2,f_1>}{<f_1^2>} & 1 
+  \end{pmatrix} \\
+  \sim
+  &
+  \begin{pmatrix}
+   1 & 0 & \frac{<h_2^2>}{<f_1^2><h_2^2> - <f_1,h_2>^2} & \frac{-<f_1,h_2>}{<f_1^2><h_2^2> -
+   <f_1,h_2>^2} \\
+   0 & 1 & \frac{-<h_2,f_1>}{<h_2^2><f_1^2> - <f_1,h_2>^2} & \frac{<f_1^2>}{<h_2^2><f_1^2> -
+   <f_1,h_2>^2}
+  \end{pmatrix}
+  \end{aligned}.
+\end{equation}
+Therefore
+\begin{equation}
+  \begin{pmatrix}
+    b_1 \\ b_2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \frac{<h_2^2><f_1,f> - <f_1,h_2><h_2,f>}{<f_1^2><h_2^2> - <f_1,h_2>^2} \\
+    \frac{-<h_2,f_1><f_1,f> + <f_1^2><h_2,f>}{<f_1^2><h_2^2> - <f_1,h_2>^2}
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    <f_1,f> - \frac{c_1}{c_2}<f_2,f> \\
+    \frac{<f_2,f>}{c_2}
+  \end{pmatrix}.
+\end{equation}
+This shows that $b_1$ has some projection coming from $f_2$.
+Substituting this into the equation gives $h = g$. $\blacksquare$
+

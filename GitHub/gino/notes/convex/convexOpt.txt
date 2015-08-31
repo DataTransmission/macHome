@@ -1,0 +1,27 @@
+
+functions that preserve convexity:
+Affine function: f(x) = Ax + b
+
+Perspective function: P: \R^n -> \R^n-1, P(x,t) = x/t, 
+		where domain is x \in \R^n-1, t \in \R++
+		therefore domain is \R^n-1\X\R++, 
+		domP = {(x,t)|t>0} is the domain constraint
+	example: x = [1 2 3], t = [4], therefore domP = [1 2 3 4]
+		=> imP = [1/4 2/4 3/4], this P preserves convexity
+
+
+Techniques to find convexity of a set S:
+
+	1) substitute 日x1+(1-日)x2, determine if the condition for S holds
+	2) find a line intersection with S, S is convex iff the intersection with a line is convex.
+		(remember quadratic inequality)
+	3) decompose S into halfspaces and hyperplanes, which are all convex sets.
+
+Kinds of convex sets:
+	) the set of points closer to a point than the other point.
+	) the set {x | x + S2 \subset S1 } where S1,S2 \subset \R^n, and S1 convex.
+	) the set {x | ||x-a|| <= 日||x-b||}, a \neq b and 0<=日<=1. (ball ||x-xc||<=r)
+	) conic hull of an outer product.
+	) expanded and restricted set.
+	) sets of probablity distributions	
+		

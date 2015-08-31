@@ -1,0 +1,2803 @@
+History File 1
+
+  Number of fields:                611
+  Write frequency:                 MONTHLY
+  Filename specifier:              %c.cam2.h%t.%y-%m.nc
+  History buffer precision:        double
+  Output precision:                single
+  Number of time samples per file: 1
+Field name  Units   NLEV    Time avg    Long name
+ABSORB  /m  30  A   Aerosol absorption
+AEROD_v 1   1   A   Total Aerosol Optical Depth in visible band
+ANRAIN  m-3 30  A   Average rain number conc
+ANSNOW  m-3 30  A   Average snow number conc
+AODABS      1   A   Aerosol absorption optical depth 550 nm
+AODDUST1        1   A   Aerosol optical depth 550 nm model 1 from dust
+AODDUST2        1   A   Aerosol optical depth 550 nm model 2 from dust
+AODDUST3        1   A   Aerosol optical depth 550 nm model 3 from dust
+AODMODE1        1   A   Aerosol optical depth 550 nm mode 1
+AODMODE2        1   A   Aerosol optical depth 550 nm mode 2
+AODMODE3        1   A   Aerosol optical depth 550 nm mode 3
+AODVIS      1   A   Aerosol optical depth 550 nm
+AQRAIN  kg/kg   30  A   Average rain mixing ratio
+AQSNOW  kg/kg   30  A   Average snow mixing ratio
+AQSO4_H2O2  kg/m2/s 1   A   SO4 aqueous phase chemistry due to H2O2
+AQSO4_O3    kg/m2/s 1   A   SO4 aqueous phase chemistry due to O3
+AQ_DMS  kg/m2/s 1   A   DMS aqueous chemistry (for gas species)
+AQ_H2O2 kg/m2/s 1   A   H2O2 aqueous chemistry (for gas species)
+AQ_H2SO4    kg/m2/s 1   A   H2SO4 aqueous chemistry (for gas species)
+AQ_SO2  kg/m2/s 1   A   SO2 aqueous chemistry (for gas species)
+AQ_SOAG kg/m2/s 1   A   SOAG aqueous chemistry (for gas species)
+AQ_bc_a1    kg/m2/s 1   A   bc_a1 aqueous chemistry (for gas species)
+AQ_dst_a1   kg/m2/s 1   A   dst_a1 aqueous chemistry (for gas species)
+AQ_dst_a3   kg/m2/s 1   A   dst_a3 aqueous chemistry (for gas species)
+AQ_ncl_a1   kg/m2/s 1   A   ncl_a1 aqueous chemistry (for gas species)
+AQ_ncl_a2   kg/m2/s 1   A   ncl_a2 aqueous chemistry (for gas species)
+AQ_ncl_a3   kg/m2/s 1   A   ncl_a3 aqueous chemistry (for gas species)
+AQ_num_a1   kg/m2/s 1   A   num_a1 aqueous chemistry (for gas species)
+AQ_num_a2   kg/m2/s 1   A   num_a2 aqueous chemistry (for gas species)
+AQ_num_a3   kg/m2/s 1   A   num_a3 aqueous chemistry (for gas species)
+AQ_pom_a1   kg/m2/s 1   A   pom_a1 aqueous chemistry (for gas species)
+AQ_so4_a1   kg/m2/s 1   A   so4_a1 aqueous chemistry (for gas species)
+AQ_so4_a2   kg/m2/s 1   A   so4_a2 aqueous chemistry (for gas species)
+AQ_so4_a3   kg/m2/s 1   A   so4_a3 aqueous chemistry (for gas species)
+AQ_soa_a1   kg/m2/s 1   A   soa_a1 aqueous chemistry (for gas species)
+AQ_soa_a2   kg/m2/s 1   A   soa_a2 aqueous chemistry (for gas species)
+AREI    Micron  30  A   Average ice effective radius
+AREL    Micron  30  A   Average droplet effective radius
+AWNC    m-3 30  A   Average cloud water number conc
+AWNI    m-3 30  A   Average cloud ice number conc
+BPROD   M2/S3   31  A   Buoyancy Production
+BURDEN1 kg/m2   1   A   Aerosol burden mode 1
+BURDEN2 kg/m2   1   A   Aerosol burden mode 2
+BURDEN3 kg/m2   1   A   Aerosol burden mode 3
+CCN3    #/cm3   30  A   CCN concentration at S=0.1%
+CDNUMC  #/m2    1   A   Vertically-integrated droplet concentration
+CLDHGH  fraction    1   A   Vertically-integrated high cloud
+CLDICE  kg/kg   30  A   Grid box averaged cloud ice amount
+CLDLIQ  kg/kg   30  A   Grid box averaged cloud liquid amount
+CLDLOW  fraction    1   A   Vertically-integrated low cloud
+CLDMED  fraction    1   A   Vertically-integrated mid-level cloud
+CLDTOT  fraction    1   A   Vertically-integrated total cloud
+CLOUD   fraction    30  A   Cloud fraction
+CMFDQ   kg/kg/s 30  A   QV tendency - shallow convection
+CMFDQR  kg/kg/s 30  A   Q tendency - shallow convection rainout
+CMFDT   K/s 30  A   T tendency - shallow convection
+CMFMC   kg/m2/s 31  A   Moist shallow convection mass flux
+CMFMCDZM    kg/m2/s 31  A   Convection mass flux from ZM deep
+CONCLD  fraction    30  A   Convective cloud cover
+DCQ kg/kg/s 30  A   Q tendency due to moist processes
+DMS kg/kg   30  A   DMS
+DSTODXC Tau 1   A   Optical depth for diagnostics
+DSTSFDRY    kg/m2/s 1   A   Dry deposition flux at surface
+DSTSFMBL    kg/m2/s 1   A   Mobilization flux at surface
+DSTSFWET    kg/m2/s 1   A   Wet deposition flux at surface
+DTCOND  K/s 30  A   T tendency - moist processes
+DTV K/s 30  A   T vertical diffusion
+EXTINCT /m  30  A   Aerosol extinction
+FICE    fraction    30  A   Fractional ice content within cloud
+FLDS    W/m2    1   A   Downwelling longwave flux at surface
+FLNS    W/m2    1   A   Net longwave flux at surface
+FLNSC   W/m2    1   A   Clearsky net longwave flux at surface
+FLNT    W/m2    1   A   Net longwave flux at top of model
+FLNTC   W/m2    1   A   Clearsky net longwave flux at top of model
+FLUT    W/m2    1   A   Upwelling longwave flux at top of model
+FLUTC   W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FREQI   fraction    30  A   Fractional occurance of ice
+FREQL   fraction    30  A   Fractional occurance of liquid
+FREQR   fraction    30  A   Fractional occurance of rain
+FREQS   fraction    30  A   Fractional occurance of snow
+FREQSH  fraction    1   A   Fractional occurance of shallow convection
+FREQZM  fraction    1   A   Fractional occurance of ZM convection
+FSDS    W/m2    1   A   Downwelling solar flux at surface
+FSDSC   W/m2    1   A   Clearsky downwelling solar flux at surface
+FSNS    W/m2    1   A   Net solar flux at surface
+FSNSC   W/m2    1   A   Clearsky net solar flux at surface
+FSNT    W/m2    1   A   Net solar flux at top of model
+FSNTC   W/m2    1   A   Clearsky net solar flux at top of model
+FSNTOA  W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOAC W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSUTOA  W/m2    1   A   Upwelling solar flux at top of atmosphere
+GS_DMS  kg/m2/s 1   A   DMS gas chemistry/wet removal (for gas species)
+GS_H2O2 kg/m2/s 1   A   H2O2 gas chemistry/wet removal (for gas species)
+GS_H2SO4    kg/m2/s 1   A   H2SO4 gas chemistry/wet removal (for gas species)
+GS_SO2  kg/m2/s 1   A   SO2 gas chemistry/wet removal (for gas species)
+GS_SOAG kg/m2/s 1   A   SOAG gas chemistry/wet removal (for gas species)
+GS_bc_a1    kg/m2/s 1   A   bc_a1 gas chemistry/wet removal (for gas species)
+GS_dst_a1   kg/m2/s 1   A   dst_a1 gas chemistry/wet removal (for gas species)
+GS_dst_a3   kg/m2/s 1   A   dst_a3 gas chemistry/wet removal (for gas species)
+GS_ncl_a1   kg/m2/s 1   A   ncl_a1 gas chemistry/wet removal (for gas species)
+GS_ncl_a2   kg/m2/s 1   A   ncl_a2 gas chemistry/wet removal (for gas species)
+GS_ncl_a3   kg/m2/s 1   A   ncl_a3 gas chemistry/wet removal (for gas species)
+GS_num_a1   kg/m2/s 1   A   num_a1 gas chemistry/wet removal (for gas species)
+GS_num_a2   kg/m2/s 1   A   num_a2 gas chemistry/wet removal (for gas species)
+GS_num_a3   kg/m2/s 1   A   num_a3 gas chemistry/wet removal (for gas species)
+GS_pom_a1   kg/m2/s 1   A   pom_a1 gas chemistry/wet removal (for gas species)
+GS_so4_a1   kg/m2/s 1   A   so4_a1 gas chemistry/wet removal (for gas species)
+GS_so4_a2   kg/m2/s 1   A   so4_a2 gas chemistry/wet removal (for gas species)
+GS_so4_a3   kg/m2/s 1   A   so4_a3 gas chemistry/wet removal (for gas species)
+GS_soa_a1   kg/m2/s 1   A   soa_a1 gas chemistry/wet removal (for gas species)
+GS_soa_a2   kg/m2/s 1   A   soa_a2 gas chemistry/wet removal (for gas species)
+H2O2    kg/kg   30  A   H2O2
+H2SO4   kg/kg   30  A   H2SO4
+H2SO4_sfgaex1   kg/m2/s 1   A   H2SO4 gas-aerosol-exchange primary column tendency
+H2SO4_sfnnuc1   kg/m2/s 1   A   H2SO4 modal_aero new particle nucleation column tendency
+ICEFRAC fraction    1   A   Fraction of sfc area covered by sea-ice
+ICIMR   kg/kg   30  A   Prognostic in-cloud ice mixing ratio
+ICWMR   kg/kg   30  A   Prognostic in-cloud water mixing ratio
+IWC kg/m3   30  A   Grid box average ice water content
+KVH m2/s    31  A   Vertical diffusion diffusivities (heat/moisture)
+KVM m2/s    31  A   Vertical diffusion diffusivities (momentum)
+LANDFRAC    fraction    1   A   Fraction of sfc area covered by land
+LCLOUD      30  A   Liquid cloud fraction
+LHFLX   W/m2    1   A   Surface latent heat flux
+LND_MBL frac    1   A   Soil erodibility factor
+LWCF    W/m2    1   A   Longwave cloud forcing
+NDROPCOL    #/m2    1   A   Column droplet number
+NDROPMIX    #/kg/s  30  A   Droplet number mixing
+NDROPSNK    #/kg/s  30  A   Droplet number loss by microphysics
+NDROPSRC    #/kg/s  30  A   Droplet number source
+NUMICE  kg/kg   30  A   Grid box averaged cloud ice number
+NUMLIQ  kg/kg   30  A   Grid box averaged cloud liquid number
+OCNFRAC fraction    1   A   Fraction of sfc area covered by ocean
+ODV_bc_a1   1   1   A   bc_a1 optical depth in visible band
+ODV_dst_a1  1   1   A   dst_a1 optical depth in visible band
+ODV_dst_a3  1   1   A   dst_a3 optical depth in visible band
+ODV_ncl_a1  1   1   A   ncl_a1 optical depth in visible band
+ODV_ncl_a3  1   1   A   ncl_a3 optical depth in visible band
+ODV_pom_a1  1   1   A   pom_a1 optical depth in visible band
+ODV_so4_a1  1   1   A   so4_a1 optical depth in visible band
+ODV_soa_a1  1   1   A   soa_a1 optical depth in visible band
+OMEGA   Pa/s    30  A   Vertical velocity (pressure)
+OMEGAT  K Pa/s  30  A   Vertical heat flux
+ORO frac    1   A   ORO
+PBLH    m   1   A   PBL height
+PCONVB  Pa  1   A   convection base pressure
+PCONVT  Pa  1   A   convection top pressure
+PHIS    m2/s2   1   I   Surface geopotential
+PRECC   m/s 1   A   Convective precipitation rate (liq + ice)
+PRECCDZM    m/s 1   A   Convective precipitation rate from ZM deep
+PRECL   m/s 1   A   Large-scale (stable) precipitation rate (liq + ice)
+PRECSC  m/s 1   A   Convective snow rate (water equivalent)
+PRECSH  m/s 1   A   Shallow Convection precipitation rate
+PRECSL  m/s 1   A   Large-scale (stable) snow rate (water equivalent)
+PRECT   m/s 1   A   Total (convective and large-scale) precipitation rate (liq + ice)
+PS  Pa  1   A   Surface pressure
+PSL Pa  1   A   Sea level pressure
+Q   kg/kg   30  A   Specific humidity
+QC  kg/kg/s 30  A   Q tendency - shallow convection LW export
+QFLX    kg/m2/s 1   A   Surface water flux
+QREFHT  kg/kg   1   A   Reference height humidity
+QRL K/s 30  A   Longwave heating rate
+QRS K/s 30  A   Solar heating rate
+QT  kg/kg   30  A   Total water mixing ratio
+QTFLX   W/m2    31  A   Total water flux
+RAM1    frac    1   A   RAM1
+RELHUM  percent 30  A   Relative humidity
+RHREFHT fraction    1   A   Reference height relative humidity
+SFCLDICE    kg/m2/s 1   A   CLDICE surface flux
+SFCLDLIQ    kg/m2/s 1   A   CLDLIQ surface flux
+SFI FRACTION    31  A   Interface-layer sat frac
+SFNUMICE    kg/m2/s 1   A   NUMICE surface flux
+SFNUMLIQ    kg/m2/s 1   A   NUMLIQ surface flux
+SHFLX   W/m2    1   A   Surface sensible heat flux
+SL  J/kg    30  A   Liquid water static energy
+SLFLX   W/m2    31  A   Liquid static energy flux
+SLV J/kg    30  A   Liq wat virtual static energy
+SNOWHICE    m   1   A   Water equivalent snow depth
+SNOWHLND    m   1   A   Water equivalent snow depth
+SO2 kg/kg   30  A   SO2
+SO2_CLXF    molec/cm2/s 1   A   vertically intergrated external forcing for SO2
+SO2_XFRC    molec/cm3/s 30  A   external forcing for SO2
+SOAG    kg/kg   30  A   SOAG
+SOAG_sfgaex1    kg/m2/s 1   A   SOAG gas-aerosol-exchange primary column tendency
+SOLIN   W/m2    1   A   Solar insolation
+SPROD   M2/S3   31  A   Shear Production
+SRFRAD  W/m2    1   A   Net radiative flux at surface
+SSAVIS      1   A   Aerosol singel-scatter albedo
+SSTODXC Tau 1   A   Optical depth for diagnostics
+SSTSFDRY    kg/m2/s 1   A   Dry deposition flux at surface
+SSTSFMBL    kg/m2/s 1   A   Mobilization flux at surface
+SSTSFWET    kg/m2/s 1   A   Wet deposition flux at surface
+SWCF    W/m2    1   A   Shortwave cloud forcing
+T   K   30  A   Temperature
+TAUTMSX N/m2    1   A   Zonal turbulent mountain surface stress
+TAUTMSY N/m2    1   A   Meridional turbulent mountain surface stress
+TAUX    N/m2    1   A   Zonal surface stress
+TAUY    N/m2    1   A   Meridional surface stress
+TGCLDCWP    kg/m2   1   A   Total grid-box cloud water path (liquid and ice)
+TGCLDIWP    kg/m2   1   A   Total grid-box cloud ice water path
+TGCLDLWP    kg/m2   1   A   Total grid-box cloud liquid water path
+TKE m2/s2   31  A   Turbulent Kinetic Energy
+TMQ kg/m2   1   A   Total (vertically integrated) precipitatable water
+TREFHT  K   1   A   Reference height temperature
+TREFMNAV    K   1   A   Average of TREFHT daily minimum
+TREFMXAV    K   1   A   Average of TREFHT daily maximum
+TROP_FD probability 1   A   Tropopause Found
+TROP_P  Pa  1   A   Tropopause Pressure
+TROP_PD probability 30  A   Tropopause Probabilty
+TROP_T  K   1   A   Tropopause Temperature
+TROP_Z  m   1   A   Tropopause Height
+TS  K   1   A   Surface temperature (radiative)
+TSMN    K   1   M   Minimum surface temperature over output period
+TSMX    K   1   X   Maximum surface temperature over output period
+U   m/s 30  A   Zonal wind
+UFLX    W/m2    31  A   Zonal momentum flux
+US  m/s 30  A   Zonal wind, staggered
+UU  m2/s2   30  A   Zonal velocity squared
+V   m/s 30  A   Meridional wind
+VD01    kg/kg/s 30  A   Vertical diffusion of Q
+VFLX    W/m2    31  A   Meridional momentm flux
+VQ  m/skg/kg    30  A   Meridional water transport
+VS  m/s 30  A   Meridional wind, staggered
+VT  K m/s   30  A   Meridional heat transport
+VU  m2/s2   30  A   Meridional flux of zonal momentum
+VV  m2/s2   30  A   Meridional velocity squared
+WGUSTD  m/s 1   A   wind gusts from turbulence
+WSUB    m/s 30  A   Diagnostic sub-grid vertical velocity
+WTKE    m/s 30  A   Standard deviation of updraft velocity
+XPH_LWC kg/kg   30  A   pH value multiplied by lwc
+Z3  m   30  A   Geopotential Height (above sea level)
+airFV   frac    1   A   FV
+bc_a1   kg/kg   30  A   bc_a1
+bc_a1DDF    kg/m2/s 1   A   bc_a1 dry deposition flux at bottom (grav + turb)
+bc_a1GVF    kg/m2/s 1   A   bc_a1 gravitational dry deposition flux
+bc_a1SFSBC  kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+bc_a1SFSBS  kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+bc_a1SFSIC  kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+bc_a1SFSIS  kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+bc_a1SFWET  kg/m2/s 1   A   Wet deposition flux at surface
+bc_a1TBF    kg/m2/s 1   A   bc_a1 turbulent dry deposition flux
+bc_a1_CLXF  molec/cm2/s 1   A   vertically intergrated external forcing for bc_a1
+bc_a1_XFRC  molec/cm3/s 30  A   external forcing for bc_a1
+bc_c1   kg/kg   30  A   bc_c1 in cloud water
+bc_c1DDF    kg/m2/s 1   A   bc_c1 dry deposition flux at bottom (grav + turb)
+bc_c1GVF    kg/m2/s 1   A   bc_c1 gravitational dry deposition flux
+bc_c1SFSBC  kg/m2/s 1   A   bc_c1 wet deposition flux (belowcloud, convective) at surface
+bc_c1SFSBS  kg/m2/s 1   A   bc_c1 wet deposition flux (belowcloud, stratiform) at surface
+bc_c1SFSIC  kg/m2/s 1   A   bc_c1 wet deposition flux (incloud, convective) at surface
+bc_c1SFSIS  kg/m2/s 1   A   bc_c1 wet deposition flux (incloud, stratiform) at surface
+bc_c1SFWET  kg/m2/s 1   A   bc_c1 wet deposition flux at surface
+bc_c1TBF    kg/m2/s 1   A   bc_c1 turbulent dry deposition flux
+chem_trop   fraction of mode    30  I   Lowest level with stratospheric chemsitry
+chem_trop_tropop    fraction of mode    30  I   Troposphere boundary calculated in chemistry
+dgnd_a01    m   30  A   dry dgnum, interstitial, mode 01
+dgnd_a02    m   30  A   dry dgnum, interstitial, mode 02
+dgnd_a03    m   30  A   dry dgnum, interstitial, mode 03
+dgnw_a01    m   30  A   wet dgnum, interstitial, mode 01
+dgnw_a02    m   30  A   wet dgnum, interstitial, mode 02
+dgnw_a03    m   30  A   wet dgnum, interstitial, mode 03
+dst_a1  kg/kg   30  A   dst_a1
+dst_a1DDF   kg/m2/s 1   A   dst_a1 dry deposition flux at bottom (grav + turb)
+dst_a1GVF   kg/m2/s 1   A   dst_a1 gravitational dry deposition flux
+dst_a1SF    kg/m2/s 1   A   dst_a1 dust surface emission
+dst_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+dst_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+dst_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+dst_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+dst_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+dst_a1TBF   kg/m2/s 1   A   dst_a1 turbulent dry deposition flux
+dst_a3  kg/kg   30  A   dst_a3
+dst_a3DDF   kg/m2/s 1   A   dst_a3 dry deposition flux at bottom (grav + turb)
+dst_a3GVF   kg/m2/s 1   A   dst_a3 gravitational dry deposition flux
+dst_a3SF    kg/m2/s 1   A   dst_a3 dust surface emission
+dst_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+dst_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+dst_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+dst_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+dst_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+dst_a3TBF   kg/m2/s 1   A   dst_a3 turbulent dry deposition flux
+dst_c1  kg/kg   30  A   dst_c1 in cloud water
+dst_c1DDF   kg/m2/s 1   A   dst_c1 dry deposition flux at bottom (grav + turb)
+dst_c1GVF   kg/m2/s 1   A   dst_c1 gravitational dry deposition flux
+dst_c1SFSBC kg/m2/s 1   A   dst_c1 wet deposition flux (belowcloud, convective) at surface
+dst_c1SFSBS kg/m2/s 1   A   dst_c1 wet deposition flux (belowcloud, stratiform) at surface
+dst_c1SFSIC kg/m2/s 1   A   dst_c1 wet deposition flux (incloud, convective) at surface
+dst_c1SFSIS kg/m2/s 1   A   dst_c1 wet deposition flux (incloud, stratiform) at surface
+dst_c1SFWET kg/m2/s 1   A   dst_c1 wet deposition flux at surface
+dst_c1TBF   kg/m2/s 1   A   dst_c1 turbulent dry deposition flux
+dst_c3  kg/kg   30  A   dst_c3 in cloud water
+dst_c3DDF   kg/m2/s 1   A   dst_c3 dry deposition flux at bottom (grav + turb)
+dst_c3GVF   kg/m2/s 1   A   dst_c3 gravitational dry deposition flux
+dst_c3SFSBC kg/m2/s 1   A   dst_c3 wet deposition flux (belowcloud, convective) at surface
+dst_c3SFSBS kg/m2/s 1   A   dst_c3 wet deposition flux (belowcloud, stratiform) at surface
+dst_c3SFSIC kg/m2/s 1   A   dst_c3 wet deposition flux (incloud, convective) at surface
+dst_c3SFSIS kg/m2/s 1   A   dst_c3 wet deposition flux (incloud, stratiform) at surface
+dst_c3SFWET kg/m2/s 1   A   dst_c3 wet deposition flux at surface
+dst_c3TBF   kg/m2/s 1   A   dst_c3 turbulent dry deposition flux
+ncl_a1  kg/kg   30  A   ncl_a1
+ncl_a1DDF   kg/m2/s 1   A   ncl_a1 dry deposition flux at bottom (grav + turb)
+ncl_a1GVF   kg/m2/s 1   A   ncl_a1 gravitational dry deposition flux
+ncl_a1SF    kg/m2/s 1   A   ncl_a1 progseasalts surface emission
+ncl_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a1TBF   kg/m2/s 1   A   ncl_a1 turbulent dry deposition flux
+ncl_a1_sfcoag1  kg/m2/s 1   A   ncl_a1 modal_aero coagulation column tendency
+ncl_a1_sfcsiz3  kg/m2/s 1   A   ncl_a1 calcsize aitken-to-accum adjust column tendency
+ncl_a1_sfcsiz4  kg/m2/s 1   A   ncl_a1 calcsize accum-to-aitken adjust column tendency
+ncl_a1_sfgaex2  kg/m2/s 1   A   ncl_a1 gas-aerosol-exchange renaming column tendency
+ncl_a2  kg/kg   30  A   ncl_a2
+ncl_a2DDF   kg/m2/s 1   A   ncl_a2 dry deposition flux at bottom (grav + turb)
+ncl_a2GVF   kg/m2/s 1   A   ncl_a2 gravitational dry deposition flux
+ncl_a2SF    kg/m2/s 1   A   ncl_a2 progseasalts surface emission
+ncl_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a2TBF   kg/m2/s 1   A   ncl_a2 turbulent dry deposition flux
+ncl_a2_sfcoag1  kg/m2/s 1   A   ncl_a2 modal_aero coagulation column tendency
+ncl_a2_sfcsiz3  kg/m2/s 1   A   ncl_a2 calcsize aitken-to-accum adjust column tendency
+ncl_a2_sfcsiz4  kg/m2/s 1   A   ncl_a2 calcsize accum-to-aitken adjust column tendency
+ncl_a2_sfgaex2  kg/m2/s 1   A   ncl_a2 gas-aerosol-exchange renaming column tendency
+ncl_a3  kg/kg   30  A   ncl_a3
+ncl_a3DDF   kg/m2/s 1   A   ncl_a3 dry deposition flux at bottom (grav + turb)
+ncl_a3GVF   kg/m2/s 1   A   ncl_a3 gravitational dry deposition flux
+ncl_a3SF    kg/m2/s 1   A   ncl_a3 progseasalts surface emission
+ncl_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a3TBF   kg/m2/s 1   A   ncl_a3 turbulent dry deposition flux
+ncl_c1  kg/kg   30  A   ncl_c1 in cloud water
+ncl_c1DDF   kg/m2/s 1   A   ncl_c1 dry deposition flux at bottom (grav + turb)
+ncl_c1GVF   kg/m2/s 1   A   ncl_c1 gravitational dry deposition flux
+ncl_c1SFSBC kg/m2/s 1   A   ncl_c1 wet deposition flux (belowcloud, convective) at surface
+ncl_c1SFSBS kg/m2/s 1   A   ncl_c1 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c1SFSIC kg/m2/s 1   A   ncl_c1 wet deposition flux (incloud, convective) at surface
+ncl_c1SFSIS kg/m2/s 1   A   ncl_c1 wet deposition flux (incloud, stratiform) at surface
+ncl_c1SFWET kg/m2/s 1   A   ncl_c1 wet deposition flux at surface
+ncl_c1TBF   kg/m2/s 1   A   ncl_c1 turbulent dry deposition flux
+ncl_c1_sfcsiz3  kg/m2/s 1   A   ncl_c1 calcsize aitken-to-accum adjust column tendency
+ncl_c1_sfcsiz4  kg/m2/s 1   A   ncl_c1 calcsize accum-to-aitken adjust column tendency
+ncl_c1_sfgaex2  kg/m2/s 1   A   ncl_c1 gas-aerosol-exchange renaming column tendency
+ncl_c2  kg/kg   30  A   ncl_c2 in cloud water
+ncl_c2DDF   kg/m2/s 1   A   ncl_c2 dry deposition flux at bottom (grav + turb)
+ncl_c2GVF   kg/m2/s 1   A   ncl_c2 gravitational dry deposition flux
+ncl_c2SFSBC kg/m2/s 1   A   ncl_c2 wet deposition flux (belowcloud, convective) at surface
+ncl_c2SFSBS kg/m2/s 1   A   ncl_c2 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c2SFSIC kg/m2/s 1   A   ncl_c2 wet deposition flux (incloud, convective) at surface
+ncl_c2SFSIS kg/m2/s 1   A   ncl_c2 wet deposition flux (incloud, stratiform) at surface
+ncl_c2SFWET kg/m2/s 1   A   ncl_c2 wet deposition flux at surface
+ncl_c2TBF   kg/m2/s 1   A   ncl_c2 turbulent dry deposition flux
+ncl_c2_sfcsiz3  kg/m2/s 1   A   ncl_c2 calcsize aitken-to-accum adjust column tendency
+ncl_c2_sfcsiz4  kg/m2/s 1   A   ncl_c2 calcsize accum-to-aitken adjust column tendency
+ncl_c2_sfgaex2  kg/m2/s 1   A   ncl_c2 gas-aerosol-exchange renaming column tendency
+ncl_c3  kg/kg   30  A   ncl_c3 in cloud water
+ncl_c3DDF   kg/m2/s 1   A   ncl_c3 dry deposition flux at bottom (grav + turb)
+ncl_c3GVF   kg/m2/s 1   A   ncl_c3 gravitational dry deposition flux
+ncl_c3SFSBC kg/m2/s 1   A   ncl_c3 wet deposition flux (belowcloud, convective) at surface
+ncl_c3SFSBS kg/m2/s 1   A   ncl_c3 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c3SFSIC kg/m2/s 1   A   ncl_c3 wet deposition flux (incloud, convective) at surface
+ncl_c3SFSIS kg/m2/s 1   A   ncl_c3 wet deposition flux (incloud, stratiform) at surface
+ncl_c3SFWET kg/m2/s 1   A   ncl_c3 wet deposition flux at surface
+ncl_c3TBF   kg/m2/s 1   A   ncl_c3 turbulent dry deposition flux
+num_a1  kg/kg   30  A   num_a1
+num_a1DDF   kg/m2/s 1   A   num_a1 dry deposition flux at bottom (grav + turb)
+num_a1GVF   kg/m2/s 1   A   num_a1 gravitational dry deposition flux
+num_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a1TBF   kg/m2/s 1   A   num_a1 turbulent dry deposition flux
+num_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for num_a1
+num_a1_XFRC molec/cm3/s 30  A   external forcing for num_a1
+num_a1_sfcoag1  #/m2/s  1   A   num_a1 modal_aero coagulation column tendency
+num_a1_sfcsiz1  #/m2/s  1   A   num_a1 calcsize number-adjust column source
+num_a1_sfcsiz2  #/m2/s  1   A   num_a1 calcsize number-adjust column sink
+num_a1_sfcsiz3  #/m2/s  1   A   num_a1 calcsize aitken-to-accum adjust column tendency
+num_a1_sfcsiz4  #/m2/s  1   A   num_a1 calcsize accum-to-aitken adjust column tendency
+num_a1_sfgaex2  #/m2/s  1   A   num_a1 gas-aerosol-exchange renaming column tendency
+num_a2  kg/kg   30  A   num_a2
+num_a2DDF   kg/m2/s 1   A   num_a2 dry deposition flux at bottom (grav + turb)
+num_a2GVF   kg/m2/s 1   A   num_a2 gravitational dry deposition flux
+num_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a2TBF   kg/m2/s 1   A   num_a2 turbulent dry deposition flux
+num_a2_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for num_a2
+num_a2_XFRC molec/cm3/s 30  A   external forcing for num_a2
+num_a2_sfcoag1  #/m2/s  1   A   num_a2 modal_aero coagulation column tendency
+num_a2_sfcsiz1  #/m2/s  1   A   num_a2 calcsize number-adjust column source
+num_a2_sfcsiz2  #/m2/s  1   A   num_a2 calcsize number-adjust column sink
+num_a2_sfcsiz3  #/m2/s  1   A   num_a2 calcsize aitken-to-accum adjust column tendency
+num_a2_sfcsiz4  #/m2/s  1   A   num_a2 calcsize accum-to-aitken adjust column tendency
+num_a2_sfgaex2  #/m2/s  1   A   num_a2 gas-aerosol-exchange renaming column tendency
+num_a2_sfnnuc1  #/m2/s  1   A   num_a2 modal_aero new particle nucleation column tendency
+num_a3  kg/kg   30  A   num_a3
+num_a3DDF   kg/m2/s 1   A   num_a3 dry deposition flux at bottom (grav + turb)
+num_a3GVF   kg/m2/s 1   A   num_a3 gravitational dry deposition flux
+num_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a3TBF   kg/m2/s 1   A   num_a3 turbulent dry deposition flux
+num_a3_sfcsiz1  #/m2/s  1   A   num_a3 calcsize number-adjust column source
+num_a3_sfcsiz2  #/m2/s  1   A   num_a3 calcsize number-adjust column sink
+num_c1  kg/kg   30  A   num_c1 in cloud water
+num_c1DDF   kg/m2/s 1   A   num_c1 dry deposition flux at bottom (grav + turb)
+num_c1GVF   kg/m2/s 1   A   num_c1 gravitational dry deposition flux
+num_c1SFSBC kg/m2/s 1   A   num_c1 wet deposition flux (belowcloud, convective) at surface
+num_c1SFSBS kg/m2/s 1   A   num_c1 wet deposition flux (belowcloud, stratiform) at surface
+num_c1SFSIC kg/m2/s 1   A   num_c1 wet deposition flux (incloud, convective) at surface
+num_c1SFSIS kg/m2/s 1   A   num_c1 wet deposition flux (incloud, stratiform) at surface
+num_c1SFWET kg/m2/s 1   A   num_c1 wet deposition flux at surface
+num_c1TBF   kg/m2/s 1   A   num_c1 turbulent dry deposition flux
+num_c1_sfcsiz1  #/m2/s  1   A   num_c1 calcsize number-adjust column source
+num_c1_sfcsiz2  #/m2/s  1   A   num_c1 calcsize number-adjust column sink
+num_c1_sfcsiz3  #/m2/s  1   A   num_c1 calcsize aitken-to-accum adjust column tendency
+num_c1_sfcsiz4  #/m2/s  1   A   num_c1 calcsize accum-to-aitken adjust column tendency
+num_c1_sfgaex2  #/m2/s  1   A   num_c1 gas-aerosol-exchange renaming column tendency
+num_c2  kg/kg   30  A   num_c2 in cloud water
+num_c2DDF   kg/m2/s 1   A   num_c2 dry deposition flux at bottom (grav + turb)
+num_c2GVF   kg/m2/s 1   A   num_c2 gravitational dry deposition flux
+num_c2SFSBC kg/m2/s 1   A   num_c2 wet deposition flux (belowcloud, convective) at surface
+num_c2SFSBS kg/m2/s 1   A   num_c2 wet deposition flux (belowcloud, stratiform) at surface
+num_c2SFSIC kg/m2/s 1   A   num_c2 wet deposition flux (incloud, convective) at surface
+num_c2SFSIS kg/m2/s 1   A   num_c2 wet deposition flux (incloud, stratiform) at surface
+num_c2SFWET kg/m2/s 1   A   num_c2 wet deposition flux at surface
+num_c2TBF   kg/m2/s 1   A   num_c2 turbulent dry deposition flux
+num_c2_sfcsiz1  #/m2/s  1   A   num_c2 calcsize number-adjust column source
+num_c2_sfcsiz2  #/m2/s  1   A   num_c2 calcsize number-adjust column sink
+num_c2_sfcsiz3  #/m2/s  1   A   num_c2 calcsize aitken-to-accum adjust column tendency
+num_c2_sfcsiz4  #/m2/s  1   A   num_c2 calcsize accum-to-aitken adjust column tendency
+num_c2_sfgaex2  #/m2/s  1   A   num_c2 gas-aerosol-exchange renaming column tendency
+num_c3  kg/kg   30  A   num_c3 in cloud water
+num_c3DDF   kg/m2/s 1   A   num_c3 dry deposition flux at bottom (grav + turb)
+num_c3GVF   kg/m2/s 1   A   num_c3 gravitational dry deposition flux
+num_c3SFSBC kg/m2/s 1   A   num_c3 wet deposition flux (belowcloud, convective) at surface
+num_c3SFSBS kg/m2/s 1   A   num_c3 wet deposition flux (belowcloud, stratiform) at surface
+num_c3SFSIC kg/m2/s 1   A   num_c3 wet deposition flux (incloud, convective) at surface
+num_c3SFSIS kg/m2/s 1   A   num_c3 wet deposition flux (incloud, stratiform) at surface
+num_c3SFWET kg/m2/s 1   A   num_c3 wet deposition flux at surface
+num_c3TBF   kg/m2/s 1   A   num_c3 turbulent dry deposition flux
+num_c3_sfcsiz1  #/m2/s  1   A   num_c3 calcsize number-adjust column source
+num_c3_sfcsiz2  #/m2/s  1   A   num_c3 calcsize number-adjust column sink
+pom_a1  kg/kg   30  A   pom_a1
+pom_a1DDF   kg/m2/s 1   A   pom_a1 dry deposition flux at bottom (grav + turb)
+pom_a1GVF   kg/m2/s 1   A   pom_a1 gravitational dry deposition flux
+pom_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+pom_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+pom_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+pom_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+pom_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+pom_a1TBF   kg/m2/s 1   A   pom_a1 turbulent dry deposition flux
+pom_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for pom_a1
+pom_a1_XFRC molec/cm3/s 30  A   external forcing for pom_a1
+pom_c1  kg/kg   30  A   pom_c1 in cloud water
+pom_c1DDF   kg/m2/s 1   A   pom_c1 dry deposition flux at bottom (grav + turb)
+pom_c1GVF   kg/m2/s 1   A   pom_c1 gravitational dry deposition flux
+pom_c1SFSBC kg/m2/s 1   A   pom_c1 wet deposition flux (belowcloud, convective) at surface
+pom_c1SFSBS kg/m2/s 1   A   pom_c1 wet deposition flux (belowcloud, stratiform) at surface
+pom_c1SFSIC kg/m2/s 1   A   pom_c1 wet deposition flux (incloud, convective) at surface
+pom_c1SFSIS kg/m2/s 1   A   pom_c1 wet deposition flux (incloud, stratiform) at surface
+pom_c1SFWET kg/m2/s 1   A   pom_c1 wet deposition flux at surface
+pom_c1TBF   kg/m2/s 1   A   pom_c1 turbulent dry deposition flux
+so4_a1  kg/kg   30  A   so4_a1
+so4_a1DDF   kg/m2/s 1   A   so4_a1 dry deposition flux at bottom (grav + turb)
+so4_a1GVF   kg/m2/s 1   A   so4_a1 gravitational dry deposition flux
+so4_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a1TBF   kg/m2/s 1   A   so4_a1 turbulent dry deposition flux
+so4_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for so4_a1
+so4_a1_XFRC molec/cm3/s 30  A   external forcing for so4_a1
+so4_a1_sfcoag1  kg/m2/s 1   A   so4_a1 modal_aero coagulation column tendency
+so4_a1_sfcsiz3  kg/m2/s 1   A   so4_a1 calcsize aitken-to-accum adjust column tendency
+so4_a1_sfcsiz4  kg/m2/s 1   A   so4_a1 calcsize accum-to-aitken adjust column tendency
+so4_a1_sfgaex1  kg/m2/s 1   A   so4_a1 gas-aerosol-exchange primary column tendency
+so4_a1_sfgaex2  kg/m2/s 1   A   so4_a1 gas-aerosol-exchange renaming column tendency
+so4_a2  kg/kg   30  A   so4_a2
+so4_a2DDF   kg/m2/s 1   A   so4_a2 dry deposition flux at bottom (grav + turb)
+so4_a2GVF   kg/m2/s 1   A   so4_a2 gravitational dry deposition flux
+so4_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a2TBF   kg/m2/s 1   A   so4_a2 turbulent dry deposition flux
+so4_a2_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for so4_a2
+so4_a2_XFRC molec/cm3/s 30  A   external forcing for so4_a2
+so4_a2_sfcoag1  kg/m2/s 1   A   so4_a2 modal_aero coagulation column tendency
+so4_a2_sfcsiz3  kg/m2/s 1   A   so4_a2 calcsize aitken-to-accum adjust column tendency
+so4_a2_sfcsiz4  kg/m2/s 1   A   so4_a2 calcsize accum-to-aitken adjust column tendency
+so4_a2_sfgaex1  kg/m2/s 1   A   so4_a2 gas-aerosol-exchange primary column tendency
+so4_a2_sfgaex2  kg/m2/s 1   A   so4_a2 gas-aerosol-exchange renaming column tendency
+so4_a2_sfnnuc1  kg/m2/s 1   A   so4_a2 modal_aero new particle nucleation column tendency
+so4_a3  kg/kg   30  A   so4_a3
+so4_a3DDF   kg/m2/s 1   A   so4_a3 dry deposition flux at bottom (grav + turb)
+so4_a3GVF   kg/m2/s 1   A   so4_a3 gravitational dry deposition flux
+so4_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a3TBF   kg/m2/s 1   A   so4_a3 turbulent dry deposition flux
+so4_a3_sfgaex1  kg/m2/s 1   A   so4_a3 gas-aerosol-exchange primary column tendency
+so4_c1  kg/kg   30  A   so4_c1 in cloud water
+so4_c1AQH2SO4   kg/m2/s 1   A   so4_c1 aqueous phase chemistry
+so4_c1AQSO4 kg/m2/s 1   A   so4_c1 aqueous phase chemistry
+so4_c1DDF   kg/m2/s 1   A   so4_c1 dry deposition flux at bottom (grav + turb)
+so4_c1GVF   kg/m2/s 1   A   so4_c1 gravitational dry deposition flux
+so4_c1SFSBC kg/m2/s 1   A   so4_c1 wet deposition flux (belowcloud, convective) at surface
+so4_c1SFSBS kg/m2/s 1   A   so4_c1 wet deposition flux (belowcloud, stratiform) at surface
+so4_c1SFSIC kg/m2/s 1   A   so4_c1 wet deposition flux (incloud, convective) at surface
+so4_c1SFSIS kg/m2/s 1   A   so4_c1 wet deposition flux (incloud, stratiform) at surface
+so4_c1SFWET kg/m2/s 1   A   so4_c1 wet deposition flux at surface
+so4_c1TBF   kg/m2/s 1   A   so4_c1 turbulent dry deposition flux
+so4_c1_sfcsiz3  kg/m2/s 1   A   so4_c1 calcsize aitken-to-accum adjust column tendency
+so4_c1_sfcsiz4  kg/m2/s 1   A   so4_c1 calcsize accum-to-aitken adjust column tendency
+so4_c1_sfgaex2  kg/m2/s 1   A   so4_c1 gas-aerosol-exchange renaming column tendency
+so4_c2  kg/kg   30  A   so4_c2 in cloud water
+so4_c2AQH2SO4   kg/m2/s 1   A   so4_c2 aqueous phase chemistry
+so4_c2AQSO4 kg/m2/s 1   A   so4_c2 aqueous phase chemistry
+so4_c2DDF   kg/m2/s 1   A   so4_c2 dry deposition flux at bottom (grav + turb)
+so4_c2GVF   kg/m2/s 1   A   so4_c2 gravitational dry deposition flux
+so4_c2SFSBC kg/m2/s 1   A   so4_c2 wet deposition flux (belowcloud, convective) at surface
+so4_c2SFSBS kg/m2/s 1   A   so4_c2 wet deposition flux (belowcloud, stratiform) at surface
+so4_c2SFSIC kg/m2/s 1   A   so4_c2 wet deposition flux (incloud, convective) at surface
+so4_c2SFSIS kg/m2/s 1   A   so4_c2 wet deposition flux (incloud, stratiform) at surface
+so4_c2SFWET kg/m2/s 1   A   so4_c2 wet deposition flux at surface
+so4_c2TBF   kg/m2/s 1   A   so4_c2 turbulent dry deposition flux
+so4_c2_sfcsiz3  kg/m2/s 1   A   so4_c2 calcsize aitken-to-accum adjust column tendency
+so4_c2_sfcsiz4  kg/m2/s 1   A   so4_c2 calcsize accum-to-aitken adjust column tendency
+so4_c2_sfgaex2  kg/m2/s 1   A   so4_c2 gas-aerosol-exchange renaming column tendency
+so4_c3  kg/kg   30  A   so4_c3 in cloud water
+so4_c3AQH2SO4   kg/m2/s 1   A   so4_c3 aqueous phase chemistry
+so4_c3AQSO4 kg/m2/s 1   A   so4_c3 aqueous phase chemistry
+so4_c3DDF   kg/m2/s 1   A   so4_c3 dry deposition flux at bottom (grav + turb)
+so4_c3GVF   kg/m2/s 1   A   so4_c3 gravitational dry deposition flux
+so4_c3SFSBC kg/m2/s 1   A   so4_c3 wet deposition flux (belowcloud, convective) at surface
+so4_c3SFSBS kg/m2/s 1   A   so4_c3 wet deposition flux (belowcloud, stratiform) at surface
+so4_c3SFSIC kg/m2/s 1   A   so4_c3 wet deposition flux (incloud, convective) at surface
+so4_c3SFSIS kg/m2/s 1   A   so4_c3 wet deposition flux (incloud, stratiform) at surface
+so4_c3SFWET kg/m2/s 1   A   so4_c3 wet deposition flux at surface
+so4_c3TBF   kg/m2/s 1   A   so4_c3 turbulent dry deposition flux
+soa_a1  kg/kg   30  A   soa_a1
+soa_a1DDF   kg/m2/s 1   A   soa_a1 dry deposition flux at bottom (grav + turb)
+soa_a1GVF   kg/m2/s 1   A   soa_a1 gravitational dry deposition flux
+soa_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+soa_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+soa_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+soa_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+soa_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+soa_a1TBF   kg/m2/s 1   A   soa_a1 turbulent dry deposition flux
+soa_a1_sfcoag1  kg/m2/s 1   A   soa_a1 modal_aero coagulation column tendency
+soa_a1_sfcsiz3  kg/m2/s 1   A   soa_a1 calcsize aitken-to-accum adjust column tendency
+soa_a1_sfcsiz4  kg/m2/s 1   A   soa_a1 calcsize accum-to-aitken adjust column tendency
+soa_a1_sfgaex1  kg/m2/s 1   A   soa_a1 gas-aerosol-exchange primary column tendency
+soa_a1_sfgaex2  kg/m2/s 1   A   soa_a1 gas-aerosol-exchange renaming column tendency
+soa_a2  kg/kg   30  A   soa_a2
+soa_a2DDF   kg/m2/s 1   A   soa_a2 dry deposition flux at bottom (grav + turb)
+soa_a2GVF   kg/m2/s 1   A   soa_a2 gravitational dry deposition flux
+soa_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+soa_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+soa_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+soa_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+soa_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+soa_a2TBF   kg/m2/s 1   A   soa_a2 turbulent dry deposition flux
+soa_a2_sfcoag1  kg/m2/s 1   A   soa_a2 modal_aero coagulation column tendency
+soa_a2_sfcsiz3  kg/m2/s 1   A   soa_a2 calcsize aitken-to-accum adjust column tendency
+soa_a2_sfcsiz4  kg/m2/s 1   A   soa_a2 calcsize accum-to-aitken adjust column tendency
+soa_a2_sfgaex1  kg/m2/s 1   A   soa_a2 gas-aerosol-exchange primary column tendency
+soa_a2_sfgaex2  kg/m2/s 1   A   soa_a2 gas-aerosol-exchange renaming column tendency
+soa_c1  kg/kg   30  A   soa_c1 in cloud water
+soa_c1DDF   kg/m2/s 1   A   soa_c1 dry deposition flux at bottom (grav + turb)
+soa_c1GVF   kg/m2/s 1   A   soa_c1 gravitational dry deposition flux
+soa_c1SFSBC kg/m2/s 1   A   soa_c1 wet deposition flux (belowcloud, convective) at surface
+soa_c1SFSBS kg/m2/s 1   A   soa_c1 wet deposition flux (belowcloud, stratiform) at surface
+soa_c1SFSIC kg/m2/s 1   A   soa_c1 wet deposition flux (incloud, convective) at surface
+soa_c1SFSIS kg/m2/s 1   A   soa_c1 wet deposition flux (incloud, stratiform) at surface
+soa_c1SFWET kg/m2/s 1   A   soa_c1 wet deposition flux at surface
+soa_c1TBF   kg/m2/s 1   A   soa_c1 turbulent dry deposition flux
+soa_c1_sfcsiz3  kg/m2/s 1   A   soa_c1 calcsize aitken-to-accum adjust column tendency
+soa_c1_sfcsiz4  kg/m2/s 1   A   soa_c1 calcsize accum-to-aitken adjust column tendency
+soa_c1_sfgaex2  kg/m2/s 1   A   soa_c1 gas-aerosol-exchange renaming column tendency
+soa_c2  kg/kg   30  A   soa_c2 in cloud water
+soa_c2DDF   kg/m2/s 1   A   soa_c2 dry deposition flux at bottom (grav + turb)
+soa_c2GVF   kg/m2/s 1   A   soa_c2 gravitational dry deposition flux
+soa_c2SFSBC kg/m2/s 1   A   soa_c2 wet deposition flux (belowcloud, convective) at surface
+soa_c2SFSBS kg/m2/s 1   A   soa_c2 wet deposition flux (belowcloud, stratiform) at surface
+soa_c2SFSIC kg/m2/s 1   A   soa_c2 wet deposition flux (incloud, convective) at surface
+soa_c2SFSIS kg/m2/s 1   A   soa_c2 wet deposition flux (incloud, stratiform) at surface
+soa_c2SFWET kg/m2/s 1   A   soa_c2 wet deposition flux at surface
+soa_c2TBF   kg/m2/s 1   A   soa_c2 turbulent dry deposition flux
+soa_c2_sfcsiz3  kg/m2/s 1   A   soa_c2 calcsize aitken-to-accum adjust column tendency
+soa_c2_sfcsiz4  kg/m2/s 1   A   soa_c2 calcsize accum-to-aitken adjust column tendency
+soa_c2_sfgaex2  kg/m2/s 1   A   soa_c2 gas-aerosol-exchange renaming column tendency
+wat_a1  m   30  A   aerosol water, interstitial, mode 01
+wat_a2  m   30  A   aerosol water, interstitial, mode 02
+wat_a3  m   30  A   aerosol water, interstitial, mode 03
+History File 7
+
+  Number of fields:                37
+  Write frequency:                 YEARLY
+  Filename specifier:              %c.cam2.i.%y-%m-%d-%s.nc
+  History buffer precision:        double
+  Output precision:                double
+  Number of time samples per file: 1
+Field name  Units   NLEV    Time avg    Long name
+CLDICE&IC   kg/kg   30  I   Grid box averaged cloud ice amount
+CLDLIQ&IC   kg/kg   30  I   Grid box averaged cloud liquid amount
+DMS&IC  kg/kg   30  I   DMS
+H2O2&IC kg/kg   30  I   H2O2
+H2SO4&IC    kg/kg   30  I   H2SO4
+ICEFRAC&IC  fraction    1   I   Fraction of sfc area covered by sea-ice
+NUMICE&IC   kg/kg   30  I   Grid box averaged cloud ice number
+NUMLIQ&IC   kg/kg   30  I   Grid box averaged cloud liquid number
+PS&IC   Pa  1   I   Surface pressure
+Q&IC    kg/kg   30  I   Specific humidity
+SICTHK&IC   m   1   I   Sea ice thickness
+SNOWHICE&IC m   1   I   Water equivalent snow depth
+SO2&IC  kg/kg   30  I   SO2
+SOAG&IC kg/kg   30  I   SOAG
+T&IC    K   30  I   Temperature
+TS1&IC  K   1   I   TS1 subsoil temperature
+TS2&IC  K   1   I   TS2 subsoil temperature
+TS3&IC  K   1   I   TS3 subsoil temperature
+TS4&IC  K   1   I   TS4 subsoil temperature
+TSICE&IC    K   1   I   Ice temperature
+US&IC   m/s 30  I   Zonal wind, staggered
+VS&IC   m/s 30  I   Meridional wind, staggered
+bc_a1&IC    kg/kg   30  I   bc_a1
+dst_a1&IC   kg/kg   30  I   dst_a1
+dst_a3&IC   kg/kg   30  I   dst_a3
+ncl_a1&IC   kg/kg   30  I   ncl_a1
+ncl_a2&IC   kg/kg   30  I   ncl_a2
+ncl_a3&IC   kg/kg   30  I   ncl_a3
+num_a1&IC   kg/kg   30  I   num_a1
+num_a2&IC   kg/kg   30  I   num_a2
+num_a3&IC   kg/kg   30  I   num_a3
+pom_a1&IC   kg/kg   30  I   pom_a1
+so4_a1&IC   kg/kg   30  I   so4_a1
+so4_a2&IC   kg/kg   30  I   so4_a2
+so4_a3&IC   kg/kg   30  I   so4_a3
+soa_a1&IC   kg/kg   30  I   soa_a1
+soa_a2&IC   kg/kg   30  I   soa_a2
+Master Field List
+
+Field name  Units   NLEV    Time avg    Long name
+ABSORB  /m  30  A   Aerosol absorption
+ACSRFL  DBz 30  A   Average 94 GHz radar reflectivity (CloudSat thresholds)
+ACTNI   Micron  1   A   Average Cloud Top ice number
+ACTNL   Micron  1   A   Average Cloud Top droplet number
+ACTREI  Micron  1   A   Average Cloud Top ice effective radius
+ACTREL  Micron  1   A   Average Cloud Top droplet effective radius
+ADRAIN  Micron  30  A   Average rain effective Diameter
+ADSNOW  Micron  30  A   Average snow effective Diameter
+AEROD_v 1   1   A   Total Aerosol Optical Depth in visible band
+ALDIF   1   1   A   albedo: longwave, diffuse
+ALDIR   1   1   A   albedo: longwave, direct
+ANRAIN  m-3 30  A   Average rain number conc
+ANSNOW  m-3 30  A   Average snow number conc
+AODABS      1   A   Aerosol absorption optical depth 550 nm
+AODDUST1        1   A   Aerosol optical depth 550 nm model 1 from dust
+AODDUST2        1   A   Aerosol optical depth 550 nm model 2 from dust
+AODDUST3        1   A   Aerosol optical depth 550 nm model 3 from dust
+AODMODE1        1   A   Aerosol optical depth 550 nm mode 1
+AODMODE2        1   A   Aerosol optical depth 550 nm mode 2
+AODMODE3        1   A   Aerosol optical depth 550 nm mode 3
+AODMODE4        1   A   Aerosol optical depth 550 nm mode 4
+AODMODE5        1   A   Aerosol optical depth 550 nm mode 5
+AODMODE6        1   A   Aerosol optical depth 550 nm mode 6
+AODMODE7        1   A   Aerosol optical depth 550 nm mode 7
+AODVIS      1   A   Aerosol optical depth 550 nm
+AQRAIN  kg/kg   30  A   Average rain mixing ratio
+AQSNOW  kg/kg   30  A   Average snow mixing ratio
+AQSO4_H2O2  kg/m2/s 1   A   SO4 aqueous phase chemistry due to H2O2
+AQSO4_O3    kg/m2/s 1   A   SO4 aqueous phase chemistry due to O3
+AQ_DMS  kg/m2/s 1   A   DMS aqueous chemistry (for gas species)
+AQ_H2O2 kg/m2/s 1   A   H2O2 aqueous chemistry (for gas species)
+AQ_H2SO4    kg/m2/s 1   A   H2SO4 aqueous chemistry (for gas species)
+AQ_SO2  kg/m2/s 1   A   SO2 aqueous chemistry (for gas species)
+AQ_SOAG kg/m2/s 1   A   SOAG aqueous chemistry (for gas species)
+AQ_bc_a1    kg/m2/s 1   A   bc_a1 aqueous chemistry (for gas species)
+AQ_dst_a1   kg/m2/s 1   A   dst_a1 aqueous chemistry (for gas species)
+AQ_dst_a3   kg/m2/s 1   A   dst_a3 aqueous chemistry (for gas species)
+AQ_ncl_a1   kg/m2/s 1   A   ncl_a1 aqueous chemistry (for gas species)
+AQ_ncl_a2   kg/m2/s 1   A   ncl_a2 aqueous chemistry (for gas species)
+AQ_ncl_a3   kg/m2/s 1   A   ncl_a3 aqueous chemistry (for gas species)
+AQ_num_a1   kg/m2/s 1   A   num_a1 aqueous chemistry (for gas species)
+AQ_num_a2   kg/m2/s 1   A   num_a2 aqueous chemistry (for gas species)
+AQ_num_a3   kg/m2/s 1   A   num_a3 aqueous chemistry (for gas species)
+AQ_pom_a1   kg/m2/s 1   A   pom_a1 aqueous chemistry (for gas species)
+AQ_so4_a1   kg/m2/s 1   A   so4_a1 aqueous chemistry (for gas species)
+AQ_so4_a2   kg/m2/s 1   A   so4_a2 aqueous chemistry (for gas species)
+AQ_so4_a3   kg/m2/s 1   A   so4_a3 aqueous chemistry (for gas species)
+AQ_soa_a1   kg/m2/s 1   A   soa_a1 aqueous chemistry (for gas species)
+AQ_soa_a2   kg/m2/s 1   A   soa_a2 aqueous chemistry (for gas species)
+AREA    m2  1   A   area of grid box
+AREFL   DBz 30  A   Average 94 GHz radar reflectivity
+AREFLZ  mm^6/m^3    30  A   Average 94 GHz radar reflectivity
+AREI    Micron  30  A   Average ice effective radius
+AREL    Micron  30  A   Average droplet effective radius
+ASDIF   1   1   A   albedo: shortwave, diffuse
+ASDIR   1   1   A   albedo: shortwave, direct
+AST fraction    30  A   Stratus cloud fraction
+AWNC    m-3 30  A   Average cloud water number conc
+AWNI    m-3 30  A   Average cloud ice number conc
+BCPHO   m-3 30  A   aerosol number concentration
+BERGO   1/s 30  A   Conversion of cloud water to cloud ice from bergeron
+BERGSO  1/s 30  A   Conversion of cloud water to snow from bergeron
+BPROD   M2/S3   31  A   Buoyancy Production
+BROX    mol/mol 30  A   brox volume mixing ratio
+BROY    mol/mol 30  A   total inorganic bromine (Br+BrO+HOBr+BrONO2+HBr+BrCl)
+BURDEN1 kg/m2   1   A   Aerosol burden mode 1
+BURDEN2 kg/m2   1   A   Aerosol burden mode 2
+BURDEN3 kg/m2   1   A   Aerosol burden mode 3
+BURDEN4 kg/m2   1   A   Aerosol burden mode 4
+BURDEN5 kg/m2   1   A   Aerosol burden mode 5
+BURDEN6 kg/m2   1   A   Aerosol burden mode 6
+BURDEN7 kg/m2   1   A   Aerosol burden mode 7
+CAPE    J/kg    1   A   Convectively available potential energy
+CBMF    kg/m2/s 1   A   Cloud base mass flux
+CCN1    #/cm3   30  A   CCN concentration at S=0.02%
+CCN2    #/cm3   30  A   CCN concentration at S=0.05%
+CCN3    #/cm3   30  A   CCN concentration at S=0.1%
+CCN4    #/cm3   30  A   CCN concentration at S=0.2%
+CCN5    #/cm3   30  A   CCN concentration at S=0.5%
+CCN6    #/cm3   30  A   CCN concentration at S=1.0%
+CDNUMC  #/m2    1   A   Vertically-integrated droplet concentration
+CGS s/m2    31  A   Counter-gradient coeff on surface kinematic fluxes
+CIN J/kg    1   A   Convective inhibition
+CLDBOT  1   1   I   Vertical index of cloud base
+CLDHGH  fraction    1   A   Vertically-integrated high cloud
+CLDICE  kg/kg   30  A   Grid box averaged cloud ice amount
+CLDICE&IC   kg/kg   30  I   Grid box averaged cloud ice amount
+CLDICEADJ   kg/kg/s 30  A   CLDICE adjustment tendency - Revised macrophysics
+CLDICEAP    kg/kg   30  A   CLDICE after physics
+CLDICEBP    kg/kg   30  A   CLDICE before physics
+CLDICEDET   kg/kg/s 30  A   Detrainment of conv cld ice into envrionment - Revised macrophysics
+CLDICELIM   kg/kg/s 30  A   CLDICE limiting tendency - Revised macrophysics
+CLDLIQ  kg/kg   30  A   Grid box averaged cloud liquid amount
+CLDLIQ&IC   kg/kg   30  I   Grid box averaged cloud liquid amount
+CLDLIQADJ   kg/kg/s 30  A   CLDLIQ adjustment tendency - Revised macrophysics
+CLDLIQAP    kg/kg   30  A   CLDLIQ after physics
+CLDLIQBP    kg/kg   30  A   CLDLIQ before physics
+CLDLIQDET   kg/kg/s 30  A   Detrainment of conv cld liq into envrionment - Revised macrophysics
+CLDLIQLIM   kg/kg/s 30  A   CLDLIQ limiting tendency - Revised macrophysics
+CLDLOW  fraction    1   A   Vertically-integrated low cloud
+CLDMED  fraction    1   A   Vertically-integrated mid-level cloud
+CLDST   fraction    30  A   Stratus cloud fraction
+CLDTOP  1   1   I   Vertical index of cloud top
+CLDTOT  fraction    1   A   Vertically-integrated total cloud
+CLDVAPADJ   kg/kg/s 30  A   Q tendency associated with liq/ice adjustment - Revised macrophysics
+CLOUD   fraction    30  A   Cloud fraction
+CLOUD&IC    fraction    30  I   Cloud fraction
+CLOX    mol/mol 30  A   clox volume mixing ratio
+CLOY    mol/mol 30  A   total inorganic chlorine (Cl+ClO+2Cl2+2Cl2O2+OClO+HOCl+ClONO2+HCl+BrCl)
+CME kg/kg/s 30  A   Rate of cond-evap within the cloud
+CMEICE  kg/kg/s 30  A   Rate of cond-evap of ice within the cloud
+CMEIOUT kg/kg/s 30  A   Rate of deposition/sublimation of cloud ice
+CMELIQ  kg/kg/s 30  A   Rate of cond-evap of liq within the cloud
+CMFDICE kg/kg/s 30  A   Cloud ice tendency - shallow convection
+CMFDLIQ kg/kg/s 30  A   Cloud liq tendency - shallow convection
+CMFDQ   kg/kg/s 30  A   QV tendency - shallow convection
+CMFDQR  kg/kg/s 30  A   Q tendency - shallow convection rainout
+CMFDT   K/s 30  A   T tendency - shallow convection
+CMFLQ   W/m2    31  A   Moist shallow convection total water flux
+CMFMC   kg/m2/s 31  A   Moist shallow convection mass flux
+CMFMCDZM    kg/m2/s 31  A   Convection mass flux from ZM deep
+CMFSL   W/m2    31  A   Moist shallow convection liquid water static energy flux
+CNVCLD  fraction    1   A   Vertically integrated convective cloud amount
+CONCLD  fraction    30  A   Convective cloud cover
+CONCLD&IC   fraction    30  I   Convective cloud fraction
+CO_Aircraft molec/cm3/s 30  A   aircraft CO source
+CPAIR   J/K/kg  30  I   specific heat cap air
+CPH1    K/s 30  I   O + O3 -> 2*O2 + 93.46 kcal/mol chem pot heating rate
+CPH10   K/s 30  I   HO2 + HO2 -> H2O2 + O2 + 39.08 kcal/mol chem pot heating rate
+CPH11   K/s 30  I   OH + O3 -> HO2 + O2 + 39.49 kcal/mol chem pot heating rate
+CPH12   K/s 30  I   NO + O3 -> NO2 + O2 + 47.55 kcal/mol chem pot heating rate
+CPH13   K/s 30  I   NO2 + O -> NO + O2 + 45.91 kcal/mol chem pot heating rate
+CPH14   K/s 30  I   OH + HO2 -> H2O + O2 + 69.99 kcal/mol chem pot heating rate
+CPH15   K/s 30  I   H + HO2 -> H2 + O2 + 55.4 kcal/mol chem pot heating rate
+CPH16   K/s 30  I   O1D + O2 -> O + O2_1S + 7.63 kcal/mol chem pot heating rate
+CPH17   K/s 30  I   O1D + N2 -> O + N2 + 45.14 kcal/mol chem pot heating rate
+CPH18   K/s 30  I   O2_1S + O -> O2_1D + O + 14.97 kcal/mol chem pot heating rate
+CPH19   K/s 30  I   O2_1S + O2 -> O2_1D + O2 + 14.97 kcal/mol chem pot heating rate
+CPH2    K/s 30  I   O + O + M -> O2 + M + 119.12 kcal/mol chem pot heating rate
+CPH20   K/s 30  I   O2_1S + N2 -> O2_1D + N2 + 14.97 kcal/mol chem pot heating rate
+CPH21   K/s 30  I   O2_1S + O3 -> O2_1D + O3 + 14.97 kcal/mol chem pot heating rate
+CPH22   K/s 30  I   O2_1D + O -> O2 + O + 22.54 kcal/mol chem pot heating rate
+CPH23   K/s 30  I   O2_1D + O2 -> 2*O2 + 22.54 kcal/mol chem pot heating rate
+CPH24   K/s 30  I   O2_1D + N2 -> O2 + N2 + 22.54 kcal/mol chem pot heating rate
+CPH25   K/s 30  I   N2D + O2 -> NO + O1D + 42.43 kcal/mol chem pot heating rate
+CPH26   K/s 30  I   N2D + O -> N + O + 54.88 kcal/mol chem pot heating rate
+CPH27   K/s 30  I   N + O2 -> NO + O + 32.28 kcal/mol chem pot heating rate
+CPH28   K/s 30  I   N + NO -> N2 + O + 61.8 kcal/mol chem pot heating rate
+CPH29   K/s 30  I   O1D + O2 -> O + O2 + 45.14 kcal/mol chem pot heating rate
+CPH3    K/s 30  I   O + OH -> H + O2 + 16.35 kcal/mol chem pot heating rate
+CPH30   K/s 30  I   Op + O2 -> O2p + O + 35.878 kcal/mol chem pot heating rate
+CPH31   K/s 30  I   Op + N2 -> NOp + N + 25.105 kcal/mol chem pot heating rate
+CPH32   K/s 30  I   N2p + O -> NOp + N2D + 16.140 kcal/mol chem pot heating rate
+CPH33   K/s 30  I   O2p + N -> NOp + O + 97.073 kcal/mol chem pot heating rate
+CPH34   K/s 30  I   O2p + NO -> NOp + O2 + 64.862 kcal/mol chem pot heating rate
+CPH35   K/s 30  I   Np + O2 -> O2p + N + 57.322 kcal/mol chem pot heating rate
+CPH36   K/s 30  I   Np + O2 -> NOp + O + 154.46 kcal/mol chem pot heating rate
+CPH37   K/s 30  I   Np + O -> Op + N + 22.597 kcal/mol chem pot heating rate
+CPH38   K/s 30  I   N2p + O2 -> O2p + N2 + 81.164 kcal/mol chem pot heating rate
+CPH39   K/s 30  I   NOp + e -> 19.691 kcal/mol chem pot heating rate
+CPH4    K/s 30  I   O + HO2 -> OH + O2 + 53.97 kcal/mol chem pot heating rate
+CPH40   K/s 30  I   O2p + e -> 121.65 kcal/mol chem pot heating rate
+CPH41   K/s 30  I   N2p + e -> 84.807 kcal/mol chem pot heating rate
+CPH5    K/s 30  I   H + O2 + M -> HO2 + M + 48.8 kcal/mol chem pot heating rate
+CPH6    K/s 30  I   O + O2 + M -> O3 + M + 25.66 kcal/mol chem pot heating rate
+CPH7    K/s 30  I   H + O3 -> OH + O2 + 46.27 kcal/mol chem pot heating rate
+CPH8    K/s 30  I   HO2 + NO -> NO2 + OH + 8.06 kcal/mol chem pot heating rate
+CPH9    K/s 30  I   HO2 + O3 -> 2*O2 + OH + 28.31 kcal/mol chem pot heating rate
+CSRFL   DBz 30  A   94 GHz radar reflectivity (CloudSat thresholds)
+CT_DMS  kg/kg/s 30  A   DMS source/sink
+CT_H2O2 kg/kg/s 30  A   H2O2 source/sink
+CT_H2O_GHG  kg/kg/s 30  A   ghg-chem h2o source/sink
+CT_H2SO4    kg/kg/s 30  A   H2SO4 source/sink
+CT_SO2  kg/kg/s 30  A   SO2 source/sink
+CT_SOAG kg/kg/s 30  A   SOAG source/sink
+CT_bc_a1    kg/kg/s 30  A   bc_a1 source/sink
+CT_dst_a1   kg/kg/s 30  A   dst_a1 source/sink
+CT_dst_a3   kg/kg/s 30  A   dst_a3 source/sink
+CT_ncl_a1   kg/kg/s 30  A   ncl_a1 source/sink
+CT_ncl_a2   kg/kg/s 30  A   ncl_a2 source/sink
+CT_ncl_a3   kg/kg/s 30  A   ncl_a3 source/sink
+CT_num_a1   kg/kg/s 30  A   num_a1 source/sink
+CT_num_a2   kg/kg/s 30  A   num_a2 source/sink
+CT_num_a3   kg/kg/s 30  A   num_a3 source/sink
+CT_pom_a1   kg/kg/s 30  A   pom_a1 source/sink
+CT_so4_a1   kg/kg/s 30  A   so4_a1 source/sink
+CT_so4_a2   kg/kg/s 30  A   so4_a2 source/sink
+CT_so4_a3   kg/kg/s 30  A   so4_a3 source/sink
+CT_soa_a1   kg/kg/s 30  A   soa_a1 source/sink
+CT_soa_a2   kg/kg/s 30  A   soa_a2 source/sink
+CUSH&IC m   1   I   Convective Scale Height
+DCQ kg/kg/s 30  A   Q tendency due to moist processes
+DDMSCHM kg/s    30  A   net tendency from chem
+DF_DMS  kg/m2/s 1   A   dry deposition flux
+DF_H2O2 kg/m2/s 1   A   dry deposition flux
+DF_H2SO4    kg/m2/s 1   A   dry deposition flux
+DF_NHX  kg/m2/s 1   I   NHx dry deposition flux
+DF_NOY  kg/m2/s 1   I   NOy dry deposition flux
+DF_SO2  kg/m2/s 1   A   dry deposition flux
+DF_SOAG kg/m2/s 1   A   dry deposition flux
+DF_SOX  kg/m2/s 1   I   SOx dry deposition flux
+DF_bc_a1    kg/m2/s 1   A   dry deposition flux
+DF_dst_a1   kg/m2/s 1   A   dry deposition flux
+DF_dst_a3   kg/m2/s 1   A   dry deposition flux
+DF_ncl_a1   kg/m2/s 1   A   dry deposition flux
+DF_ncl_a2   kg/m2/s 1   A   dry deposition flux
+DF_ncl_a3   kg/m2/s 1   A   dry deposition flux
+DF_num_a1   kg/m2/s 1   A   dry deposition flux
+DF_num_a2   kg/m2/s 1   A   dry deposition flux
+DF_num_a3   kg/m2/s 1   A   dry deposition flux
+DF_pom_a1   kg/m2/s 1   A   dry deposition flux
+DF_so4_a1   kg/m2/s 1   A   dry deposition flux
+DF_so4_a2   kg/m2/s 1   A   dry deposition flux
+DF_so4_a3   kg/m2/s 1   A   dry deposition flux
+DF_soa_a1   kg/m2/s 1   A   dry deposition flux
+DF_soa_a2   kg/m2/s 1   A   dry deposition flux
+DH2O2CHM    kg/s    30  A   net tendency from chem
+DH2SO4CHM   kg/s    30  A   net tendency from chem
+DISED   kg/kg/s 30  A   Cloud ice tendency from sedimentation
+DLSED   kg/kg/s 30  A   Cloud liquid tendency from sedimentation
+DMECLDICE   kg/kg/s 30  A   CLDICE dme adjustment tendency (FV)
+DMECLDLIQ   kg/kg/s 30  A   CLDLIQ dme adjustment tendency (FV)
+DMEQ    kg/kg/s 30  A   Q dme adjustment tendency (FV)
+DMS kg/kg   30  A   DMS
+DMS&IC  kg/kg   30  I   DMS
+DMS_CHML    /cm3/s  30  I   chemical loss rate
+DMS_CHMP    /cm3/s  30  I   chemical production rate
+DMS_SRF kg/kg   1   A   DMS in bottom layer
+DPDLFICE    kg/kg/s 30  A   Detrained ice from deep convection
+DPDLFLIQ    kg/kg/s 30  A   Detrained liquid water from deep convection
+DPDLFT  K/s 30  A   T-tendency due to deep convective detrainment
+DP_CLD  fraction    30  A   Deep convective cloud cover
+DQP kg/kg/s 30  A   Specific humidity tendency due to precipitation
+DQSED   kg/kg/s 30  A   Water vapor tendency from cloud sedimentation
+DSNOW   m   30  A   Diagnostic grid-mean snow diameter
+DSO2CHM kg/s    30  A   net tendency from chem
+DSOAGCHM    kg/s    30  A   net tendency from chem
+DSTODXC Tau 1   A   Optical depth for diagnostics
+DSTSFDRY    kg/m2/s 1   A   Dry deposition flux at surface
+DSTSFMBL    kg/m2/s 1   A   Mobilization flux at surface
+DSTSFWET    kg/m2/s 1   A   Wet deposition flux at surface
+DTANT       1   I   photolysis diagnostic NH4SO4 OD
+DTCBS       1   I   photolysis diagnostic black carbon OD
+DTCOND  K/s 30  A   T tendency - moist processes
+DTCORE  K/s 30  I   T tendency due to dynamical core
+DTDUST      1   I   photolysis diagnostic dust OD
+DTOCS       1   I   photolysis diagnostic organic carbon OD
+DTSAL       1   I   photolysis diagnostic salt OD
+DTSO4       1   I   photolysis diagnostic SO4 OD
+DTSOA       1   I   photolysis diagnostic SOA OD
+DTTOTAL     1   I   photolysis diagnostic total aerosol OD
+DTV K/s 30  A   T vertical diffusion
+DTVKE   K/s 30  A   dT/dt vertical diffusion KE dissipation
+DUH K/s 30  A   U horizontal diffusive heating
+DUST1   m-3 30  A   aerosol number concentration
+DUST4   m-3 30  A   aerosol number concentration
+DUV m/s2    30  A   U vertical diffusion
+DVH K/s 30  A   V horizontal diffusive heating
+DVV m/s2    30  A   V vertical diffusion
+DV_DMS  cm/s    1   A   deposition velocity
+DV_H2O2 cm/s    1   A   deposition velocity
+DV_H2SO4    cm/s    1   A   deposition velocity
+DV_SO2  cm/s    1   A   deposition velocity
+DV_SOAG cm/s    1   A   deposition velocity
+DV_bc_a1    cm/s    1   A   deposition velocity
+DV_dst_a1   cm/s    1   A   deposition velocity
+DV_dst_a3   cm/s    1   A   deposition velocity
+DV_ncl_a1   cm/s    1   A   deposition velocity
+DV_ncl_a2   cm/s    1   A   deposition velocity
+DV_ncl_a3   cm/s    1   A   deposition velocity
+DV_num_a1   cm/s    1   A   deposition velocity
+DV_num_a2   cm/s    1   A   deposition velocity
+DV_num_a3   cm/s    1   A   deposition velocity
+DV_pom_a1   cm/s    1   A   deposition velocity
+DV_so4_a1   cm/s    1   A   deposition velocity
+DV_so4_a2   cm/s    1   A   deposition velocity
+DV_so4_a3   cm/s    1   A   deposition velocity
+DV_soa_a1   cm/s    1   A   deposition velocity
+DV_soa_a2   cm/s    1   A   deposition velocity
+Dbc_a1CHM   kg/s    30  A   net tendency from chem
+Ddst_a1CHM  kg/s    30  A   net tendency from chem
+Ddst_a3CHM  kg/s    30  A   net tendency from chem
+Dncl_a1CHM  kg/s    30  A   net tendency from chem
+Dncl_a2CHM  kg/s    30  A   net tendency from chem
+Dncl_a3CHM  kg/s    30  A   net tendency from chem
+Dnum_a1CHM  kg/s    30  A   net tendency from chem
+Dnum_a2CHM  kg/s    30  A   net tendency from chem
+Dnum_a3CHM  kg/s    30  A   net tendency from chem
+Dpom_a1CHM  kg/s    30  A   net tendency from chem
+Dso4_a1CHM  kg/s    30  A   net tendency from chem
+Dso4_a2CHM  kg/s    30  A   net tendency from chem
+Dso4_a3CHM  kg/s    30  A   net tendency from chem
+Dsoa_a1CHM  kg/s    30  A   net tendency from chem
+Dsoa_a2CHM  kg/s    30  A   net tendency from chem
+EFFICE  Micron  30  A   Prognostic ice effective radius
+EFFLIQ  Micron  30  A   Prognostic droplet effective radius
+EFFLIQ_IND  Micron  30  A   Prognostic droplet effective radius (indirect effect)
+ENGYCORR    W/m2    30  A   Energy correction for over-all conservation
+EVAPPREC    kg/kg/s 30  A   Rate of evaporation of falling precip
+EVAPQCM kg/kg/s 30  A   Q tendency - Evaporation from Hack convection
+EVAPQZM kg/kg/s 30  A   Q tendency - Evaporation from Zhang-McFarlane moist convection
+EVAPSNOW    kg/kg/s 30  A   Rate of evaporation of falling snow
+EVAPTCM K/s 30  A   T tendency - Evaporation/snow prod from Hack convection
+EVAPTZM K/s 30  A   T tendency - Evaporation/snow prod from Zhang convection
+EVSNTCM K/s 30  A   T tendency - Snow to rain prod from Hack convection
+EVSNTZM K/s 30  A   T tendency - Snow to rain prod from Zhang convection
+EXTINCT /m  30  A   Aerosol extinction
+FCSRFL  fraction    30  A   Fractional occurance of radar reflectivity (CloudSat thresholds)
+FCTI    fraction    1   A   Fractional occurance of cloud top ice
+FCTL    fraction    1   A   Fractional occurance of cloud top liquid
+FDL W/m2    31  I   Longwave downward flux
+FDLC    W/m2    31  I   Longwave clear-sky downward flux
+FDS W/m2    31  I   Shortwave downward flux
+FDSC    W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d1 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d10    W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d2 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d3 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d4 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d5 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d6 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d7 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d8 W/m2    31  I   Shortwave clear-sky downward flux
+FDSC_d9 W/m2    31  I   Shortwave clear-sky downward flux
+FDS_d1  W/m2    31  I   Shortwave downward flux
+FDS_d10 W/m2    31  I   Shortwave downward flux
+FDS_d2  W/m2    31  I   Shortwave downward flux
+FDS_d3  W/m2    31  I   Shortwave downward flux
+FDS_d4  W/m2    31  I   Shortwave downward flux
+FDS_d5  W/m2    31  I   Shortwave downward flux
+FDS_d6  W/m2    31  I   Shortwave downward flux
+FDS_d7  W/m2    31  I   Shortwave downward flux
+FDS_d8  W/m2    31  I   Shortwave downward flux
+FDS_d9  W/m2    31  I   Shortwave downward flux
+FICE    fraction    30  A   Fractional ice content within cloud
+FLDS    W/m2    1   A   Downwelling longwave flux at surface
+FLN200  W/m2    1   A   Net longwave flux at 200 mb
+FLN200C W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d1  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d10 W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d2  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d3  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d4  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d5  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d6  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d7  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d8  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200C_d9  W/m2    1   A   Clearsky net longwave flux at 200 mb
+FLN200_d1   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d10  W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d2   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d3   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d4   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d5   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d6   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d7   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d8   W/m2    1   A   Net longwave flux at 200 mb
+FLN200_d9   W/m2    1   A   Net longwave flux at 200 mb
+FLNS    W/m2    1   A   Net longwave flux at surface
+FLNSC   W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d1    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d10   W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d2    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d3    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d4    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d5    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d6    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d7    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d8    W/m2    1   A   Clearsky net longwave flux at surface
+FLNSC_d9    W/m2    1   A   Clearsky net longwave flux at surface
+FLNS_d1 W/m2    1   A   Net longwave flux at surface
+FLNS_d10    W/m2    1   A   Net longwave flux at surface
+FLNS_d2 W/m2    1   A   Net longwave flux at surface
+FLNS_d3 W/m2    1   A   Net longwave flux at surface
+FLNS_d4 W/m2    1   A   Net longwave flux at surface
+FLNS_d5 W/m2    1   A   Net longwave flux at surface
+FLNS_d6 W/m2    1   A   Net longwave flux at surface
+FLNS_d7 W/m2    1   A   Net longwave flux at surface
+FLNS_d8 W/m2    1   A   Net longwave flux at surface
+FLNS_d9 W/m2    1   A   Net longwave flux at surface
+FLNT    W/m2    1   A   Net longwave flux at top of model
+FLNTC   W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d1    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d10   W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d2    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d3    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d4    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d5    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d6    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d7    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d8    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNTC_d9    W/m2    1   A   Clearsky net longwave flux at top of model
+FLNT_d1 W/m2    1   A   Net longwave flux at top of model
+FLNT_d10    W/m2    1   A   Net longwave flux at top of model
+FLNT_d2 W/m2    1   A   Net longwave flux at top of model
+FLNT_d3 W/m2    1   A   Net longwave flux at top of model
+FLNT_d4 W/m2    1   A   Net longwave flux at top of model
+FLNT_d5 W/m2    1   A   Net longwave flux at top of model
+FLNT_d6 W/m2    1   A   Net longwave flux at top of model
+FLNT_d7 W/m2    1   A   Net longwave flux at top of model
+FLNT_d8 W/m2    1   A   Net longwave flux at top of model
+FLNT_d9 W/m2    1   A   Net longwave flux at top of model
+FLUT    W/m2    1   A   Upwelling longwave flux at top of model
+FLUTC   W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d1    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d10   W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d2    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d3    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d4    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d5    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d6    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d7    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d8    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUTC_d9    W/m2    1   A   Clearsky upwelling longwave flux at top of model
+FLUT_d1 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d10    W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d2 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d3 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d4 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d5 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d6 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d7 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d8 W/m2    1   A   Upwelling longwave flux at top of model
+FLUT_d9 W/m2    1   A   Upwelling longwave flux at top of model
+FRACDAY     1   I   photolysis diagnostic fraction of day
+FRACW   fraction    30  A   Relative importance of rain accreting liquid
+FREFL   fraction    30  A   Fractional occurance of radar reflectivity
+FREQI   fraction    30  A   Fractional occurance of ice
+FREQL   fraction    30  A   Fractional occurance of liquid
+FREQR   fraction    30  A   Fractional occurance of rain
+FREQS   fraction    30  A   Fractional occurance of snow
+FREQSH  fraction    1   A   Fractional occurance of shallow convection
+FREQZM  fraction    1   A   Fractional occurance of ZM convection
+FRZRDT  W/kg    30  A   Latent heating rate due to homogeneous freezing of rain
+FSACI   fraction    30  A   Relative importance of snow accreting ice
+FSACW   fraction    30  A   Relative importance of snow accreting liquid
+FSAUT   fraction    30  A   Relative importance of ice autoconversion
+FSDS    W/m2    1   A   Downwelling solar flux at surface
+FSDSC   W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d1    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d10   W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d2    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d3    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d4    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d5    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d6    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d7    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d8    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDSC_d9    W/m2    1   A   Clearsky downwelling solar flux at surface
+FSDS_d1 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d10    W/m2    1   A   Downwelling solar flux at surface
+FSDS_d2 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d3 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d4 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d5 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d6 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d7 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d8 W/m2    1   A   Downwelling solar flux at surface
+FSDS_d9 W/m2    1   A   Downwelling solar flux at surface
+FSN200  W/m2    1   A   Net shortwave flux at 200 mb
+FSN200C W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d1  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d10 W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d2  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d3  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d4  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d5  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d6  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d7  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d8  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200C_d9  W/m2    1   A   Clearsky net shortwave flux at 200 mb
+FSN200_d1   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d10  W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d2   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d3   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d4   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d5   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d6   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d7   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d8   W/m2    1   A   Net shortwave flux at 200 mb
+FSN200_d9   W/m2    1   A   Net shortwave flux at 200 mb
+FSNIRTOA    W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d1 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d10    W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d2 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d3 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d4 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d5 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d6 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d7 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d8 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNIRTOA_d9 W/m2    1   A   Net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC    W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d1 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d10    W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d2 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d3 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d4 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d5 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d6 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d7 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d8 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAC_d9 W/m2    1   A   Clearsky net near-infrared flux (Nimbus-7 WFOV) at top of atmosphere
+FSNRTOAS    W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d1 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d10    W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d2 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d3 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d4 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d5 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d6 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d7 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d8 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNRTOAS_d9 W/m2    1   A   Net near-infrared flux (>= 0.7 microns) at top of atmosphere
+FSNS    W/m2    1   A   Net solar flux at surface
+FSNSC   W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d1    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d10   W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d2    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d3    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d4    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d5    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d6    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d7    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d8    W/m2    1   A   Clearsky net solar flux at surface
+FSNSC_d9    W/m2    1   A   Clearsky net solar flux at surface
+FSNS_d1 W/m2    1   A   Net solar flux at surface
+FSNS_d10    W/m2    1   A   Net solar flux at surface
+FSNS_d2 W/m2    1   A   Net solar flux at surface
+FSNS_d3 W/m2    1   A   Net solar flux at surface
+FSNS_d4 W/m2    1   A   Net solar flux at surface
+FSNS_d5 W/m2    1   A   Net solar flux at surface
+FSNS_d6 W/m2    1   A   Net solar flux at surface
+FSNS_d7 W/m2    1   A   Net solar flux at surface
+FSNS_d8 W/m2    1   A   Net solar flux at surface
+FSNS_d9 W/m2    1   A   Net solar flux at surface
+FSNT    W/m2    1   A   Net solar flux at top of model
+FSNTC   W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d1    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d10   W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d2    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d3    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d4    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d5    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d6    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d7    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d8    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTC_d9    W/m2    1   A   Clearsky net solar flux at top of model
+FSNTOA  W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOAC W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d1  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d10 W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d2  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d3  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d4  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d5  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d6  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d7  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d8  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOAC_d9  W/m2    1   A   Clearsky net solar flux at top of atmosphere
+FSNTOA_d1   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d10  W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d2   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d3   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d4   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d5   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d6   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d7   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d8   W/m2    1   A   Net solar flux at top of atmosphere
+FSNTOA_d9   W/m2    1   A   Net solar flux at top of atmosphere
+FSNT_d1 W/m2    1   A   Net solar flux at top of model
+FSNT_d10    W/m2    1   A   Net solar flux at top of model
+FSNT_d2 W/m2    1   A   Net solar flux at top of model
+FSNT_d3 W/m2    1   A   Net solar flux at top of model
+FSNT_d4 W/m2    1   A   Net solar flux at top of model
+FSNT_d5 W/m2    1   A   Net solar flux at top of model
+FSNT_d6 W/m2    1   A   Net solar flux at top of model
+FSNT_d7 W/m2    1   A   Net solar flux at top of model
+FSNT_d8 W/m2    1   A   Net solar flux at top of model
+FSNT_d9 W/m2    1   A   Net solar flux at top of model
+FSUTOA  W/m2    1   A   Upwelling solar flux at top of atmosphere
+FU  m/s2    30  A   Zonal wind forcing term
+FUL W/m2    31  I   Longwave upward flux
+FULC    W/m2    31  I   Longwave clear-sky upward flux
+FUS W/m2    31  I   Shortwave upward flux
+FUSC    W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d1 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d10    W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d2 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d3 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d4 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d5 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d6 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d7 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d8 W/m2    31  I   Shortwave clear-sky upward flux
+FUSC_d9 W/m2    31  I   Shortwave clear-sky upward flux
+FUS_d1  W/m2    31  I   Shortwave upward flux
+FUS_d10 W/m2    31  I   Shortwave upward flux
+FUS_d2  W/m2    31  I   Shortwave upward flux
+FUS_d3  W/m2    31  I   Shortwave upward flux
+FUS_d4  W/m2    31  I   Shortwave upward flux
+FUS_d5  W/m2    31  I   Shortwave upward flux
+FUS_d6  W/m2    31  I   Shortwave upward flux
+FUS_d7  W/m2    31  I   Shortwave upward flux
+FUS_d8  W/m2    31  I   Shortwave upward flux
+FUS_d9  W/m2    31  I   Shortwave upward flux
+FU_S    m/s2    30  A   Zonal wind forcing term on staggered grid
+FV  m/s2    30  A   Meridional wind forcing term
+FV_S    m/s2    30  A   Meridional wind forcing term on staggered grid
+FWAUT   fraction    30  A   Relative importance of liquid autoconversion
+FZSNTCM K/s 30  A   T tendency - Rain to snow conversion from Hack convection
+FZSNTZM K/s 30  A   T tendency - Rain to snow conversion from Zhang convection
+GCLDLWP kg/m2   30  A   Grid-box cloud water path
+GS_DMS  kg/m2/s 1   A   DMS gas chemistry/wet removal (for gas species)
+GS_H2O2 kg/m2/s 1   A   H2O2 gas chemistry/wet removal (for gas species)
+GS_H2SO4    kg/m2/s 1   A   H2SO4 gas chemistry/wet removal (for gas species)
+GS_SO2  kg/m2/s 1   A   SO2 gas chemistry/wet removal (for gas species)
+GS_SOAG kg/m2/s 1   A   SOAG gas chemistry/wet removal (for gas species)
+GS_bc_a1    kg/m2/s 1   A   bc_a1 gas chemistry/wet removal (for gas species)
+GS_dst_a1   kg/m2/s 1   A   dst_a1 gas chemistry/wet removal (for gas species)
+GS_dst_a3   kg/m2/s 1   A   dst_a3 gas chemistry/wet removal (for gas species)
+GS_ncl_a1   kg/m2/s 1   A   ncl_a1 gas chemistry/wet removal (for gas species)
+GS_ncl_a2   kg/m2/s 1   A   ncl_a2 gas chemistry/wet removal (for gas species)
+GS_ncl_a3   kg/m2/s 1   A   ncl_a3 gas chemistry/wet removal (for gas species)
+GS_num_a1   kg/m2/s 1   A   num_a1 gas chemistry/wet removal (for gas species)
+GS_num_a2   kg/m2/s 1   A   num_a2 gas chemistry/wet removal (for gas species)
+GS_num_a3   kg/m2/s 1   A   num_a3 gas chemistry/wet removal (for gas species)
+GS_pom_a1   kg/m2/s 1   A   pom_a1 gas chemistry/wet removal (for gas species)
+GS_so4_a1   kg/m2/s 1   A   so4_a1 gas chemistry/wet removal (for gas species)
+GS_so4_a2   kg/m2/s 1   A   so4_a2 gas chemistry/wet removal (for gas species)
+GS_so4_a3   kg/m2/s 1   A   so4_a3 gas chemistry/wet removal (for gas species)
+GS_soa_a1   kg/m2/s 1   A   soa_a1 gas chemistry/wet removal (for gas species)
+GS_soa_a2   kg/m2/s 1   A   soa_a2 gas chemistry/wet removal (for gas species)
+H2O2    kg/kg   30  A   H2O2
+H2O2&IC kg/kg   30  I   H2O2
+H2O2_CHML   /cm3/s  30  I   chemical loss rate
+H2O2_CHMP   /cm3/s  30  I   chemical production rate
+H2O2_SRF    kg/kg   1   A   H2O2 in bottom layer
+H2SO4   kg/kg   30  A   H2SO4
+H2SO4&IC    kg/kg   30  I   H2SO4
+H2SO4MMR    kg/kg   30  I   radiative sulfate aerosol mmr
+H2SO4M_C    ug/m3   30  I   chemical sulfate aerosol mass
+H2SO4M_R    ug/m3   30  I   radiative sulfate aerosol mass
+H2SO4_CHML  /cm3/s  30  I   chemical loss rate
+H2SO4_CHMP  /cm3/s  30  I   chemical production rate
+H2SO4_SRF   kg/kg   1   A   H2SO4 in bottom layer
+H2SO4_sfgaex1   kg/m2/s 1   A   H2SO4 gas-aerosol-exchange primary column tendency
+H2SO4_sfnnuc1   kg/m2/s 1   A   H2SO4 modal_aero new particle nucleation column tendency
+HCME    W/kg    30  A   Heating from cond-evap within the cloud
+HEIGHT  m   31  A   geopotential height above surface at interfaces (m)
+HEVAP   W/kg    30  A   Heating from evaporation of falling precip
+HFREEZ  W/kg    30  A   Heating rate due to freezing of precip
+HKEIHEAT    W/kg    30  A   Heating by ice and evaporation in HK convection
+HKFLXPRC    kg/m2/s 31  A   Flux of precipitation from HK convection
+HKFLXSNW    kg/m2/s 31  A   Flux of snow from HK convection
+HKNTPRPD    kg/kg/s 30  A   Net precipitation production from HK convection
+HKNTSNPD    kg/kg/s 30  A   Net snow production from HK convection
+HMELT   W/kg    30  A   Heating from snow melt
+HNO3_CD1    mol/mol 30  I   STS condensed HNO3
+HNO3_CD2    mol/mol 30  I   condensed hno3 concentration
+HNO3_CD3    mol/mol 30  I   large-mode NAT condensed HNO3
+HNO3_GAS    mol/mol 30  I   gas-phase hno3
+HO2 mol/mol 30  I   prescribed tracer constituent
+HOMOO   1/s 30  A   Homogeneous freezing of cloud water
+HPROGCLD    W/kg    30  A   Heating from prognostic clouds
+HR  K/s 30  A   Heating rate needed for d(theta)/dt computation
+HREPART W/kg    30  A   Heating from cloud ice/liquid repartitioning
+HSED    W/kg    30  A   Heating from cloud sediment evaporation
+ICE2PR  kg/kg/s 30  A   Rate of conversion of ice to precip
+ICECLDF fraction    30  A   Stratus ICE cloud fraction
+ICEFRAC fraction    1   A   Fraction of sfc area covered by sea-ice
+ICEFRAC&IC  fraction    1   I   Fraction of sfc area covered by sea-ice
+ICIMR   kg/kg   30  A   Prognostic in-cloud ice mixing ratio
+ICIMRCU kg/kg   30  A   Convection in-cloud ice mixing ratio
+ICIMRST kg/kg   30  A   Prognostic in-stratus ice mixing ratio
+ICIMRTOT    kg/kg   30  A   Total in-cloud ice mixing ratio
+ICINC   m-3 30  A   Prognostic in-cloud ice number conc
+ICLDIWP kg/m2   30  A   In-cloud ice water path
+ICLDTWP kg/m2   30  A   In-cloud cloud total water path (liquid and ice)
+ICLMRCU kg/kg   30  A   Convection in-cloud liquid mixing ratio
+ICLMRTOT    kg/kg   30  A   Total in-cloud liquid mixing ratio
+ICWMR   kg/kg   30  A   Prognostic in-cloud water mixing ratio
+ICWMRDP kg/kg   30  A   Deep Convection in-cloud water mixing ratio
+ICWMRSH kg/kg   30  A   Shallow Convection in-cloud water mixing ratio
+ICWMRST kg/kg   30  A   Prognostic in-stratus water mixing ratio
+ICWNC   m-3 30  A   Prognostic in-cloud water number conc
+IWC kg/m3   30  A   Grid box average ice water content
+JO2_EUV /s  30  I   total jo2 euv photolysis rate
+J_001   /s  30  I   photolysis rate
+KTOOP   K/s 30  A   (Kappa*T)*(omega/P)
+KVH m2/s    31  A   Vertical diffusion diffusivities (heat/moisture)
+KVH&IC  m2/s    31  I   Vertical diffusion diffusivities (heat/moisture)
+KVM m2/s    31  A   Vertical diffusion diffusivities (momentum)
+KVM&IC  m2/s    31  I   Vertical diffusion diffusivities (momentum)
+LANDFRAC    fraction    1   A   Fraction of sfc area covered by land
+LCLOUD      30  A   Liquid cloud fraction
+LCWAT&IC    kg/kg   30  I   Cloud water (ice + liq
+LHFLX   W/m2    1   A   Surface latent heat flux
+LIQ2PR  kg/kg/s 30  A   Rate of conversion of liq to precip
+LIQCLDF fraction    30  A   Stratus Liquid cloud fraction
+LND_MBL frac    1   A   Soil erodibility factor
+LPSTEN  Pa/s    1   A   Surface pressure tendency
+LWC kg/m3   30  A   Grid box average liquid water content
+LWCF    W/m2    1   A   Longwave cloud forcing
+LWCF_d1 W/m2    1   A   Longwave cloud forcing
+LWCF_d10    W/m2    1   A   Longwave cloud forcing
+LWCF_d2 W/m2    1   A   Longwave cloud forcing
+LWCF_d3 W/m2    1   A   Longwave cloud forcing
+LWCF_d4 W/m2    1   A   Longwave cloud forcing
+LWCF_d5 W/m2    1   A   Longwave cloud forcing
+LWCF_d6 W/m2    1   A   Longwave cloud forcing
+LWCF_d7 W/m2    1   A   Longwave cloud forcing
+LWCF_d8 W/m2    1   A   Longwave cloud forcing
+LWCF_d9 W/m2    1   A   Longwave cloud forcing
+LWSH    m   1   A   Liquid water scale height
+MACPDICE    kg/kg/s 30  A   CLDICE tendency - Revised macrophysics
+MACPDLIQ    kg/kg/s 30  A   CLDLIQ tendency - Revised macrophysics
+MACPDQ  kg/kg/s 30  A   Q tendency - Revised macrophysics
+MACPDT  W/kg    30  A   Heating tendency - Revised macrophysics
+MASS    kg  30  A   mass of grid box
+MELTO   1/s 30  A   Melting of cloud ice
+MELTSDT W/kg    30  A   Latent heating rate due to melting of snow
+MGFLXPRC    kg/m2/s 31  A   Diagnostic grid-mean rain flux at layer interface
+MGFLXSNW    kg/m2/s 31  A   Diagnostic grid-mean snow flux at layer interface
+MNUCCCO 1/s 30  A   Immersion freezing of cloud water
+MNUCCRO 1/s 30  A   Heterogeneous freezing of rain to snow
+MNUCCTO 1/s 30  A   Contact freezing of cloud water
+MPDI2P  kg/kg/s 30  A   Ice <--> Precip tendency - Morrison microphysics
+MPDI2V  kg/kg/s 30  A   Ice <--> Vapor tendency - Morrison microphysics
+MPDI2W  kg/kg/s 30  A   Ice <--> Water tendency - Morrison microphysics
+MPDICE  kg/kg/s 30  A   CLDICE tendency - Morrison microphysics
+MPDLIQ  kg/kg/s 30  A   CLDLIQ tendency - Morrison microphysics
+MPDQ    kg/kg/s 30  A   Q tendency - Morrison microphysics
+MPDT    W/kg    30  A   Heating tendency - Morrison microphysics
+MPDW2I  kg/kg/s 30  A   Water <--> Ice tendency - Morrison microphysics
+MPDW2P  kg/kg/s 30  A   Water <--> Precip tendency - Morrison microphysics
+MPDW2V  kg/kg/s 30  A   Water <--> Vapor tendency - Morrison microphysics
+MQ  kg/m2   30  A   Water vapor mass in layer
+MSACWIO 1/s 30  A   Conversion of cloud water from rime-splintering
+N2D_SPE molec/cm3/s 30  I   solar proton event N(2S) source
+N4S_SPE molec/cm3/s 30  I   solar proton event N(4S) source
+NCAI    #/m3    30  A   Number Concentation Activated for Ice
+NCAL    #/m3    30  A   Number Concentation Activated for Liquid
+NDROPCOL    #/m2    1   A   Column droplet number
+NDROPMIX    #/kg/s  30  A   Droplet number mixing
+NDROPSNK    #/kg/s  30  A   Droplet number loss by microphysics
+NDROPSRC    #/kg/s  30  A   Droplet number source
+NHX_mmr kg/kg   30  A   NHx mass mixing ratio
+NIDEP   #/m3    30  A   Activated Ice Number Concentation due to deposition nucleation
+NIHF    #/m3    30  A   Activated Ice Number Concentation due to homogenous freezing
+NIIMM   #/m3    30  A   Activated Ice Number Concentation due to immersion freezing
+NIMEY   #/m3    30  A   Activated Ice Number Concentation due to meyers deposition
+NO3 mol/mol 30  I   prescribed tracer constituent
+NOX mol/mol 30  A   nox volume mixing ratio
+NOY mol/mol 30  A   noy volume mixing ratio
+NOY_mmr kg/kg   30  A   NOy mass mixing ratio
+NO_Aircraft molec/cm3/s 30  A   aircraft NO source
+NO_Lightning    molec/cm3/s 30  A   lightning NO source
+NRAIN   m-3 30  A   Diagnostic grid-mean rain number conc
+NSNOW   m-3 30  A   Diagnostic grid-mean snow number conc
+NSTEP   timestep    1   A   Model timestep
+NUMICE  kg/kg   30  A   Grid box averaged cloud ice number
+NUMICE&IC   kg/kg   30  I   Grid box averaged cloud ice number
+NUMLIQ  kg/kg   30  A   Grid box averaged cloud liquid number
+NUMLIQ&IC   kg/kg   30  I   Grid box averaged cloud liquid number
+O3  mol/mol 30  I   prescribed tracer constituent
+OCNFRAC fraction    1   A   Fraction of sfc area covered by ocean
+OCPHI   m-3 30  A   aerosol number concentration
+OCPHO   m-3 30  A   aerosol number concentration
+ODV_bc_a1   1   1   A   bc_a1 optical depth in visible band
+ODV_dst_a1  1   1   A   dst_a1 optical depth in visible band
+ODV_dst_a3  1   1   A   dst_a3 optical depth in visible band
+ODV_ncl_a1  1   1   A   ncl_a1 optical depth in visible band
+ODV_ncl_a3  1   1   A   ncl_a3 optical depth in visible band
+ODV_pom_a1  1   1   A   pom_a1 optical depth in visible band
+ODV_so4_a1  1   1   A   so4_a1 optical depth in visible band
+ODV_soa_a1  1   1   A   soa_a1 optical depth in visible band
+OH  mol/mol 30  I   prescribed tracer constituent
+OH_SPE  molec/cm3/s 30  I   solar proton event HOx source
+OMEGA   Pa/s    30  A   Vertical velocity (pressure)
+OMEGA500    Pa/s    1   A   Vertical velocity at 500 mbar pressure surface
+OMEGA850    Pa/s    1   A   Vertical velocity at 850 mbar pressure surface
+OMEGAQ  kgPa/kgs    30  A   Vertical water transport
+OMEGAT  K Pa/s  30  A   Vertical heat flux
+OMEGAU  m Pa/s2 30  A   Vertical flux of zonal momentum
+OMEGAV  m Pa/s2 30  A   Vertical flux of meridional momentum
+OMGAOMGA    Pa2/s2  30  A   Vertical flux of vertical momentum
+ORO frac    1   A   ORO
+PBLH    m   1   A   PBL height
+PBLH&IC m   1   I   PBL height
+PCLDBOT 1   1   A   Pressure of cloud base
+PCLDTOP 1   1   A   Pressure of cloud top
+PCONVB  Pa  1   A   convection base pressure
+PCONVT  Pa  1   A   convection top pressure
+PCSNOW  m/s 1   A   Snow fall from prognostic clouds
+PDELDRY Pa  30  A   Dry pressure difference between levels
+PHIS    m2/s2   1   I   Surface geopotential
+PRACSO  1/s 30  A   Accretion of rain by snow
+PRAIO   1/s 30  A   Accretion of cloud ice by rain
+PRAO    1/s 30  A   Accretion of cloud water by rain
+PRCIO   1/s 30  A   Autoconversion of cloud ice
+PRCO    1/s 30  A   Autoconversion of cloud water
+PRECC   m/s 1   A   Convective precipitation rate (liq + ice)
+PRECCDZM    m/s 1   A   Convective precipitation rate from ZM deep
+PRECCav m/s 1   A   Average large-scale precipitation (liq + ice)
+PRECL   m/s 1   A   Large-scale (stable) precipitation rate (liq + ice)
+PRECLav m/s 1   A   Average convective precipitation (liq + ice)
+PRECSC  m/s 1   A   Convective snow rate (water equivalent)
+PRECSED m/s 1   A   Precipitation from cloud sedimentation
+PRECSH  m/s 1   A   Shallow Convection precipitation rate
+PRECSL  m/s 1   A   Large-scale (stable) snow rate (water equivalent)
+PRECT   m/s 1   A   Total (convective and large-scale) precipitation rate (liq + ice)
+PRECTMX m/s 1   X   Maximum (convective and large-scale) precipitation rate (liq+ice)
+PRECZ   m/s 1   A   total precipitation from ZM convection
+PRODPREC    kg/kg/s 30  A   Rate of conversion of condensate to precip
+PS  Pa  1   A   Surface pressure
+PS&IC   Pa  1   I   Surface pressure
+PSACWSO 1/s 30  A   Accretion of cloud water by snow
+PSDRY   Pa  1   A   Surface pressure
+PSL Pa  1   A   Sea level pressure
+PTECLDICE   kg/kg/s 30  A   CLDICE total physics tendency
+PTECLDLIQ   kg/kg/s 30  A   CLDLIQ total physics tendency
+PTEQ    kg/kg/s 30  A   Q total physics tendency
+PTTEND  K/s 30  A   T total physics tendency
+PTTEND_RESID    K/s 30  A   T-tendency due to BAB kluge at end of tphysac (diagnostic not part of T-budget)
+Q   kg/kg   30  A   Specific humidity
+Q&IC    kg/kg   30  I   Specific humidity
+Q200    kg/kg   1   A   Specific Humidity at 700 mbar pressure surface
+Q850    kg/kg   1   A   Specific Humidity at 850 mbar pressure surface
+QAP kg/kg   30  A   Specific humidity (after physics)
+QBOT    kg/kg   1   A   Lowest model level water vapor mixing ratio
+QBP kg/kg   30  A   Specific humidity (before physics)
+QC  kg/kg/s 30  A   Q tendency - shallow convection LW export
+QCP K/s 30  I   chem pot heating rate
+QCRESO  1/s 30  A   Residual condensation term for cloud water
+QCSEDTEN    kg/kg/s 30  A   Cloud water mixing ratio tendency from sedimentation
+QCSEVAP kg/kg/s 30  A   Rate of evaporation of falling cloud water
+QCWAT&IC    kg/kg   30  I   q associated with cloud water
+QDCHEM  /s  30  I   water vapor chemistry delta
+QDSAD   /s  30  I   water vapor sad delta
+QDSETT  /s  30  I   water vapor settling delta
+QFLX    kg/m2/s 1   A   Surface water flux
+QIRESO  1/s 30  A   Residual deposition term for cloud ice
+QISEDTEN    kg/kg/s 30  A   Cloud ice mixing ratio tendency from sedimentation
+QISEVAP kg/kg/s 30  A   Rate of sublimation of falling cloud ice
+QPERT   kg/kg   1   A   Perturbation specific humidity (eddies in PBL)
+QPERT&IC    kg/kg   1   I   Perturbation specific humidity (eddies in PBL)
+QQ  kg2/kg2 30  A   Eddy moisture variance
+QRAIN   kg/kg   30  A   Diagnostic grid-mean rain mixing ratio
+QREFHT  kg/kg   1   A   Reference height humidity
+QRL K/s 30  A   Longwave heating rate
+QRLC    K/s 30  A   Clearsky longwave heating rate
+QRLC_d1 K/s 30  A   Clearsky longwave heating rate
+QRLC_d10    K/s 30  A   Clearsky longwave heating rate
+QRLC_d2 K/s 30  A   Clearsky longwave heating rate
+QRLC_d3 K/s 30  A   Clearsky longwave heating rate
+QRLC_d4 K/s 30  A   Clearsky longwave heating rate
+QRLC_d5 K/s 30  A   Clearsky longwave heating rate
+QRLC_d6 K/s 30  A   Clearsky longwave heating rate
+QRLC_d7 K/s 30  A   Clearsky longwave heating rate
+QRLC_d8 K/s 30  A   Clearsky longwave heating rate
+QRLC_d9 K/s 30  A   Clearsky longwave heating rate
+QRL_d1  K/s 30  A   Longwave heating rate
+QRL_d10 K/s 30  A   Longwave heating rate
+QRL_d2  K/s 30  A   Longwave heating rate
+QRL_d3  K/s 30  A   Longwave heating rate
+QRL_d4  K/s 30  A   Longwave heating rate
+QRL_d5  K/s 30  A   Longwave heating rate
+QRL_d6  K/s 30  A   Longwave heating rate
+QRL_d7  K/s 30  A   Longwave heating rate
+QRL_d8  K/s 30  A   Longwave heating rate
+QRL_d9  K/s 30  A   Longwave heating rate
+QRS K/s 30  A   Solar heating rate
+QRSC    K/s 30  A   Clearsky solar heating rate
+QRSC_d1 K/s 30  A   Clearsky solar heating rate
+QRSC_d10    K/s 30  A   Clearsky solar heating rate
+QRSC_d2 K/s 30  A   Clearsky solar heating rate
+QRSC_d3 K/s 30  A   Clearsky solar heating rate
+QRSC_d4 K/s 30  A   Clearsky solar heating rate
+QRSC_d5 K/s 30  A   Clearsky solar heating rate
+QRSC_d6 K/s 30  A   Clearsky solar heating rate
+QRSC_d7 K/s 30  A   Clearsky solar heating rate
+QRSC_d8 K/s 30  A   Clearsky solar heating rate
+QRSC_d9 K/s 30  A   Clearsky solar heating rate
+QRS_AUR K/s 30  I   total auroral heating rate
+QRS_CO2NIR  K/s 30  I   co2 nir heating rate
+QRS_EUV K/s 30  I   total euv heating rate
+QRS_LO2B    K/s 30  I   O2 + hv -> 2*O3P solar heating rate > 200nm
+QRS_LO3 K/s 30  I   Total O3 solar heating > 200nm
+QRS_LO3A    K/s 30  I   O3 + hv -> O1D + O2_1S solar heating rate > 200nm
+QRS_LO3B    K/s 30  I   O3 + hv -> O3P + O2 solar heating rate > 200nm
+QRS_SO2A    K/s 30  I   O2 + hv -> O1D + O3P solar heating rate < 200nm
+QRS_SO2B    K/s 30  I   O2 + hv -> O3P + O3P solar heating rate < 200nm
+QRS_SO3A    K/s 30  I   O3 + hv -> O1D + O2_1S solar heating rate < 200nm
+QRS_SO3B    K/s 30  I   O3 + hv -> O3P + O2 solar heating rate < 200nm
+QRS_d1  K/s 30  A   Solar heating rate
+QRS_d10 K/s 30  A   Solar heating rate
+QRS_d2  K/s 30  A   Solar heating rate
+QRS_d3  K/s 30  A   Solar heating rate
+QRS_d4  K/s 30  A   Solar heating rate
+QRS_d5  K/s 30  A   Solar heating rate
+QRS_d6  K/s 30  A   Solar heating rate
+QRS_d7  K/s 30  A   Solar heating rate
+QRS_d8  K/s 30  A   Solar heating rate
+QRS_d9  K/s 30  A   Solar heating rate
+QSNOW   kg/kg   30  A   Diagnostic grid-mean snow mixing ratio
+QT  kg/kg   30  A   Total water mixing ratio
+QTFLX   W/m2    31  A   Total water flux
+QTHERMAL    K/s 30  I   non-euv photolysis heating rate
+QVRES   kg/kg/s 30  A   Rate of residual condensation term
+RAD_ICE cm  30  I   sad ice
+RAD_LNAT    cm  30  I   large nat radius
+RAD_SNAT    cm  30  I   small nat radius
+RAD_SULFC   cm  30  I   chemical sad sulfate
+RAD_SULFR   cm  30  I   radiative sad sulfate
+RAINSED m/s 1   A   Rain from cloud liquid sedimentation
+RAM1    frac    1   A   RAM1
+REFL    DBz 30  A   94 GHz radar reflectivity
+RELHUM  percent 30  A   Relative humidity
+REPARTICE   kg/kg/s 30  A   Cloud ice tendency from cloud ice/liquid repartitioning
+REPARTLIQ   kg/kg/s 30  A   Cloud liq tendency from cloud ice/liquid repartitioning
+RERCLD  m   30  A   Diagnostic effective radius of Liquid Cloud and Rain
+RHI percent 30  A   Relative humidity with respect to ice
+RHREFHT fraction    1   A   Reference height relative humidity
+RHW percent 30  A   Relative humidity with respect to liquid
+R_001   /cm3/s  30  I   reaction rate
+R_002   /cm3/s  30  I   reaction rate
+R_003   /cm3/s  30  I   reaction rate
+R_004   /cm3/s  30  I   reaction rate
+R_005   /cm3/s  30  I   reaction rate
+R_006   /cm3/s  30  I   reaction rate
+SAD cm2/cm3 30  I   sulfate aerosol SAD
+SAD_ICE cm2/cm3 30  I   water-ice aerosol SAD
+SAD_LNAT    cm2/cm3 30  I   large-mode NAT aerosol SAD
+SAD_SNAT    /cm 30  I   small nat sad
+SAD_SULFC   cm2/cm3 30  I   chemical sulfate aerosol SAD
+SAD_SULFR   cm2/cm3 30  I   radiative sulfate aerosol SAD
+SETLWP  gram/m2 30  A   Prescribed liquid water path
+SFCLDICE    kg/m2/s 1   A   CLDICE surface flux
+SFCLDLIQ    kg/m2/s 1   A   CLDLIQ surface flux
+SFDMS   kg/m2/s 1   A   DMS surface flux
+SFH2O2  kg/m2/s 1   A   H2O2 surface flux
+SFH2SO4 kg/m2/s 1   A   H2SO4 surface flux
+SFI FRACTION    31  A   Interface-layer sat frac
+SFNUMICE    kg/m2/s 1   A   NUMICE surface flux
+SFNUMLIQ    kg/m2/s 1   A   NUMLIQ surface flux
+SFSO2   kg/m2/s 1   A   SO2 surface flux
+SFSOAG  kg/m2/s 1   A   SOAG surface flux
+SFbc_a1 kg/m2/s 1   A   bc_a1 surface flux
+SFdst_a1    kg/m2/s 1   A   dst_a1 surface flux
+SFdst_a3    kg/m2/s 1   A   dst_a3 surface flux
+SFncl_a1    kg/m2/s 1   A   ncl_a1 surface flux
+SFncl_a2    kg/m2/s 1   A   ncl_a2 surface flux
+SFncl_a3    kg/m2/s 1   A   ncl_a3 surface flux
+SFnum_a1    kg/m2/s 1   A   num_a1 surface flux
+SFnum_a2    kg/m2/s 1   A   num_a2 surface flux
+SFnum_a3    kg/m2/s 1   A   num_a3 surface flux
+SFpom_a1    kg/m2/s 1   A   pom_a1 surface flux
+SFso4_a1    kg/m2/s 1   A   so4_a1 surface flux
+SFso4_a2    kg/m2/s 1   A   so4_a2 surface flux
+SFso4_a3    kg/m2/s 1   A   so4_a3 surface flux
+SFsoa_a1    kg/m2/s 1   A   soa_a1 surface flux
+SFsoa_a2    kg/m2/s 1   A   soa_a2 surface flux
+SGH m   1   I   Standard deviation of orography
+SGH30   m   1   I   Standard deviation of 30s orography
+SHDLFICE    kg/kg/s 30  A   Detrained ice from shallow convection
+SHDLFLIQ    kg/kg/s 30  A   Detrained liquid water from shallow convection
+SHDLFT  K/s 30  A   T-tendency due to shallow convective detrainment
+SHFLX   W/m2    1   A   Surface sensible heat flux
+SH_CLD  fraction    30  A   Shallow convective cloud cover
+SICTHK  m   1   A   Sea ice thickness
+SICTHK&IC   m   1   I   Sea ice thickness
+SL  J/kg    30  A   Liquid water static energy
+SLFLX   W/m2    31  A   Liquid static energy flux
+SLV J/kg    30  A   Liq wat virtual static energy
+SNOWHICE    m   1   A   Water equivalent snow depth
+SNOWHICE&IC m   1   I   Water equivalent snow depth
+SNOWHLND    m   1   A   Water equivalent snow depth
+SNOWSED m/s 1   A   Snow from cloud ice sedimentation
+SO2 kg/kg   30  A   SO2
+SO2&IC  kg/kg   30  I   SO2
+SO2_CHML    /cm3/s  30  I   chemical loss rate
+SO2_CHMP    /cm3/s  30  I   chemical production rate
+SO2_CLXF    molec/cm2/s 1   A   vertically intergrated external forcing for SO2
+SO2_SRF kg/kg   1   A   SO2 in bottom layer
+SO2_XFRC    molec/cm3/s 30  A   external forcing for SO2
+SOAG    kg/kg   30  A   SOAG
+SOAG&IC kg/kg   30  I   SOAG
+SOAG_CHML   /cm3/s  30  I   chemical loss rate
+SOAG_CHMP   /cm3/s  30  I   chemical production rate
+SOAG_SRF    kg/kg   1   A   SOAG in bottom layer
+SOAG_sfgaex1    kg/m2/s 1   A   SOAG gas-aerosol-exchange primary column tendency
+SOLIN   W/m2    1   A   Solar insolation
+SOLIN_d1    W/m2    1   A   Solar insolation
+SOLIN_d10   W/m2    1   A   Solar insolation
+SOLIN_d2    W/m2    1   A   Solar insolation
+SOLIN_d3    W/m2    1   A   Solar insolation
+SOLIN_d4    W/m2    1   A   Solar insolation
+SOLIN_d5    W/m2    1   A   Solar insolation
+SOLIN_d6    W/m2    1   A   Solar insolation
+SOLIN_d7    W/m2    1   A   Solar insolation
+SOLIN_d8    W/m2    1   A   Solar insolation
+SOLIN_d9    W/m2    1   A   Solar insolation
+SOLL    W/m2    1   A   Solar downward near infrared direct to surface
+SOLLD   W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d1    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d10   W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d2    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d3    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d4    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d5    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d6    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d7    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d8    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLLD_d9    W/m2    1   A   Solar downward near infrared diffuse to surface
+SOLL_d1 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d10    W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d2 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d3 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d4 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d5 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d6 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d7 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d8 W/m2    1   A   Solar downward near infrared direct to surface
+SOLL_d9 W/m2    1   A   Solar downward near infrared direct to surface
+SOLS    W/m2    1   A   Solar downward visible direct to surface
+SOLSD   W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d1    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d10   W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d2    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d3    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d4    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d5    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d6    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d7    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d8    W/m2    1   A   Solar downward visible diffuse to surface
+SOLSD_d9    W/m2    1   A   Solar downward visible diffuse to surface
+SOLS_d1 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d10    W/m2    1   A   Solar downward visible direct to surface
+SOLS_d2 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d3 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d4 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d5 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d6 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d7 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d8 W/m2    1   A   Solar downward visible direct to surface
+SOLS_d9 W/m2    1   A   Solar downward visible direct to surface
+SOX_mmr kg/kg   30  A   SOx mass mixing ratio
+SPROD   M2/S3   31  A   Shear Production
+SRFRAD  W/m2    1   A   Net radiative flux at surface
+SSAM    m-3 30  A   aerosol number concentration
+SSAVIS      1   A   Aerosol singel-scatter albedo
+SSCM    m-3 30  A   aerosol number concentration
+SST K   1   A   sea surface temperature
+SSTODXC Tau 1   A   Optical depth for diagnostics
+SSTSFDRY    kg/m2/s 1   A   Dry deposition flux at surface
+SSTSFMBL    kg/m2/s 1   A   Mobilization flux at surface
+SSTSFWET    kg/m2/s 1   A   Wet deposition flux at surface
+SULFATE m-3 30  A   aerosol number concentration
+SWCF    W/m2    1   A   Shortwave cloud forcing
+SWCF_d1 W/m2    1   A   Shortwave cloud forcing
+SWCF_d10    W/m2    1   A   Shortwave cloud forcing
+SWCF_d2 W/m2    1   A   Shortwave cloud forcing
+SWCF_d3 W/m2    1   A   Shortwave cloud forcing
+SWCF_d4 W/m2    1   A   Shortwave cloud forcing
+SWCF_d5 W/m2    1   A   Shortwave cloud forcing
+SWCF_d6 W/m2    1   A   Shortwave cloud forcing
+SWCF_d7 W/m2    1   A   Shortwave cloud forcing
+SWCF_d8 W/m2    1   A   Shortwave cloud forcing
+SWCF_d9 W/m2    1   A   Shortwave cloud forcing
+T   K   30  A   Temperature
+T&IC    K   30  I   Temperature
+T200    K   1   A   Temperature at 200 mbar pressure surface
+T300    K   1   A   Temperature at 300 mbar pressure surface
+T500    K   1   A   Temperature at 500 mbar pressure surface
+T850    K   1   A   Temperature at 850 mbar pressure surface
+TACLDICE    kg/kg/s 30  A   CLDICE horz + vert + fixer tendency
+TACLDLIQ    kg/kg/s 30  A   CLDLIQ horz + vert + fixer tendency
+TADMS   kg/kg/s 30  A   DMS horz + vert + fixer tendency
+TAH2O2  kg/kg/s 30  A   H2O2 horz + vert + fixer tendency
+TAH2SO4 kg/kg/s 30  A   H2SO4 horz + vert + fixer tendency
+TANUMICE    kg/kg/s 30  A   NUMICE horz + vert + fixer tendency
+TANUMLIQ    kg/kg/s 30  A   NUMLIQ horz + vert + fixer tendency
+TAP K   30  A   Temperature (after physics)
+TAQ kg/kg/s 30  A   Q horz + vert + fixer tendency
+TASO2   kg/kg/s 30  A   SO2 horz + vert + fixer tendency
+TASOAG  kg/kg/s 30  A   SOAG horz + vert + fixer tendency
+TAUGWX  N/m2    1   A   Zonal gravity wave surface stress
+TAUGWY  N/m2    1   A   Meridional gravity wave surface stress
+TAUTMSX N/m2    1   A   Zonal turbulent mountain surface stress
+TAUTMSY N/m2    1   A   Meridional turbulent mountain surface stress
+TAUX    N/m2    1   A   Zonal surface stress
+TAUY    N/m2    1   A   Meridional surface stress
+TAbc_a1 kg/kg/s 30  A   bc_a1 horz + vert + fixer tendency
+TAdst_a1    kg/kg/s 30  A   dst_a1 horz + vert + fixer tendency
+TAdst_a3    kg/kg/s 30  A   dst_a3 horz + vert + fixer tendency
+TAncl_a1    kg/kg/s 30  A   ncl_a1 horz + vert + fixer tendency
+TAncl_a2    kg/kg/s 30  A   ncl_a2 horz + vert + fixer tendency
+TAncl_a3    kg/kg/s 30  A   ncl_a3 horz + vert + fixer tendency
+TAnum_a1    kg/kg/s 30  A   num_a1 horz + vert + fixer tendency
+TAnum_a2    kg/kg/s 30  A   num_a2 horz + vert + fixer tendency
+TAnum_a3    kg/kg/s 30  A   num_a3 horz + vert + fixer tendency
+TApom_a1    kg/kg/s 30  A   pom_a1 horz + vert + fixer tendency
+TAso4_a1    kg/kg/s 30  A   so4_a1 horz + vert + fixer tendency
+TAso4_a2    kg/kg/s 30  A   so4_a2 horz + vert + fixer tendency
+TAso4_a3    kg/kg/s 30  A   so4_a3 horz + vert + fixer tendency
+TAsoa_a1    kg/kg/s 30  A   soa_a1 horz + vert + fixer tendency
+TAsoa_a2    kg/kg/s 30  A   soa_a2 horz + vert + fixer tendency
+TBOT    K   1   A   Lowest model level temperature
+TBOT&IC K   1   I   Lowest model level temperature
+TBP K   30  A   Temperature (before physics)
+TCLY    mol/mol 30  A   total Cl volume mixing ratio
+TCWAT&IC    kg/kg   30  I   T associated with cloud water
+TEFIX   W/m2    1   A   Total energy after fixer
+TEINP   W/m2    1   A   Total energy of physics input
+TEOUT   W/m2    1   A   Total energy of physics output
+TFIX    K/s 1   A   T fixer (T equivalent of Energy correction)
+TGCLDCWP    kg/m2   1   A   Total grid-box cloud water path (liquid and ice)
+TGCLDIWP    kg/m2   1   A   Total grid-box cloud ice water path
+TGCLDLWP    kg/m2   1   A   Total grid-box cloud liquid water path
+TKE m2/s2   31  A   Turbulent Kinetic Energy
+TKE&IC  m2/s2   31  I   Turbulent Kinetic Energy
+TMCLDICE    kg/m2   1   A   CLDICE column burden
+TMCLDLIQ    kg/m2   1   A   CLDLIQ column burden
+TMDMS   kg/m2   1   A   DMS column burden
+TMH2O2  kg/m2   1   A   H2O2 column burden
+TMH2SO4 kg/m2   1   A   H2SO4 column burden
+TMNUMICE    kg/m2   1   A   NUMICE column burden
+TMNUMLIQ    kg/m2   1   A   NUMLIQ column burden
+TMQ kg/m2   1   A   Total (vertically integrated) precipitatable water
+TMSO2   kg/m2   1   A   SO2 column burden
+TMSOAG  kg/m2   1   A   SOAG column burden
+TMbc_a1 kg/m2   1   A   bc_a1 column burden
+TMdst_a1    kg/m2   1   A   dst_a1 column burden
+TMdst_a3    kg/m2   1   A   dst_a3 column burden
+TMncl_a1    kg/m2   1   A   ncl_a1 column burden
+TMncl_a2    kg/m2   1   A   ncl_a2 column burden
+TMncl_a3    kg/m2   1   A   ncl_a3 column burden
+TMnum_a1    kg/m2   1   A   num_a1 column burden
+TMnum_a2    kg/m2   1   A   num_a2 column burden
+TMnum_a3    kg/m2   1   A   num_a3 column burden
+TMpom_a1    kg/m2   1   A   pom_a1 column burden
+TMso4_a1    kg/m2   1   A   so4_a1 column burden
+TMso4_a2    kg/m2   1   A   so4_a2 column burden
+TMso4_a3    kg/m2   1   A   so4_a3 column burden
+TMsoa_a1    kg/m2   1   A   soa_a1 column burden
+TMsoa_a2    kg/m2   1   A   soa_a2 column burden
+TOTH    mol/mol 30  A   total H2 volume mixing ratio
+TPERT   K   1   A   Perturbation temperature (eddies in PBL)
+TPERT&IC    K   1   I   Perturbation temperature (eddies in PBL)
+TREFHT  K   1   A   Reference height temperature
+TREFHTMN    K   1   M   Minimum reference height temperature over output period
+TREFHTMX    K   1   X   Maximum reference height temperature over output period
+TREFMNAV    K   1   A   Average of TREFHT daily minimum
+TREFMXAV    K   1   A   Average of TREFHT daily maximum
+TROPP_FD    probability 1   A   Tropopause Found (primary)
+TROPP_P Pa  1   A   Tropopause Pressure (primary)
+TROPP_PD    probability 30  A   Tropopause Distribution (primary)
+TROPP_T K   1   A   Tropopause Temperature (primary)
+TROPP_Z m   1   A   Tropopause Height (primary)
+TROP_FD probability 1   A   Tropopause Found
+TROP_P  Pa  1   A   Tropopause Pressure
+TROP_PD probability 30  A   Tropopause Probabilty
+TROP_T  K   1   A   Tropopause Temperature
+TROP_Z  m   1   A   Tropopause Height
+TS  K   1   A   Surface temperature (radiative)
+TS1 K   1   A   TS1 subsoil temperature
+TS1&IC  K   1   I   TS1 subsoil temperature
+TS2 K   1   A   TS2 subsoil temperature
+TS2&IC  K   1   I   TS2 subsoil temperature
+TS3 K   1   A   TS3 subsoil temperature
+TS3&IC  K   1   I   TS3 subsoil temperature
+TS4 K   1   A   TS4 subsoil temperature
+TS4&IC  K   1   I   TS4 subsoil temperature
+TSICE   K   1   A   Ice temperature
+TSICE&IC    K   1   I   Ice temperature
+TSICERAD&IC K   1   I   Radiatively equivalent ice temperature
+TSMN    K   1   M   Minimum surface temperature over output period
+TSMX    K   1   X   Maximum surface temperature over output period
+TT  K2  30  A   Eddy temperature variance
+TTEND   K/s 30  A   T tendency
+TTGWORO K/s 30  A   T tendency - orographic gravity wave drag
+U   m/s 30  A   Zonal wind
+U200    m/s 1   A   Zonal wind at 200 mbar pressure surface
+U250    m/s 1   A   Zonal wind at 250 mbar pressure surface
+U850    m/s 1   A   Zonal wind at 850 mbar pressure surface
+UAP m/s 30  A   Zonal wind (after physics)
+UBOT    m/s 1   A   Lowest model level zonal wind
+UFLX    W/m2    31  A   Zonal momentum flux
+US  m/s 30  A   Zonal wind, staggered
+US&IC   m/s 30  I   Zonal wind, staggered
+USTAR   m/s 1   A   Surface friction velocity
+UTEND   m/s2    30  A   U tendency
+UTGWORO m/s2    30  A   U tendency - orographic gravity wave drag
+UU  m2/s2   30  A   Zonal velocity squared
+UW_bprod    m2/s3   31  A   Buoyancy production, I
+UW_chs  g*kg/J  31  A   Buoyancy Coefficient, chs, I
+UW_chu  g*kg/J  31  A   Buoyancy Coefficient, chu, I
+UW_cldn no  30  A   Cloud Fraction, L
+UW_cms  g/kg/kg 31  A   Buoyancy Coefficient, cms, I
+UW_cmu  g/kg/kg 31  A   Buoyancy Coefficient, cmu, I
+UW_ebrk m2/s2   30  A   CL-averaged TKE, CL
+UW_errorPBL m2/s    1   A   Error function of UW PBL
+UW_evhc no  30  A   Evaporative enhancement factor, CL
+UW_gh   no  31  A   gh at all interfaces, I
+UW_ghcl no  30  A   CL-averaged gh, CL
+UW_jbbu m/s2    30  A   Buoyancy jump across CL base, CL
+UW_jt2slv   J/kg    30  A   slv jump for evhc, CL
+UW_jtbu m/s2    30  A   Buoyancy jump across CL top, CL
+UW_kbase_f  no  30  A   Final kbase with SRCL, CL
+UW_kbase_mg no  30  A   kbase after merging, CL
+UW_kbase_o  no  30  A   Initial CL Base Exterbal Interface Index, CL
+UW_ktop_f   no  30  A   Final ktop with SRCL, CL
+UW_ktop_mg  no  30  A   ktop after merging, CL
+UW_ktop_o   no  30  A   Initial Top Exterbal Interface Index, CL
+UW_kvh  m2/s    31  A   Eddy diffusivity of heat, I
+UW_kvm  m2/s    31  A   Eddy diffusivity of uv, I
+UW_lbrk m   30  A   CL internal thickness, CL
+UW_leng m/s 31  A   Turbulence length scale, I
+UW_lwp  kg/m2   30  A   LWP in the CL top layer, CL
+UW_minpblh  m   1   A   Minimum PBLH, 1
+UW_n2   s-2 30  A   Buoyancy Frequency, LI
+UW_n2hb s-2 30  A   n2 at just above CL base interface
+UW_n2ht s-2 30  A   n2 at just below CL top interface, CL
+UW_ncvfin_f #   1   A   Final ncvfin with SRCL, CL
+UW_ncvfin_mg    #   1   A   ncvfin after merging, CL
+UW_ncvfin_o #   1   A   Initial Total Number of CL regimes, CL
+UW_optdepth no  30  A   Optical depth of the CL top layer, CL
+UW_pblh m   1   A   PBLH, 1
+UW_pblhp    Pa  1   A   PBLH pressure, 1
+UW_ql   kg/kg   30  A   ql(LWC), L
+UW_qpert    kg/kg   1   A   Convective qt excess, I
+UW_qrl  g*W/m2  30  A   LW cooling rate, L
+UW_radf m2/s3   30  A   Buoyancy production at the CL top by radf, I
+UW_radfrac  no  30  A   Fraction of radiative cooling confined in the CL top
+UW_ri   no  30  A   Interface Richardson Number, I
+UW_ria  no  31  A   ri at all interfaces, I
+UW_ricl no  30  A   CL-averaged Ri, CL
+UW_s2   s-2 30  A   Shear Frequency, LI
+UW_sfi  no  31  A   Interface Saturation Fraction, I
+UW_sflh no  30  A   Lower-Half Saturation Fraction, L
+UW_sfuh no  30  A   Upper-Half Saturation Fraction, L
+UW_sh   no  31  A   sh at all interfaces, I
+UW_shcl no  30  A   CL-averaged sh, CL
+UW_sm   no  31  A   sm at all interfaces, I
+UW_smcl no  30  A   CL-averaged sm, CL
+UW_sprod    m2/s3   31  A   Shear production, I
+UW_tke  m2/s2   31  A   TKE, I
+UW_tkes m2/s2   1   A   Surface TKE, 1
+UW_tpert    K   1   A   Convective T excess, 1
+UW_turbtype no  31  A   Interface Turbulence Type, I
+UW_ustar    m/s 1   A   Surface Frictional Velocity, 1
+UW_wbrk m2/s2   30  A   CL-averaged W, CL
+UW_wcap m2/s2   31  A   Wcap, I
+UW_web  m/s 30  A   Entrainment rate at CL base, CL
+UW_wet  m/s 30  A   Entrainment rate at CL top, CL
+UW_wpert    m/s 1   A   Convective W excess, I
+UW_wstar    m/s 30  A   Convective velocity, Wstar, CL
+UW_wstar3fact   no  30  A   Enhancement of wstar3 due to entrainment, CL
+V   m/s 30  A   Meridional wind
+V200    m/s 1   A   Meridional wind at 200 mbar pressure surface
+V250    m/s 1   A   Meridional wind at 250 mbar pressure surface
+V850    m/s 1   A   Meridional wind at 850 mbar pressure surface
+VAP m/s 30  A   Meridional wind (after physics)
+VAT K/s 30  A   Vertical advective tendency of T
+VBOT    m/s 1   A   Lowest model level meridional wind
+VD01    kg/kg/s 30  A   Vertical diffusion of Q
+VDCLDICE    kg/kg/s 30  A   Vertical diffusion of CLDICE
+VDCLDLIQ    kg/kg/s 30  A   Vertical diffusion of CLDLIQ
+VDDMS   kg/kg/s 30  A   Vertical diffusion of DMS
+VDH2O2  kg/kg/s 30  A   Vertical diffusion of H2O2
+VDH2SO4 kg/kg/s 30  A   Vertical diffusion of H2SO4
+VDNUMICE    kg/kg/s 30  A   Vertical diffusion of NUMICE
+VDNUMLIQ    kg/kg/s 30  A   Vertical diffusion of NUMLIQ
+VDSO2   kg/kg/s 30  A   Vertical diffusion of SO2
+VDSOAG  kg/kg/s 30  A   Vertical diffusion of SOAG
+VDbc_a1 kg/kg/s 30  A   Vertical diffusion of bc_a1
+VDdst_a1    kg/kg/s 30  A   Vertical diffusion of dst_a1
+VDdst_a3    kg/kg/s 30  A   Vertical diffusion of dst_a3
+VDncl_a1    kg/kg/s 30  A   Vertical diffusion of ncl_a1
+VDncl_a2    kg/kg/s 30  A   Vertical diffusion of ncl_a2
+VDncl_a3    kg/kg/s 30  A   Vertical diffusion of ncl_a3
+VDnum_a1    kg/kg/s 30  A   Vertical diffusion of num_a1
+VDnum_a2    kg/kg/s 30  A   Vertical diffusion of num_a2
+VDnum_a3    kg/kg/s 30  A   Vertical diffusion of num_a3
+VDpom_a1    kg/kg/s 30  A   Vertical diffusion of pom_a1
+VDso4_a1    kg/kg/s 30  A   Vertical diffusion of so4_a1
+VDso4_a2    kg/kg/s 30  A   Vertical diffusion of so4_a2
+VDso4_a3    kg/kg/s 30  A   Vertical diffusion of so4_a3
+VDsoa_a1    kg/kg/s 30  A   Vertical diffusion of soa_a1
+VDsoa_a2    kg/kg/s 30  A   Vertical diffusion of soa_a2
+VFLX    W/m2    31  A   Meridional momentm flux
+VQ  m/skg/kg    30  A   Meridional water transport
+VS  m/s 30  A   Meridional wind, staggered
+VS&IC   m/s 30  I   Meridional wind, staggered
+VT  K m/s   30  A   Meridional heat transport
+VTEND   m/s2    30  A   V tendency
+VTGWORO m/s2    30  A   V tendency - orographic gravity wave drag
+VTRMC   m/s 30  A   Mass-weighted cloud water fallspeed
+VTRMI   m/s 30  A   Mass-weighted cloud ice fallspeed
+VU  m2/s2   30  A   Meridional flux of zonal momentum
+VV  m2/s2   30  A   Meridional velocity squared
+VZ  m2/s    30  A   Meridional transport of geopotential energy
+WDR_H2O2    /s  30  A   H2O2 wet deposition rate
+WDR_SO2 /s  30  A   SO2 wet deposition rate
+WD_H2O2 kg/s    1   A   H2O2 wet deposition
+WD_NHX  kg/s    1   A   NHx wet deposition
+WD_NOY  kg/s    1   A   NOy wet deposition
+WD_SO2  kg/s    1   A   SO2 wet deposition
+WD_SOX  kg/s    1   A   SOx wet deposition
+WGUSTD  m/s 1   A   wind gusts from turbulence
+WSPEED  m/s 30  X   Horizontal total wind speed
+WSUB    m/s 30  A   Diagnostic sub-grid vertical velocity
+WSUBI   m/s 30  A   Diagnostic sub-grid vertical velocity for ice
+WTKE    m/s 30  A   Standard deviation of updraft velocity
+XPH_LWC kg/kg   30  A   pH value multiplied by lwc
+Z050    m   1   A   Geopotential Z at 50 mbar pressure surface
+Z100    m   1   A   Geopotential Z at 100 mbar pressure surface
+Z200    m   1   A   Geopotential Z at 200 mbar pressure surface
+Z3  m   30  A   Geopotential Height (above sea level)
+Z300    m   1   A   Geopotential Z at 300 mbar pressure surface
+Z500    m   1   A   Geopotential Z at 500 mbar pressure surface
+Z700    m   1   A   Geopotential Z at 700 mbar pressure surface
+ZBOT    m   1   A   Lowest model level height
+ZMDICE  kg/kg/s 30  A   Cloud ice tendency - Zhang-McFarlane convection
+ZMDLF   kg/kg/s 30  A   Detrained liquid water from ZM convection
+ZMDLIQ  kg/kg/s 30  A   Cloud liq tendency - Zhang-McFarlane convection
+ZMDQ    kg/kg/s 30  A   Q tendency - Zhang-McFarlane moist convection
+ZMDT    K/s 30  A   T tendency - Zhang-McFarlane moist convection
+ZMEIHEAT    W/kg    30  A   Heating by ice and evaporation in ZM convection
+ZMFLXPRC    kg/m2/s 31  A   Flux of precipitation from ZM convection
+ZMFLXSNW    kg/m2/s 31  A   Flux of snow from ZM convection
+ZMICUD  m/s 30  A   ZM in-cloud U downdrafts
+ZMICUU  m/s 30  A   ZM in-cloud U updrafts
+ZMICVD  m/s 30  A   ZM in-cloud V downdrafts
+ZMICVU  m/s 30  A   ZM in-cloud V updrafts
+ZMMD    kg/m2/s 30  A   ZM convection downdraft mass flux
+ZMMTT   K/s 30  A   T tendency - ZM convective momentum transport
+ZMMTU   m/s2    30  A   U tendency - ZM convective momentum transport
+ZMMTV   m/s2    30  A   V tendency - ZM convective momentum transport
+ZMMU    kg/m2/s 30  A   ZM convection updraft mass flux
+ZMNTPRPD    kg/kg/s 30  A   Net precipitation production from ZM convection
+ZMNTSNPD    kg/kg/s 30  A   Net snow production from ZM convection
+ZMUPGD  m/s2    30  A   zonal force from ZM downdraft pressure gradient term
+ZMUPGU  m/s2    30  A   zonal force from ZM updraft pressure gradient term
+ZMVPGD  m/s2    30  A   merdional force from ZM downdraft pressure gradient term
+ZMVPGU  m/s2    30  A   meridional force from ZM updraft pressure gradient term
+ZZ  m2  30  A   Eddy height variance
+a2x_BCPHIDRY    kg/m2/s 1   A   drydep of hydrophilic black carbon
+a2x_BCPHIWET    kg/m2/s 1   A   wetdep of hydrophilic black carbon
+a2x_BCPHODRY    kg/m2/s 1   A   drydep of hydrophobic black carbon
+a2x_DSTDRY1 kg/m2/s 1   A   drydep of dust (bin1)
+a2x_DSTDRY2 kg/m2/s 1   A   drydep of dust (bin2)
+a2x_DSTDRY3 kg/m2/s 1   A   drydep of dust (bin3)
+a2x_DSTDRY4 kg/m2/s 1   A   drydep of dust (bin4)
+a2x_DSTWET1 kg/m2/s 1   A   wetdep of dust (bin1)
+a2x_DSTWET2 kg/m2/s 1   A   wetdep of dust (bin2)
+a2x_DSTWET3 kg/m2/s 1   A   wetdep of dust (bin3)
+a2x_DSTWET4 kg/m2/s 1   A   wetdep of dust (bin4)
+a2x_OCPHIDRY    kg/m2/s 1   A   drydep of hydrophilic organic carbon
+a2x_OCPHIWET    kg/m2/s 1   A   wetdep of hydrophilic organic carbon
+a2x_OCPHODRY    kg/m2/s 1   A   drydep of hydrophobic organic carbon
+airFV   frac    1   A   FV
+aquad_Cu    no  30  A   aquad
+bc_a1   kg/kg   30  A   bc_a1
+bc_a1&IC    kg/kg   30  I   bc_a1
+bc_a1DDF    kg/m2/s 1   A   bc_a1 dry deposition flux at bottom (grav + turb)
+bc_a1DDV    m/s 30  A   bc_a1 deposition velocity
+bc_a1DTQ    kg/kg/s 30  A   bc_a1 dry deposition
+bc_a1GVF    kg/m2/s 1   A   bc_a1 gravitational dry deposition flux
+bc_a1SBC    kg/kg/s 30  A   bc_a1 bc wet deposition
+bc_a1SBS    kg/kg/s 30  A   bc_a1 bs wet deposition
+bc_a1SFSBC  kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+bc_a1SFSBS  kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+bc_a1SFSIC  kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+bc_a1SFSIS  kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+bc_a1SFWET  kg/m2/s 1   A   Wet deposition flux at surface
+bc_a1SIC    kg/kg/s 30  A   bc_a1 ic wet deposition
+bc_a1SIS    kg/kg/s 30  A   bc_a1 is wet deposition
+bc_a1TBF    kg/m2/s 1   A   bc_a1 turbulent dry deposition flux
+bc_a1WET    kg/kg/s 30  A   wet deposition tendency
+bc_a1_CHML  /cm3/s  30  I   chemical loss rate
+bc_a1_CHMP  /cm3/s  30  I   chemical production rate
+bc_a1_CLXF  molec/cm2/s 1   A   vertically intergrated external forcing for bc_a1
+bc_a1_SRF   kg/kg   1   A   bc_a1 in bottom layer
+bc_a1_XFRC  molec/cm3/s 30  A   external forcing for bc_a1
+bc_a1_mixnuc1   kg/m2/s 1   A   bc_a1 dropmixnuc mixnuc column tendency
+bc_c1   kg/kg   30  A   bc_c1 in cloud water
+bc_c1DDF    kg/m2/s 1   A   bc_c1 dry deposition flux at bottom (grav + turb)
+bc_c1GVF    kg/m2/s 1   A   bc_c1 gravitational dry deposition flux
+bc_c1SFSBC  kg/m2/s 1   A   bc_c1 wet deposition flux (belowcloud, convective) at surface
+bc_c1SFSBS  kg/m2/s 1   A   bc_c1 wet deposition flux (belowcloud, stratiform) at surface
+bc_c1SFSIC  kg/m2/s 1   A   bc_c1 wet deposition flux (incloud, convective) at surface
+bc_c1SFSIS  kg/m2/s 1   A   bc_c1 wet deposition flux (incloud, stratiform) at surface
+bc_c1SFWET  kg/m2/s 1   A   bc_c1 wet deposition flux at surface
+bc_c1TBF    kg/m2/s 1   A   bc_c1 turbulent dry deposition flux
+bc_c1_mixnuc1   kg/m2/s 1   A   bc_c1 dropmixnuc mixnuc column tendency
+bogbot_Cu   no  30  A   Cloud buoyancy at the bottom interface
+bogtop_Cu   no  30  A   Cloud buoyancy at the top interface
+bquad_Cu    no  30  A   bquad
+cb_CFC11_c  kg/m^2  1   A   CFC11 column burden used in climate calculation
+cb_CFC12_c  kg/m^2  1   A   CFC12 column burden used in climate calculation
+cb_CH4_c    kg/m^2  1   A   CH4 column burden used in climate calculation
+cb_CO2_c    kg/m^2  1   A   CO2 column burden used in climate calculation
+cb_N2O_c    kg/m^2  1   A   N2O column burden used in climate calculation
+cb_O2_c kg/m^2  1   A   O2 column burden used in climate calculation
+cb_Q_c  kg/m^2  1   A   Q column burden used in climate calculation
+cb_bc_a1_c  kg/m^2  1   A   bc_a1 column burden used in climate calculation
+cb_dst_a1_c kg/m^2  1   A   dst_a1 column burden used in climate calculation
+cb_dst_a3_c kg/m^2  1   A   dst_a3 column burden used in climate calculation
+cb_ncl_a1_c kg/m^2  1   A   ncl_a1 column burden used in climate calculation
+cb_ncl_a3_c kg/m^2  1   A   ncl_a3 column burden used in climate calculation
+cb_ozone_c  kg/m^2  1   A   ozone column burden used in climate calculation
+cb_pom_a1_c kg/m^2  1   A   pom_a1 column burden used in climate calculation
+cb_so4_a1_c kg/m^2  1   A   so4_a1 column burden used in climate calculation
+cb_soa_a1_c kg/m^2  1   A   soa_a1 column burden used in climate calculation
+cbmf_Cu kg/m2/s 1   A   Cumulus base mass flux
+cbmflimit_Cu    kg/m2/s 1   A   cbmflimiter
+chem_trop   fraction of mode    30  I   Lowest level with stratospheric chemsitry
+chem_trop_linoz fraction of mode    30  I   Lowest possible Linoz level
+chem_trop_tropop    fraction of mode    30  I   Troposphere boundary calculated in chemistry
+cin_Cu  J/kg    1   A   CIN upto LFC
+cinlcl_Cu   J/kg    1   A   CIN upto LCL
+cquad_Cu    no  30  A   cquad
+cufrc_Cu    fraction    30  A   Cumulus cloud fraction
+dei_cloud   micrometers 30  I   ice radiative effective diameter in cloud
+dgnd_a01    m   30  A   dry dgnum, interstitial, mode 01
+dgnd_a02    m   30  A   dry dgnum, interstitial, mode 02
+dgnd_a03    m   30  A   dry dgnum, interstitial, mode 03
+dgnw_a01    m   30  A   wet dgnum, interstitial, mode 01
+dgnw_a02    m   30  A   wet dgnum, interstitial, mode 02
+dgnw_a03    m   30  A   wet dgnum, interstitial, mode 03
+diten_Cu    kg/kg/s 30  A   Expellsion rate of cumulus ice water to env.
+dst_a1  kg/kg   30  A   dst_a1
+dst_a1&IC   kg/kg   30  I   dst_a1
+dst_a1DDF   kg/m2/s 1   A   dst_a1 dry deposition flux at bottom (grav + turb)
+dst_a1DDV   m/s 30  A   dst_a1 deposition velocity
+dst_a1DTQ   kg/kg/s 30  A   dst_a1 dry deposition
+dst_a1GVF   kg/m2/s 1   A   dst_a1 gravitational dry deposition flux
+dst_a1SBC   kg/kg/s 30  A   dst_a1 bc wet deposition
+dst_a1SBS   kg/kg/s 30  A   dst_a1 bs wet deposition
+dst_a1SF    kg/m2/s 1   A   dst_a1 dust surface emission
+dst_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+dst_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+dst_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+dst_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+dst_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+dst_a1SIC   kg/kg/s 30  A   dst_a1 ic wet deposition
+dst_a1SIS   kg/kg/s 30  A   dst_a1 is wet deposition
+dst_a1TBF   kg/m2/s 1   A   dst_a1 turbulent dry deposition flux
+dst_a1WET   kg/kg/s 30  A   wet deposition tendency
+dst_a1_CHML /cm3/s  30  I   chemical loss rate
+dst_a1_CHMP /cm3/s  30  I   chemical production rate
+dst_a1_SRF  kg/kg   1   A   dst_a1 in bottom layer
+dst_a1_mixnuc1  kg/m2/s 1   A   dst_a1 dropmixnuc mixnuc column tendency
+dst_a3  kg/kg   30  A   dst_a3
+dst_a3&IC   kg/kg   30  I   dst_a3
+dst_a3DDF   kg/m2/s 1   A   dst_a3 dry deposition flux at bottom (grav + turb)
+dst_a3DDV   m/s 30  A   dst_a3 deposition velocity
+dst_a3DTQ   kg/kg/s 30  A   dst_a3 dry deposition
+dst_a3GVF   kg/m2/s 1   A   dst_a3 gravitational dry deposition flux
+dst_a3SBC   kg/kg/s 30  A   dst_a3 bc wet deposition
+dst_a3SBS   kg/kg/s 30  A   dst_a3 bs wet deposition
+dst_a3SF    kg/m2/s 1   A   dst_a3 dust surface emission
+dst_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+dst_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+dst_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+dst_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+dst_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+dst_a3SIC   kg/kg/s 30  A   dst_a3 ic wet deposition
+dst_a3SIS   kg/kg/s 30  A   dst_a3 is wet deposition
+dst_a3TBF   kg/m2/s 1   A   dst_a3 turbulent dry deposition flux
+dst_a3WET   kg/kg/s 30  A   wet deposition tendency
+dst_a3_CHML /cm3/s  30  I   chemical loss rate
+dst_a3_CHMP /cm3/s  30  I   chemical production rate
+dst_a3_SRF  kg/kg   1   A   dst_a3 in bottom layer
+dst_a3_mixnuc1  kg/m2/s 1   A   dst_a3 dropmixnuc mixnuc column tendency
+dst_c1  kg/kg   30  A   dst_c1 in cloud water
+dst_c1DDF   kg/m2/s 1   A   dst_c1 dry deposition flux at bottom (grav + turb)
+dst_c1GVF   kg/m2/s 1   A   dst_c1 gravitational dry deposition flux
+dst_c1SFSBC kg/m2/s 1   A   dst_c1 wet deposition flux (belowcloud, convective) at surface
+dst_c1SFSBS kg/m2/s 1   A   dst_c1 wet deposition flux (belowcloud, stratiform) at surface
+dst_c1SFSIC kg/m2/s 1   A   dst_c1 wet deposition flux (incloud, convective) at surface
+dst_c1SFSIS kg/m2/s 1   A   dst_c1 wet deposition flux (incloud, stratiform) at surface
+dst_c1SFWET kg/m2/s 1   A   dst_c1 wet deposition flux at surface
+dst_c1TBF   kg/m2/s 1   A   dst_c1 turbulent dry deposition flux
+dst_c1_mixnuc1  kg/m2/s 1   A   dst_c1 dropmixnuc mixnuc column tendency
+dst_c3  kg/kg   30  A   dst_c3 in cloud water
+dst_c3DDF   kg/m2/s 1   A   dst_c3 dry deposition flux at bottom (grav + turb)
+dst_c3GVF   kg/m2/s 1   A   dst_c3 gravitational dry deposition flux
+dst_c3SFSBC kg/m2/s 1   A   dst_c3 wet deposition flux (belowcloud, convective) at surface
+dst_c3SFSBS kg/m2/s 1   A   dst_c3 wet deposition flux (belowcloud, stratiform) at surface
+dst_c3SFSIC kg/m2/s 1   A   dst_c3 wet deposition flux (incloud, convective) at surface
+dst_c3SFSIS kg/m2/s 1   A   dst_c3 wet deposition flux (incloud, stratiform) at surface
+dst_c3SFWET kg/m2/s 1   A   dst_c3 wet deposition flux at surface
+dst_c3TBF   kg/m2/s 1   A   dst_c3 turbulent dry deposition flux
+dst_c3_mixnuc1  kg/m2/s 1   A   dst_c3 dropmixnuc mixnuc column tendency
+dwten_Cu    kg/kg/s 30  A   Expellsion rate of cumulus cloud water to env.
+emfkbup_Cu  kg/m2/s 1   A   Penetrative mass flux at kbup
+excess0_Cu  no  30  A   Environmental saturation excess
+excessu_Cu  no  30  A   Updraft saturation excess
+exit_UWCu_Cu    no  1   A   exit_UWCu
+exit_conden_Cu  no  1   A   exit_conden
+exit_cufilter_Cu    no  1   A   exit_cufilter
+exit_drycore_Cu no  1   A   exit_drycore
+exit_kinv1_Cu   no  1   A   exit_kinv1
+exit_klclmkx_Cu no  1   A   exit_klclmkx
+exit_klfcmkx_Cu no  1   A   exit_klfcmkx
+exit_rei_Cu no  1   A   exit_rei
+exit_ufrc_Cu    no  1   A   exit_ufrc
+exit_wtw_Cu no  1   A   exit_wtw
+exit_wu_Cu  no  1   A   exit_wu
+extfrc_01       30  I   ext frcing
+extfrc_02       30  I   ext frcing
+extfrc_03       30  I   ext frcing
+extfrc_04       30  I   ext frcing
+extfrc_05       30  I   ext frcing
+extfrc_06       30  I   ext frcing
+extfrc_07       30  I   ext frcing
+fdr_Cu  1/m 30  A   Cumulus lateral fractional detrainment Rate
+fer_Cu  1/m 30  A   Cumulus lateral fractional entrainment rate
+flxrain_Cu  kg/m2/s 31  A   Rain flux induced by Cumulus
+flxsnow_Cu  kg/m2/s 31  A   Snow flux induced by Cumulus
+ind_delcin_Cu   no  1   A   ind_delcin
+jh2o2   /s  30  I   photolysis rate
+lambda_cloud    1/meter 30  I   lambda in cloud
+limit_cbmf_Cu   no  1   A   limit_cbmf
+limit_cin_Cu    no  1   A   limit_cin
+limit_cinlcl_Cu no  1   A   limit_cinlcl
+limit_emf_Cu    no  1   A   limit_emf
+limit_negcon_Cu no  1   A   limit_negcon
+limit_ppen_Cu   no  1   A   limit_ppen
+limit_rei_Cu    no  1   A   limit_rei
+limit_shcu_Cu   no  1   A   limit_shcu
+limit_ufrc_Cu   no  1   A   limit_ufrc
+m_CFC11_c   kg/m^2  30  A   CFC11 mass per layer used in climate calculation
+m_CFC12_c   kg/m^2  30  A   CFC12 mass per layer used in climate calculation
+m_CH4_c kg/m^2  30  A   CH4 mass per layer used in climate calculation
+m_CO2_c kg/m^2  30  A   CO2 mass per layer used in climate calculation
+m_N2O_c kg/m^2  30  A   N2O mass per layer used in climate calculation
+m_O2_c  kg/m^2  30  A   O2 mass per layer used in climate calculation
+m_Q_c   kg/m^2  30  A   Q mass per layer used in climate calculation
+m_bc_a1_c   kg/m^2  30  A   bc_a1 mass per layer used in climate calculation
+m_dst_a1_c  kg/m^2  30  A   dst_a1 mass per layer used in climate calculation
+m_dst_a3_c  kg/m^2  30  A   dst_a3 mass per layer used in climate calculation
+m_ncl_a1_c  kg/m^2  30  A   ncl_a1 mass per layer used in climate calculation
+m_ncl_a3_c  kg/m^2  30  A   ncl_a3 mass per layer used in climate calculation
+m_ozone_c   kg/m^2  30  A   ozone mass per layer used in climate calculation
+m_pom_a1_c  kg/m^2  30  A   pom_a1 mass per layer used in climate calculation
+m_so4_a1_c  kg/m^2  30  A   so4_a1 mass per layer used in climate calculation
+m_soa_a1_c  kg/m^2  30  A   soa_a1 mass per layer used in climate calculation
+mu_cloud    1   30  I   mu in cloud
+ncl_a1  kg/kg   30  A   ncl_a1
+ncl_a1&IC   kg/kg   30  I   ncl_a1
+ncl_a1DDF   kg/m2/s 1   A   ncl_a1 dry deposition flux at bottom (grav + turb)
+ncl_a1DDV   m/s 30  A   ncl_a1 deposition velocity
+ncl_a1DTQ   kg/kg/s 30  A   ncl_a1 dry deposition
+ncl_a1GVF   kg/m2/s 1   A   ncl_a1 gravitational dry deposition flux
+ncl_a1SBC   kg/kg/s 30  A   ncl_a1 bc wet deposition
+ncl_a1SBS   kg/kg/s 30  A   ncl_a1 bs wet deposition
+ncl_a1SF    kg/m2/s 1   A   ncl_a1 progseasalts surface emission
+ncl_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a1SIC   kg/kg/s 30  A   ncl_a1 ic wet deposition
+ncl_a1SIS   kg/kg/s 30  A   ncl_a1 is wet deposition
+ncl_a1TBF   kg/m2/s 1   A   ncl_a1 turbulent dry deposition flux
+ncl_a1WET   kg/kg/s 30  A   wet deposition tendency
+ncl_a1_CHML /cm3/s  30  I   chemical loss rate
+ncl_a1_CHMP /cm3/s  30  I   chemical production rate
+ncl_a1_SRF  kg/kg   1   A   ncl_a1 in bottom layer
+ncl_a1_mixnuc1  kg/m2/s 1   A   ncl_a1 dropmixnuc mixnuc column tendency
+ncl_a1_sfcoag1  kg/m2/s 1   A   ncl_a1 modal_aero coagulation column tendency
+ncl_a1_sfcsiz3  kg/m2/s 1   A   ncl_a1 calcsize aitken-to-accum adjust column tendency
+ncl_a1_sfcsiz4  kg/m2/s 1   A   ncl_a1 calcsize accum-to-aitken adjust column tendency
+ncl_a1_sfgaex2  kg/m2/s 1   A   ncl_a1 gas-aerosol-exchange renaming column tendency
+ncl_a2  kg/kg   30  A   ncl_a2
+ncl_a2&IC   kg/kg   30  I   ncl_a2
+ncl_a2DDF   kg/m2/s 1   A   ncl_a2 dry deposition flux at bottom (grav + turb)
+ncl_a2DDV   m/s 30  A   ncl_a2 deposition velocity
+ncl_a2DTQ   kg/kg/s 30  A   ncl_a2 dry deposition
+ncl_a2GVF   kg/m2/s 1   A   ncl_a2 gravitational dry deposition flux
+ncl_a2SBC   kg/kg/s 30  A   ncl_a2 bc wet deposition
+ncl_a2SBS   kg/kg/s 30  A   ncl_a2 bs wet deposition
+ncl_a2SF    kg/m2/s 1   A   ncl_a2 progseasalts surface emission
+ncl_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a2SIC   kg/kg/s 30  A   ncl_a2 ic wet deposition
+ncl_a2SIS   kg/kg/s 30  A   ncl_a2 is wet deposition
+ncl_a2TBF   kg/m2/s 1   A   ncl_a2 turbulent dry deposition flux
+ncl_a2WET   kg/kg/s 30  A   wet deposition tendency
+ncl_a2_CHML /cm3/s  30  I   chemical loss rate
+ncl_a2_CHMP /cm3/s  30  I   chemical production rate
+ncl_a2_SRF  kg/kg   1   A   ncl_a2 in bottom layer
+ncl_a2_mixnuc1  kg/m2/s 1   A   ncl_a2 dropmixnuc mixnuc column tendency
+ncl_a2_sfcoag1  kg/m2/s 1   A   ncl_a2 modal_aero coagulation column tendency
+ncl_a2_sfcsiz3  kg/m2/s 1   A   ncl_a2 calcsize aitken-to-accum adjust column tendency
+ncl_a2_sfcsiz4  kg/m2/s 1   A   ncl_a2 calcsize accum-to-aitken adjust column tendency
+ncl_a2_sfgaex2  kg/m2/s 1   A   ncl_a2 gas-aerosol-exchange renaming column tendency
+ncl_a3  kg/kg   30  A   ncl_a3
+ncl_a3&IC   kg/kg   30  I   ncl_a3
+ncl_a3DDF   kg/m2/s 1   A   ncl_a3 dry deposition flux at bottom (grav + turb)
+ncl_a3DDV   m/s 30  A   ncl_a3 deposition velocity
+ncl_a3DTQ   kg/kg/s 30  A   ncl_a3 dry deposition
+ncl_a3GVF   kg/m2/s 1   A   ncl_a3 gravitational dry deposition flux
+ncl_a3SBC   kg/kg/s 30  A   ncl_a3 bc wet deposition
+ncl_a3SBS   kg/kg/s 30  A   ncl_a3 bs wet deposition
+ncl_a3SF    kg/m2/s 1   A   ncl_a3 progseasalts surface emission
+ncl_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+ncl_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+ncl_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+ncl_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+ncl_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+ncl_a3SIC   kg/kg/s 30  A   ncl_a3 ic wet deposition
+ncl_a3SIS   kg/kg/s 30  A   ncl_a3 is wet deposition
+ncl_a3TBF   kg/m2/s 1   A   ncl_a3 turbulent dry deposition flux
+ncl_a3WET   kg/kg/s 30  A   wet deposition tendency
+ncl_a3_CHML /cm3/s  30  I   chemical loss rate
+ncl_a3_CHMP /cm3/s  30  I   chemical production rate
+ncl_a3_SRF  kg/kg   1   A   ncl_a3 in bottom layer
+ncl_a3_mixnuc1  kg/m2/s 1   A   ncl_a3 dropmixnuc mixnuc column tendency
+ncl_c1  kg/kg   30  A   ncl_c1 in cloud water
+ncl_c1DDF   kg/m2/s 1   A   ncl_c1 dry deposition flux at bottom (grav + turb)
+ncl_c1GVF   kg/m2/s 1   A   ncl_c1 gravitational dry deposition flux
+ncl_c1SFSBC kg/m2/s 1   A   ncl_c1 wet deposition flux (belowcloud, convective) at surface
+ncl_c1SFSBS kg/m2/s 1   A   ncl_c1 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c1SFSIC kg/m2/s 1   A   ncl_c1 wet deposition flux (incloud, convective) at surface
+ncl_c1SFSIS kg/m2/s 1   A   ncl_c1 wet deposition flux (incloud, stratiform) at surface
+ncl_c1SFWET kg/m2/s 1   A   ncl_c1 wet deposition flux at surface
+ncl_c1TBF   kg/m2/s 1   A   ncl_c1 turbulent dry deposition flux
+ncl_c1_mixnuc1  kg/m2/s 1   A   ncl_c1 dropmixnuc mixnuc column tendency
+ncl_c1_sfcsiz3  kg/m2/s 1   A   ncl_c1 calcsize aitken-to-accum adjust column tendency
+ncl_c1_sfcsiz4  kg/m2/s 1   A   ncl_c1 calcsize accum-to-aitken adjust column tendency
+ncl_c1_sfgaex2  kg/m2/s 1   A   ncl_c1 gas-aerosol-exchange renaming column tendency
+ncl_c2  kg/kg   30  A   ncl_c2 in cloud water
+ncl_c2DDF   kg/m2/s 1   A   ncl_c2 dry deposition flux at bottom (grav + turb)
+ncl_c2GVF   kg/m2/s 1   A   ncl_c2 gravitational dry deposition flux
+ncl_c2SFSBC kg/m2/s 1   A   ncl_c2 wet deposition flux (belowcloud, convective) at surface
+ncl_c2SFSBS kg/m2/s 1   A   ncl_c2 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c2SFSIC kg/m2/s 1   A   ncl_c2 wet deposition flux (incloud, convective) at surface
+ncl_c2SFSIS kg/m2/s 1   A   ncl_c2 wet deposition flux (incloud, stratiform) at surface
+ncl_c2SFWET kg/m2/s 1   A   ncl_c2 wet deposition flux at surface
+ncl_c2TBF   kg/m2/s 1   A   ncl_c2 turbulent dry deposition flux
+ncl_c2_mixnuc1  kg/m2/s 1   A   ncl_c2 dropmixnuc mixnuc column tendency
+ncl_c2_sfcsiz3  kg/m2/s 1   A   ncl_c2 calcsize aitken-to-accum adjust column tendency
+ncl_c2_sfcsiz4  kg/m2/s 1   A   ncl_c2 calcsize accum-to-aitken adjust column tendency
+ncl_c2_sfgaex2  kg/m2/s 1   A   ncl_c2 gas-aerosol-exchange renaming column tendency
+ncl_c3  kg/kg   30  A   ncl_c3 in cloud water
+ncl_c3DDF   kg/m2/s 1   A   ncl_c3 dry deposition flux at bottom (grav + turb)
+ncl_c3GVF   kg/m2/s 1   A   ncl_c3 gravitational dry deposition flux
+ncl_c3SFSBC kg/m2/s 1   A   ncl_c3 wet deposition flux (belowcloud, convective) at surface
+ncl_c3SFSBS kg/m2/s 1   A   ncl_c3 wet deposition flux (belowcloud, stratiform) at surface
+ncl_c3SFSIC kg/m2/s 1   A   ncl_c3 wet deposition flux (incloud, convective) at surface
+ncl_c3SFSIS kg/m2/s 1   A   ncl_c3 wet deposition flux (incloud, stratiform) at surface
+ncl_c3SFWET kg/m2/s 1   A   ncl_c3 wet deposition flux at surface
+ncl_c3TBF   kg/m2/s 1   A   ncl_c3 turbulent dry deposition flux
+ncl_c3_mixnuc1  kg/m2/s 1   A   ncl_c3 dropmixnuc mixnuc column tendency
+ntraprd_Cu  kg/kg/s 30  A   Net production rate of rain by Cumulus
+ntsnprd_Cu  kg/kg/s 30  A   Net production rate of snow by Cumulus
+num_a1  kg/kg   30  A   num_a1
+num_a1&IC   kg/kg   30  I   num_a1
+num_a1DDF   kg/m2/s 1   A   num_a1 dry deposition flux at bottom (grav + turb)
+num_a1DDV   m/s 30  A   num_a1 deposition velocity
+num_a1DTQ   kg/kg/s 30  A   num_a1 dry deposition
+num_a1GVF   kg/m2/s 1   A   num_a1 gravitational dry deposition flux
+num_a1SBC   kg/kg/s 30  A   num_a1 bc wet deposition
+num_a1SBS   kg/kg/s 30  A   num_a1 bs wet deposition
+num_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a1SIC   kg/kg/s 30  A   num_a1 ic wet deposition
+num_a1SIS   kg/kg/s 30  A   num_a1 is wet deposition
+num_a1TBF   kg/m2/s 1   A   num_a1 turbulent dry deposition flux
+num_a1WET   kg/kg/s 30  A   wet deposition tendency
+num_a1_CHML /cm3/s  30  I   chemical loss rate
+num_a1_CHMP /cm3/s  30  I   chemical production rate
+num_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for num_a1
+num_a1_SRF  kg/kg   1   A   num_a1 in bottom layer
+num_a1_XFRC molec/cm3/s 30  A   external forcing for num_a1
+num_a1_mixnuc1  #/m2/s  1   A   num_a1 dropmixnuc mixnuc column tendency
+num_a1_sfcoag1  #/m2/s  1   A   num_a1 modal_aero coagulation column tendency
+num_a1_sfcsiz1  #/m2/s  1   A   num_a1 calcsize number-adjust column source
+num_a1_sfcsiz2  #/m2/s  1   A   num_a1 calcsize number-adjust column sink
+num_a1_sfcsiz3  #/m2/s  1   A   num_a1 calcsize aitken-to-accum adjust column tendency
+num_a1_sfcsiz4  #/m2/s  1   A   num_a1 calcsize accum-to-aitken adjust column tendency
+num_a1_sfgaex2  #/m2/s  1   A   num_a1 gas-aerosol-exchange renaming column tendency
+num_a2  kg/kg   30  A   num_a2
+num_a2&IC   kg/kg   30  I   num_a2
+num_a2DDF   kg/m2/s 1   A   num_a2 dry deposition flux at bottom (grav + turb)
+num_a2DDV   m/s 30  A   num_a2 deposition velocity
+num_a2DTQ   kg/kg/s 30  A   num_a2 dry deposition
+num_a2GVF   kg/m2/s 1   A   num_a2 gravitational dry deposition flux
+num_a2SBC   kg/kg/s 30  A   num_a2 bc wet deposition
+num_a2SBS   kg/kg/s 30  A   num_a2 bs wet deposition
+num_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a2SIC   kg/kg/s 30  A   num_a2 ic wet deposition
+num_a2SIS   kg/kg/s 30  A   num_a2 is wet deposition
+num_a2TBF   kg/m2/s 1   A   num_a2 turbulent dry deposition flux
+num_a2WET   kg/kg/s 30  A   wet deposition tendency
+num_a2_CHML /cm3/s  30  I   chemical loss rate
+num_a2_CHMP /cm3/s  30  I   chemical production rate
+num_a2_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for num_a2
+num_a2_SRF  kg/kg   1   A   num_a2 in bottom layer
+num_a2_XFRC molec/cm3/s 30  A   external forcing for num_a2
+num_a2_mixnuc1  #/m2/s  1   A   num_a2 dropmixnuc mixnuc column tendency
+num_a2_sfcoag1  #/m2/s  1   A   num_a2 modal_aero coagulation column tendency
+num_a2_sfcsiz1  #/m2/s  1   A   num_a2 calcsize number-adjust column source
+num_a2_sfcsiz2  #/m2/s  1   A   num_a2 calcsize number-adjust column sink
+num_a2_sfcsiz3  #/m2/s  1   A   num_a2 calcsize aitken-to-accum adjust column tendency
+num_a2_sfcsiz4  #/m2/s  1   A   num_a2 calcsize accum-to-aitken adjust column tendency
+num_a2_sfgaex2  #/m2/s  1   A   num_a2 gas-aerosol-exchange renaming column tendency
+num_a2_sfnnuc1  #/m2/s  1   A   num_a2 modal_aero new particle nucleation column tendency
+num_a3  kg/kg   30  A   num_a3
+num_a3&IC   kg/kg   30  I   num_a3
+num_a3DDF   kg/m2/s 1   A   num_a3 dry deposition flux at bottom (grav + turb)
+num_a3DDV   m/s 30  A   num_a3 deposition velocity
+num_a3DTQ   kg/kg/s 30  A   num_a3 dry deposition
+num_a3GVF   kg/m2/s 1   A   num_a3 gravitational dry deposition flux
+num_a3SBC   kg/kg/s 30  A   num_a3 bc wet deposition
+num_a3SBS   kg/kg/s 30  A   num_a3 bs wet deposition
+num_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+num_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+num_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+num_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+num_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+num_a3SIC   kg/kg/s 30  A   num_a3 ic wet deposition
+num_a3SIS   kg/kg/s 30  A   num_a3 is wet deposition
+num_a3TBF   kg/m2/s 1   A   num_a3 turbulent dry deposition flux
+num_a3WET   kg/kg/s 30  A   wet deposition tendency
+num_a3_CHML /cm3/s  30  I   chemical loss rate
+num_a3_CHMP /cm3/s  30  I   chemical production rate
+num_a3_SRF  kg/kg   1   A   num_a3 in bottom layer
+num_a3_mixnuc1  #/m2/s  1   A   num_a3 dropmixnuc mixnuc column tendency
+num_a3_sfcsiz1  #/m2/s  1   A   num_a3 calcsize number-adjust column source
+num_a3_sfcsiz2  #/m2/s  1   A   num_a3 calcsize number-adjust column sink
+num_c1  kg/kg   30  A   num_c1 in cloud water
+num_c1DDF   kg/m2/s 1   A   num_c1 dry deposition flux at bottom (grav + turb)
+num_c1GVF   kg/m2/s 1   A   num_c1 gravitational dry deposition flux
+num_c1SFSBC kg/m2/s 1   A   num_c1 wet deposition flux (belowcloud, convective) at surface
+num_c1SFSBS kg/m2/s 1   A   num_c1 wet deposition flux (belowcloud, stratiform) at surface
+num_c1SFSIC kg/m2/s 1   A   num_c1 wet deposition flux (incloud, convective) at surface
+num_c1SFSIS kg/m2/s 1   A   num_c1 wet deposition flux (incloud, stratiform) at surface
+num_c1SFWET kg/m2/s 1   A   num_c1 wet deposition flux at surface
+num_c1TBF   kg/m2/s 1   A   num_c1 turbulent dry deposition flux
+num_c1_mixnuc1  #/m2/s  1   A   num_c1 dropmixnuc mixnuc column tendency
+num_c1_sfcsiz1  #/m2/s  1   A   num_c1 calcsize number-adjust column source
+num_c1_sfcsiz2  #/m2/s  1   A   num_c1 calcsize number-adjust column sink
+num_c1_sfcsiz3  #/m2/s  1   A   num_c1 calcsize aitken-to-accum adjust column tendency
+num_c1_sfcsiz4  #/m2/s  1   A   num_c1 calcsize accum-to-aitken adjust column tendency
+num_c1_sfgaex2  #/m2/s  1   A   num_c1 gas-aerosol-exchange renaming column tendency
+num_c2  kg/kg   30  A   num_c2 in cloud water
+num_c2DDF   kg/m2/s 1   A   num_c2 dry deposition flux at bottom (grav + turb)
+num_c2GVF   kg/m2/s 1   A   num_c2 gravitational dry deposition flux
+num_c2SFSBC kg/m2/s 1   A   num_c2 wet deposition flux (belowcloud, convective) at surface
+num_c2SFSBS kg/m2/s 1   A   num_c2 wet deposition flux (belowcloud, stratiform) at surface
+num_c2SFSIC kg/m2/s 1   A   num_c2 wet deposition flux (incloud, convective) at surface
+num_c2SFSIS kg/m2/s 1   A   num_c2 wet deposition flux (incloud, stratiform) at surface
+num_c2SFWET kg/m2/s 1   A   num_c2 wet deposition flux at surface
+num_c2TBF   kg/m2/s 1   A   num_c2 turbulent dry deposition flux
+num_c2_mixnuc1  #/m2/s  1   A   num_c2 dropmixnuc mixnuc column tendency
+num_c2_sfcsiz1  #/m2/s  1   A   num_c2 calcsize number-adjust column source
+num_c2_sfcsiz2  #/m2/s  1   A   num_c2 calcsize number-adjust column sink
+num_c2_sfcsiz3  #/m2/s  1   A   num_c2 calcsize aitken-to-accum adjust column tendency
+num_c2_sfcsiz4  #/m2/s  1   A   num_c2 calcsize accum-to-aitken adjust column tendency
+num_c2_sfgaex2  #/m2/s  1   A   num_c2 gas-aerosol-exchange renaming column tendency
+num_c3  kg/kg   30  A   num_c3 in cloud water
+num_c3DDF   kg/m2/s 1   A   num_c3 dry deposition flux at bottom (grav + turb)
+num_c3GVF   kg/m2/s 1   A   num_c3 gravitational dry deposition flux
+num_c3SFSBC kg/m2/s 1   A   num_c3 wet deposition flux (belowcloud, convective) at surface
+num_c3SFSBS kg/m2/s 1   A   num_c3 wet deposition flux (belowcloud, stratiform) at surface
+num_c3SFSIC kg/m2/s 1   A   num_c3 wet deposition flux (incloud, convective) at surface
+num_c3SFSIS kg/m2/s 1   A   num_c3 wet deposition flux (incloud, stratiform) at surface
+num_c3SFWET kg/m2/s 1   A   num_c3 wet deposition flux at surface
+num_c3TBF   kg/m2/s 1   A   num_c3 turbulent dry deposition flux
+num_c3_mixnuc1  #/m2/s  1   A   num_c3 dropmixnuc mixnuc column tendency
+num_c3_sfcsiz1  #/m2/s  1   A   num_c3 calcsize number-adjust column source
+num_c3_sfcsiz2  #/m2/s  1   A   num_c3 calcsize number-adjust column sink
+ozone   mol/mol 30  I   prescribed ozone
+pbup_Cu Pa  1   A   Highest interface level of positive cumulus buoyancy
+pinv_Cu Pa  1   A   PBL top pressure
+plcl_Cu Pa  1   A   LCL of source air
+plfc_Cu Pa  1   A   LFC of source air
+pom_a1  kg/kg   30  A   pom_a1
+pom_a1&IC   kg/kg   30  I   pom_a1
+pom_a1DDF   kg/m2/s 1   A   pom_a1 dry deposition flux at bottom (grav + turb)
+pom_a1DDV   m/s 30  A   pom_a1 deposition velocity
+pom_a1DTQ   kg/kg/s 30  A   pom_a1 dry deposition
+pom_a1GVF   kg/m2/s 1   A   pom_a1 gravitational dry deposition flux
+pom_a1SBC   kg/kg/s 30  A   pom_a1 bc wet deposition
+pom_a1SBS   kg/kg/s 30  A   pom_a1 bs wet deposition
+pom_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+pom_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+pom_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+pom_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+pom_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+pom_a1SIC   kg/kg/s 30  A   pom_a1 ic wet deposition
+pom_a1SIS   kg/kg/s 30  A   pom_a1 is wet deposition
+pom_a1TBF   kg/m2/s 1   A   pom_a1 turbulent dry deposition flux
+pom_a1WET   kg/kg/s 30  A   wet deposition tendency
+pom_a1_CHML /cm3/s  30  I   chemical loss rate
+pom_a1_CHMP /cm3/s  30  I   chemical production rate
+pom_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for pom_a1
+pom_a1_SRF  kg/kg   1   A   pom_a1 in bottom layer
+pom_a1_XFRC molec/cm3/s 30  A   external forcing for pom_a1
+pom_a1_mixnuc1  kg/m2/s 1   A   pom_a1 dropmixnuc mixnuc column tendency
+pom_c1  kg/kg   30  A   pom_c1 in cloud water
+pom_c1DDF   kg/m2/s 1   A   pom_c1 dry deposition flux at bottom (grav + turb)
+pom_c1GVF   kg/m2/s 1   A   pom_c1 gravitational dry deposition flux
+pom_c1SFSBC kg/m2/s 1   A   pom_c1 wet deposition flux (belowcloud, convective) at surface
+pom_c1SFSBS kg/m2/s 1   A   pom_c1 wet deposition flux (belowcloud, stratiform) at surface
+pom_c1SFSIC kg/m2/s 1   A   pom_c1 wet deposition flux (incloud, convective) at surface
+pom_c1SFSIS kg/m2/s 1   A   pom_c1 wet deposition flux (incloud, stratiform) at surface
+pom_c1SFWET kg/m2/s 1   A   pom_c1 wet deposition flux at surface
+pom_c1TBF   kg/m2/s 1   A   pom_c1 turbulent dry deposition flux
+pom_c1_mixnuc1  kg/m2/s 1   A   pom_c1 dropmixnuc mixnuc column tendency
+ppen_Cu Pa  1   A   Highest level where cumulus w is 0
+qcu_Cu  kg/kg   30  A   Cumulus updraft LWC+IWC
+qi_aft_Cu   kg/kg   30  I   qi_afterCU
+qi_aft_PBL  kg/kg   30  A   qi_afterPBL
+qi_pre_Cu   kg/kg   30  I   qi_preCU
+qi_pre_PBL  kg/kg   30  A   qi_prePBL
+qiten_Cu    kg/kg/s 30  A   qi tendency by convection
+qiten_PBL   kg/kg/s 30  A   qi tendency by PBL
+qiu_Cu  kg/kg   30  A   Cumulus updraft IWC
+ql_aft_Cu   kg/kg   30  I   ql_afterCU
+ql_aft_PBL  kg/kg   30  A   ql_afterPBL
+ql_pre_Cu   kg/kg   30  I   ql_preCU
+ql_pre_PBL  kg/kg   30  A   ql_prePBL
+qlten_Cu    kg/kg/s 30  A   ql tendency by convection
+qlten_PBL   kg/kg/s 30  A   ql tendency by PBL
+qlu_Cu  kg/kg   30  A   Cumulus updraft LWC
+qrten_Cu    kg/kg/s 30  A   Production rate of rain by cumulus
+qsten_Cu    kg/kg/s 30  A   Production rate of snow by cumulus
+qt_aft_Cu   kg/kg   30  I   qt_afterCU
+qt_aft_PBL  kg/kg   30  A   qt_afterPBL
+qt_pre_Cu   kg/kg   30  I   qt_preCU
+qt_pre_PBL  kg/kg   30  A   qt_prePBL
+qtflx_Cu    kg/m2/s 31  A   Convective qt flux
+qtflx_PBL   kg/m2/s 31  A   qt flux by PBL
+qtflx_cg_PBL    kg/m2/s 31  A   qt_cg flux by PBL
+qtsrc_Cu    kg/kg   1   A   Cumulus source air qt
+qtten_Cu    kg/kg/s 30  A   qt tendency by convection
+qtten_PBL   kg/kg/s 30  A   qt tendency by PBL
+qtu_Cu  kg/kg   31  A   Cumulus updraft qt
+qtu_emf_Cu  kg/kg   31  A   qt of penatratively entrained air
+qv_aft_Cu   kg/kg   30  I   qv_afterCU
+qv_aft_PBL  kg/kg   30  A   qv_afterPBL
+qv_pre_Cu   kg/kg   30  I   qv_preCU
+qv_pre_PBL  kg/kg   30  A   qv_prePBL
+qvten_Cu    kg/kg/s 30  A   qv tendency by convection
+qvten_PBL   kg/kg/s 30  A   qv tendency by PBL
+rcwp_Cu kg/m2   1   A   Cumulus LWP+IWP
+rh_aft_Cu   %   30  I   rh_afterCU
+rh_aft_PBL  %   30  A   rh_afterPBL
+rh_pre_Cu   %   30  I   rh_preCU
+rh_pre_PBL  %   30  A   rh_prePBL
+rhten_Cu    %/s 30  I   RH tendency by cumumus convection
+rhten_PBL   %/s 30  A   RH tendency by PBL
+riwp_Cu kg/m2   1   A   Cumulus IWP
+rlwp_Cu kg/m2   1   A   Cumulus LWP
+sl_aft_Cu   J/kg    30  I   sl_afterCU
+sl_aft_PBL  J/kg    30  A   sl_afterPBL
+sl_pre_Cu   J/kg    30  I   sl_preCU
+sl_pre_PBL  J/kg    30  A   sl_prePBL
+slflx_Cu    J/m2/s  31  A   Convective sl flux
+slflx_PBL   J/m2/s  31  A   sl flux by PBL
+slflx_cg_PBL    J/m2/s  31  A   sl_cg flux by PBL
+slten_Cu    J/kg/s  30  A   sl tendency by convection
+slten_PBL   J/kg/s  30  A   sl tendency by PBL
+slv_aft_Cu  J/kg    30  I   slv_afterCU
+slv_aft_PBL J/kg    30  A   slv_afterPBL
+slv_pre_Cu  J/kg    30  I   slv_preCU
+slv_pre_PBL J/kg    30  A   slv_prePBL
+so4_a1  kg/kg   30  A   so4_a1
+so4_a1&IC   kg/kg   30  I   so4_a1
+so4_a1DDF   kg/m2/s 1   A   so4_a1 dry deposition flux at bottom (grav + turb)
+so4_a1DDV   m/s 30  A   so4_a1 deposition velocity
+so4_a1DTQ   kg/kg/s 30  A   so4_a1 dry deposition
+so4_a1GVF   kg/m2/s 1   A   so4_a1 gravitational dry deposition flux
+so4_a1SBC   kg/kg/s 30  A   so4_a1 bc wet deposition
+so4_a1SBS   kg/kg/s 30  A   so4_a1 bs wet deposition
+so4_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a1SIC   kg/kg/s 30  A   so4_a1 ic wet deposition
+so4_a1SIS   kg/kg/s 30  A   so4_a1 is wet deposition
+so4_a1TBF   kg/m2/s 1   A   so4_a1 turbulent dry deposition flux
+so4_a1WET   kg/kg/s 30  A   wet deposition tendency
+so4_a1_CHML /cm3/s  30  I   chemical loss rate
+so4_a1_CHMP /cm3/s  30  I   chemical production rate
+so4_a1_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for so4_a1
+so4_a1_SRF  kg/kg   1   A   so4_a1 in bottom layer
+so4_a1_XFRC molec/cm3/s 30  A   external forcing for so4_a1
+so4_a1_mixnuc1  kg/m2/s 1   A   so4_a1 dropmixnuc mixnuc column tendency
+so4_a1_sfcoag1  kg/m2/s 1   A   so4_a1 modal_aero coagulation column tendency
+so4_a1_sfcsiz3  kg/m2/s 1   A   so4_a1 calcsize aitken-to-accum adjust column tendency
+so4_a1_sfcsiz4  kg/m2/s 1   A   so4_a1 calcsize accum-to-aitken adjust column tendency
+so4_a1_sfgaex1  kg/m2/s 1   A   so4_a1 gas-aerosol-exchange primary column tendency
+so4_a1_sfgaex2  kg/m2/s 1   A   so4_a1 gas-aerosol-exchange renaming column tendency
+so4_a2  kg/kg   30  A   so4_a2
+so4_a2&IC   kg/kg   30  I   so4_a2
+so4_a2DDF   kg/m2/s 1   A   so4_a2 dry deposition flux at bottom (grav + turb)
+so4_a2DDV   m/s 30  A   so4_a2 deposition velocity
+so4_a2DTQ   kg/kg/s 30  A   so4_a2 dry deposition
+so4_a2GVF   kg/m2/s 1   A   so4_a2 gravitational dry deposition flux
+so4_a2SBC   kg/kg/s 30  A   so4_a2 bc wet deposition
+so4_a2SBS   kg/kg/s 30  A   so4_a2 bs wet deposition
+so4_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a2SIC   kg/kg/s 30  A   so4_a2 ic wet deposition
+so4_a2SIS   kg/kg/s 30  A   so4_a2 is wet deposition
+so4_a2TBF   kg/m2/s 1   A   so4_a2 turbulent dry deposition flux
+so4_a2WET   kg/kg/s 30  A   wet deposition tendency
+so4_a2_CHML /cm3/s  30  I   chemical loss rate
+so4_a2_CHMP /cm3/s  30  I   chemical production rate
+so4_a2_CLXF molec/cm2/s 1   A   vertically intergrated external forcing for so4_a2
+so4_a2_SRF  kg/kg   1   A   so4_a2 in bottom layer
+so4_a2_XFRC molec/cm3/s 30  A   external forcing for so4_a2
+so4_a2_mixnuc1  kg/m2/s 1   A   so4_a2 dropmixnuc mixnuc column tendency
+so4_a2_sfcoag1  kg/m2/s 1   A   so4_a2 modal_aero coagulation column tendency
+so4_a2_sfcsiz3  kg/m2/s 1   A   so4_a2 calcsize aitken-to-accum adjust column tendency
+so4_a2_sfcsiz4  kg/m2/s 1   A   so4_a2 calcsize accum-to-aitken adjust column tendency
+so4_a2_sfgaex1  kg/m2/s 1   A   so4_a2 gas-aerosol-exchange primary column tendency
+so4_a2_sfgaex2  kg/m2/s 1   A   so4_a2 gas-aerosol-exchange renaming column tendency
+so4_a2_sfnnuc1  kg/m2/s 1   A   so4_a2 modal_aero new particle nucleation column tendency
+so4_a3  kg/kg   30  A   so4_a3
+so4_a3&IC   kg/kg   30  I   so4_a3
+so4_a3DDF   kg/m2/s 1   A   so4_a3 dry deposition flux at bottom (grav + turb)
+so4_a3DDV   m/s 30  A   so4_a3 deposition velocity
+so4_a3DTQ   kg/kg/s 30  A   so4_a3 dry deposition
+so4_a3GVF   kg/m2/s 1   A   so4_a3 gravitational dry deposition flux
+so4_a3SBC   kg/kg/s 30  A   so4_a3 bc wet deposition
+so4_a3SBS   kg/kg/s 30  A   so4_a3 bs wet deposition
+so4_a3SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+so4_a3SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+so4_a3SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+so4_a3SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+so4_a3SFWET kg/m2/s 1   A   Wet deposition flux at surface
+so4_a3SIC   kg/kg/s 30  A   so4_a3 ic wet deposition
+so4_a3SIS   kg/kg/s 30  A   so4_a3 is wet deposition
+so4_a3TBF   kg/m2/s 1   A   so4_a3 turbulent dry deposition flux
+so4_a3WET   kg/kg/s 30  A   wet deposition tendency
+so4_a3_CHML /cm3/s  30  I   chemical loss rate
+so4_a3_CHMP /cm3/s  30  I   chemical production rate
+so4_a3_SRF  kg/kg   1   A   so4_a3 in bottom layer
+so4_a3_mixnuc1  kg/m2/s 1   A   so4_a3 dropmixnuc mixnuc column tendency
+so4_a3_sfgaex1  kg/m2/s 1   A   so4_a3 gas-aerosol-exchange primary column tendency
+so4_c1  kg/kg   30  A   so4_c1 in cloud water
+so4_c1AQH2SO4   kg/m2/s 1   A   so4_c1 aqueous phase chemistry
+so4_c1AQSO4 kg/m2/s 1   A   so4_c1 aqueous phase chemistry
+so4_c1DDF   kg/m2/s 1   A   so4_c1 dry deposition flux at bottom (grav + turb)
+so4_c1GVF   kg/m2/s 1   A   so4_c1 gravitational dry deposition flux
+so4_c1SFSBC kg/m2/s 1   A   so4_c1 wet deposition flux (belowcloud, convective) at surface
+so4_c1SFSBS kg/m2/s 1   A   so4_c1 wet deposition flux (belowcloud, stratiform) at surface
+so4_c1SFSIC kg/m2/s 1   A   so4_c1 wet deposition flux (incloud, convective) at surface
+so4_c1SFSIS kg/m2/s 1   A   so4_c1 wet deposition flux (incloud, stratiform) at surface
+so4_c1SFWET kg/m2/s 1   A   so4_c1 wet deposition flux at surface
+so4_c1TBF   kg/m2/s 1   A   so4_c1 turbulent dry deposition flux
+so4_c1_mixnuc1  kg/m2/s 1   A   so4_c1 dropmixnuc mixnuc column tendency
+so4_c1_sfcsiz3  kg/m2/s 1   A   so4_c1 calcsize aitken-to-accum adjust column tendency
+so4_c1_sfcsiz4  kg/m2/s 1   A   so4_c1 calcsize accum-to-aitken adjust column tendency
+so4_c1_sfgaex2  kg/m2/s 1   A   so4_c1 gas-aerosol-exchange renaming column tendency
+so4_c2  kg/kg   30  A   so4_c2 in cloud water
+so4_c2AQH2SO4   kg/m2/s 1   A   so4_c2 aqueous phase chemistry
+so4_c2AQSO4 kg/m2/s 1   A   so4_c2 aqueous phase chemistry
+so4_c2DDF   kg/m2/s 1   A   so4_c2 dry deposition flux at bottom (grav + turb)
+so4_c2GVF   kg/m2/s 1   A   so4_c2 gravitational dry deposition flux
+so4_c2SFSBC kg/m2/s 1   A   so4_c2 wet deposition flux (belowcloud, convective) at surface
+so4_c2SFSBS kg/m2/s 1   A   so4_c2 wet deposition flux (belowcloud, stratiform) at surface
+so4_c2SFSIC kg/m2/s 1   A   so4_c2 wet deposition flux (incloud, convective) at surface
+so4_c2SFSIS kg/m2/s 1   A   so4_c2 wet deposition flux (incloud, stratiform) at surface
+so4_c2SFWET kg/m2/s 1   A   so4_c2 wet deposition flux at surface
+so4_c2TBF   kg/m2/s 1   A   so4_c2 turbulent dry deposition flux
+so4_c2_mixnuc1  kg/m2/s 1   A   so4_c2 dropmixnuc mixnuc column tendency
+so4_c2_sfcsiz3  kg/m2/s 1   A   so4_c2 calcsize aitken-to-accum adjust column tendency
+so4_c2_sfcsiz4  kg/m2/s 1   A   so4_c2 calcsize accum-to-aitken adjust column tendency
+so4_c2_sfgaex2  kg/m2/s 1   A   so4_c2 gas-aerosol-exchange renaming column tendency
+so4_c3  kg/kg   30  A   so4_c3 in cloud water
+so4_c3AQH2SO4   kg/m2/s 1   A   so4_c3 aqueous phase chemistry
+so4_c3AQSO4 kg/m2/s 1   A   so4_c3 aqueous phase chemistry
+so4_c3DDF   kg/m2/s 1   A   so4_c3 dry deposition flux at bottom (grav + turb)
+so4_c3GVF   kg/m2/s 1   A   so4_c3 gravitational dry deposition flux
+so4_c3SFSBC kg/m2/s 1   A   so4_c3 wet deposition flux (belowcloud, convective) at surface
+so4_c3SFSBS kg/m2/s 1   A   so4_c3 wet deposition flux (belowcloud, stratiform) at surface
+so4_c3SFSIC kg/m2/s 1   A   so4_c3 wet deposition flux (incloud, convective) at surface
+so4_c3SFSIS kg/m2/s 1   A   so4_c3 wet deposition flux (incloud, stratiform) at surface
+so4_c3SFWET kg/m2/s 1   A   so4_c3 wet deposition flux at surface
+so4_c3TBF   kg/m2/s 1   A   so4_c3 turbulent dry deposition flux
+so4_c3_mixnuc1  kg/m2/s 1   A   so4_c3 dropmixnuc mixnuc column tendency
+soa_a1  kg/kg   30  A   soa_a1
+soa_a1&IC   kg/kg   30  I   soa_a1
+soa_a1DDF   kg/m2/s 1   A   soa_a1 dry deposition flux at bottom (grav + turb)
+soa_a1DDV   m/s 30  A   soa_a1 deposition velocity
+soa_a1DTQ   kg/kg/s 30  A   soa_a1 dry deposition
+soa_a1GVF   kg/m2/s 1   A   soa_a1 gravitational dry deposition flux
+soa_a1SBC   kg/kg/s 30  A   soa_a1 bc wet deposition
+soa_a1SBS   kg/kg/s 30  A   soa_a1 bs wet deposition
+soa_a1SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+soa_a1SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+soa_a1SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+soa_a1SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+soa_a1SFWET kg/m2/s 1   A   Wet deposition flux at surface
+soa_a1SIC   kg/kg/s 30  A   soa_a1 ic wet deposition
+soa_a1SIS   kg/kg/s 30  A   soa_a1 is wet deposition
+soa_a1TBF   kg/m2/s 1   A   soa_a1 turbulent dry deposition flux
+soa_a1WET   kg/kg/s 30  A   wet deposition tendency
+soa_a1_CHML /cm3/s  30  I   chemical loss rate
+soa_a1_CHMP /cm3/s  30  I   chemical production rate
+soa_a1_SRF  kg/kg   1   A   soa_a1 in bottom layer
+soa_a1_mixnuc1  kg/m2/s 1   A   soa_a1 dropmixnuc mixnuc column tendency
+soa_a1_sfcoag1  kg/m2/s 1   A   soa_a1 modal_aero coagulation column tendency
+soa_a1_sfcsiz3  kg/m2/s 1   A   soa_a1 calcsize aitken-to-accum adjust column tendency
+soa_a1_sfcsiz4  kg/m2/s 1   A   soa_a1 calcsize accum-to-aitken adjust column tendency
+soa_a1_sfgaex1  kg/m2/s 1   A   soa_a1 gas-aerosol-exchange primary column tendency
+soa_a1_sfgaex2  kg/m2/s 1   A   soa_a1 gas-aerosol-exchange renaming column tendency
+soa_a2  kg/kg   30  A   soa_a2
+soa_a2&IC   kg/kg   30  I   soa_a2
+soa_a2DDF   kg/m2/s 1   A   soa_a2 dry deposition flux at bottom (grav + turb)
+soa_a2DDV   m/s 30  A   soa_a2 deposition velocity
+soa_a2DTQ   kg/kg/s 30  A   soa_a2 dry deposition
+soa_a2GVF   kg/m2/s 1   A   soa_a2 gravitational dry deposition flux
+soa_a2SBC   kg/kg/s 30  A   soa_a2 bc wet deposition
+soa_a2SBS   kg/kg/s 30  A   soa_a2 bs wet deposition
+soa_a2SFSBC kg/m2/s 1   A   Wet deposition flux (belowcloud, convective) at surface
+soa_a2SFSBS kg/m2/s 1   A   Wet deposition flux (belowcloud, stratiform) at surface
+soa_a2SFSIC kg/m2/s 1   A   Wet deposition flux (incloud, convective) at surface
+soa_a2SFSIS kg/m2/s 1   A   Wet deposition flux (incloud, stratiform) at surface
+soa_a2SFWET kg/m2/s 1   A   Wet deposition flux at surface
+soa_a2SIC   kg/kg/s 30  A   soa_a2 ic wet deposition
+soa_a2SIS   kg/kg/s 30  A   soa_a2 is wet deposition
+soa_a2TBF   kg/m2/s 1   A   soa_a2 turbulent dry deposition flux
+soa_a2WET   kg/kg/s 30  A   wet deposition tendency
+soa_a2_CHML /cm3/s  30  I   chemical loss rate
+soa_a2_CHMP /cm3/s  30  I   chemical production rate
+soa_a2_SRF  kg/kg   1   A   soa_a2 in bottom layer
+soa_a2_mixnuc1  kg/m2/s 1   A   soa_a2 dropmixnuc mixnuc column tendency
+soa_a2_sfcoag1  kg/m2/s 1   A   soa_a2 modal_aero coagulation column tendency
+soa_a2_sfcsiz3  kg/m2/s 1   A   soa_a2 calcsize aitken-to-accum adjust column tendency
+soa_a2_sfcsiz4  kg/m2/s 1   A   soa_a2 calcsize accum-to-aitken adjust column tendency
+soa_a2_sfgaex1  kg/m2/s 1   A   soa_a2 gas-aerosol-exchange primary column tendency
+soa_a2_sfgaex2  kg/m2/s 1   A   soa_a2 gas-aerosol-exchange renaming column tendency
+soa_c1  kg/kg   30  A   soa_c1 in cloud water
+soa_c1DDF   kg/m2/s 1   A   soa_c1 dry deposition flux at bottom (grav + turb)
+soa_c1GVF   kg/m2/s 1   A   soa_c1 gravitational dry deposition flux
+soa_c1SFSBC kg/m2/s 1   A   soa_c1 wet deposition flux (belowcloud, convective) at surface
+soa_c1SFSBS kg/m2/s 1   A   soa_c1 wet deposition flux (belowcloud, stratiform) at surface
+soa_c1SFSIC kg/m2/s 1   A   soa_c1 wet deposition flux (incloud, convective) at surface
+soa_c1SFSIS kg/m2/s 1   A   soa_c1 wet deposition flux (incloud, stratiform) at surface
+soa_c1SFWET kg/m2/s 1   A   soa_c1 wet deposition flux at surface
+soa_c1TBF   kg/m2/s 1   A   soa_c1 turbulent dry deposition flux
+soa_c1_mixnuc1  kg/m2/s 1   A   soa_c1 dropmixnuc mixnuc column tendency
+soa_c1_sfcsiz3  kg/m2/s 1   A   soa_c1 calcsize aitken-to-accum adjust column tendency
+soa_c1_sfcsiz4  kg/m2/s 1   A   soa_c1 calcsize accum-to-aitken adjust column tendency
+soa_c1_sfgaex2  kg/m2/s 1   A   soa_c1 gas-aerosol-exchange renaming column tendency
+soa_c2  kg/kg   30  A   soa_c2 in cloud water
+soa_c2DDF   kg/m2/s 1   A   soa_c2 dry deposition flux at bottom (grav + turb)
+soa_c2GVF   kg/m2/s 1   A   soa_c2 gravitational dry deposition flux
+soa_c2SFSBC kg/m2/s 1   A   soa_c2 wet deposition flux (belowcloud, convective) at surface
+soa_c2SFSBS kg/m2/s 1   A   soa_c2 wet deposition flux (belowcloud, stratiform) at surface
+soa_c2SFSIC kg/m2/s 1   A   soa_c2 wet deposition flux (incloud, convective) at surface
+soa_c2SFSIS kg/m2/s 1   A   soa_c2 wet deposition flux (incloud, stratiform) at surface
+soa_c2SFWET kg/m2/s 1   A   soa_c2 wet deposition flux at surface
+soa_c2TBF   kg/m2/s 1   A   soa_c2 turbulent dry deposition flux
+soa_c2_mixnuc1  kg/m2/s 1   A   soa_c2 dropmixnuc mixnuc column tendency
+soa_c2_sfcsiz3  kg/m2/s 1   A   soa_c2 calcsize aitken-to-accum adjust column tendency
+soa_c2_sfcsiz4  kg/m2/s 1   A   soa_c2 calcsize accum-to-aitken adjust column tendency
+soa_c2_sfgaex2  kg/m2/s 1   A   soa_c2 gas-aerosol-exchange renaming column tendency
+t_aft_Cu    K   30  I   t_afterCU
+t_aft_PBL   K   30  A   t_afterPBL
+t_pre_Cu    K   30  I   t_preCU
+t_pre_PBL   K   30  A   t_prePBL
+thlsrc_Cu   K   1   A   Cumulus source air thl
+thlu_Cu K   31  A   Cumulus updraft thl
+thlu_emf_Cu K   31  A   thl of penatratively entrained air
+thvlsrc_Cu  K   1   A   Cumulus source air thvl
+thvu_Cu K   31  A   Cumulus updraft thv
+tkeavg_Cu   m2/s2   1   A   Average tke within PBL for convection scheme
+tophgt_Cu   m   1   A   Cumulus top height
+tten_Cu K/s 30  I   Temprtaure tendency by cumulus convection
+tten_PBL    K/s 30  A   T tendency by PBL
+u_aft_Cu    m/s 30  I   u_afterCU
+u_aft_PBL   m/s 30  A   u_afterPBL
+u_pre_Cu    m/s 30  I   u_preCU
+u_pre_PBL   m/s 30  A   u_prePBL
+uemf_Cu kg/m2/s 31  A   Cumulus net ( updraft + entrainment ) mass flux
+uflx_Cu kg/m/s2 31  A   Convective u flux
+uflx_PBL    kg/m/s2 31  A   u flux by PBL
+uflx_cg_PBL kg/m/s2 31  A   u_cg flux by PBL
+ufrc_Cu fraction    31  A   Convective updraft fractional area
+ufrcinvbase_Cu  fraction    1   A   Cumulus fraction at PBL top
+ufrclcl_Cu  fraction    1   A   Cumulus fraction at LCL
+umf_Cu  kg/m2/s 31  A   Cumulus updraft mass flux
+usr_DMS_OH  /s  30  I   photolysis rate
+usr_HO2_HO2 /s  30  I   photolysis rate
+usr_SO2_OH  /s  30  I   photolysis rate
+uten_Cu m/s2    30  A   u tendency by convection
+uten_PBL    m/s2    30  A   u tendency by PBL
+uu_Cu   m/s 31  A   Cumulus updraft uwnd
+uu_emf_Cu   m/s 31  A   uwnd of penatratively entrained air
+v_aft_Cu    m/s 30  I   v_afterCU
+v_aft_PBL   m/s 30  A   v_afterPBL
+v_pre_Cu    m/s 30  I   v_preCU
+v_pre_PBL   m/s 30  A   v_prePBL
+vflx_Cu kg/m/s2 31  A   Convective v flux
+vflx_PBL    kg/m/s2 31  A   v flux by PBL
+vflx_cg_PBL kg/m/s2 31  A   v_cg flux by PBL
+vten_Cu m/s2    30  A   v tendency by convection
+vten_PBL    m/s2    30  A   v tendency by PBL
+vu_Cu   m/s 31  A   Cumulus updraft vwnd
+vu_emf_Cu   m/s 31  A   vwnd of penatratively entrained air
+wat_a1  m   30  A   aerosol water, interstitial, mode 01
+wat_a2  m   30  A   aerosol water, interstitial, mode 02
+wat_a3  m   30  A   aerosol water, interstitial, mode 03
+winvbase_Cu m/s 1   A   Cumulus vertical velocity at PBL top
+wlcl_Cu m/s 1   A   Cumulus vertical velocity at LCL
+wu_Cu   m/s 31  A   Convective updraft vertical velocity
+xc_Cu   no  30  A   Critical mixing ratio
+zinv_Cu m   1   A   PBL top height

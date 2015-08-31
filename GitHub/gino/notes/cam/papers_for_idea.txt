@@ -1,0 +1,21 @@
+What Controls the Transition from Shallow to Deep Convection?
+
+Precipitation and cloud statistics in the deep tropical convective regime
+
+A Parameterization of the Cloudiness Associated with Cumulus Convection; Evaluation Using TOGA COARE Data
+
+
+Global Cloud Resolving Simulation by NICAM
+------------------------------------------
+  " Since the typical cumulus has a horizontal scale of 10~20km, con- ventional atmospheric models cannot resolve individual clouds because horizontal resolution of ~100km has typically been used. "
+
+  " The effect of ensemble of clouds is included in the model by so-called “cumulus parameterization” techniques, which is the source of a major uncertainty inherent to the conventional models. The global cloud resolving model NICAM avoids this type of uncertainty by resolv- ing them directly with the super-high resolution. "
+
+Process-Oriented MJO Simulation Diagnostic: Moisture Sensitivity of Simulated Convection - Daehyun Kim
+----------------------------------------------------------------------------------------
+  " The results herein suggest that moisture sensitivity of convection is closely related to a GCM’s ability to simulate the MJO. "
+
+Confronting Models with data - The GEWEX cloud systems study
+------------------------------------------------------------
+  " Once the observed large-scale dynamical processes have been quantified, they can be used to “force” the CSRMs and SCMs, which then simulate the cloud-formation and radiative transfer processes inside the column. "
+

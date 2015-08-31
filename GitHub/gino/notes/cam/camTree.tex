@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{dirtree}
+
+\begin{document}
+
+
+\dirtree{%
+.1 \textbf{CAM}ini.
+.2 INIT.
+.3 CAM.
+}
+
+\renewcommand{\DTstyle}{\textrm\expandafter\raisebox{-0.7ex}}
+\DTsetlength{1em}{1em}{0.2em}{0.4pt}{0.4pt}
+\setlength{\DTbaselineskip}{2\baselineskip}
+
+\dirtree{%
+.1 HTML.
+.2 Head.
+.3 Title.
+.3 Meta.
+.2 Body.
+.3 SVG.
+.4 Image.
+}
+
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+
+\usepackage{url,hyperref,breakurl}
+
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+
+
+\begin{document}
+
+\subsection{Congruence relation (an equivalence relation)}
+two integers $a$ and $b$ are congruent modulo n: $a \equiv b$ (mod $n$), with $(a-b)/n= z$, where $z \in Z$.
+$n$ is the ``modulus" of the congruence (imagine a clock, $12$ is the modulus).
+
+\subsection{Congruence classes (the equivalence class)}
+The equivalent class of the integer $a$ is $\overline{a}_n := \{ \dotsc, a-2n, a-n, a, a+n, a+2n, \dotsc \}$.
+
+\subsection{Integers modulo $n$}
+{\bf Def}: The set of all congruence classes of the integers for a modulus $n$
+
+\begin{equation}
+  Z/nZ = \{ \overline{a}_n | a \in Z \}.
+\end{equation}
+
+When $n \neq 0$ 
+\begin{equation}
+  Z/nZ = \{ \overline{0}_n, \overline{1}_n, \dotsc, \overline{n-1}_n \}.
+\end{equation}
+
+When $n= 0$, $Z/nZ$ is isomorphic to $Z$.
+
+\end{document}

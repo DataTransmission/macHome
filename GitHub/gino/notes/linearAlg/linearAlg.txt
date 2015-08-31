@@ -1,0 +1,291 @@
+===============================================================
+Upper Triangular Matrix
+===============================================================
+
+
+THM An operator T \in L(V) admits an upper triangular matrix on a complex vector space
+
+
+proof:
+	proof by induction,
+	Suppose dimV = 1, this is trivial to show.
+	Suppose dimV > 1 then any subspace of V with dim less than V admits an upper triang matrix.
+
+	From THM, a complex vector space by operator T has at least 
+	one eigenvalue 入 w.r.t. an invariant subspace (eigenvector v_1).
+	Assume the range of (T - 入工) is the subspace U
+		(T - 入)v = U, v,U \subsetof V
+	U does not include v_1 since v_1 is the null of (T - 入I)
+	hence U is strictly less than dimV since (T - 入I) is noninvertible <=> nonsurjective => dimU < dimV
+	Now we want to show that any vector u \in U is invariant
+		Tu = (T - 入)u + 入u
+	rhs 1st term is clearly in U by definition of U, hence Tu is in U.
+	Define a basis (u_1,...,u_m) for U,
+	span(u_1,...,u_k), k=1,...,m, are all invariant in U since any u is invariant by T
+	which implies there is an upper triangular matrix T for U.
+	Since m < n, so we need more vectors for the basis of V to complete the proof.
+	Define V = span(u_1,...,u_m,v_1,...v_p), m+p = n,
+	for any v_k = span(u_1,...,u_m,v_1,...,v_k),
+		Tv_k = (T - 入)v_k + 入工v_k,
+	as mentioned, rhs 1st term is in U as defined, hence 
+	Tv_k is in span(u_1,...,u_m,v_1,...,v_k) ==> v_k invariant under T.
+	Therefore T is an upper triangular matrix w.r.t. basis (u_1,...,u_m,v_1,...,v_k) ###.
+
+
+PROP T \in L(V) is an upper triangular matrix w.r.t. some basis, 
+	T is invertible <=> nonzero diag
+
+proof: (hint: if T noninvert => proof by noninjective or nonsurjective using triangular invariant space properties)
+	hint: if nonzero => find a invertible map)
+
+PROP T \in L(V) is an upper triangular matrix w.r.t. some basis,
+	eigenvalues on the diagonal
+
+proof: (hint: by the previous PROP with noninvert matrix (T - 入工))
+
+
+Summary:
+	If T upper triangular => 1) invertible <=> nonzero diag  2) eigenvalues on diag!
+
+
+THM Odd dimension Real vector space V, there is always an operator with an eigenvalue
+
+proof: (by induction)
+	Sketch proof: define a 2D invariant subspace U \subset V, V=U o+ W, suppose by induction that \E eigenvalue for W 
+			and induction to V where dimV=dimW+dimU=dimW+2, see if (T-入工)v=0 is noninjective for some v \in span(U,w) 
+	dimV = 1 is satisfied 
+	For odd dimV > 1 (it could be 13 or some odd number)
+	if there is a 1D invariance space then the proof is done,
+	but if not we have to consider 2D invariance space which always exist from THM 5.24.
+	So assume that the 2D invariance space is U with (T^2 + aT + b)u = 0.
+	Assume vector space W, dimW = dimV - dimU ==> dimW = dimV - 2, 
+	has an eigenvalue w.r.t. an operator S \in L(W) from the assumption of induction.
+	Now use induction to prove V has an eigenvalue w.r.t. T, 
+	since T is dimW + 2 for any W \in V.
+		V = W o+ U          (o+ stands for direct sum)
+	We know from THM 5.24 any real vector space could have a 2D invariant subspace w.r.t. T,
+	so we choose U to be invariant under T.
+	Now we will prove that W has a 1D invariant subspace w.r.t. T as desired.
+	Suppose S is defined as 
+		Sw = P_w(Tw) \in span(w).
+	We want to prove Tw \in span(w) for the desired.
+	Hence suppose (T-入工) operating on span(u,w), where u \in U
+		(T-入工)(u + aw) = (T - 入工)u + a(Tw-入w)
+				= (T - 入工)u + a(P_w(Tw) + P_u(Tw) - 入w)  (since V = U o+ W = P_uV + P_wV)
+				= (T - 入工)u + a(Sw - 入w + P_u(Tw))  (if w is the eigenvector corresponding to 入)
+				= (T - 入工)u + aP_u(Tw) (since U is invariant under T, so this is \in U)
+	==>	since (T-入工) maps span(U,w) into U which is not 1-1 ==> (T-入工) noninjective 
+	==> 	null(T-入工) has a nonzero eigenvector in the span(U,w)
+	==>	T has eigenvalue 入 w.r.t. some v \in span(U,w) ##########.
+
+
+DIAG M(T)	(equivalence)
+	p1. V = span(eigenbasis)
+	p2. V = U_1 \+ ... \+ U_n, U's 1D invariant
+	p3. V = null(入_1) \+ ... \+ null(入_m)
+	p4. dimV = dim(null(入_1)) + ... dim(null(入_m))
+
+======================================================================
+
+CHAP 7 Inner-product space
+ 
+======================================================================
+
+PROP CONJ Transpose of Adjoint Function
+	T \in L(V,W), if e_1,...,e_n is ON basis of V and f_1,...,f_m ON basis of W then
+	M(T^*,(e_1,...,e_n),(f_1,...,f_m)) is the conj transpose of
+	M(T,(e_1,...,e_n),(f_1,...,f_m))
+
+
+======================================================================
+
+CHAP 7 OPERATORS on inner-product space
+ 
+	(SELF-ADJOINT, NORMAL, POSITIVE, ISOMETRY)
+
+======================================================================
+
+p1. <Tv,v>=0 (V \C) ==> T=0 
+	(hint: my proof with using \E an eigenvalue on \C, 
+	their proof use "1/4" relationship on <Tv,v>)
+
+
+T SELF-ADJOINT	(T = T^*)	(=>NORMAL)
+	(Analogy: \R)
+	p1. (<=>) <Tv,v> \in \R (F=\C)
+	p2. λ \in \R
+	p3. <Tv,v>=0 => T=0
+
+       ===============================
+	REAL SPECTRAL THM (F=\R)
+       ===============================
+	(<=>) ON eigenbasis (diag M(T))		
+		(hint: use lemma and induction to 
+		find smaller dim self-adjoint T)
+	Lemma: 
+		l1. a,b \in \R, a^2<4b => T^2 + aT + b invertible
+		l2. \E λ 
+	
+	
+
+T NORMAL	(DEF TT^* = T^*T)
+	(Analogy: \C, conj pairs)
+	p1. (<=>) ||Tv|| = ||T^*v|| 
+	p2. (入,e) \in T => (conj(入),e) \in T^*
+	p3. λ_1 \neq λ_2 => e_1 \orthog e_2
+
+       ===============================
+	COMPLEX SPECTRAL THM (F=\C)
+       ===============================
+	(<=>) ON eigenbasis (diag M(T))		(hint: use p1.)
+
+	
+	T normal, U invariant subspace of V under T =>
+		p1. U⊥ invariant under T	(hint: block matrix)
+		p2. U invariant under T^*
+		p3. (T_U)^* = (T^*)_U		(hint: S = T_U)
+		p4. T_U is normal 
+		p5. T_U⊥ is normal
+	
+	=============================
+	BLOCK DIAG MATRIX THM (F=\R)
+	=============================
+	(<=>) ON basis with block diag M(T) (block 1*1 or 2*2)
+		[a -b
+		 b  a], b>0	
+		(hint: \E dim 1 or 2 invariant subspace) 
+
+
+T POSITIVE (=>self-adjoint)	(DEF positive: <Tv,v> >= 0 & self-adjoint)
+		(DEF sqrt S of T: S^2 = T)
+	(Analogy: \R+)
+	THM (equivalence)
+		t1. 入>=0
+		t2. \E a positive S (can have infinitely many sqrt)
+		t3. \E S \in L(V) s.t. T = S^*S
+
+	p1. From t3. this S is unique (defined by sqrt(入's))
+
+
+T ISOMETRY (=>normal)	(DEF ||Tv|| = ||v||, just rotate, preserve length!)
+	( often called ORTHOGONAL (F=\R), UNITARY (F=\C) )
+	(Analogy: \C, z*conj(z)=1)
+	THM (equivalence (<=>))
+		t1. <Tu,Tv> = <u,v>, \A u,v \in V    (#)
+		t2. T^*T=I
+		t3. (e_1,...,e_m) ON list => (Te_1,...,Te_m) ON
+		t4. \E (e_1,...e_n) ON basis s.t. (Te_1,...,Te_n) ON
+		t5. T^* isometry
+	        (repeat t1~t4 for T^*)
+	=============================
+	COMPLEX SPECTRAL THM (F=\C)
+	=============================
+	(<=>) \E ON eigenbasis |入_i|=1  	
+
+	=============================
+	BLOCK DIAG MATRIX THM (F=\R)
+	=============================
+	(<=>) ON basis with block diag M(T) (1*1 or 2*2)
+	 	[-1], [1] or [cos日 -sin日
+		              sin日  cos日], 日 \in [0 \pi]
+		(hint: from NORMAL)
+
+
+T POLAR DECOMP (any T := ISOMETRY {rotate} * POSITIVE {stretch})
+	(Analogy: z=z/|z|(|z|)=z/|z|*(z*conj(z))^.5 or 
+	z = e^(i日)*r where z/|z| and e^(i日) are isometry analogy
+	since z/|z|*conj(z/|z|)=1 and 
+	z=e^(i日) is a unit circle )
+
+	THM \E isometry S s.t. T = S(T^*T)^.5
+		(hint: decomp invariant orthog space, 
+		Define S_1: range(T^*T)^.5 -> rangeT 
+		S_2: (range(T^*T)^.5)^⊥ -> (rangeT)^⊥ 
+		and prove S_1,S_2 isometry, finally 
+		try to find S=S_1 )
+
+	REMARK  \E ON eigenbasis for diag (T^*T)^.5 and 
+		ON eigenbasis for diag S  (F=\C) or
+		ON basis for block diag S (F=\R)	
+
+	SINGULAR VALUES s of T := 入 of (T^*T)^.5, 入>=0!!!
+		( # SV = dimV, since (T^*T)^.5 diag )
+
+
+Tv SINGULAR VALUE DECOMP
+	Assume (s_1,...,s_n). \E ON basis (e_1,...,e_n) and 
+	(f_1,...,f_n) of V s.t.
+
+		Tv = s_1<v,e_1>f_1 + ... + s_n<v,e_n>f_n
+                   
+	for all v.
+
+		In matrix form:
+		
+		M(T,(e_1,...,e_n),(f_1,...,f_n)) = 
+
+		  [ s_1   0
+		       .  
+		        .             <------THIS IS ALL WE WANT!
+		         .
+		    0     s_n ]
+
+		M(v,(e_1,...,e_n)) =
+		
+		  [ <v,e_1>
+		      .
+		      .
+		    <v,e_n> ]
+
+	REMARK: All operators on V has diag matrix if
+		allowed to use two different basis!
+
+		Te_1 = s_1f_1
+		...
+		Te_n = s_nf_n
+
+		=> T = USV' (computing T'TV = VS^2, TT'U = US^2)
+
+	COMPUTATION: just compute the nonneg eigenvalues of T^*T 
+		and take the square root to form diag T. 
+		( NO NEED TO COMPUTE the two basis!!!!! )
+
+
+
+======================================================================
+
+CHAP 8 OPERATORS on complex vector space
+ 
+======================================================================
+
+Characteristic Polynomial
+	
+	THM Condition: Given upper triang matrix T on F=\C 
+
+	THM Statement: repeated # of 入 = # of generalized eigenvectors of 入
+					= dim null(T-入)^dimV
+
+	Approach: prove by induction on dimV
+		1. dimV=1, statement is true
+		2. Suppose dimV=n-1, statement is true 
+		   then prove dimV=n statement is true, QED
+	Approach: use 入=0 for brevity
+
+
+	DEF: Multiplicity of 入 = generaliezed eigvec of 入 
+				= dimn ull(T-入)^dimV 
+				= # repeated 入 (if T upper trig) 	
+	
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+Question:
+1) Since covariance matrix (C) is a positive semi-definite matrix, 
+	so there exist a square root T of C such that C = T^2 => T^2 = TT'. 
+	But, does the converse hold? Which is when C = TT' => TT' = T^2? 
+	Essentially, if T is not symmetric, does this still hold?

@@ -1,0 +1,515 @@
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SAM CODE HEIRARCHY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ _____________________________________________________________
+|                                                             |
+| |~SUBROUTINE(INOUTVAR) [BASEDIR/SUBDIR/MOD~]                |
+| | |        ! .F90 is omitted from MOD.F90                   |
+| | |        ! BASEDIR : [models/atm/cam/src/]                |
+| | |~SUBROUTINE(INOUTVAR) [BASEDIR/SUBDIR/MOD~]              |
+| |   |~( Subroutines in words and separated                  |
+| |       by commas if not too important for my experiment )  |
+|                                                             |
+| Vim Tips :                                                  |
+| 1. Search \~ to highlight the branches and MOD              |
+|_____________________________________________________________|
+
+ |~main
+ | |~init                ! initialize some statistics arrays
+ | |~setparm             ! set all parameters and constants
+ | |~setgrid             ! initialize vertical grid structure
+ | |~setdata             ! initialize all variables                    
+ | |~setforcing           
+ | |~hbuf_init           ! initialize statistics buffer
+ | |~kurant              ! check if the dynamical time step should be decreased 
+ | |                     ! to handle the cases when the flow being locally linearly unstable
+ | |~abcoefs             ! the Adams-Bashforth scheme in time
+ | |~zero                ! initialize stuff  
+ | |~buoyancy         
+ | |~forcing             ! largce-scale and surface forcing
+ | |~nudging             ! nudging to sounding
+ | |~damping             ! spange-layer damping near the upper boundary
+ | |~ice_fall            ! ice fall-out
+ | |~boundaries(3)       ! update scalar boundaries after large-scale processes
+ | |~boundaries(0)       ! update boundaries for velocities
+ | |~surface             ! surface fluxes
+ | |~sgs_proc            ! SGS physics
+ | |~boundaries(4)       ! fill boundaries for SGS diagnostic fields
+ | |~advect_mom          ! advection of momentum
+ | |~sgs_mom             ! SGS effects on momentum
+ | |~coriolis         
+ | |~pressure            ! compute rhs of the Poisson equation and solve it for pressure
+ | |~adams               ! find velocity field at n+1/2 timestep needed for advection of scalars
+ | |                     ! note that at the end of the call, the velocities are in nondimensional form.
+ | |~boundaries(2)       ! update boundaries for all prognostic scalar fields for advection
+ | |~advect_all_scalars  ! advection of scalars
+ | |~uvw                 ! convert velocity back from nondimensional form
+ | |~boundaries(3)       ! update boundaries for scalars to prepare for SGS effects
+ | |~sgs_scalars         ! SGS effects on scalars
+ | |~upperbound          ! handle upper boundary for scalars
+ | |~micro_proc          ! cloud condensation/evaporation and precipitation processes
+ | |~tracers_physics
+ | |~radiation
+ | |~diagnose            ! compute diagnostic fields
+ | |~stepout(nstatsteps) ! collect statistics, write save-file, etc
+ | |~task_stop     
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SAM CODE VARIABLE DEFINITION (SAM6.8) +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ __________________________________________________________________________________________________________________________________________________________
+|                |                                                                                                                                         |
+| VARIABLE       | VARIABLE DESCRIPTION      [MODULEName1, MODULEName2,..~]                                                                                |
+|________________|_________________________________________________________________________________________________________________________________________|
+-------------------------------------
+SAM GRID PARAMETERS (grid.f90)
+-------------------------------------
+
+-------------------------------------
+SAM DEFAULT PARAMETERS (setparm.f90)
+-------------------------------------
+
+docloud         = .false.
+docoriolis      = .false.
+docolumn        = .false.
+docup           = .false.
+dodamping       = .false.
+dodynamicocean  = .false.
+doensemble      = .false.
+dolargescale    = .false.
+dolongwave      = .false.
+doisccp         = .false.
+donudging_uv    = .false.
+donudging_tq    = .false.
+doupperbound    = .false.
+doperpetual     = .false.
+doprecip        = .false.
+doradforcing    = .false.
+doradhomo       = .false.
+doradsimple     = .false.
+doscalar        = .false.
+doseasons       = .false.
+dosfcforcing    = .false.
+dosfchomo       = .false.
+dosgs           = .false.
+doshortwave     = .false.
+dosmagor        = .false.
+dosmoke         = .false.
+dosolarconstant = .false.
+dosubsidence    = .false.
+dosurface       = .false.
+dotracers       = .false.
+dowallx         = .false.
+dowally         = .false.
+doxy            = .false.
+
+caseid          = 'les00000'
+CEM             = .false.
+bubble_x0       = 0.
+bubble_y0       = 0.
+bubble_z0       = 0.
+bubble_radius_hor=0.
+bubble_radius_ver=0.
+bubble_dtemp     =0.
+bubble_dq        =0.
+day0            = 0.
+dogzip2D        = .false.
+dogzip3D        = .false.
+dt              = 0
+dx              = 0
+dy              = 0
+fcor            = -999.
+fluxt0          = 0.
+fluxq0          = 0.
+latitude0       = 0.
+LAND            = .false.
+LES             = .false.
+longitude0      = 0.
+nadams          = 3
+nelapse         = 999999999
+nensemble       = 0
+nmovie          = 1
+nmoviestart     = 99999999
+nmovieend       = 999999999
+nprint          = 1000
+nrad            = 1
+nrestart        = 0
+nrestart_skip   = 0
+nsave2D         = 1
+nsave2Dend      = 999999999
+nsave2Dstart    = 99999999
+nsave3D         = 1
+nsave3Dend      = 999999999
+nsave3Dstart    = 99999999
+nstat           = 1000
+nstatfrq        = 50
+nstatmom        = 1
+nstatmomend     = 999999999
+nstatmomstart   = 99999999
+nstop           = 0
+ocean_type      = 0
+output_sep      = .false.
+OCEAN           = .false.
+perturb_type    = 0
+qnsave3D        = 0.
+rundatadir      = './RUNDATA'
+restart_sep     = .false.
+save3Dbin       = .false.
+save2Dsep       = .false.
+save3Dsep       = .false.
+save2Dbin       = .false.
+save2Davg       = .false.
+savemombin      = .false.
+savemomsep      = .false.
+SFC_FLX_FXD     = .false.
+SFC_TAU_FXD     = .false.
+soil_wetness    = 1.
+tabs_s          = 0.
+tauls           = 7200.
+tau0            = 0.
+timelargescale  = 0.
+ug              = 0.
+vg              = 0.
+z0              = 0.035
+
+------------------------------------------------------------------
+    ! PARAMETERIZED LARGE-SCALE WAVE
+------------------------------------------------------------------
+doparameterizedwave = .false. 
+                    ! whether to included feedback from large-scale wave
+wavenumber_factor   = 0.        
+                    ! wavenumber, 1 gives a wavelength of 1000km
+nstartlinearwave    = 99999999
+                    ! when to start the linear wave calculation, set to the time it takes for the model to 
+                    ! settle to steady state (without feedback from large-scale waves)
+
+nsteplinearwavebg   = 9999999
+                    ! timesteps after nstartlinearwave over which the profiles 
+                    ! will be averged to give the reference mean profile
+
+nsteplinearwave     = 1 
+                    ! coupling frequency (in timesteps) with the large-scale wave)
+wavedampingtime     = 1.e10 
+                    ! momentum damping time in days
+wavetdampingtime    = 1.e10 
+                    ! T damping time in days
+waveqdampingtime    = 1.e10 
+                    ! q damping time in days
+dosteadylinearwave  = .false. 
+                    ! If true, set the time tendency in large-scale vertical velocity to zero
+dolinearwavelid     = .false.    
+                    ! If true, use a rigid lid upper boundary condition at 14km.
+doadvectbg          = .false.         
+                    ! If true, advect the background reference T, q profiles instead of the current T, q profiles
+sfcum               = 0. 
+                    ! a mean surface u wind added in the surface flux calculation
+-------------------------------------------------------------------------------
+        ! SOLAR CONSTANT AND ZENITH ANGLE ( for perpetual insolation )
+        ! ( if doperpetual=.true. and dosolarconstant=.false.
+        ! the insolation will be set to the daily-averaged value on day0. )
+-------------------------------------------------------------------------------
+solar_constant      = 685. 
+                    ! Values from Tompkins & Craig, J. Climate (1998)
+zenith_angle        = 51.7
+doSAMconditionals   = .true.
+                    !bloss: add option for core updraft, core downdraft conditional statistics
+dosatupdnconditionals = .false.
+                    !bloss: add option for additional conditional averages:
+                    !     cloudy updrafts, cloudy downdrafts and cloud-free.
+---------------------------------------------------------------------------
+        ! SCAM IOP INPUT 
+        ! ( Allow sounding, forcing and surface data to be read in
+        ! from a SCAM IOP input file in netcdf format. )
+---------------------------------------------------------------------------
+doscamiopdata = .false.
+iopfile = trim(case) // '.nc' ! default name: CASENAME.nc
+dozero_out_day0 = .false.
+
+
+---------------------------------------------------------------------------
+        ! Model variables
+---------------------------------------------------------------------------
+nlsf         large-scale forcing time samples
+nzlsf        large-scale forcing z-levels
+ttend        large-scale temperature tendency
+qtend        large-scale total water tendency
+wsub(nz)     large-scale subsidence velocity,m/s
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ EXPERIMENTAL SETUP ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+run for 5 days to spin-up and save at nsave2D = 1800 sec (CAM time-step), then start saving every 600 sec (1/3 CAM time-step)
+
+
+Basefolder : /glade/p/work/ginochen/SAM6.8.2/
+   . 'CaseName/prm'  setup namelist for the CaseName folders (e.g., ARM0003)
+                     . doSAMconditionals       if .true., core (suffix: COR) and downdraft core (suffix: CDN) averages will be outputted to *.stat file.
+                     . dosatupdnconditionals   if .true., cloudy updraft (suffix: SUP), cloudy downdraft (suffix: SDN) 
+                                               and cloud-free (suffix: ENV for environment) averages will also be output tp *.stat file.
+                     . dx (m), dy (m), dt (sec)
+                     . dt              The model uses Adams-Bashforth time scheme. For stability, set Courant number no greater than 0.5.  
+                                       Therefore, check the sounding ('snd') for maximum wind speed (~40m/s), and select u<=0.5*dx/dt
+                                       UVV (Upward Vertical Velocity) (http://www.theweatherprediction.com/habyhints/319/):
+                                        <40m/s Regular 41~60 Strong 61~80 Very Strong >81 Extreme
+                     . dz              SAM6.10 : set 'dz_constant=.true.' to define 'dz', otherwise dz will be set by 'grd' file
+                                       SAM6.8  : set vertical level in 'grd', 37416m is the top of the model
+                                       dx=80m; dy=80m, maxdz=55m, nx=120000/80=1500, ny=1500, nz=37416
+                                       caseid = 1500x1500x185_80m_80m_55m_1s_LES' <- check out ~/matscript/CAMSAM_exp for 'zfit' 
+                                          nx = nx_gl/nsubdomain_x; ny = ny_gl/nsubdomain_y (FAILED due to mod(nx,ndiv) neq 0, nx and ny must be even)
+                                       caseid = 1536x1536x185_80m_80m_80m_1s_LES' <- check out ~/matscript/CAMSAM_exp for 'zfit'
+                                          nx = 1536/32=48; ny=1536/16=96; 'BSUB -n 32*16=512' ( maximum 512 tasks on pegasus2 )
+                                       ------------------------------Below for the IOP cases that extends to the statosphere---------------------------------------------
+                                       Try these two : caseid ='15600x15600x3118_20m_20m_12m_0.25s_LES'; 1500=2*2*3*5*5*5 
+                                                       caseid ='7800x7800x663_40m_40m_24m_0.5s_LES' <- design ununiform vertical 'grd' profile 
+                                                                                                        dz=24m(<=10.008km), dz=72m(10km<=z<=18km), dz=144m(18km<=z<=37.416km) 
+                                                                                                        nz=417,             nz=111,                nz=135 (18000m<=z<=37440m)
+                                                       caseid ='3900x3900x321_80m_80m_48m_1s_LES' <- dz=48m(z<=9600m), dz=150m(9600<=z<=18000), dz=300m(18000<=z<=37500m)
+                                                                                                     nz=200            nz=56                    nz=65  
+                                       ------------------------------Above for the IOP cases that extends to the statosphere---------------------------------------------
+                     . 'doconstdz'     if doconstdz = .true., then set dz to a constant without using grd file
+                     . 'doxy'          SAM6.8 : if true, this will allow 'docoriolis' to actually do coriolis without fixing the parameter at 'fcor'
+                                                         this will not allow surface forcing (set 'SFC_FLX_FXD = .false.')
+                     . 'doscamiopdata' Allow sounding, forcing and surface data to be read in from a SCAM IOP input file in netcdf format
+                     . 'donudging_uv'  set .true., nudge horizontal mean u and v to the specified in lsf (if dolargescale=.true.) or snd files
+                       'donudging_tq'  set .true., nudge both horizontal mean t and q to specified in snd file
+                   X . 'fcor'          (1/s) Coriolis parameter (e.g., fcor = 0.85e-4 on f-plane) ('docoriolis = .true.')
+                     . 'iopfile'       if doscamiopdata = .true. then the name of the file. Default name is <CaseName>.nc
+                     . 'LES'           set .true. and delete 'CEM' to run large-eddy simulation
+                     . 'nprint'        frequency of short printouts (OUT_3D (7.5G/print), OUT_2D (129M/print), RESTART (135G saved in the end))
+                     . 'nrestart'      0 (initial) 1 (restart) 2 (branch)
+                                       nrestart=1 needs all the OUT* and RESTART directories in the working directory, so backup a RESART folder if 
+                                       the previous run is important since it will be overwritten by the restart run.
+                     . 'nsave2d'       save every nsave2d=600 sec, a third of CAM/CESM's climate simulation timesteps (1800 sec)
+                     . 'nstat'         average the statistics output every nstat sec.
+                     . 'nstatfrq'      nstatfrq of samples collected over the nstat steps.
+                     . 'nsave2Dstart'  save from 3 days (259200sec) after initialization
+                     . 'nrestart_skip' (e.g., nrestart_skip=10 will write the restart every 11 time the statistics file is written)
+                     . 'output_sep'    separate 2D and 3D outputs for each subdomain (accelerate MPI communication), use UTIL/FILES to glue them afterwards.
+                     . 'restart_sep'   as above, saving separate subdomains for optimal MPI
+                     . 'tauls'         nudging time-scale for uv and for tq if tautqls is not set (just set this, and leave 'tautqls' alone)
+                     . SFC_FLX_FXD     .true. (prescribed) .false. (computed)
+                     . SFC_TAU_FXD     .true. (prescribed) .false. (computed)
+   
+   . 'CaseName/grd'  setup vertical grid
+   . 'CaseName/lst'  setup which horiz'ly avg'd stats should be saved into the stats file, only fields flagged by '1' will be computed and saved
+   . 'CaseName/lsf'  setup large-scale forcing file (T, QV tendencies, and U,V wind for mean wind to nudge to)
+   . 'CaseName/sfc'  prescribed SST time series, and surface fluxes
+   . 'CaseName/rad'  prescribed rad heating rates
+   . 'CaseName/snd'  initial-sounding files (at least two time samples are needed for model to linearly interpolate)
+   . 'SRC/domain'    . set domain and subdomain size (horizontal domain size is a factor of 2, 3, and 5 only! e.g., 240=2^4*3*5 is ok, but 168=2^3*7*3 is not ok)
+                     . total number of processor = nsubdomain_x*nsubdomain_y
+                     . divisibiligy : both nx_gl and ny_gl has to be divisible by total number of processor to use an arbitrary number of vertical level
+                                      (otherwise see SAM6.7_guide)
+                       ( 1 SCAM box side aeq 312 km = 3120 SAM boxes (100m=0.1km per box) => nx_gl = 3120, ny_gl = 3120 (=320km)
+                     . for ARM0003, set domain 320x320 (aeq 378km*378km according to https://www.arm.gov/sites/sgp)
+                     . calculate the parameters in '~/matscript/CAMSAM_exp'
+
+   . 'SRC/grd'       . # of grid points per subdomain : nx=nx_gl/nsubdomain_x; ny=ny_gl/nsubdomain_y, nx and ny must be divisible by ndiv=2 (i.e., even numbers)
+   . 'gobsub.tcsh'   setup MPI conditions (16 cores on a node in yellowstone)
+                     BSUB -n : specify the total number of CPUs needed (maximum of 512 cores = 32 nodes can be used on pegasus2)
+                     BSUB -R "span[ptile=16]" : run all 16 CPUs per node (yellowstone specific)
+                     BSUB CaseName : change it to the appropriate caseName
+   . 'CaseName'      modified to the CaseName folder
+   . 'Build' to change the microphysics scheme (e.g., setenv MICRO_DIR MICRO_M2005)
+   . ./Build
+                     . setenv SAM_SRC = 
+                     . change the executable (e.g., ./SAM_RAD_CAM_MICRO_M2005) in gobsub.tcsh
+   . bsub < gobsub.tcsh
+   . bhist -l JobID  . check the CPU, Memory, etc.
+   . bjobs -l JobID  . check CPU, Memory, etc details.
+   . bpeek JobID     . check stdout for JobID
+   . 'SRC/write_fields3D.f90'    
+     'SRC/write_fields2D.f90' 
+                     . find the fields to optionally output
+   . 'Changes_log/README.UUmods'
+                     .  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----------------------------
+    folders 
+-----------------------------
+General Climate Run CAM configuration (dmin's) : 
+/nethome/dmin/CESM1_EXP/cesm1_0_ctrl_0.9x1.25_gx1v6/Buildconf/camconf/atm_in
+
+-----------------------------
+    websites
+-----------------------------
+Marat
+http://somas.stonybrook.edu/people/khairoutdinov.html
+
+SAM
+http://rossby.msrc.sunysb.edu/~marat/SAM.html
+gchen@rsmas.miami.edu
+coolclouds
+
+Check running batch jobs:
+https://www2.cisl.ucar.edu/resources/yellowstone/using_resources/runningjobs
+
+ARM0003 IOP descrition
+https://www.arm.gov/campaigns/sgp2000sprcloud
+
+ARM9707 (Continental deep convection, Southern Great Plains)
+
+
+KWAJEX IOP description
+http://www.atmos.washington.edu/gcg/MG/kwajex/kwajex.html
+
+TOGA-COARE  
+(120 days, November 1, 1992 to February 28, 1993, suppressed to deep convection, western Pacific warm-pool, ENSO)
+description:
+http://www.atmos.washington.edu/togacoare/aircraft/tc.info.html
+summaries:
+http://www.atmos.washington.edu/togacoare/summaries.html
+https://www.eol.ucar.edu/field_projects/toga-coare
+
+NETCDF Fortran 77 Interface 
+https://www.unidata.ucar.edu/software/netcdf/docs/netcdf-f77
+
+-----------------------------
+TODO CONCLUSION ISSUE
+-----------------------------
+2. use SAM output as CAM input : /glade/p/work/ihu/SAM/SAM_OUTPUT/*TQ.nc
+2.1. Run SAM and output the 3D fields, modify 'writefields3D.f90'. 'statistics.f90' gives the variable name : 'tabs'
+
+SAM outputs Q1C : convective heating
+
+cp /glade/p/work/ihu/SAM/SAM6.8*.tar
+
+cp /glade/p/work/ihu/SAM/SAM_ctrlrun/SAM6.8.2/Makefile and gobsub.tcsh
+
+'./Build' to compile
+
+'prm' works as namelist setup, '$CASENAME.nml' file is generated during run
+
+'doparameterization' = .false.
+
+
+20150805
+TODO
+1. vim -o README RCE/prm
+   Find out all the namelist I need to use and take notes in README
+ISSUE
+1. Do I need to add Coriolis?
+
+20150806
+ISSUE
+1. How to initialize SAM? Run for a longer period until nudged towards large-scale IOP?
+CONCLUSION
+1. Run LES mode with 100mx100m resolution
+
+20150808
+CONCLUSION
+1. Run SAM6.10 instead of SAM6.8, setting up vertical profile will be easier without changing the 'grd' file, simply add 'dz_constant' to 'prm'
+
+20150810
+TEST
+1. added 'print*,z(k)' to 'SRC/grid.f90' <-------------- deleted
+
+20150815
+TODO
+1. Calculate CPU hours needed and relative wall-clock hours
+2. Outputs needed : CAPE, CIN, Cloud fraction <- reuse CESM codes or calculate diagnotically from current outputs?
+CONCLUSTION
+1. Q1C is what is the convective heating tendency
+
+20150820
+ISSUE
+1. Differences between sounding and large-scale forcing?  <------------------ The differences (in lsf and snd profiles) is lsf specifies the tendencies for 't' and 'q'.
+                                                                             'z','p','u','v' are all the same. 'w' is zero in lsf, and no 'w' in snd.
+2. Change 'tauls'? <----------------------- NO!! It's case specific. ARM0003 uses 2 hrs (7200 sec) sounding
+3. Days of IOP? <-------------------------- 167 (# of soundings) * 2 (hrs/sounding) / 24 (hrs/day) ~ approximately 13.91 (days) 
+
+20150821
+ISSUE
+1. stats need memories to save, so nstatfrq is important, what's the max 512 cores can handle? <------------ NO!! it just accumulates, so no additional memories required
+TODO
+1. test nstat=600, nstatfrq=20 which is nstat/nstatfrq=30 samples collected to calc statistics
+2. 20150815 finish it. CAPE (zm_conv.F90) CIN (convect_shallow.F90, uwshcu.F90), 
+3. check nrestart_skip=10 is read in when doing restart run, otherwise start an initial run
+4. calculate how much wall-clock time is needed and run for the maximum steps 
+CONCLUSION
+1. maybe don't need to calc CAPE, CIN, CldFrac <---------------------- Calc'd in CAM, and error as a function in CAM, err(CAPE,CIN,CldFrac) 
+2. CPU time scaled linearly with model time step (nstop), then the required 
+   CPU time (sec) = 131147 (sec/10nstop)*n(nstop)/10 = 131147*n/100(sec)
+   (Notice: this is for ARM0003_LES_80mx80mx80mx1s)
+3. In a restart run (nrestart=1), mv RESTART files back to working directory
+
+
+20150822
+TODO (when checking a restart run)
+1. bjobsl JobID | head -n30  <----------------------- check start (wall-clock time) and current/end (wall-clock time)
+2. time bpeekf JobID | grep NSTEP  <----------------------- check current steps (with required wall-clock time)
+CONCLUSION
+1. limit wall-clock hrs <= 48:00 hrs
+2. wall-clock time / steps = 2.5 / 1  <------------- 1 timestep (s) requires approximately 2.5 (wall-clock seconds) for nz_gl=185
+   1/4 (day) = 86400/4 (s) = 21600 (s) * 2.5 (wall-clock sec/s) = 15 (wall-clock hrs)
+   1 (day) = 86400*2.5/3600 = 60 (wall-clock hrs)
+ISSUE
+1. how to add BSUB wall-clock to 48:00? ask Ben, Min or Sarah <------- 24:00 hrs is fine
+
+
+20150824
+TODO
+1. write a script to execute gobsub.job after the job terminates at wall-clock limit (change 'nstop' everytime, adding the correct steps)
+CONCLUSION
+1. steps / real time (sec) = 0.677  (steps/sec) <--------- for nz_gl=110
+2. 1 (day)=86400(steps)/0.677(steps/sec)/3600(sec/hrs) = 35 (hrs) <------ 48:00 hrs is fine
+ISSUE
+1. adams.f90 line 35 to 38 non-dimensionalized the velocity and for some reason took the average of u1 and u2 (i.e.,0.5*(u+dudt)) <----- for advecting scalar at n+1/2 timestep
+2. how does nudging work?
+
+
+20150825
+ISSUE
+1.Where are all the variables after com3D2nc? <------------- maybe due to wrong compiler flags that's given to UTIL?
+2.Why doesn't the job send finish notice with BSUB -N gchen@rsmas.miami.edu
+3.Reading in wrong data in 2Dcom_sep2one.f line 74, 79 ( read(2) (byte(k),k=1,nx*ny) )
+
+
+20150826
+ISSUE
+1. What is integer(2): bytes(:) actually defining? does the compiler flags affect how many bytes are read? <---- In the guide, the compressed form data is integers in 2 bytes
+2. when using com3D2nc, the variables are not saved, but com3D2nc finished <----------------- add NF_64BIT_OFFSET to NF_CREATE, the output is too big, needed offset
+3. 2Dcom_sep2one needs help <------- fixed in UTIL_gino
+CONCLUSION
+1. no need to save 3D data if the variable values are all zeros using com3D2nc <-------------- set a if loop (if min max values are zero) in com3D2nc
+
+
+20150827
+CONCLUSION
+1. tried printing out line 73 read(2), it shows some data <-------------------- fixed, added more lines of read(2) to skip the necessary data
+
+TODO
+1. Make sure taking statistics every 1800 sec or 600 sec (maybe divide by three over 3*600sec)
+1. how frequent to save STAT, 2D, 3D? do I need a 3D tendency for coarse grain? 
+2. is ttend and qtend the model output or the observation?
+3. Q1C=Q1-QR and Q2 is all we need for error calc?
+4. Maybe turn off saving some variables (e.g., GRAUPEL and ICE) in 3D
+
+
+20150828
+CONCLUSION
+1. SST is the surface temperature from the snd file, not necessary sea surface, could be land surface
+2. CAPE,CIN,RELH are all in the STAT output.  
+3. STAT contains all the initial var to calc QC1 (i.e., TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;)
+TODO 
+1. make sure KWAJEX domain is ok to assume to be 120kmx120km <------ yes!
+
+
+20150829
+TODO
+1. check Changes_log/README.UUmods for the output 3D stats (related to coarse-grained?) <-------- run TOGA-COARE (ENSO warm pool) at large domain? 
+2. check how to do the 3D moment-statistics fields <----- navgmom_x and navgmom_y, what are the output fields, I need TABS, SST, QV, QN, U, V for SCAM
+3. TOGA-COARE large domain
+4. If TOGA_LONG is ran, then the error statistics only in the tropics, if idealized case run globally, then the statistics is global <----- tropics or not doesn't 
+                                                                                                                                            really matter since convection
+                                                                                                                                            has a fast time-scale
+5. do a 1kmx1km stats instead of 100kmx100km, since we can assume 1kmx1km average is a grid box output for a global grid point <--------NO, needs to be bigger, look below!
+6. Assume the TOGA domain to be 2degreesx2degrees, and do a dx=150m,dy=150m run, so approximately 1400x1400xnz_gl, vertical just use the grd file.
+   nsubdom = 40x35
+7. make sure to change the coarse-grain navgmom_x and y !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ISSUE
+1. Can I treat CRM or LES vertical outputs as soundings for SCAM? Just like using IOP sounding data for SCAM. <----- IOP data are area averaged, so no, coarse-grain is needed
+
+
+20150830
+ISSUE
+1. Where am I stuck? grid size, grid resolution, LES necessity, variable selection, 
+TODO
+1. setup a large domain experiment
+2. collect the papers related to CRM, 
+3. CRCP, SP-CAM if used in single column mode, does it have the necessary compiled dependency? (i.e, can I use single column SP-CAM to verify SCAM results after the subgrid scale processes are corrected by the stochastic scheme?)
