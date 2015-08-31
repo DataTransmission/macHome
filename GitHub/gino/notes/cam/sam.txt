@@ -486,7 +486,7 @@ TODO
 20150828
 CONCLUSION
 1. SST is the surface temperature from the snd file, not necessary sea surface, could be land surface
-2. CAPE,CIN,RELH are all in the STAT output.  
+2. ~CAPE,~CIN,~RELH are all in the ~STAT output.  
 3. STAT contains all the initial var to calc QC1 (i.e., TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;)
 TODO 
 1. make sure KWAJEX domain is ok to assume to be 120kmx120km <------ yes!
@@ -495,7 +495,7 @@ TODO
 20150829
 TODO
 1. check Changes_log/README.UUmods for the output 3D stats (related to coarse-grained?) <-------- run TOGA-COARE (ENSO warm pool) at large domain? 
-2. check how to do the 3D moment-statistics fields <----- navgmom_x and navgmom_y, what are the output fields, I need TABS, SST, QV, QN, U, V for SCAM
+2. check how to do the 3D moment-statistics fields <----- ~navgmom_x and ~navgmom_y, what are the output fields, I need ~TABS, ~SST, ~QV, ~QN, ~U, ~V for SCAM
 3. TOGA-COARE large domain
 4. If TOGA_LONG is ran, then the error statistics only in the tropics, if idealized case run globally, then the statistics is global <----- tropics or not doesn't 
                                                                                                                                             really matter since convection
@@ -510,8 +510,14 @@ ISSUE
 
 20150830
 ISSUE
-1. Where am I stuck? grid size, grid resolution, LES necessity, variable selection, 
+1. Where am I stuck? ~grid size, ~grid resolution, ~LES necessity, ~variable selection, 
 TODO
 1. setup a large domain experiment
 2. collect the papers related to CRM, 
 3. CRCP, SP-CAM if used in single column mode, does it have the necessary compiled dependency? (i.e, can I use single column SP-CAM to verify SCAM results after the subgrid scale processes are corrected by the stochastic scheme?)
+
+
+20150831
+TODO
+0. end of day : phone bill
+1. 

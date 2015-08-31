@@ -77,6 +77,29 @@ Therefore, the particle at any instant is locally heated by the sun which change
 The changes due to motion (spatial derivative), particle flows from cold to warm with velocity $\bm{u}$,
 then it recieves the temperature gradient advection from the second term.
 
+\subsection{Volume material derivative}
+A 2D squared volume at the initial time
+\begin{equation}
+    \delta V = \delta x \delta y = (x_2-x_1)(y_2-y_1).
+\end{equation}
+At the next time step
+\begin{equation}
+    \begin{aligned}
+    \delta V' & = \delta x' \delta y'  \\
+              & = (x_2+u_2\delta t - (x_1+u_1\delta t))(y_2+v_2\delta t - (y_1+v_1\delta t)) \\
+              & = (\delta x + \delta u \delta t)(\delta y + \delta v \delta t) \\
+              & = \delta V + \delta x \delta v \delta t + \delta y \delta u \delta t + \delta t^2 \delta u \delta v.
+    \end{aligned}
+\end{equation}
+After some algebra
+\begin{equation}
+    \frac{\Delta \delta V}{\Delta t} = \delta x \delta y (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}) + \delta t \delta u \delta v.
+\end{equation}
+The last term goes to zero as $\delta t \rightarrow 0$,
+\begin{equation} \label{eq:volume}
+    \frac{D \delta V}{D t} = \delta V \nabla \cdot \vec{u}.
+\end{equation}
+
 \subsection{Mass continuity via material derivative}
 By definition, mass is a constant/conserved following a particle,
 \begin{equation}
@@ -87,7 +110,8 @@ By definition, mass is a constant/conserved following a particle,
         & \int(\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\vect{v}))dV = 0 \\
     \end{aligned}
 \end{equation}
-The last line applying divergence theorem
+Applied \eqref{eq:volume} to the second line.
+Applying divergence theorem to the last line gives
 \begin{equation}
     \int_V(\frac{\partial\rho}{\partial t})dV = -\int_V(\nabla\cdot(\rho\vect{v}))dV = -\int_S \vect{v} \cdot d\vect{S}
 \end{equation}
