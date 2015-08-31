@@ -62,7 +62,7 @@ alias gitcommit='git commit -a' # automatically stage the local files, don't nee
 # 3. Push everything into the remote repo https://github.com/ginochen/gino.git under the master folder ~/Github/gino
 #    If the master folder is ~/Github/Hsiaochu, then the corresponding remote repo becomes https://github.com/ginochen/Hsiaochu.git
 alias gitpush='git push -u origin master'
-
+alias gitrm='git rm -cached'
 
 alias untar='tar xvfz'
 
