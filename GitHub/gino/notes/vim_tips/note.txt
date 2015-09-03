@@ -1,2 +1,4 @@
 # auto-count number 
 $ ctrl + a
+# ignore case (search without case-sensitive)
+$ :set ic

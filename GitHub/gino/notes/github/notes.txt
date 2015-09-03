@@ -26,16 +26,19 @@ $ git remote -v
 # push to the remote repo
 $ git push -u origin master
 
-# if this ERROR pops up
+# if this ERROR pops up, two solutions
 $ error: The requested URL returned error: 403 Forbidden while accessing http://github.com/ginochen/SAM.git/info/refs
 $ fatal: HTTP request failed
-# then you need to give the remote repo a SSH-KEY, follow the steps
+# Solution 1 (this works for pegasus2 scratch dir)
+# give the remote repo a SSH-KEY, follow the steps
 $ ls -al ~/.ssh
 # if 'id_rsa.pub' shows up, then vi to copy the key chain and add it to https://github.com/settings/ssh, otherwise generate a new SSH key
 $ ssh-keygen -t rsa -b 4096 -C "gchen@rsmas.miami.edu"
 # use the email as a label, and press enter, and enter a passphrase and this will pop up
 > Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
 # then copy the key chain and add to https://github.com/settings/ssh
+# Solution 2 (this works for pegasus2 $HOME dir)
+# change 'url=https://github.com/ginochen/repo.git' to 'url=https://ginochen@github.com/ginochen/repo.git'
 
 REMOVE REPO
 -----------

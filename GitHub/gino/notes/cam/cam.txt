@@ -5,6 +5,7 @@ This is a note of CAM module dependency (gchen@rsmas.miami.edu)
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CAM CODE HEIRARCHY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  _____________________________________________________________
 |                                                             |
 | |~SUBROUTINE(INOUTVAR) [BASEDIR/SUBDIR/MOD~]                |
@@ -224,7 +225,7 @@ ztodt            : timestep for computing physics tendencies
 
 ------------------------------------------------------------------------------------------------
                             
-                                       websites
+                                       websites and directories
 
 ------------------------------------------------------------------------------------------------
 
@@ -237,6 +238,11 @@ history field
 -------------
 http://www.cesm.ucar.edu/models/cesm1.0/cam/docs/ug5_0/hist_flds_fv_cam5.html
 
+restart file
+------------
+/projects/scratch/cpp/nperlin/CCSM4/archive/Ocn1Atm10/rest/0126-01-01-00000
+/projects/scratch/cpp/nperlin/CCSM4/exe/Ocn1Atm10/run
+
 IOP Description File
 --------------------
 /glade/p/work/ginochen/cesm1_3_beta07/models/atm/cam/bld/namelist_files/use_cases/scam_arm95.xml
@@ -244,14 +250,18 @@ IOP Description File
 IC ncdata
 ---------
 /glade/p/cesmdata/cseg/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L30_c031210.nc
+/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc
 
 iopfile
 -------
 /glade/p/cesmdata/cseg/inputdata/atm/cam/scam/iop/ARM95_4scam.nc
+/nethome/gchen/SCAM/inputdata/scam/iop/
+/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/arm0795v1.2.nc
 
 cloud fraction
 --------------
 http://www.cesm.ucar.edu/models/atm-cam/docs/description/node21.html
+
 
 1. set '*.run' BSUB -q premium' to test the code
 2. use SAM output as CAM input : /glade/p/work/ihu/SAM/SAM_OUTPUT/*TQ.nc
@@ -440,18 +450,31 @@ CONCLUSIONS
 
 20150730
 CONCLUSIONS
-1. TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;
+1. TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT; <--------------------need more! check cami_0000-01-01_64x128_L30_c090102.nc 
 2. lat lon is not important anymore, just use the lat-lon from the SCAM IOP
 3. Domain average for SAM is required to match the grid box size of the SCAM
 TODO
-2. Define subdomain to do the grid-box average for SAM output? or maybe just use ncl to finish that, but does subdomain calculate more variables?
+2. Define subdomain to do the grid-box average for SAM output? or maybe just use ncl to finish that, but does subdomain calculate more variables? <------- navgmom_x, navgmom_y, not subdomain!
 
 20150731
 ISSUE
-1. What is the CAM grid point size (Gaussian latitudes?) I should use to transform SAM into? <---- not a problem anymore 
+1. What is the CAM grid point size (Gaussian latitudes?) I should use to transform SAM into? <------------------ not a problem anymore 
 
 20150804
-TODO
-1. run SAM in a large domain and take subdomain average with 156 boxes (2000x2000 m^2 per box)
 CONCLUSIONS
 1. CAM grid point size = 312km <--------------------- shrink to 120km for practicality
+
+20150901
+TODO
+1. NCL do a domain average -> vertical interp -> substitute into ncdata at the lat-lon corresponding to the IOP
+
+20150902
+TODO
+1. Generate lat2d lon2d to find the index of latiop loniop (using the function 'getind_latlon2d')
+2. Plugged in the vert profile for SCAM to read in cami.nc data, tomorrow need to start running SCAM with the modified cami.nc to check things working before and after modify.
+
+
+20150903
+TODO
+1. find how to make SCAM run on restart file instead of initial file!!
+2.  
