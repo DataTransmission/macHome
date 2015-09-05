@@ -32,28 +32,35 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | | |                ! Determine whether file is on local disk. First check current working directory, next check full pathname[fulpath] on disk.
  | | |~cam_pio_openfile(fh_ini, ncdata_loc, PIO_NOWRITE, .TRUE.) [utils/cam_pio_utils~]
  | | | |               (file, fname, mode, is_init)
- | | | |~pio_openfile(pio_subsystem, file, pio_iotype, fname, mode) [../../../utils/pio/pio. & piolib_mod~] 
+ | | | |~pio_openfile(pio_subsystem, file, pio_iotype, fname, mode) [../../../utils/pio/pio & piolib_mod~] 
  | | |                ! brief open an existing file using pio
  | | |~read_initial(fh_ini) [control/readinitial~]
  | |                  ! Ensure that requisite netcdf variables are on the initial dataset.
  | |                  ! Set base day and date info using the "current" values from it.
- | |~cam_initial(dyn_in, dyn_out, NLFileName=filein) [dynamics/eul/inital~]
- | | |~dyn_init(initial_file_get_id(), dyn_state, dyn_in, dyn_out, NLFileName) [dynamics/fv/dyn_comp~]
+ | |~cam_initial(dyn_in, dyn_out, NLFileName=filein) [dynamics/*/inital~]
+ | | |~dyn_init(initial_file_get_id(), dyn_state, dyn_in, dyn_out, NLFileName) [dynamics/*/dyn_comp~]
  | | |                ! Initialize the FV dynamical core
  | | |~initial_conds(dyn_in) [control/startup_initialconds~]
- | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/fv/inidat~] 
+ | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/*/inidat~] 
  | |   |              ! Read initial dataset (PS,PHIS,US,VS,T) and spectrally truncate as appropriate.
- | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/eul/inidat~]  
+ | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/*/inidat~]  
  | |     |            ! Read initial dataset and process fields as appropriate.
- | |     |~setiopupdate() [dynamics/eul/iop~]
+ | |     |~setiopupdate() [dynamics/*/iop~]
  | |     |            ! Open and read netCDF file to extract time information
- | |     |~readiopdata() [dynamics/eul/iop~]
+ | |     |~readiopdata() [dynamics/*/iop~]
  | |                  ! Open and read netCDF file containing initial IOP conditions
  | |                  ! if the dataset is a CAM generated dataset set use_camiop to true
  | |                  ! CAM IOP datasets have a global attribute called CAM_GENERATED_IOP      
  | |~cam_read_restart(cam_out, dyn_in, dyn_out, pbuf2d, stop_ymd, stop_tod, NLFileName=filein) [control/cam_restart~]     
  | | |                ! IF RESTART
  | | |                ! Read the master restart file in 
+ | | |~getfil(pname,locfn) [control/ioFileMod~]
+ | | |                ! get file from archive
+ | | |~read_restart_dynamics(File, dyn_in, dyn_out, NLFileName) [dynamics/*/restart_dynamics~]                
+ | | |~read_restart_physics(File, cam_out, pbuf2d) [physics/cam/restart_dynamics~]                
+ | | |                ! read (FSNT,FSNS,FSDS,FLNT,FLNS,LANDM,SGH,SGH30,TREFMXAV,TREFMNAV,FLWDS,SOLS,SOLL,SOLSD,SOLLD,BCPHIDRY, BCPHODRY,OCPHIDRY,OCPHODRY,DSTDRY1,...,DSTDRY4)
+ | | |                ! cam_out contains only surface variables 
+ | | |~read_restart_history (File) [control/cam_history~]
  | | |~initialize_iop_history() [control/history_defaults~]
  | |~phys_init(phys_state, phys_tend, pbuf2d, cam_out) [physics/cam/physpkg~]
  | | |                ! Initialization of physics package, phys_state and phys_tend are null pointer inputs
@@ -65,10 +72,10 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |                    ! add master list fields for single_column model 
  |                    ! (TDIFF,TOBS,QDIFF,QOBS,PRECOBS,DIVQ,DIVQ3D,DIVV,DIVU,DIVT,DIVT3D,SHFLXOBS,LHFLXOBS,TRELAX,QRELAX,TAURELAX,TDIFF,QDIFF) to scm
  |~cam_run1(cam_in,cam_out) [control/cam_comp]  
- | |~stepon_run1( dtime, phys_state, phys_tend, pbuf2d, dyn_in, dyn_out ) [dynamics/eul/stepon~]
+ | |~stepon_run1( dtime, phys_state, phys_tend, pbuf2d, dyn_in, dyn_out ) [dynamics/*/stepon~]
  | | |                ! First phase of dynamics (at least couple from dynamics to physics)
  | | |                ! Return time-step for physics from dynamics.
- | | |~d_p_coupling(ps, t3, u3, v3, q3, omga, phis, phys_state, phys_tend,  pbuf2d, pdeld) [dynamics/eul/dp_coupling~]
+ | | |~d_p_coupling(ps, t3, u3, v3, q3, omga, phis, phys_state, phys_tend,  pbuf2d, pdeld) [dynamics/*/dp_coupling~]
  | |                  ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
  | |                  ! also writes dynamics variables (on physics grid) to history file
  | |~phys_run1(phys_state, ztodt, phys_tend, pbuf2d,  cam_in, cam_out) [physics/cam/physpkg~]             
@@ -143,18 +150,18 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
  | |                  ! Tendency physics after coupling to land, sea, and ice models.
  | |                  ! Computes (1) Radon surface flux and decay (optional) (2) Vertical diffusion and planetary boundary layer (3) Multiple gravity wave drag
- | |~stepon_run2(phys_state, phys_tend, dyn_in, dyn_out) [dynamics/fv/stepon~]    
+ | |~stepon_run2(phys_state, phys_tend, dyn_in, dyn_out) [dynamics/*/stepon~]    
  |                    ! Phase 2 run method of dynamics. Couple from physics to dynamics.  
  |~cam_run3(cam_out) [control/cam_comp~]
- | |~stepon_run3(dtime, etamid, cam_out, phys_state, dyn_in, dyn_out) [dynamics/eul/stepon~]
+ | |~stepon_run3(dtime, etamid, cam_out, phys_state, dyn_in, dyn_out) [dynamics/*/stepon~]
  | | |                ! Final phase of dynamics run method. Run the actual dynamics.  
  | | |                ! Determine whether it is time for an IOP update; doiopupdate set to true if model time step > next available IOP
- | | |~dynpkg( adv_state,t2,fu,fv,etamid,cwava,detam,flx_net ,ztodt) [dynamics/eul/dynpkg~]
- | |   |~scan2run (ztodt,cwava,etamid,t2,fu,fv) [dynamics/eul/scan2~]
+ | | |~dynpkg( adv_state,t2,fu,fv,etamid,cwava,detam,flx_net ,ztodt) [dynamics/*/dynpkg~]
+ | |   |~scan2run (ztodt,cwava,etamid,t2,fu,fv) [dynamics/*/scan2~]
  | |     |            ! Module for second gaussian latitude scan, to convert from spectral coefficients to grid point values.
  | |     |            ! Second gaussian latitude scan, converts from spectral coefficients to grid point values, from poles to equator, with read/calculate/write cycle.
  | |     |~forecast(lat, psm1, psm2,ps, u3, u3m1, u3m2, v3, v3m1, v3m2, t3, t3m1, t3m2, q3, q3m1, q3m2,
- | |                ztodt,t2,fu,fv,qfcst,etamid,cwava,qminus,hw2al,hw2bl,hw3al,hw3bl,hwxal,hwxbl,nlon)  [dynamics/eul/forecast~]
+ | |                ztodt,t2,fu,fv,qfcst,etamid,cwava,qminus,hw2al,hw2bl,hw3al,hw3bl,hwxal,hwxbl,nlon)  [dynamics/*/forecast~]
  | |                  ! Eularian forecast of t, u, and v. Advection terms are also converted to flux form and integrated to check conservation
 
  
@@ -170,14 +177,15 @@ c                : chunk index
 cam_in           : pointer, Merged input state of sea-ice, land and ocean surface parameterizations to CAM, with type cam_in_t 
 cam_in_t         : the type for cam_in [control/camsrfexch]  
 cam_out          : pointer, Output from CAM to surface (Atmosphere to surface input)
+cam_out_t        : a bunch of surface variables
 cflx_srf(:,:)    : constituent flux at surface (kg/m2/s) [physics/cam/physics_type]
 cflx_top(:,:)    : constituent flux at top of model (kg/m2/s) [physics/cam/physics_type]
 cme(pcols,pver)  : cmf condensation - evaporation [convect_deep]
 DTCORE           : T tendency due to dynamical core
 dyn_in           : Dynamics import container, intent(out), with type dyn_import_t
-dyn_import_t     : The type for dyn_in, with variables (phis, ps, u, v, p, phi, T) [dynamics/fv/dyn_comp]
+dyn_import_t     : The type for dyn_in, with variables (phis, ps, u, v, p, phi, T) [dynamics/*/dyn_comp]
 dyn_out          : Similar to dyn_in, intent(out) with type dyn_export_t
-dyn_export_t     : The type for dyn_out, with additional variables (omega, mfx, mfy) [dynamics/fv/dyn_comp]
+dyn_export_t     : The type for dyn_out, with additional variables (omega, mfx, mfy) [dynamics/*/dyn_comp]
 dlf(pcols,pver)  : scattrd version of the detraining cld h2o tend [convect_deep]
 evapcdp          : Evaporation of deep convective precipitation [convect_deep]
 filein           : Determine input namelist filename (e.g. filein= "atm_in" // trim(inst_suffix))
@@ -187,6 +195,7 @@ fracis           : fraction of transported species that are insoluble [physics/c
 hflux_srf(:)     : net heat flux at surface (W/m2) [physics/cam/physics_type]
 hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_type]
 lchnk            : chunk identifier
+locfn            : local filename
 mcon(pcols,pverp):  Convective mass flux--m sub c [convect_deep]
 NLFileName       : Input namelist filename, "atm_in"
 pflx(pcols,pverp): scattered precip flux at each level [convect_deep]
@@ -197,6 +206,7 @@ phys_state       : has the type of physics_state [physics/cam/physics_type]
 physics_state    : ( lchnk,ngrdcol,nsubcol,psetcols,ncol,indcol,lat,lon,ps,psdry,phis,ulat,ulon,
                      t,u,v,s,omega,pmid,pmiddry,pdel,pdeldry,rpdel,rpdeldry,lnpmid,lnpmiddry,exner,zm,
                      q,pint,pintdry,lnpint,lnpintdry,zi,te_ini,te_cur,tw_ini,tw_cur,latmapback,lonmapback,cid,ulatcnt,uloncnt ) [physics/cam/physics_type]
+pname            : full restart pathname
 prec(:)          : total precipitation [convect_deep]
 psetcols         : max number of columns set- if subcols = pcols*psubcols, else = pcols [physics/cam/physics_type]
 ptend            : 
@@ -240,8 +250,8 @@ http://www.cesm.ucar.edu/models/cesm1.0/cam/docs/ug5_0/hist_flds_fv_cam5.html
 
 restart file
 ------------
-/projects/scratch/cpp/nperlin/CCSM4/archive/Ocn1Atm10/rest/0126-01-01-00000
-/projects/scratch/cpp/nperlin/CCSM4/exe/Ocn1Atm10/run
+/projects/scratch/cpp/nperlin/CCSM4/archive/Ocn1Atm10/rest/0126-01-01-00000/Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc
+/projects/scratch/cpp/nperlin/CCSM4/exe/Ocn1Atm10/run/
 
 IOP Description File
 --------------------
@@ -477,4 +487,9 @@ TODO
 20150903
 TODO
 1. find how to make SCAM run on restart file instead of initial file!!
-2.  
+2. Go to CAM codes and dig for which restart field is necessary  
+
+
+20150904
+TODO
+1. calc microphysics input physics/cam/macrop_driver.F90
