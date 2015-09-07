@@ -1,0 +1,12 @@
+NETCDF
+------
+
+# Open a ncfile.nc
+$ ncid = netcdf.open(ncfile.nc,mode)
+
+# Get dim
+$ [dimname, dimlen] = netcdf.inqDim(ncid,dimid)
+
+# Read a variable from file.nc
+$ var
+
