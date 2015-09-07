@@ -493,3 +493,9 @@ TODO
 20150904
 TODO
 1. calc microphysics input physics/cam/macrop_driver.F90
+
+20150906
+TODO
+1. run a initialized run with the restart dynamics and check if the physics are same as the restart physics, make sure to specify the output physics (e.g., FSDS)
+2. check DTCOND if the same (notice "A" for averaged in CAM)
+3. set IOP data to zero

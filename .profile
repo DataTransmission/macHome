@@ -17,6 +17,7 @@ alias safari='open /Applications/Safari.app/'
 alias iphone='ssh -XY root@192.168.1.69'
 alias kaos='ssh -YC gchen@kaos.rsmas.miami.edu'
 alias mat='/Applications/MATLAB_R2015a.app/bin/matlab -nodesktop -nosplash'
+alias mkdirp='mkdir -p' # make a full tree path ($ mkdirp /this/is/a/tree/path)
 alias tarf='tar -cvf' # tar -cvf filename.tar files*
 alias grep='grep --color=always -n -r'
 alias preview='open -a Preview'

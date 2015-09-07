@@ -1,0 +1,8 @@
+---------------------------------
+     website
+---------------------------------
+Utilities
+http://www2.mmm.ucar.edu/wrf/users/utilities/util.htm
+
+User Guide
+http://www2.mmm.ucar.edu/wrf/users/docs/user_guide_V3/ARWUsersGuideV3.pdf
