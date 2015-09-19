@@ -76,4 +76,10 @@ repo and click on the fork repo, it does not allow you to push to their repo unl
 So everything that are pushed are to your own remote repo)
 $ git clone gitRepoDir localRepoDir
 
-
+CREATE/REMOVE A BRANCH
+----------------------
+# creat a branch
+$ git checkout -b <branch name>
+# remove a branch
+$ git checkout master
+$ git branch -d <branch name>

@@ -2,3 +2,12 @@
 $ ctrl + a
 # ignore case (search without case-sensitive)
 $ :set ic
+
+UPPER CASING
+------------
+# Toggle case to the end of the lien
+$ g~$
+# Toggle case to the next 3 words
+$ g~3w
+# Toggle case to the current line
+$ g~~

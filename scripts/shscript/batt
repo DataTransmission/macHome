@@ -1,0 +1,25 @@
+#!/bin/bash
+# this script is included as a daemon plist file, which shows a message dialog 
+# when the battery drops below 40 pct or above 80 pct
+
+# remaining battery charge (mAh)
+batterymAh=$(system_profiler SPPowerDataType | awk '/Charge Remaining/ {print $4}')
+
+# full battery capacity (mAh)
+totalBatterymAh=$(system_profiler SPPowerDataType | awk '/Full Charge Capacity/ {print $5}')
+
+# remaining battery charge (%)
+battpct=$((batterymAh * 100 / totalBatterymAh))
+
+# if battery drops below 40 or above 80 pct then prompt the message diaglog for 2 seconds
+if [[ $battpct -ge 80  || $battpct -le 40 ]]
+then
+# display dialog and giving up after 2 seconds
+   osascript -e 'tell app "System Events" to display dialog "'$battpct' percent" giving up after 1'
+#  if no delay auto
+#   osascript -e 'tell app "System Events" to display dialog "'$battpct' percent"'
+#c sleec has units of seconds/minutes/hours/days s/m/h/d 
+#   sleep 2s
+#   osascript -e 'tell app "System Events" to quit'
+fi
+#echo "battery charged" $battpct"%" 

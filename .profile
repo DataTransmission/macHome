@@ -1,6 +1,6 @@
 #export PATH=/usr/local/cuda/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/Users/ginochen/shscript:$PATH
+export PATH=/Users/ginochen/scripts/shscript:$PATH
 export PATH=~/Documents/software/netcdf-4.1.3/ncdump/:$PATH
 export PATH=/usr/texbin/:$PATH
 export PATH=/usr/bin/:$PATH

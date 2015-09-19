@@ -26,3 +26,13 @@ https://bb.cgd.ucar.edu/could-single-column-model-be-run-through-cesm
 
 User Guide:
 http://www.cesm.ucar.edu/models/atm-cam/docs/scam/
+
+
+
+THE SCAM NEEDED VARIABLE
+--------------------------
+U, V, Q, T, TS/TOCN, PS,  PHI, CLDICE, CLDLIQ, CLOUD, NUMICE, NUMLIQ, PBLH, TKE, TPERT
+
+NOT NEEDED
+----------
+CUSH, CONCLD, KVH, KVM, LCWAT, QCWAT, QPERT, P0, TBOT, TCWAT, TSOCN, TSICERAD, TS1, TS2, TS3, TS4, ICEFRAC, SICTHK, SNOWHICE,

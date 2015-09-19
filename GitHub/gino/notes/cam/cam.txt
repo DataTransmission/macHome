@@ -65,9 +65,22 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~phys_init(phys_state, phys_tend, pbuf2d, cam_out) [physics/cam/physpkg~]
  | | |                ! Initialization of physics package, phys_state and phys_tend are null pointer inputs
  | | |~physics_type_alloc(phys_state, phys_tend, begchunk, endchunk, pcols) [physics/cam/physics_types~]   
- | |   |              ! this is the only place it's used, and the only place "phys_state", "phys_tend" and "state" are defined as pointer 
- | |   |~allocate(phys_state(begchunk:endchunk), stat=ierr) 
- | |                  ! allocate the proper chunk size for phys_state and phys_tend
+ | | | |              ! this is the only place it's used, and the only place "phys_state", "phys_tend" and "state" are defined as pointer 
+ | | | |~allocate(phys_state(begchunk:endchunk), stat=ierr) 
+ | | |                ! allocate the proper chunk size for phys_state and phys_tend
+ | | |~tracers_init()
+ | | |~cloud_rad_props_init()
+ | | |~aerosol_init(pbuf2d)
+ | | |~carma_init()
+ | | |~solar_data_init()
+ | | |~chem_init(phys_state,pbuf2d)
+ | | |~rayleigh_friction_init()
+ | | |~radiation_init
+ | | |~cloud_diagnostics_init
+ | | |~convect_shallow_init(pref_edge)
+ | | |~cldfrc_init [physics/cam/cloud_fraction~]
+ | | |~convect_deep_init(pref_edge)
+ | | |~stratiform_init() [physics/cam/stratiform~]
  | |~scm_intht() [control/history_scam~]
  |                    ! add master list fields for single_column model 
  |                    ! (TDIFF,TOBS,QDIFF,QOBS,PRECOBS,DIVQ,DIVQ3D,DIVV,DIVU,DIVT,DIVT3D,SHFLXOBS,LHFLXOBS,TRELAX,QRELAX,TAURELAX,TDIFF,QDIFF) to scm
@@ -86,10 +99,12 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |   | |              ! The place for parameterizations to call per timestep initializations. 
  |   | |              ! Generally this is used to update time interpolated fields from boundary datasets.                   
  |   | |~( Chemistry surface values, Solar irradiance, Time interpolate for chemistry, a bunch of prescribed tracers, 
- |   |     prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
- |   |     CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
- |   |     Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
- |   |     Time interpolate for tracers if appropriate, age of air tracers )
+ |   | |    prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
+ |   | |    CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
+ |   | |    Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
+ |   | |    Time interpolate for tracers if appropriate, age of air tracers )
+ |   | 
+ |   | 
  |   |~tphysbc(ztodt, fsns, fsnt, flns, flnt, state, tend, pbuf, fsds, landm, sgh30, cam_out, cam_in) [physics/cam/physpkg~]  
  |     |              ! (inout) cam_out,flns,flnt,fsns,fsnt,pbuf,state,tend, (in) cam_in,landm,sgh30,ztodt
  |     |              ! before coupling (bc) to surface (land, sea, ice)
@@ -121,12 +136,21 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     | |~state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt 
  |     |              ! update dry static energy here
  |     |~convect_shallow_tend [physics/cam/convect_shallow~]
- |     |~physics_update [physics/cam/physics_types~]
+ |     |~physics_update(...)   
+ |     |~stratiform_tend [physics/cam/stratiform~]
+ |     | |            ! CALC totcw by cldice and cldliq
+ |     | |            ! totcw(:ncol,:pver) = state1%q(:ncol,:pver,ixcldice) + state1%q(:ncol,:pver,ixcldliq)
+ |     | |~cldfrc(...,state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
+ |     | |~cldfrc_fice(...state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
+ |     |  
+ |     |  
+ |     |  
+ |     |~physics_update(...)   
  |     |~( a bunch of different micro-macro-physics scheme )
  |     |~physics_ptend_sum(ptend_aero, ptend, ncol) [physics/cam/physics_types~]   
  |     |              ! combine aero and micro tendencies
  |     |              ! Overwrites ptend with the sum of ptend (aero and micro tendencies), done once at cloud microphysics 
- |     |~physics_update [physics/cam/physics_types~]
+ |     |~physics_update(...)   
  |     |~physics_ptend_dealloc(ptend_aero) [physics/cam/physics_types~]      
  |     |~( Aerosol wet chemistry determines scavenging fractions, and transformations )      
  |     |~diag_phys_writeout(state, cam_out%psl) [physics/cam/cam_diagnostics~]   
@@ -140,7 +164,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     | |~radheat_tend [physics/cam/radheat~] 
  |     |   |~ptend%s(:ncol,:) = (qrs(:ncol,:) + qrl(:ncol,:)) 
  |     |              ! output ptend%s from radiation
- |     |~physics_update [physics/cam/physics_types~]
+ |     |~physics_update(...)
  |     |~cam_export (state,cam_out,pbuf) [physics/cam/camsrfexch~]    
  |     |              ! Save atmospheric fields to force surface models
  |     |~diag_export(cam_out) [physics/cam/cam_diagnostics~]    
@@ -148,8 +172,38 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |~cam_run2(cam_in,cam_out) [control/cam_comp~]    
  | |~phys_run2(phys_state, dtime, phys_tend, pbuf2d,  cam_out, cam_in) [physics/cam/physpkg~]    
  | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
- | |                  ! Tendency physics after coupling to land, sea, and ice models.
- | |                  ! Computes (1) Radon surface flux and decay (optional) (2) Vertical diffusion and planetary boundary layer (3) Multiple gravity wave drag
+ | |   |              ! Tendency physics after coupling to land, sea, and ice models.
+ | |   |              ! Computes (1) Radon surface flux and decay (optional) (2) Vertical diffusion and planetary boundary layer (3) Multiple gravity wave drag
+ | |   |~tracers_timestep_tend(state, ptend, cam_in%cflx, cam_in%landfrac, ztodt)
+ | |   |~physics_update(...)
+ | |   |~aoa_tracers_timestep_tend(state, ptend, cam_in%cflx, cam_in%landfrac, ztodt)
+ | |   |~physics_update(...)
+ | |   |~chem_timestep_tend(state, ptend, cam_in, cam_out, ztodt, pbuf,  fh2o, fsds)
+ | |   |~physics_update(...)
+ | |   |~vertical_diffusion_tend(ztodt, state ,cam_in%wsx, cam_in%wsy, cam_in%shf, cam_in%cflx, 
+ | |   | |                       surfric, obklen, ptend, ast, cam_in%ocnfrac, cam_in%landfrac, sgh30, pbuf) [physics/cam/vertical_diffusion~]
+ | |   | |~compute_eddy_diff(...) [physics/cam/eddy_diff~]
+ | |   | | |~caleddy(...,pblh,tke,tpert,...) [physics/cam/eddy_diff~]
+ | |   | |            ! CALC PBLH, TKE, TPERT
+ | |   | |~compute_hb_diff(...,tke,...) [physics/cam/hb_diff~]
+ | |   |   |          ! Interface routines for calcualtion and diatnostics of turbulence related coefficients
+ | |   |   |~pblintd(...,pblh,...) [physics/cam/hb_diff~] 
+ | |   |   |          ! Diagnose standard PBL variables
+ | |   |   |          ! CALC PBLH!!!                   
+ | |   |   |          ! pblh(i) = z(i,k+1) + (ricr - rino(i,k+1))/(rino(i,k) - rino(i,k+1)) * ...
+ | |   |   |~austausch_pbl(...,tke,tpert,...) [physics/cam/hb_diff~] 
+ | |   |              ! Atmospheric Boundary Layer Computation
+ | |   |              ! CALC TKE, TPERT!!!!    
+ | |   |              ! tke(i,k) = ( kvm(i,k) / pblh(i) ) ** 2; kvf(i,k+1) = max(zkmin,kvn*fofri); kvn = ml2(k)*sqrt(s2(i,k)); ......
+ | |   |              ! tpert(i)   = max(khfs(i)*fak/wm(i),0._r8)
+ | |   |~rayleigh_friction_tend( ztodt, state, ptend)   
+ | |   |~physics_update(...)   
+ | |   |~aerosol_drydep_intr (state, ptend, cam_in, cam_out, ztodt, fsds, obklen, surfric, prect, pbuf)
+ | |   |              ! aerosol dry deposition processes
+ | |   |~physics_update(...)   
+ | |   |~( CARMA microphysics, Gravity wave drag )
+ | |   |~( Energy Budget Check )
+ | |   |~diag_phys_tend_writeout (state, pbuf,  tend, ztodt, tmp_q, tmp_cldliq, tmp_cldice, tmp_t, qini, cldliqini, cldiceini)
  | |~stepon_run2(phys_state, phys_tend, dyn_in, dyn_out) [dynamics/*/stepon~]    
  |                    ! Phase 2 run method of dynamics. Couple from physics to dynamics.  
  |~cam_run3(cam_out) [control/cam_comp~]
@@ -182,6 +236,7 @@ cflx_srf(:,:)    : constituent flux at surface (kg/m2/s) [physics/cam/physics_ty
 cflx_top(:,:)    : constituent flux at top of model (kg/m2/s) [physics/cam/physics_type]
 cme(pcols,pver)  : cmf condensation - evaporation [convect_deep]
 DTCORE           : T tendency due to dynamical core
+DTCOND           : T tendency due to convection <---------------------------this is what I want
 dyn_in           : Dynamics import container, intent(out), with type dyn_import_t
 dyn_import_t     : The type for dyn_in, with variables (phis, ps, u, v, p, phi, T) [dynamics/*/dyn_comp]
 dyn_out          : Similar to dyn_in, intent(out) with type dyn_export_t
@@ -194,12 +249,14 @@ file_desc_t      : the type for fh_ini. [../../../utils/pio/pio]
 fracis           : fraction of transported species that are insoluble [physics/cam/convect_deep]
 hflux_srf(:)     : net heat flux at surface (W/m2) [physics/cam/physics_type]
 hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_type]
+kvf(:,:)         : free atmospheric eddy diffsvty [m2/s] [physics/cam/hb_diff]
+kvm(:,:)         : eddy diffusivity for momentum [m2/s] [physics/cam/hb_diff]
 lchnk            : chunk identifier
 locfn            : local filename
 mcon(pcols,pverp):  Convective mass flux--m sub c [convect_deep]
 NLFileName       : Input namelist filename, "atm_in"
 pflx(pcols,pverp): scattered precip flux at each level [convect_deep]
-pblh(:)          : Planetary boundary layer height [convect_deep]
+pblh(:)          : Planetary boundary layer height [m] [convect_deep]
 phys_ptend       : tendencies returned from individual parameterizations, (s,u,v,q,hflux_srf,hflux_top,taux_srf,taux_top,tauy_srf,tauy_top,cflx_srf,cflx_top)
 phys_tend        : the parameterized tendency on the rhs (dtdt,dudt,dvdt,flx_net,te_tnd,tw_tnd,psetcols) [physics/cam/physics_type]
 phys_state       : has the type of physics_state [physics/cam/physics_type]
@@ -210,6 +267,7 @@ pname            : full restart pathname
 prec(:)          : total precipitation [convect_deep]
 psetcols         : max number of columns set- if subcols = pcols*psubcols, else = pcols [physics/cam/physics_type]
 ptend            : 
+PT               : virtual potential temperature (http://glossary.ametsoc.org/wiki/Virtual_potential_temperature)
 q(:,:,:)         : consituent tendencies (kg/kg/s) [physics/cam/physics_type]
 ql               : wg grid slice of cloud liquid water. [convect_deep]
 rliq(pcols)      : reserved liquid (not yet in cldliq) for energy integrals [convect_deep]
@@ -221,8 +279,10 @@ taux_srf(:)      : net zonal stress at surface (Pa) [physics/cam/physics_type]
 taux_top(:)      : net zonal stress at top of model (Pa) [physics/cam/physics_type]
 tauy_srf(:)      : net meridional stress at surface (Pa) [physics/cam/physics_type]
 tauy_top(:)      : net meridional stress at top of model (Pa) [physics/cam/physics_type]
+TCWAT            : cloud water temperature K? <- must be miss labeled by kg/kb
 tend             : Physics tendencies over timestep, the tendency on the rhs (not the forward state yet), has the type of physics_ptend [physics/cam/physics_type]          
-tpert(:)         : Thermal temperature excess [convect_deep]
+tpert(:)         : Convective/Thermal temperature excess; perturbation temperature by pbl processes [physics/cam/convect_deep, hb_buff]
+TEOUT            : Total energy of physics output, W/m2
 te_tnd(:)        : cumulative boundary flux of total energy
 tw_tnd(:)        : cumulative boundary flux of total water
 u(:,:)           : u momentum tendency (m/s/s) [physics/cam/physics_type]
@@ -230,7 +290,6 @@ v(:,:)           : v momentum tendency (m/s/s) [physics/cam/physics_type]
 zdu(pcols,pver)  : detraining mass flux [convect_deep]
 ztodt            : timestep for computing physics tendencies
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 ------------------------------------------------------------------------------------------------
@@ -243,6 +302,7 @@ namelist
 --------
 http://www.cesm.ucar.edu/cgi-bin/eaton/namelist/nldef2html-pub
 http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/nl_cam.html
+http://www.cesm.ucar.edu/models/atm-cam/docs/usersguide/node45.html   <-- CAM
 
 history field
 -------------
@@ -272,7 +332,32 @@ cloud fraction
 --------------
 http://www.cesm.ucar.edu/models/atm-cam/docs/description/node21.html
 
+namelist file
+-------------
+/glade/p/work/ginochen/cesm1_3_beta07/models/atm/cam/bld/build-namelist
 
+WRF NEEDED VARIABLE
+-------------------
+U, V, QVAP (kg/kg), T (K, T=\Theta-T0), PSFC, PHB, CLDFRAC, 
+ 
+
+SCAM NEEDED VARIABLE
+--------------------------
+U, V, Q, T, PS,  PHI, CLOUD, 
+CLDICE, CLDLIQ, NUMICE, NUMLIQ, 
+
+[physics/cam/hb_diff, eddy_diff]
+PBLH, TKE, TPERT
+
+NOT NEEDED
+----------
+CUSH, CONCLD, KVH, KVM, LCWAT, QCWAT, QPERT, P0, TBOT, TCWAT, TSOCN, TSICERAD, TS1, TS2, TS3, TS4, ICEFRAC, SICTHK, SNOWHICE,
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+isccp_prs, isccp_tau, isccp_prstau, co2vmr
 1. set '*.run' BSUB -q premium' to test the code
 2. use SAM output as CAM input : /glade/p/work/ihu/SAM/SAM_OUTPUT/*TQ.nc
 2.1 Run SAM and output the 3D fields, modify 'writefields3D.f90'. 'statistics.f90' gives the variable name : 'tabs'
@@ -499,3 +584,59 @@ TODO
 1. run a initialized run with the restart dynamics and check if the physics are same as the restart physics, make sure to specify the output physics (e.g., FSDS)
 2. check DTCOND if the same (notice "A" for averaged in CAM)
 3. set IOP data to zero
+
+
+20150907
+CONCLUSION
+1. successful SCAM run on /glade/scratch/ginochen/SCAM/scam5_cam_twp06ctrl_1timestep9/scam5_cam_twp06ctrl_1timestep9_twp06_L30_T60
+ISSUE
+1. even changing to twp06 case as on yellowstone doesn't fix the segmentation fault issue
+TODO
+1. substitute column in *.r.$.nc file to SCAM *cami.*.nc file, and run 1 timestep to check the result output *.r.* fields being consistent with original *.r.* fileds. 
+
+20150909
+TODO
+1. test out changing some values in physics variable would it change the result like TTEND that much?
+ISSUE
+1. SRC/replaceCamCol.ncl needs to read in a diffent cami file and replace the field (e.g., CUSH) by zero
+
+20150910
+TODO
+1. finish removing variables from cami <--------------------FINISHED WITH CONCLUSION
+   # REMOVE VAR from the cami*.nc file
+   $ ncks -x -v VAR cami_0000-01-01_64x128_L30_c090102_modify.nc cami_0000-01-01_64x128_L30_c090102_modify.nc
+   $ ./run-scam.csh
+   $ ncdiff camrun.cam.h0.1992-12-18-64800.nc camrun.cam.h0.1992-12-18-64800_original.nc diff.nc
+   $ ncview diff.nc
+   $ ncdump diff.nc
+   # if the DTCOND is nonzero, put VAR back 
+   $ ncks -A -v VAR cami_0000-01-01_64x128_L30_c090102_original.nc cami_0000-01-01_64x128_L30_c090102_modify.nc
+   # REPEAT the process (test the next VAR)
+CONCLUSION
+THE SCAM NEEDED VARIABLE
+--------------------------
+U, V, Q, T, PS, PHI, CLDICE, CLDLIQ, CLOUD, NUMICE, NUMLIQ, PBLH, TKE, TPERT
+
+NOT NEEDED
+----------
+CUSH, CONCLD, KVH, KVM, LCWAT, QCWAT, QPERT, P0, TBOT, TCWAT, TSOCN, TSICERAD, TS1, TS2, TS3, TS4, ICEFRAC, SICTHK, SNOWHICE,
+isccp_prs, isccp_tau, isccp_prstau, co2vmr
+
+
+20150911
+TODO
+1. Find out how to obtain PBLH, TKE, TPERT, NUMICE, NUMLIQ, CLDICE, CLDLIQ <------ goto the cam modules!!
+2. what's making the error in /glade/scratch/ginochen/SCAM/scam5_cam_togaII_1timestep14/scam5_cam_togaII_1timestep14_togaII_L30_T1800/scam_output.txt
+CONSLUSION
+1. changing '-ocn dom' to '-con docn' in run-scam.csh doesn't affect the NEEDED VARIABLES.
+2. changing the CAM_TIMESTEPS_TO_RUN from 60 to 1800 doesn't affect the NEEDED VARIABLES.
+
+20150912
+TODO
+1. try removing 20150911TODO1, run-scam.csh, check diff.nc
+2. try removing 20150911TODO1 except PBLH, TKE, TPERT, run-scam.csh, check diff.nc
+
+
+20150915
+TODO
+1. 

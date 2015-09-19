@@ -1,5 +1,9 @@
 # a list of commands
 $ ?
 
-# copy remote <files>/<folders> to local, remember to cd to the local directory before sftp
-$ get <files>
+# copy remote <file> to local, remember to cd to the local directory before sftp
+$ get <file>
+
+# upload from local to remote
+$ put <file>
+
