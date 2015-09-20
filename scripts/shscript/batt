@@ -1,31 +1,39 @@
 #!/bin/bash
-# this script is included as a daemon plist file, which shows a message dialog 
-# when the battery drops below 40 pct or above 80 pct
+# This script is included as a daemon plist file.
+# It popups a message dialog, and speak out a reminder, 
+# when the battery drops below 40 pct or above 80 pct.
+# The battery is longer lasting when charged between (40,80) according to science.
 
-# remaining battery charge (mAh)
-batterymAh=$(system_profiler SPPowerDataType | awk '/Charge Remaining/ {print $4}')
 
-# full battery capacity (mAh)
-totalBatterymAh=$(system_profiler SPPowerDataType | awk '/Full Charge Capacity/ {print $5}')
+# battery remaining (mAh)
+for i in `seq 1 2`
+do
+  br[i]=$(system_profiler SPPowerDataType | awk '/Charge Remaining/ {print $4}')
+  if [ $i -eq 1 ]; then sleep 62s; fi # 62s is a safe pause to get the next battery read
+                                      # sleep has units of seconds/minutes/hours/days s/m/h/d 
+  #echo ${br[*]}
+done
 
-# remaining battery charge (%)
-battpct=$((batterymAh * 100 / totalBatterymAh))
+# battery full capacity (mAh)
+bf=$(system_profiler SPPowerDataType | awk '/Full Charge Capacity/ {print $5}')
 
-# if battery amp percentage drops in 15<=b<=40 or 80<=b<=90 pct, then prompt the message diaglog for 2 seconds
-if [[ $battpct -ge 15 && $battpct -le 40 || 
-      $battpct -ge 80 && $battpct -le 90 ]]
+# battery remaining (%)
+bp=$((br[2] * 100 / bf))
+echo $bp
+# if battery pct falls in (15,40) and if battery is still decreasing or
+#                         (80,90)                         increasing 
+if [[ $bp -ge 15 && $bp -le 40 && br[2] -lt br[1] || 
+      $bp -ge 80 && $bp -le 90 && br[2] -gt br[1] ]]
 then
 # display dialog and giving up after 2 seconds
-   osascript -e 'tell app "System Events" to display dialog "battery life: '$battpct' %" giving up after 1.5'
+   osascript -e 'tell app "System Events" to display dialog "battery life: '$bp' %" giving up after 1.5'
 # press 'ok' button with no delay
 # osascript -e 'tell app "System Events" to display dialog "'$battpct' percent"'
 # say battery is low or high
-  if [ $battpct -ge 80 ]
+  if [ $bp -ge 80 ]
   then
-    osascript -e 'say " whoever hears this, please unplug this computer now "'
+    osascript -e 'say "whoever hears this, please unplug this computer now"'
   else
-    osascript -e 'say " whoever hears this, please charge this computer now "'
+    osascript -e 'say "whoever hears this, please charge this computer now"'
   fi
-#c sleec has units of seconds/minutes/hours/days s/m/h/d 
-#   sleep 2s
 fi
