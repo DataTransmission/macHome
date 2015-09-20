@@ -11,15 +11,21 @@ totalBatterymAh=$(system_profiler SPPowerDataType | awk '/Full Charge Capacity/ 
 # remaining battery charge (%)
 battpct=$((batterymAh * 100 / totalBatterymAh))
 
-# if battery drops below 40 or above 80 pct then prompt the message diaglog for 2 seconds
-if [[ $battpct -ge 80  || $battpct -le 40 ]]
+# if battery amp percentage drops in 15<=b<=40 or 80<=b<=90 pct, then prompt the message diaglog for 2 seconds
+if [[ $battpct -ge 15 && $battpct -le 40 || 
+      $battpct -ge 80 && $battpct -le 90 ]]
 then
 # display dialog and giving up after 2 seconds
-   osascript -e 'tell app "System Events" to display dialog "'$battpct' percent" giving up after 1'
-#  if no delay auto
-#   osascript -e 'tell app "System Events" to display dialog "'$battpct' percent"'
+   osascript -e 'tell app "System Events" to display dialog "battery life: '$battpct' %" giving up after 1.5'
+# press 'ok' button with no delay
+# osascript -e 'tell app "System Events" to display dialog "'$battpct' percent"'
+# say battery is low or high
+  if [ $battpct -ge 80 ]
+  then
+    osascript -e 'say " whoever hears this, please unplug this computer now "'
+  else
+    osascript -e 'say " whoever hears this, please charge this computer now "'
+  fi
 #c sleec has units of seconds/minutes/hours/days s/m/h/d 
 #   sleep 2s
-#   osascript -e 'tell app "System Events" to quit'
 fi
-#echo "battery charged" $battpct"%" 
