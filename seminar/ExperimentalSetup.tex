@@ -1,0 +1,98 @@
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection{The Coupled Lorenz System} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		We use a two time-scale, coupled L63 model 
+		{\citep{Lorenz63, Siqueira12}} where the fast component is analogous 
+		to the atmosphere and the slow component is analogous to the ocean.\
+		The atmospheric component is further coupled 
+		to a small-scale spatially resolved system
+		(high frequency small amplitude).\
+		This spatially resolved system is composed of four
+		identical dynamical equations of the convective-scale L96 model {\citep{Lorenz96}}
+		each representing a spatial grid point with nonlinear 
+		interaction with the neighbors.\
+		The first and last grid point share the boundary.\
+		The small-scale system could be seen
+		as a convective process in the atmospheric component.\
+		Therefore, a deterministic parameterization of the spatially resolved system
+		is analogous to the bulk parameterization of the 
+		subgrid-scale processes in the weather and climate models.\
+		
+		The atmospheric component:
+		\begin{equation} \label{atmComp}
+			\begin{aligned}
+				&\frac{dX_1}{dt} = \sigma(X_2 - X_1) - a(Y_1 + k) - {\bold{U^*}} \\%{\dashbox{2.5}(20,20){U}}  \\
+				&\frac{dX_2}{dt} = rX_1 - X_2 - X_1 X_3 + a(Y_2 + k) \\
+				&\frac{dX_3}{dt} = X_1 X_2 - bX_3 + aY_3 \\
+			\end{aligned}
+		\end{equation}
+		
+		The oceanic component:
+		\begin{equation} \label{ocnComp}
+			\begin{aligned}
+				&\frac{dY_1}{dt} = \tau \Big(\sigma(Y_2 - Y_1)\Big) - a(X_1 + k) \\
+				&\frac{dY_2}{dt} = \tau(rY_1 - Y_2 - Y_1 Y_3) + a(X_2 + k) \\
+				&\frac{dY_3}{dt} = \tau(Y_1 Y_2 - bY_3) + aX_3 \\
+			\end{aligned}
+		\end{equation}
+		
+		where $\bold{U^*} = \frac{a_z\tau_z}{s_z}\sum\limits_{i=1}^4 Z_i$ 
+		(the term to be parameterized) 
+		is associated to the spatially resolved system:
+		\begin{equation} \label{subgridComp}
+			\frac{dZ_i}{dt} = \tau_z \Big( -s_z Z_{i+1} (Z_{i+2} - Z_{i-1}) 
+				- Z_i  + \frac{a_z}{s_z}X_1 \Big); \ \ i = 1,\dotsc,4 
+		\end{equation}
+		where $Z_0 = Z_4$, and $Z_5 = Z_1$.\ 
+		The spatially resolved system represents the subgrid-scale processes
+		after $\bold{U^*}$ is parameterized.\ 
+%		(See Table {\ref{tab:ModParm}} for the parameter descriptions).\\
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection{Truth Model} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		ocean is 3.72 MTU, ocean is 2.79 MTU.\
+	
+		The true states are from the outputs of the entire set of 
+		equations \eqref{atmComp}, \eqref{ocnComp} and \eqref{subgridComp}.\
+		The equations are integrated by an adaptive 
+		fourth-order Runge-Kutta (RK4) time-stepping scheme.
+		A true time series of $1600$ Model Time Units (MTU) is generated
+		(transient phase is removed) for the forecast models to compare with.\
+		This study conducts a total of 300 forecast events (each of $25$ MTU) 
+		with initial conditions selected from the $1600$ MTU truth time series at
+		intervals of $5$ MTU where the atmospheric states generally lose correlation.\
+
+
+		Following {\citet{Arnold13}}, we designed 
+		two experiments by varying the time-scale 
+		($\tau_z=2$ and $\tau_z=10$) for the spatially resolved system.\
+		The \emph{error-doubling time}, approximately two atmospheric days by a GCM {\citep{Lorenz96}}, 
+		in the atmospheric component is $1.47$ MTU for $\tau_z=2$, 
+		and $1.10$ MTU for $\tau_z=10$.\ %averaged over 300 forecast events 
+		Therefore the atmospheric component maximum forecast lead time for both experiments
+		is selected to be $5$ MTU, which is in the range of $7$ to $10$ atmospheric days by a GCM.\
+%		Figure {\ref{autocorr}} shows the time-lag autocorrelation coefficient of the true $r^k$ samples, 
+%		with slow (fast) decay in the $\tau_z=2$ ($\tau_z=10$) experiment.\	
+		The results using L96 as the coupled model {\citep{Wilks05, Arnold13}}
+		stated that the slow evolving case ($\tau_z=2$ in our case) better represents a
+		real atmospheric subgrid-scale process.\
+		Whereas the subgrid-scale system at $\tau_z=10$ behaves like a white-noise process
+		with less correlation between the time samples.\
+		The contrasting subgrid-scale dynamics gives us the opportunity 
+		to test the limits of our methodology.\
+
+		
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection{Forecast Model} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		The forecast model uses the atmosphere \eqref{atmComp} and ocean \eqref{ocnComp},
+		and parameterizes $\bold{U^*}$ with $U_p$, thus 
+		truncating the small-scale system \eqref{subgridComp}.\
+%		The following sections will go through the three 
+%		schemes of $U_p$ for the forecast model: 
+		Three schemes of $U_p$ are compared for the forecast model:
+		(i) deterministic, (ii) additive stochastic parameterization and
+		(iii) the proposed perturbed parameter scheme.\
+

@@ -1,0 +1,9 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Experimental Setup}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The Coupled Lorenz System}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Truth Model}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Forecast Model}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Parameterizations}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{ PCE of a Perturbed State Variable}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Distributions of es}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Summary of the Proposed Scheme}{section.3}% 9

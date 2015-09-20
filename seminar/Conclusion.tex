@@ -1,0 +1,29 @@
+
+	We have implemented a coupled ocean-atmosphere system (L63) with a subgrid-scale 
+	system (L96) in the atmospheric component.\
+	The major result is to generate reliable forecasts
+	by the proposed perturbed parameter scheme through
+	the employment of informative input distributions.
+	The informative perturbed parameter scheme especially outperformed an additive stochastic 
+	parameterization in a more realistic subgrid-scale system ($\tau_z=2$).
+	The low cost PCE surrogate guarantees unbiased statistics at large ensemble size,	
+	and effectively delivers the ensemble distributions without the need to integrate the actual forecast model.\ 
+	The numerical integration (i.e., quadrature) to build the PCE treats the 
+	model as a black box, which is an advantage for operational forecasts using complex GCMs.\
+	
+
+%	Due to the strong bifurcation at longer lead times in a fast varying system ($\tau_z=10$), 
+%	the estimation of exact states requires higher order PCE.\
+%	The multiple large jump discontinuities may not be observed in a realistic dynamical system.\
+%	Thus the proposition of PCE being efficient is not violated 
+%	when given a relatively smooth and realistic experiment ($\tau_z=2$),
+	%or forecasts created at a shorter lead time 
+	%($<10$ MTU, or approximately less than $14$ atmospheric days).\
+	
+	The forecast skill of using just a single perturbed parameter
+	for the PCE-accelerated informative perturbed parameter scheme
+	is surprisingly competitive with the additive stochastic parameterization.\ 
+	The challenge is to apply this to a realistic model with more parameters,
+	where our forecast framework is developed to test multiple perturbed parameters effectively.\
+
+

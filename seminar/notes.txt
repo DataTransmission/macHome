@@ -1,0 +1,65 @@
+1.
+        % 1) Ignore the boxes, you see the true topography, and a flow that accelerates over the top and bottom but is slowed down in the center where gravity wave drag kicks in.
+        % 2) When you have a coarse grid, the gravity wave drag is uniformly parameterized to the boxes with topography, so all three boxes are decelerated.
+        % 3) In truth, the red boxes should have no drag with the given flow!! => shouldn't be uniform!
+        % 4) Depending on different flow directions, the drag could be applied to 1 & 3 (i.e., a southerly flow then 1 could recieve a drag with 2 & 3 accelerating)
+        % 5) the drag should be a constantly varying parameterization!! => stochastic parameterization
+
+2.
+        % 1) follow from the previous slide, add a constantly varying term
+        % 2) Stop kicking the tendency term constantly? 
+        % 3) fixed perturbation throught the model simulation, still reliable? Can we achieve equivalent skill?
+        % 4) can we save some cost?
+        % 5) Use informative probability distribution of the perturbed parameter in the parameterized tendency, this will be defined later
+        % 6) Fourier-like series expansion (PCE) on the uncertainty space
+
+3.
+        % 1) given a coupled Lorenz 63 system and a Lorenz 96 system (with 4 grid points representing the spatially resolve subgrid processes)
+        % 2) the subgrid system Z could be seen as a cloud-scale process couple to the atmosphere.
+        % 3) F's are the nonlinear operators, I simplified the model to focus on the important bulk-parameterized tendency term U, here the truth U coupled to the subgrid Z
+        % 4) Ocean has a shorter time separation which has slower varying dynamics
+        % 5) The entire system of equations gives the true states
+        % 6) Perfect initial conditions are used for comparing only model errors.
+
+4.
+        % 1) when truncating the subgrid system Z, U_truth is parameterized by U_p(X), this is when model start to have errors!!
+        % 2) The following section will show three schemes to parameterize U_truth
+
+5.
+        % 1) This figure shows the relationship of U_truth as a function of the atmospheric variable X, this is the state space of U we try to parameterize
+        % 2) The time samples of U is the cloud of blue dots. Remember, blue is true U_truth.
+
+6.
+        % 1) So the bulk-parameterization is to fit a deterministic curve through the cloud of truth points
+        % 2) Thus U time samples are fixed on the red curve
+        % 3) At any time instance, we have a pair of truth blue dot and parameterized red dot, the distance between the two is the true error e_truth
+        % 4) In order to capture the true error, we add a stochastisity to the deterministic curve, which becomes the e_stoch
+        % 5) The e_stoch is modeled with correlation obtained from the true e_truth, we will skip the details and focus on the next scheme, which is our main focus and innovation
+
+7.
+        % 1) Instead of using a time-varying parameter e to capture the e_truth, we use a time-fixed constant perturbation e_pert throughout each model realization
+        % 2) For instance, at e_pert=0.4, the model uses the black curve, which is just a constant shift from the U_det
+        % 3) But we cannot just sample arbitrarily according to these black lines
+	% 4) Our study focuses on building a cost effective scheme, which is achieved by perturbed parameter scheme
+
+8.
+        % 0) The lhs pdf is from all the e_truth in the rhs figure
+        % 1) We propose to sample e_pert using the e_truth samples. i.e., more samples in the center and less in the outskirts.
+        % 2) this lhs pdf is defined as the "informative" distribution.
+        % 3) what if we want to use large numbers of perturbed parameter e_pert to reach statistical consistency, but keeping at a low cost? => next section PCE
+
+9.
+        % Polynomial Chaos Expansion (PCE)
+        % 0) Build a surrogate model, socalled (Polynomial Chaos Expansion (PCE)) %is a function of $e_s$ which could be expanded as a spectral series of the form
+        % 1) converge spectrally fast to the exact state
+        % 2) use minimal points (quadrature points) to build
+        % 3) allows statistics to converge at large ensemble 
+        % 4) Once the surrogate is built, plug in the informative distribution and get a ensemble forecast state outputs.
+
+11.
+        % 0) Three standard scores to verify forecast skill: RPSS, IGNSS, REL. I will skip the definition of the skill scores and focus on how well the proposed scheme does
+        % 1) left panels represent atmospheric state forecast skill scores as a function of forecast lead times.
+        % 2) Det param ill-preformed in all score, which is expected, since it does not capture the subgrid-scale fluctuation. So we focus on the two schemes pert and stoch
+        % 3) we want higher scores for the top two scores RPSS and IGNSS, as shown pert gives consistent results
+        % 4) REL the lower means more reliable, which is better, and as shown pert also performed well.
+        % 5) notice the scores of stoch did not perform well where the reason may be due to the selection of a Gaussion noise in the random walk which is discussed in the paper.

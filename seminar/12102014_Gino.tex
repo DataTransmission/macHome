@@ -1,0 +1,52 @@
+\documentclass[9pt,twocolumn]{article}
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{MnSymbol}
+\usepackage{bbm} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\graphicspath{/Users/ginochen/Gino/IEPC/figure/Bayes/Hermite/}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{color}
+\usepackage{array}
+%\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{eufrak}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{alltt}
+\usepackage{mathtools,amsmath,amsthm,bm}
+
+
+\begin{document}
+
+\newcommand{\citet}{\color{black}}  
+\newcommand{\citep}{\color{black}}  
+
+\begin{flushleft}
+ {\bf{An Efficient Perturbed Parameter Scheme in the Lorenz system for Quantifying Model Uncertainty}} \\
+ Gino Chen
+\end{flushleft}
+
+\section{Introduction}
+	\input{./Abstract}
+\section{Experimental Setup}\label{sec:expsetup}
+	\input{./ExperimentalSetup}
+\section{Parameterizations}
+	\input{./DeterministicParm} \label{sec:schemesDet}
+	\input{./StochParm}\label{sec:schemesStoch}
+	\input{./ProposedScheme}\label{sec:schemesPert}
+\section{Forecast Skill}
+	\input{./ForecastSkill}\label{sec:skills}
+\section{Conclusion}
+	\input{./Conclusion}
+\section{Reference}
+	\input{./References}
+
+
+	
+\end{document}
