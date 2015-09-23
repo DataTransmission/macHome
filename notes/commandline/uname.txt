@@ -1,0 +1,2 @@
+# print all information of the linux machine specifics
+$ uname -a

@@ -1,0 +1,3 @@
+# load/unload/stop a plist file for daemon use
+$ launchctl load <*.plist>
+

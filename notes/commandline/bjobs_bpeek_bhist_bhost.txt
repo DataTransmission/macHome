@@ -4,7 +4,7 @@ $ bhist -a -l -n 10 > file.report
 #check batch job history by <JobID>
 $ bhist -l <JobID>
 
-#watch the error and output files of a running batch job
+# follow the stdout/stderr of a running batch job
 $ bpeek -f <JobID> | grep <keyword>
 # -f follows the eof
 
@@ -13,3 +13,6 @@ $ bfill
 
 #check current owner job (customized)
 $ bjobs -o "jobid project queue stat submit_time mem delimiter=','" -u $USER
+
+# list the nodes
+$ bhost -l

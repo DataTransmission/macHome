@@ -32,8 +32,10 @@ then
 # say battery is low or high
   if [ $bp -ge 80 ]
   then
-    osascript -e 'say "whoever hears this, please unplug this computer now"'
+    say -v Zarvox  "whoever hears this, please unplug this computer now"
+    #osascript -e 'say "whoever hears this, please unplug this computer now"'
   else
-    osascript -e 'say "whoever hears this, please charge this computer now"'
+    say -v Vicki "whoever hears this, please charge this computer now"
+    #osascript -e 'say "whoever hears this, please charge this computer now"'
   fi
 fi

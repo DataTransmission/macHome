@@ -1,0 +1,2 @@
+# awk is good at handling rows and columns of information
+# it follows the form: pattern { action }

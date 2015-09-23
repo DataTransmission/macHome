@@ -1,0 +1,2 @@
+# human-readable folder size
+$ du -sh <folder>

@@ -1,0 +1,8 @@
+# osascript. Execute AppleScripts and other OSA language scripts. 
+
+# display popup message dialog by "System Events" and giving up after 1.5 seconds
+$ osascript -e 'tell app "System Events" to display dialog "battery life: '$battpct' %" giving up after 1.5'
+
+# say a word "apple"
+$ osascript -e 'set x to "apple"
+  say x'

@@ -1,0 +1,5 @@
+# find the files with extension .txt under the current dir
+$ find . -name "*.txt"
+
+#find name and ignore case
+$ find . -iname "*.txt"

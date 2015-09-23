@@ -26,10 +26,10 @@ alias webumount='umount ~/WebShare'
 alias tree='tree -C'
 
 
-alias cdqj='cd ~/Gino/Paper/Paper_QJRMS/paper_revision2/'
-alias cdnote='cd ~/Github/gino/notes'
-alias cdconvex='cd ~/Github/gino/notes/convex'
-alias cdlinearalg='cd ~/Github/gino/notes/linearAlg'
+alias cdqj='cd ~/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
+alias cdnote='cd ~/notes'
+alias cdconvex='cd ~/notes/convex'
+alias cdlinearalg='cd ~/notes/linearAlg'
 #alias cdbook='cd /Users/ginochen/books'
 #alias cdpaper='cd /Users/ginochen/paper'
 alias cdmvim='cd /Users/ginochen/vimfiles/MacVim-snapshot-74/./mvim'
@@ -67,6 +67,7 @@ alias gitrm='git rm -cached'
 
 alias untar='tar xvfz'
 
+# there is no more ~/Github folder in macHome dir so change this line
 alias rsyncTouro='rsync -av ~/Desktop/ /Volumes/Hsiaochu_Gino/Desktop; rsync -av ~/Github/ /Volumes/Hsiaochu_Gino/Github; rsync -av ~/Documents/ /Volumes/Hsiaochu_Gino/Documents'
 
 
