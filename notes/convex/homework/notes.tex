@@ -154,7 +154,7 @@ that a higher variance $v$ (i.e., randomization, more deviated from the mean) ra
 of $f$, i.e., $\Var(v) > \Var(w)$, but $\Exp f(x_0+v) < \Exp f(x_0+w)$.  (The general case is
 supported by supposing $\Var(w) \rightarrow 0$, then $\Exp f(x_0+w) \rightarrow \Exp f(x_0)=
 f(x_0)$, where $\Exp f(x_0+v) \ge f(x_0)$ concludes that $\Exp f(x_0+v) \ge \Exp f(x_0+w)$, i.e.,
-randomization will raise the mean of a convex function.) \\ {\rv 2) Show that $\Exp f(x_0+tv)$ is
+randomization will raise the mean of a convex function.) \\ {\clr 2) Show that $\Exp f(x_0+tv)$ is
 monotonically increasing for $t\ge0$, i.e. $w=tv$ just a scaling of the values of $v$ without
 changing distribution. \\ } \Proof: \\
 %   Possible convex functions: a)exponentials b)-log c) powers d) affine Possible distributions: a)
@@ -199,8 +199,8 @@ s.t. $1^Tu=1$ and $1^Tv=1$, $n$ is also the sample size. \\ 1) Prove \emph{infom
 $\dkl(u,v) \ge 0$ for all $u$, $v$ $\in \Real^n_{++}$. \\ 2) $\dkl(u,v)=0$ iff $u=v$. \\ Hint: $\dkl
 = f(u)-f(v)-\nabla f(v)^T(u-v)= \sum u_i\log u_i - \sum v_i\log v_i - (\log v_1+ 1, \dotsc, \log
 v_n+ 1)^T(u_1-v_1,\dotsc, u_n-v_n)$ where $f(v)=\sumlim_{i=1}^n v_i\log v_i$ is the negative entropy
-of $v$.\\ \Proof: \\ Since negative entropy is {\rv strictly convex} and differentiable, therefore
-for $u\neq v$, $f(u) {\rv >} f(v)+ \nabla f(v)^T(u-v) \Rightarrow \dkl(u,v)= f(u)-f(v)-\nabla
+of $v$.\\ \Proof: \\ Since negative entropy is {\clr strictly convex} and differentiable, therefore
+for $u\neq v$, $f(u) {\clr >} f(v)+ \nabla f(v)^T(u-v) \Rightarrow \dkl(u,v)= f(u)-f(v)-\nabla
 f(v)^T(u-v) > 0$.  $\blacksquare$ \\
 %   2) If $u=v$ then $\dkl=0$. If $\dkl=0$ and $u\neq v$, then $f(u)=f(v)+ \nabla f(v)^T(u-v)$ means
 %   that there is a constant slope $\nabla f(v)$ at different $v$, but this is not true since

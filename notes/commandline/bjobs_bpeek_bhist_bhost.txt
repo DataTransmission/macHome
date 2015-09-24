@@ -8,6 +8,10 @@ $ bhist -l <JobID>
 $ bpeek -f <JobID> | grep <keyword>
 # -f follows the eof
 
+# kill a job <job#>
+$ bkill <job#>
+
+
 #checking backfill windows on yellowstone
 $ bfill
 
@@ -15,4 +19,7 @@ $ bfill
 $ bjobs -o "jobid project queue stat submit_time mem delimiter=','" -u $USER
 
 # list the nodes
-$ bhost -l
+$ bhosts -l
+
+# request a node for interactive use in a seperate bash shell
+$ bsub -Is bash

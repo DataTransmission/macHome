@@ -1,10 +1,12 @@
+\setlength\parindent{0pt}
 
 \subsection{State Function}
 A function that describes the \emph{equilibrium} state of a system, irrespective of how the system
 arrived in the state. e.g, $f(p,V,T)=0$. Whereas, mechnical work and heat depends on the \emph{path}
 between two equilibrium states. \\
 
-\subsection{Ideal gas}
+
+\subsection{ideal gas}
 For $n$ moles of any gas
 \begin{equation}
     pV = nR^*T,
@@ -23,14 +25,53 @@ This is the general relationship of any gas, hence the water vapor pressure
    e \alpha_v = R_v T.
 \end{equation}
 
-\subsection{Thermodynamic equation}
+\subsection{equation of state, internal energy (dry ideal gas)}
+{\bf{Definition}}: d$I = c_v$ d$T$, the internal energy soley depends on temperature, not
+volume/density/pressure. \\
+
+{Joule's experiment:} \\
+In a free expansion ($P_iV_i = P_fV_f$, pressure change is completely balanced by volume change),
+d$W = 0$, d$Q = 0$ hence d$I = 0$, and from the ideal gas equation the temperature stays constant
+(since the molecules rarely meet even before the expansion, so the kinetic energy, which is affected
+solely by temperature for ideal gas, remains constant). We can therefore conclude that internal
+energy is solely governed by temperature. We can imagine this conclusion by using two Joule's
+experiment by using the same volume compartment begining with two different temperatures, which
+gives two internal energies in the end of expansion. 
+
+\subsection{heating of dry ideal gas}
+{\bf{Derivation}}:
+\begin{equation}
+\begin{aligned}
+  \td Q & = \td I + \td W \\
+        & = c_v \td T + p \td \alpha \\
+        & = c_v \td T + \td(p\alpha) - \alpha \td p \\
+        & = \td (c_v T + p\alpha) - \alpha \td p. 
+\end{aligned}
+\end{equation}
+The first term is {\bf{enthalpy}}, $h = I + p\alpha$, which is the heating at constant
+pressure due to change in internal energy/temperature and volume. The second term is heating at
+constant temperature due to pressure change. Further derivation 
+\begin{equation}
+\begin{aligned}
+  \td Q & = (c_v + R) \td T - \alpha \td p
+        & = c_p \td T - \alpha \td p
+\end{aligned}
+\end{equation}
+shows that the heat capacity under constant pressure and constant volume could be associated by
+\begin{equation}
+  \big( \frac{\td q}{\td T} \big)_p = \frac{\td h}{\td T} =  c_p = c_v + R.
+\end{equation}
+
+
+
+
+\subsection{thermodynamic equation}
 \begin{equation}
     \frac{DI}{Dt} + p \frac{D\alpha}{Dt} = \dot{Q}
 \end{equation}
 Q. How to relate the pressure (state) in the momentum equation by the thermodynamic equation? \\
-A. $dI = c_v dT \Rightarrow I = c_v T$, and assuming ideal gas $p = \rho R T \Rightarrow p = \rho R
-I / c_v$,
-hence,
+A. Assume ideal gas, d$I = c_v $d$T \Rightarrow I = c_v T$, and $p = \rho R T \Rightarrow p = \rho R
+I / c_v$, hence,
 \begin{equation}
     \frac{DI}{Dt} - \frac{p}{\rho^2} \frac{D\rho}{Dt} = \dot{Q},
 \end{equation}
@@ -39,7 +80,8 @@ with the continuity equation it becomes
     \frac{DI}{Dt} + \frac{p}{\rho} \nabla \cdot v = \dot{Q}.
 \end{equation}
 Q. Assuming large scale in \emph{hydrostatic balance}? \\
-A. $\alpha d p = -gdz$, hence $dQ = c_v dT - \alpha dp = c_v dT + gdz = d(c_v T + gz) = ds$ (dry
+A. $\alpha $d$ p = -g$d$z$, hence d$Q = c_v $d$T - \alpha $d$p = c_v $d$T + g$d$z = $d$(c_v T + gz)
+= $d$s$ (dry
 static energy)
 \begin{equation}
     \frac{Ds}{Dt} = \dot{Q}.
@@ -47,7 +89,7 @@ static energy)
 Q. What about general gas (non-ideal)? \\
 A. Diagnostic equation for pressure is $p = -\frac{\partial I}{\partial \alpha}$. \\
 
-\subsection{Entropy}
+\subsection{entropy}
 A measure of ``difference'' between adiabats (no heat exchange processes), and a measure of ``work
 loss'' in transferring heat (irreversible process). \\
 
@@ -82,6 +124,11 @@ less efficient process.}
 \subsection{specific volume}
 {\bf Definition}: $v = 1/\rho$, volume occupied by 1kg of mass.
 
+\subsection{mixing ratio}
+{\bf Definition}: $ \frac{m_i}{m_{\text{tot}}-m_i} $.
+
+\subsection{water vapor mixing ratio}
+{\bf Defintion}: $ w = \frac{m_v}{m_d}$, mass mixing ratio between vapor and dry air.
 \subsection{latent heat}
 {\bf Definition}: $Q_l$, energy released/absorbed by a body during a constant temperature process
 (phase transition).
@@ -98,12 +145,11 @@ where: $L_v$ is latent heat for evaporation varying with $T$, $R_v$ is the water
 
 
 \subsection{saturation vapor pressure}
-\noindent August-Roche-Magnus formula (approximation from Clausius-Claperon Relation): \\
+August-Roche-Magnus formula (approximation from Clausius-Claperon Relation): \\
 \begin{equation}
    e_s(T) = 6.1094 \text{exp}(\frac{17.625T}{T+243.04}).
 \end{equation}
-( water-holding capacity of the atmosphere increases by about $7\%$ for every $1^{\circ}$C rise in
-temperature )
+( water-holding capacity of the atmosphere increases by about $7\%$ for every $1^{\circ}$C heated )
 
 \subsection{unsaturated vapor pressure}
 {\bf Definition}: $e = \frac{(n_{\text{air}} + n_{\text{water}})}{V}RT$, 
@@ -112,14 +158,9 @@ temperature )
 {\bf Definition}: $RH = \frac{e}{e_s}(T)$.
 
 \subsection{virtual temperature}
-{\bf Purpose}:
-The gas constant for moist air (a mix of pure water vapor and dry air) depends strongly on the
-amount of water vapor, so it is convenient to use a fictitious temperature with the dry-air equation
-of state to represent how "heavy" a moist parcel is (i.e., the more water vapor means a dry air
-needs to rise more to reach same pressure and density to become "light"). \\
 
-{\bf Definition}: $T_v = T_\text{dry}(P,\rho)$, temperature at which a dry parcel would have a
-pressure and density equal to the moist parcel. \\
+{\bf Definition}: $T_v(p,\rho)$, temperature at which a dry parcel would have at $p$ and $\rho$ of a
+moist parcel. \\
 
 {\bf Derivation}: Suppose a moist parcel has density $\rho$ and pressure $p$.
 Dalton's law of partial pressure gives $p = e + p_d$, combined with \eqref{eq:idealgas2} and
@@ -130,12 +171,18 @@ Dalton's law of partial pressure gives $p = e + p_d$, combined with \eqref{eq:id
 where $\rho_d$ and $\rho_v$ are the partial densities.
 Solving this gives
 \begin{equation}
-   p = \rho R_d \frac{T}{1-\frac{e}{p}(1-\frac{R_d}{R_v})} = \rho R_d T_v,
+   {\clr p} = {\clr \rho} R_d \frac{T}{1-\frac{e}{p}(1-\frac{R_d}{R_v})} = \rho R_d {\clr T_v},
 \end{equation}
 where, $\frac{R_d}{R_v} \approx 0.622$ in the atmosphere. \\
 
+{\bf Purpose}:
+The gas constant for moist air (a mix of pure water vapor and dry air) depends strongly on the
+amount of water vapor, so it is convenient to use a fictitious temperature with the dry-air equation
+of state to represent how "heavy" a moist parcel is (i.e., the more water vapor means a dry air
+needs to heat more to reach same pressure and density to become "light"). \\
+
 \subsection{lifting condensation level (LCL)}
-{\bf Definition}: $h_{LC}$, height at which an unsaturated parcel reaches saturation, $RH=100\%$, dry
+{\bf Definition}: $z_l$, height at which an unsaturated parcel reaches saturation, $RH=100\%$, dry
 adiabatically, then starts following moist adiabatic lapse rate upward. 
 \begin{figure} [H] 
    \includegraphics[width=0.2\textwidth, height=0.3\textwidth]{sounding.png}
@@ -143,21 +190,41 @@ adiabatically, then starts following moist adiabatic lapse rate upward.
 \end{figure}
 
 \subsection{level of free convection (LFC)}
-{\bf Definition}: $h_{FC}$, height at which a moist parcel temperature is equal to the environment,
+{\bf Definition}: $z_f$, height at which a moist parcel temperature is equal to the environment,
 and temperature increases faster than the environment. \\
 
 {\bf Example}: The unsaturated parcel in Figure {\ref{sounding}} is lifted dry adiabatically from A
 to B to saturation, and further lifted moist adiabatically to C until surpassing the environmental
 temperature.
 
-\subsection{dew point temperature}
-{\bf Definition}: $T_d$, temperature at LCL when a parcel reaches $RH=100\%$.
+\subsection{equilibrium level (EL)}
+{\bf Definition}: $z_e$, height at which the moist parcel lapse rate is greater than environment.
+
+\subsection{dew point/condensate temperature}
+{\bf Definition}: $T_d$, temperature at LCL when a parcel reaches $RH=100\%$ by expansion cooling.
+
+\subsection{wet bulb temperature}
+{\bf Definition}: $T_w$, the temperature when saturation is reached in a bulb of moist ambient air
+and a wet cloth through evaporative cooling, i.e., air cooled by cloth warming (measure taken from
+the air). \\ 
+
+{\bf Interpretation}: $T_w$ is reached by evaporative cooling, whereas $T_d$ is
+reached by expansion cooling (constant pressure). $T_d \le T_w$ since when a parcel saturates by
+evaporation, the dew point inside increases which is higher than the original dew point $T_d$.
 
 \subsection{convective inhibition (CIN)}
-{\bf Definition}: CIN $=\int_{h_0}^{h_{FC}} g \frac{T_{v,\text{parcel}}-T_{v,\text{env}}}{T_{v,\text{env}}} dz$, 
+{\bf Definition}: 
+CIN $=\int_{z_0}^{z_f} g \frac{T_{v,\text{parcel}} - T_{v,\text{env}}}{T_{v,\text{env}}} $d$z$, 
 a negative energy value measuring how much a parcel is prevented to rise to LFC from the surface. \\
+
 {\bf Interpretation}: The term $\frac{T_{v,\text{parcel}}}{T_{v,\text{env}}} -
 1$ shows when the parcel is moister (larger $T_{v,\text{parcel}}$, more buoyant), CIN is less negative.
 
+\subsection{convective available potential energy (CAPE)}
+{\bf Definition}: 
+CAPE $=\int_{z_f}^{z_e} g \frac{T_{v,\text{parcel}} - T_{v,\text{env}}}{T_{v,\text{env}}} $d$z$,
+differs from CIN in just the levels of integration.
 
-\subsection{
+
+
+

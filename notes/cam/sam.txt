@@ -248,7 +248,7 @@ Basefolder : /glade/p/work/ginochen/SAM6.8.2/
                                         <40m/s Regular 41~60 Strong 61~80 Very Strong >81 Extreme
                      . dz              SAM6.10 : set 'dz_constant=.true.' to define 'dz', otherwise dz will be set by 'grd' file
                                        SAM6.8  : set vertical level in 'grd', 37416m is the top of the model
-                                       dx=80m; dy=80m, maxdz=55m, nx=120000/80=1500, ny=1500, nz=37416
+                                       dx=80m; dy=80m, maxdz=55m, nx=120000/80=1500, ny=1500, z=37416 <---------------------------- the horizontal can go up to 2500 points.
                                        caseid = 1500x1500x185_80m_80m_55m_1s_LES' <- check out ~/matscript/CAMSAM_exp for 'zfit' 
                                           nx = nx_gl/nsubdomain_x; ny = ny_gl/nsubdomain_y (FAILED due to mod(nx,ndiv) neq 0, nx and ny must be even)
                                        caseid = 1536x1536x185_80m_80m_80m_1s_LES' <- check out ~/matscript/CAMSAM_exp for 'zfit'
