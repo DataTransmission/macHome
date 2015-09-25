@@ -38,7 +38,7 @@ energy is solely governed by temperature. We can imagine this conclusion by usin
 experiment by using the same volume compartment begining with two different temperatures, which
 gives two internal energies in the end of expansion. 
 
-\subsection{heating of dry ideal gas}
+\subsection{heating (dry ideal gas)}
 {\bf{Derivation}}:
 \begin{equation}
 \begin{aligned}
@@ -62,32 +62,41 @@ shows that the heat capacity under constant pressure and constant volume could b
   \big( \frac{\td q}{\td T} \big)_p = \frac{\td h}{\td T} =  c_p = c_v + R.
 \end{equation}
 
-
-
-
 \subsection{thermodynamic equation}
+For general {\clr non-ideal gas}, by combining continuity equation and
 \begin{equation}
-    \frac{DI}{Dt} + p \frac{D\alpha}{Dt} = \dot{Q}
+    \frac{DI}{Dt} + p \frac{D\alpha}{Dt} = \dot{Q}, 
 \end{equation}
-Q. How to relate the pressure (state) in the momentum equation by the thermodynamic equation? \\
-A. Assume ideal gas, d$I = c_v $d$T \Rightarrow I = c_v T$, and $p = \rho R T \Rightarrow p = \rho R
-I / c_v$, hence,
+results in the internal energy equation
 \begin{equation}
-    \frac{DI}{Dt} - \frac{p}{\rho^2} \frac{D\rho}{Dt} = \dot{Q},
+    \boxed{\frac{DI}{Dt} + p\alpha \nabla \cdot v = \dot{Q}}.
 \end{equation}
-with the continuity equation it becomes
+and the pressure term (also missing the dynamics in the momentum equation) could be obtained
+diagnostically as
 \begin{equation}
-    \frac{DI}{Dt} + \frac{p}{\rho} \nabla \cdot v = \dot{Q}.
+   p = -\frac{\partial I}{\partial \alpha},
 \end{equation}
-Q. Assuming large scale in \emph{hydrostatic balance}? \\
-A. $\alpha $d$ p = -g$d$z$, hence d$Q = c_v $d$T - \alpha $d$p = c_v $d$T + g$d$z = $d$(c_v T + gz)
-= $d$s$ (dry
-static energy)
+where $\alpha$ dynamics is from continuity equation. \\
+
+As for {\clr ideal gas}, 
 \begin{equation}
-    \frac{Ds}{Dt} = \dot{Q}.
+    c_v\frac{DT}{Dt} + p \frac{D\alpha}{Dt} = \dot{Q}, \ \text{or} \ \ 
+    c_p\frac{DT}{Dt} + \alpha \frac{Dp}{Dt} = \dot{Q},
 \end{equation}
-Q. What about general gas (non-ideal)? \\
-A. Diagnostic equation for pressure is $p = -\frac{\partial I}{\partial \alpha}$. \\
+one would obtain a thermodynamic equation for $T$ and solve for $p$ by $p = \rho R T$. Which is
+by combining the continuity equation with
+\begin{equation}
+    \frac{DI}{Dt} - \frac{RT}{\rho} \frac{D\rho}{Dt} = \dot{Q},
+\end{equation}
+and result in the temperature equation
+\begin{equation}
+    \boxed{c_v\frac{DT}{Dt} + RT \nabla \cdot v = \dot{Q}}.
+\end{equation}
+If further large scale \emph{\clr hydrostatic balance} $\alpha \td p = -g \td z$ is assumed, then the
+thermodynamic equation pertains to the dry static energy $\td Q = \td (c_v T + gz) = \td s$, 
+\begin{equation}
+   \boxed{\frac{Ds}{Dt} = \dot{Q}}.
+\end{equation}
 
 \subsection{entropy}
 A measure of ``difference'' between adiabats (no heat exchange processes), and a measure of ``work
