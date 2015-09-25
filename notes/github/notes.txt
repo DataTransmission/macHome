@@ -1,4 +1,4 @@
-CREATE NEW REPO
+CREATE NEW REPO (remote on github.com)
 ---------------
 # create a new git repository in the <directory>
 $ git init <directory>
@@ -39,6 +39,15 @@ $ ssh-keygen -t rsa -b 4096 -C "gchen@rsmas.miami.edu"
 # then copy the key chain and add to https://github.com/settings/ssh
 # Solution 2 (this works for pegasus2 $HOME dir)
 # change 'url=https://github.com/ginochen/repo.git' to 'url=https://ginochen@github.com/ginochen/repo.git'
+
+CREATE NEW REPO (remote on pegasus2)
+---------------
+# cd to /nethome/gchen/macHome, and set up a bare remote repo on pegasus2, let's say we want to track macHome folder
+$ git init --bare macHome.git
+
+# go back to my local macHome folder and start pushing stuff onto pegasus2
+$ git push ssh://gchen@pegasus2.ccs.miami.edu:/nethome/gchen/macHome.git master
+
 
 REMOVE REPO
 -----------
