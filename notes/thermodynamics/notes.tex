@@ -1,6 +1,6 @@
-\setlength\parindent{0pt}
+\setlength\parindent{0pt} % no indentation for the entire note
 
-\subsection{State Function}
+\subsection{state function}
 A function that describes the \emph{equilibrium} state of a system, irrespective of how the system
 arrived in the state. e.g, $f(p,V,T)=0$. Whereas, mechnical work and heat depends on the \emph{path}
 between two equilibrium states. \\
@@ -25,12 +25,17 @@ This is the general relationship of any gas, hence the water vapor pressure
    e \alpha_v = R_v T.
 \end{equation}
 
+\subsection{internal energy}
+{\bf{Definition}}: $I(S,V,\{N_i\})$, composed of kinetic and potential energy of the molecules and
+atoms. The change depends only on the initial and final states of the system. Can not be directly
+measured, but can be prepared by taking partial derivative of entropy, volume, and its mole number.
+
 \subsection{equation of state, internal energy (dry ideal gas)}
 {\bf{Definition}}: d$I = c_v$ d$T$, the internal energy soley depends on temperature, not
 volume/density/pressure. \\
 
 {Joule's experiment:} \\
-In a free expansion ($P_iV_i = P_fV_f$, pressure change is completely balanced by volume change),
+In a free expansion ($p_iV_i = p_fV_f$, pressure change is completely balanced by volume change),
 d$W = 0$, d$Q = 0$ hence d$I = 0$, and from the ideal gas equation the temperature stays constant
 (since the molecules rarely meet even before the expansion, so the kinetic energy, which is affected
 solely by temperature for ideal gas, remains constant). We can therefore conclude that internal
@@ -38,7 +43,20 @@ energy is solely governed by temperature. We can imagine this conclusion by usin
 experiment by using the same volume compartment begining with two different temperatures, which
 gives two internal energies in the end of expansion. 
 
-\subsection{heating (dry ideal gas)}
+\subsection{state function}
+{\bf{Derivation}}: Describes the equilibrium state of a system (e.g., energy, internal energy,
+enthalpy, entropy, pressure, temperature, volume, chemical composition, density, etc).
+
+\subsection{process function}
+{\bf{Derivation}}: Values that depends on the path (e.g., time) of two equilibrium states (e.g.,
+work, and heat).
+
+\subsection{heat}
+{\bf{Definition}}: Heat is energy ``transferred" between two objects or systems in thermal contact, not
+a state to a single system. Do not confuse heating rate as a time derivative of a function of state.
+
+
+\subsection{heat change (dry ideal gas)}
 {\bf{Derivation}}:
 \begin{equation}
 \begin{aligned}
@@ -48,9 +66,9 @@ gives two internal energies in the end of expansion.
         & = \td (c_v T + p\alpha) - \alpha \td p. 
 \end{aligned}
 \end{equation}
-The first term is {\bf{enthalpy}}, $h = I + p\alpha$, which is the heating at constant
-pressure due to change in internal energy/temperature and volume. The second term is heating at
-constant temperature due to pressure change. Further derivation 
+The first term is heat change due to change in {\bf{enthalpy}}, $h = I + p\alpha$, at constant
+pressure. Where change in internal energy/temperature and volume take effect. The second
+term is heat change at constant temperature due to pressure change. Further derivation 
 \begin{equation}
 \begin{aligned}
   \td Q & = (c_v + R) \td T - \alpha \td p
@@ -97,6 +115,11 @@ thermodynamic equation pertains to the dry static energy $\td Q = \td (c_v T + g
 \begin{equation}
    \boxed{\frac{Ds}{Dt} = \dot{Q}}.
 \end{equation}
+
+\subsection{reversible process}
+In thermodynamics term, a process ``taken place" is defined as transition from intial to final
+state. A reversible process is if this process can be reversed without additional work, and causes
+no change to the system or surrounding environment. 
 
 \subsection{entropy}
 A measure of ``difference'' between adiabats (no heat exchange processes), and a measure of ``work

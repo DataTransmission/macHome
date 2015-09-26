@@ -49,6 +49,7 @@ $ git init --bare macHome.git
 $ git push ssh://gchen@pegasus2.ccs.miami.edu:/nethome/gchen/macHome.git master
 
 
+
 REMOVE REPO
 -----------
 # just delete the .git/ folder in the master path
@@ -70,25 +71,33 @@ git reset <file>
 REMOVE REMOTE REPO (on github.com)
 ----------------------------------
 # click the repo -> "Settings" -> "Delete this repository"
-
-go to local master dir and use "original" as a shortname for the remote git path "https://github.com/ginochen/gino.git" 
+# go to local master dir and use "original" as a shortname for the remote git path "https://github.com/ginochen/gino.git" 
 $ cd ~/Github/gino; git remote add origin https://github.com/ginochen/gino.git
 $ cd ~/Github/Hsiaochu; git remote add origin https://github.com/ginochen/Hsiaochu.git; 
 $ vim ~/Github/Hsiaochu/.git/config # check if the shortname is added to the local repo
-
-back to older version
+# back to older version
 $ git log #print out versionNumber
 $ git checkout versionNumber
-
-clone a "forked" gitRepoDir to local localRepoDir (fork happens when you go to that person's 
-repo and click on the fork repo, it does not allow you to push to their repo unless you are a contributer.
-So everything that are pushed are to your own remote repo)
+# clone a "forked" gitRepoDir to local localRepoDir (fork happens when you go to that person's 
+# repo and click on the fork repo, it does not allow you to push to their repo unless you are a contributer.
+# So everything that are pushed are to your own remote repo)
 $ git clone gitRepoDir localRepoDir
 
-CREATE/REMOVE A BRANCH
-----------------------
-# creat a branch
-$ git checkout -b <branch name>
-# remove a branch
+CHECK/CREATE/SWITCH/REMOVE A BRANCH
+-----------------------------
+# check a remote branch on pegasus2 
+$ cd /nethome/gchen/macHome.git
+$ git branch
+# creat a branch macHome2peg
+$ git checkout -b macHome2peg
+# switch back to master branch
 $ git checkout master
-$ git branch -d <branch name>
+# remove a branch macHome2peg
+$ git branch -d macHome2peg
+# or push branch to remote
+$ git push ssh://gchen@pegasus2.ccs.miami.edu:/nethome/gchen/macHome.git macHome2peg
+# the above will create a branch called macHome2peg on remote as well, therefore when cloning the
+# branch macHome2peg from the remote to a local folder ~/test, you need to specify the branch
+# cloning a remote branch macHome2peg
+$ git clone -b macHome2peg ssh://gchen@pegasus2.ccs.miami.edu:/nethome/gchen/macHome.git
+
