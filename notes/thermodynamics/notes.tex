@@ -1,10 +1,14 @@
 \setlength\parindent{0pt} % no indentation for the entire note
 
 \subsection{state function}
-A function that describes the \emph{equilibrium} state of a system, irrespective of how the system
-arrived in the state. e.g, $f(p,V,T)=0$. Whereas, mechnical work and heat depends on the \emph{path}
-between two equilibrium states. \\
+A function that describes the \emph{equilibrium} state of a system (e.g., energy, internal energy,
+enthalpy, entropy, pressure, temperature, volume, chemical composition, density, etc) irrespective
+of how the system arrived in the state. e.g, $f(p,V,T)=0$. Whereas, mechnical work and heat depends
+on the \emph{path} between two equilibrium states. \\
 
+\subsection{process function}
+{\bf{Derivation}}: Values that depends on the path (e.g., time) of two equilibrium states (e.g.,
+work, and heat).
 
 \subsection{ideal gas}
 For $n$ moles of any gas
@@ -25,12 +29,13 @@ This is the general relationship of any gas, hence the water vapor pressure
    e \alpha_v = R_v T.
 \end{equation}
 
+
 \subsection{internal energy}
 {\bf{Definition}}: $I(S,V,\{N_i\})$, composed of kinetic and potential energy of the molecules and
 atoms. The change depends only on the initial and final states of the system. Can not be directly
 measured, but can be prepared by taking partial derivative of entropy, volume, and its mole number.
 
-\subsection{equation of state, internal energy (dry ideal gas)}
+\subsection{internal energy (dry ideal gas)}
 {\bf{Definition}}: d$I = c_v$ d$T$, the internal energy soley depends on temperature, not
 volume/density/pressure. \\
 
@@ -43,21 +48,14 @@ energy is solely governed by temperature. We can imagine this conclusion by usin
 experiment by using the same volume compartment begining with two different temperatures, which
 gives two internal energies in the end of expansion. 
 
-\subsection{state function}
-{\bf{Derivation}}: Describes the equilibrium state of a system (e.g., energy, internal energy,
-enthalpy, entropy, pressure, temperature, volume, chemical composition, density, etc).
-
-\subsection{process function}
-{\bf{Derivation}}: Values that depends on the path (e.g., time) of two equilibrium states (e.g.,
-work, and heat).
 
 \subsection{heat}
 {\bf{Definition}}: Heat is energy ``transferred" between two objects or systems in thermal contact, not
 a state to a single system. Do not confuse heating rate as a time derivative of a function of state.
 
 
-\subsection{heat change (dry ideal gas)}
-{\bf{Derivation}}:
+\subsection{heat (dry ideal gas)}
+{\bf{Derivation}}: From first law of thermodynamics for a unit mass of dry ideal gas
 \begin{equation}
 \begin{aligned}
   \td Q & = \td I + \td W \\
@@ -161,10 +159,15 @@ less efficient process.}
 
 \subsection{water vapor mixing ratio}
 {\bf Defintion}: $ w = \frac{m_v}{m_d}$, mass mixing ratio between vapor and dry air.
+
+
 \subsection{latent heat}
-{\bf Definition}: $Q_l$, energy released/absorbed by a body during a constant temperature process
+{\bf Definition}: $Q$ [kJ], energy released/absorbed by a body during a constant temperature process
 (phase transition).
 
+\subsection{specific latent heat}
+{\bf Definition}: $L$ [kJ/kg]= $Q/m$, amount of heat required to complete phase change of a unit
+mass of substance.
 
 \subsection{Clausius-Claperon Relation}
 {\bf Definition}: $\frac{\Delta P}{\Delta T} = \frac{L}{T\Delta v}$, P-T coexistence curve slope

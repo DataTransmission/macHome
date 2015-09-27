@@ -74,8 +74,6 @@ alias rsyncTouro='rsync -av ~/Desktop/ /Volumes/Hsiaochu_Gino/Desktop; rsync -av
 
 
 
-#姑婆婆
-#Mushroom 12
 # SRINK pdf size with jbig2 as a pointer to the same words
 alias pdfsizeopt='~/Downloads/pdfsizeopt/./pdfsizeopt --use-pngout=false --use-jbig2=true --use-multivalent=false' 
 # or transfer .djvu file into .tif with '$ddjvu -format=tif -quality=75 file.djvu filename.tif' and use '$ jbig2 -b filename -p -s filename.tif', 
