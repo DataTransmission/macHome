@@ -12,6 +12,7 @@ export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+
 alias lsf='ls -F'
 alias safari='open /Applications/Safari.app/'
 alias iphone='ssh -XY root@192.168.1.69'
@@ -25,15 +26,16 @@ alias webmount='mount -t smbfs //gchen@krystal.rsmas.miami.edu/gchen ~/WebShare'
 alias webumount='umount ~/WebShare'
 alias tree='tree -C'
 
+homedir='/Users/ginochen/'
 
-alias cdqj='cd ~/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
-alias cdnote='cd ~/notes'
-alias cdconvex='cd ~/notes/convex'
-alias cdlinearalg='cd ~/notes/linearAlg'
-#alias cdbook='cd /Users/ginochen/books'
-#alias cdpaper='cd /Users/ginochen/paper'
-alias cdmvim='cd /Users/ginochen/vimfiles/MacVim-snapshot-74/./mvim'
-alias cdreciept='cd ~/Documents/Reciept'
+alias cdqj='cd $homedir/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
+alias cdnote='cd $homedir/notes'
+alias cdconvex='cd $homedir/notes/convex'
+alias cdlinearalg='cd $homedir/notes/linearAlg'
+alias cdbook='cd $homedir/books'
+alias cdpaper='cd $homedir/paper'
+alias cdmvim='cd $homedir/vimfiles/MacVim-snapshot-74/./mvim'
+alias cdreciept='cd $homedir/Documents/Reciept'
 
 # ssh shortcuts
 # -C  Requests compression of all data (including stdin, stdout, stderr, and data for forwarded X11 and TCP/IP connections).

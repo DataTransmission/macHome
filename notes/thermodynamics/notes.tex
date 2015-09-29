@@ -56,7 +56,7 @@ a state to a single system. Do not confuse heating rate as a time derivative of 
 
 \subsection{heat (dry ideal gas)}
 {\bf{Derivation}}: From first law of thermodynamics for a unit mass of dry ideal gas
-\begin{equation}
+\begin{equation} \label{eq:energy_cv}
 \begin{aligned}
   \td Q & = \td I + \td W \\
         & = c_v \td T + p \td \alpha \\
@@ -67,7 +67,7 @@ a state to a single system. Do not confuse heating rate as a time derivative of 
 The first term is heat change due to change in {\bf{enthalpy}}, $h = I + p\alpha$, at constant
 pressure. Where change in internal energy/temperature and volume take effect. The second
 term is heat change at constant temperature due to pressure change. Further derivation 
-\begin{equation}
+\begin{equation} \label{eq:energy_cp}
 \begin{aligned}
   \td Q & = (c_v + R) \td T - \alpha \td p
         & = c_p \td T - \alpha \td p
@@ -114,6 +114,37 @@ thermodynamic equation pertains to the dry static energy $\td Q = \td (c_v T + g
    \boxed{\frac{Ds}{Dt} = \dot{Q}}.
 \end{equation}
 
+\subsection{potential temperature (dry ideal gas)}
+{\bf{Definition}}: $\theta = \frac{p_0}{p}^\kappa$, this is obtained by setting $\td Q=0$ and
+integrate \eqref{eq:energy_cp}. 
+
+\subsection{equivalent potential temperature}
+{\bf{Definition}}: $\theta_e$, the temperature obtained by condensing out all the vapor. \\
+
+{\bf{Derivation}}: From first law, 
+\begin{equation}
+\begin{aligned}
+   \td Q & = c_p \td T - \alpha \td p \\ 
+         & = c_p \td T - RT \td \ln p \\
+         & = c_p( \td T - \frac{RT}{c_p} \td \ln p) \\
+         & = c_p( \td T + T \td \ln(\frac{p_0}{p})^\kappa 
+\end{aligned}
+\end{equation}
+when substituting $\td Q = -L\td q_{vs}$ and divide by $c_p T$ this becomes, 
+\begin{equation}
+\begin{aligned}
+   \frac{-L}{c_pT} \td q_{vs} & = \td \ln T + \td \ln(\frac{p_0}{p})^\kappa \\
+          & = \ln (T(\frac{p_0}{p})^\kappa) = \td \ln \theta.
+\end{aligned}
+\end{equation}
+Integrate from saturation to all moisture condensed out ($q_{vs}=0$) results in the equivalent potential
+temperature
+\begin{equation}
+\begin{aligned}
+   \boxed{\theta_e = \theta(T,p) \exp(\int_0^{q_{vs}} \frac{L}{c_pT} \td q_{vs})}.
+\end{aligned}
+\end{equation}
+
 \subsection{reversible process}
 In thermodynamics term, a process ``taken place" is defined as transition from intial to final
 state. A reversible process is if this process can be reversed without additional work, and causes
@@ -158,8 +189,10 @@ less efficient process.}
 {\bf Definition}: $ \frac{m_i}{m_{\text{tot}}-m_i} $.
 
 \subsection{water vapor mixing ratio}
-{\bf Defintion}: $ w = \frac{m_v}{m_d}$, mass mixing ratio between vapor and dry air.
+{\bf Definition}: $ q = \frac{m_v}{m_d}$, actual mass mixing ratio between vapor and dry air.
 
+\subsection{saturation mixing ratio}
+{\bf Definition}: $ q_s = \frac{m_{vs}}{m_d}$, maximum amount of water vapor allowed in the dry air.
 
 \subsection{latent heat}
 {\bf Definition}: $Q$ [kJ], energy released/absorbed by a body during a constant temperature process
