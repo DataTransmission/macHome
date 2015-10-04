@@ -1,8 +1,10 @@
 coffee
 -------
 Freshmarket
-1. Tiramisu
-2. Georgia Pecan
+1. Jamaican Mountain Blue
+2. Tiramisu
+3. Georgia Pecan
+4. Almond 
 
 Frozen Pizza
 ------------
@@ -106,5 +108,16 @@ salt pork belly 鹽煎肉 (http://www.tfysw.com/2015/0724/87243.html)
 
 Brassica juncea/mustard greens/Indian mustard/Chinese mustard 酸菜
 -------------------------------------------------------------
+
+Cecil/Lion head (soup base) (https://www.youtube.com/watch?v=-7GCNZonRsw) 
+---------------------------
+A. ginger(half_and_grinded), onion(minced), tofux1pack, ground_pork, salt, sugar, soysauce, eggx1(stirred), starch
+B. cabbage(whole_leaves), sake, sesame_oil
+1. boil cabbage (as soft as possible)
+2. grab and mix A, make into egg size balls
+3. deep fry 2 until brownish
+4. wrap 3 with 1
+5. boil 4 with 1 water (10 min)
+6. add sake and sesame_oil to 5
 
 

@@ -487,7 +487,7 @@ TODO
 CONCLUSION
 1. SST is the surface temperature from the snd file, not necessary sea surface, could be land surface
 2. ~CAPE,~CIN,~RELH are all in the ~STAT output.  
-3. STAT contains all the initial var to calc QC1 (i.e., TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;)
+3. STAT contains all the initial var to calc QC1 (i.e., TABS (SAM) =T (CAM); SST (SAM) = TS (CAM); QV/1000 (SAM) = Q (CAM); QN/1000 (SAM) = CWAT;)<------ for coarse-grain method, STAT is not helpful, since it's only the domain average
 TODO 
 1. make sure KWAJEX domain is ok to assume to be 120kmx120km <------ yes!
 
@@ -517,10 +517,5 @@ TODO
 3. CRCP, SP-CAM if used in single column mode, does it have the necessary compiled dependency? (i.e, can I use single column SP-CAM to verify SCAM results after the subgrid scale processes are corrected by the stochastic scheme?)
 
 
-20150831
-TODO
-0. end of day : phone bill
-1.
-
-
-2015 
+20151001 
+TODO: download CRM data from google drive

@@ -186,7 +186,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |   | | |~caleddy(...,pblh,tke,tpert,...) [physics/cam/eddy_diff~]
  | |   | |            ! CALC PBLH, TKE, TPERT
  | |   | |~compute_hb_diff(...,tke,...) [physics/cam/hb_diff~]
- | |   |   |          ! Interface routines for calcualtion and diatnostics of turbulence related coefficients
+ | |   |   |          ! Interface routines for calcualtion and diagnostics of turbulence related coefficients
  | |   |   |~pblintd(...,pblh,...) [physics/cam/hb_diff~] 
  | |   |   |          ! Diagnose standard PBL variables
  | |   |   |          ! CALC PBLH!!!                   
@@ -639,4 +639,4 @@ TODO
 
 20150915
 TODO
-1. 
+1. figure out how CAM computed TKE (Bretherton and Park 09, Grenier and Bretherton 01)
