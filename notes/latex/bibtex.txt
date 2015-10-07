@@ -1,0 +1,14 @@
+# 1. go to google scholar (https://scholar.google.com) and copy the bibtex citation
+# 2. make sure to create a filename.bib at the local dir matching the filename.tex.
+# 3. open the notes.tex file and in the document
+\begin{document}
+   \cite{whatevercitation}.
+   \bibliography{./filename} # don't need the filename.bib extension
+   \bibliographystyle{ieeetr}
+\end{document}
+# 4. 
+$ pdflatex filename.tex
+# 5.
+$ bibtex filename
+# 6.
+$ pdflatex filename.tex 

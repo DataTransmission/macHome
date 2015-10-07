@@ -12,6 +12,10 @@ export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+# For Go using Google Drive
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/gopath
+export PATH=$GOPATH:$GOPATH/bin:$GOROOT:$GOROOT/bin:$PATH
 
 alias lsf='ls -F'
 alias safari='open /Applications/Safari.app/'

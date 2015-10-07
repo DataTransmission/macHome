@@ -106,4 +106,8 @@ CHECK TRACKED FILES
 # check tracked files under master branch
 $ git ls-tree -r master
 
-
+IGNORE FILES IN A FOLDER
+------------------------
+# add a folder without tracking the files
+#1. go to the folder, and add "*" and "!.gitignore" to a new file '.gitignore'
+$ echo -e '*\n!.gitignore' > test 
