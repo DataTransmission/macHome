@@ -235,20 +235,46 @@ where $E= -\int_A (\psi \nabla^2\psi) dA$.
 Given surface depth $Z_1(x,y)$, and the second layer surface $Z_2(x,y)$.
 Pressure at a constant depth $z$ in layer $1$ equals $p_1= \rho g (Z_1- z)$.
 Pressure at a constant depth $z$ in layer $2$ equals $p_2= \rho g Z_1 + \rho g' (Z_2- z)$.
-Therefore, the horizontal pressure gradient at layer $1$ is $\nabla p_1= \rho g Z_1$ where the constant depth $z$ is eliminated.
-Likewise, layer $2$ is $\nabla p_2= \nabla p_1 + \rho g' Z_2$. \\
+Therefore, the horizontal pressure gradient at layer $1$ is $\nabla p_1= \rho g Z_1$ where the
+constant depth $z$ is eliminated. Likewise, layer $2$ is $\nabla p_2= \nabla p_1 + \rho g' Z_2$. \\
 
-{\bf Remarks}: This suggests the pressure gradient in each layer is just a function of the varying surface height.
+{\bf Remarks}: This suggests the pressure gradient in each layer is just a function of the varying
+surface height.
 
 
 \subsection{Flux}
 {\bf Definition}: rate of flow of a property (with some unit $U$) per unit area ($U m^{-2}s^{-1}$).
 
+\subsection{anelastic approximation}
+{\bf Definition}: Suppose $\rho = \rho_0(z) + \rho^*(x,y,z,t)$ and $\rho \approx \rho_0$. From
+hydrostasy ($\frac{1}{\rho_0}\frac{\partial \bar{p}}{\partial z} - g = 0$), the vertical equation of
+motion becomes
+\begin{equation}
+   \frac{Dw}{Dt} = - \frac{1}{\rho_0} \frac{\partial p^*}{\partial z} - g\frac{\rho^*}{\rho_0} + F.
+\end{equation}
+Assume density doesn't flutuate too fast with time ($\frac{D\rho}{Dt}=0$), then the mass continuity
+equation becomes
+\begin{equation}
+   \nabla \cdot \rho_0 v = 0.
+\end{equation}
 
+\subsection{Boussinesq approximation}
+{\bf Definition}: Same as anelastic approximation but assuming shallow layer ($\rho_0 = $ constant),
+thus
+\begin{equation}
+   \nabla \cdot v = 0.
+\end{equation}
+This allows a flux form substitution of the advection term for any variable.
 
+\subsection{dynamic viscosity}
+{\bf Definition}: $\mu \big[ N s m^{-2}\big]$, the tangential force per unit area ``required" to
+move a parallel plane at unit speed relative to a steady plane at unit distance apart
+($\frac{\partial u}{\partial z}$). Bigger dynamic viscosity of a fluid means the fluid is more
+viscous, since more force is required to move the two planes with a unit layer of fluid in between.
 
-
-
+\subsection{kinematic viscosity}
+{\bf Definition}: $\nu = \frac{\mu}{\rho} \big[ m^2 s^{-1}\big]$, dynamic viscosity per unit mass per unit volume (per
+unit density). 
 
 
 %\end{document}

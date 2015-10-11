@@ -139,9 +139,58 @@ shows that the heat capacity under constant pressure and constant volume could b
   \big( \frac{\td q}{\td T} \big)_p = \frac{\td h}{\td T} =  c_p = c_v + R.
 \end{equation}
 
+\subsection{potential temperature (dry ideal gas)}
+{\bf{Definition}}: $\theta = \big(\frac{p_0}{p}\big)^\kappa$, this is obtained by setting $\td Q=0$
+and integrate \eqref{eq:energy_cp}. 
+
+\subsection{(saturation) equivalent potential temperature}
+{\bf{Definition}}: $\theta_e$, the temperature obtained by condensing out all the vapor. \\
+
+{\bf{Derivation}}: From first law, 
+\begin{equation}
+\begin{aligned}
+   \td Q & = c_p \td T - \alpha \td p \\ 
+         & = c_p \td T - RT \td \ln p \\
+         & = c_p( \td T - \frac{RT}{c_p} \td \ln p) \\
+         & = c_p( \td T + T \td \ln(\frac{p_0}{p})^\kappa 
+\end{aligned}
+\end{equation}
+when substituting $\td Q = -L\td q_{s}$ (the negative means evaporative cooling of the parcel when
+$q_{s}$ increases, otherwise condensative heating) and divide by $c_p T$ this becomes, 
+\begin{equation} \label{eq:saturationCooling}
+\begin{aligned}
+   \frac{-L}{c_pT} \td q_{s} & = \td \ln T + \td \ln(\frac{p_0}{p})^\kappa \\
+          & = \ln (T(\frac{p_0}{p})^\kappa) = \td \ln \theta.
+\end{aligned}
+\end{equation}
+Integrate from saturation to all moisture condensed out ($q_{s}=0$) results in the equivalent potential
+temperature
+\begin{equation}
+\begin{aligned}
+   \boxed{\theta_e = \theta\exp(\int_0^{q_{s}} \frac{L}{c_pT} \td q_{s}) 
+         \approx \theta\exp(\frac{L}{c_pT} q_{s})}.
+\end{aligned}
+\end{equation}
+Where the approximation is due to saturated vapor mixing ratio decreasing much faster than
+temperature with height (see Wallace and Hobbs p107). 
+
+
+\subsection{liquid water potential temperature}
+{\bf Derivation} Replace the lhs of \eqref{eq:saturationCooling} with liquid water which just
+reverses the process/sign 
+\begin{equation}
+\begin{aligned}
+   \boxed{\theta_L \approx \theta\exp(-\frac{L}{c_pT} q_{L})}.
+\end{aligned}
+\end{equation}
+This can be further approximated by the first-order/linear power series of
+exponential (\cite{betts1973non}, \cite{grenier2001moist})
+\begin{equation}
+   \boxed{\theta_L = \theta(1 - \frac{L}{c_pT} q_{L})}.
+\end{equation}
 
 \subsection{continuity of water}
-{\bf Derivation}: 
+{\bf Derivation}: The water vapor for example has
 \begin{equation}
 \begin{aligned}
    \frac{D q_v}{D t} & = \frac{D}{D t} (\frac{\rho_v}{\rho_d}) \\
@@ -151,7 +200,7 @@ shows that the heat capacity under constant pressure and constant volume could b
 \end{aligned}
 \end{equation}
 where the second equality uses mass continuity ($\frac{D \rho}{D t} = -\rho \nabla\cdot v$). Thus,
-the water vapor continuity equation with source and sink ($\dot{S}$) is just
+with sources and sinks ($\dot{S}$) becomes
 \begin{equation}
    \frac{D q_v}{D t} = \dot{S}.
 \end{equation}
@@ -201,52 +250,13 @@ the thermodynamic equation pertains to the dry static energy $\td Q = \td (c_v T
 According to \eqref{eq:cont_w}, if the rhs tendency comes from water vapor (see
 \cite{khairoutdinov2003cloud} for more details)
 \begin{equation}
-   \boxed{\frac{Ds}{Dt} = L\frac{Dq}{Dt}}
+   \boxed{\frac{Ds}{Dt} = -L_v\frac{Dq_v}{Dt}}
 \end{equation}
-then there must be sources/sinks of vapor condensative heating/evaporative cooling.
+then there must be sources/sinks of vapor evaporative cooling/condensative heating.
+The negative sign is explained by supposing there is positive (negative) $dq_v$, which is increasing
+(decreasing) the vapor in the parcel, this means that the there must be evaporative cooling
+(condensative heating) to the parcel.
 
-
-\subsection{potential temperature (dry ideal gas)}
-{\bf{Definition}}: $\theta = \big(\frac{p_0}{p}\big)^\kappa$, this is obtained by setting $\td Q=0$
-and integrate \eqref{eq:energy_cp}. 
-
-\subsection{equivalent potential temperature}
-{\bf{Definition}}: $\theta_e$, the temperature obtained by condensing out all the vapor. \\
-
-{\bf{Derivation}}: From first law, 
-\begin{equation}
-\begin{aligned}
-   \td Q & = c_p \td T - \alpha \td p \\ 
-         & = c_p \td T - RT \td \ln p \\
-         & = c_p( \td T - \frac{RT}{c_p} \td \ln p) \\
-         & = c_p( \td T + T \td \ln(\frac{p_0}{p})^\kappa 
-\end{aligned}
-\end{equation}
-when substituting $\td Q = -L\td q_{s}$ and divide by $c_p T$ this becomes, 
-\begin{equation}
-\begin{aligned}
-   \frac{-L}{c_pT} \td q_{s} & = \td \ln T + \td \ln(\frac{p_0}{p})^\kappa \\
-          & = \ln (T(\frac{p_0}{p})^\kappa) = \td \ln \theta.
-\end{aligned}
-\end{equation}
-Integrate from saturation to all moisture condensed out ($q_{s}=0$) results in the equivalent potential
-temperature
-\begin{equation}
-\begin{aligned}
-   \boxed{\theta_e = \theta\exp(\int_0^{q_{s}} \frac{L}{c_pT} \td q_{s}) 
-         \approx \theta\exp(\frac{L}{c_pT} q_{s})}.
-\end{aligned}
-\end{equation}
-Where the approximation is due to saturated vapor mixing ratio decreasing much faster than
-temperature with height (see Wallace and Hobbs p107). 
-
-
-\subsection{liquid water potential temperature}
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start here next time
-This can be further approximated by the first-order power series of exponential (Betts 73)
-\begin{equation}
-   \boxed{\theta_e = \theta(1 + \frac{L}{c_pT} q_{s})}.
-\end{equation}
 
 \subsection{reversible process}
 In thermodynamics term, a process ``taken place" is defined as transition from intial to final
@@ -296,6 +306,7 @@ less efficient process.}
 
 \subsection{saturation mixing ratio}
 {\bf Definition}: $ q_s = \frac{m_{vs}}{m_d}$, maximum amount of water vapor allowed in the dry air.
+\\
 {\bf Derivation}: 
 \begin{equation}
 \begin{aligned}
