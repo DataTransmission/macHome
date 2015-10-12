@@ -125,9 +125,12 @@ a state to a single system. Do not confuse heating rate as a time derivative of 
         & = \td (c_v T + p\alpha) - \alpha \td p. 
 \end{aligned}
 \end{equation}
-The first term is heat change due to change in {\bf{enthalpy}}, $h = I + p\alpha$, at constant
-pressure. Where change in internal energy/temperature and volume take effect. The second
-term is heat change at constant temperature due to pressure change. Further derivation 
+Original equation states that the heat change is due to internal energy change and work done by the
+sytem/dry gas. The final equation first term is heat change due to change in {\bf{enthalpy}}, $h = I
++ p\alpha$, at constant pressure. Where change in internal energy/temperature and volume take
+effect. The second term is heat change at constant temperature due to pressure change (heat increase
+causes initial molecular momentum to increase/pressure increase, but if temperature stays constant
+the volume must expand ($pV=Nk_BT$), thus final pressure decreases). Further derivation 
 \begin{equation} \label{eq:energy_cp}
 \begin{aligned}
   \td Q & = (c_v + R) \td T - \alpha \td p
@@ -152,7 +155,7 @@ and integrate \eqref{eq:energy_cp}.
    \td Q & = c_p \td T - \alpha \td p \\ 
          & = c_p \td T - RT \td \ln p \\
          & = c_p( \td T - \frac{RT}{c_p} \td \ln p) \\
-         & = c_p( \td T + T \td \ln(\frac{p_0}{p})^\kappa 
+         & = c_p( \td T + T \td \ln(\frac{p_0}{p})^\kappa) 
 \end{aligned}
 \end{equation}
 when substituting $\td Q = -L\td q_{s}$ (the negative means evaporative cooling of the parcel when
