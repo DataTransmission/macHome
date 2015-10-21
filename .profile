@@ -17,10 +17,10 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$GOROOT:$GOROOT/bin:$PATH
 
+
 alias lsf='ls -F'
 alias safari='open /Applications/Safari.app/'
 alias iphone='ssh -XY root@192.168.1.69'
-alias kaos='ssh -YC gchen@kaos.rsmas.miami.edu'
 alias mat='/Applications/MATLAB_R2015a.app/bin/matlab -nodesktop -nosplash'
 alias mkdirp='mkdir -p' # make a full tree path ($ mkdirp /this/is/a/tree/path)
 alias tarf='tar -cvf' # tar -cvf filename.tar files*
@@ -32,6 +32,8 @@ alias tree='tree -C'
 
 homedir='/Users/ginochen/'
 
+export CDPATH=$homedir/notes
+
 alias cdqj='cd $homedir/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
 alias cdnote='cd $homedir/notes'
 alias cdconvex='cd $homedir/notes/convex'
@@ -41,13 +43,24 @@ alias cdpaper='cd $homedir/paper'
 alias cdmvim='cd $homedir/vimfiles/MacVim-snapshot-74/./mvim'
 alias cdreciept='cd $homedir/Documents/Reciept'
 
+#alias ..="cd .."
+#alias ..2="cd ../.."
+#alias ..3="cd ../../.."
+#alias ..4="cd ../../../.."
+#alias ..5="cd ../../../../.."
+alias cd..="cd .." # navigate up 1
+alias cd...="cd ../.." #navigate up 2, etc
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
+
 # ssh shortcuts
 # -C  Requests compression of all data (including stdin, stdout, stderr, and data for forwarded X11 and TCP/IP connections).
 # -Y  Enables trusted X11 forwarding.
 alias sshenso='ssh -Y -C gchen@enso.rsmas.miami.edu' 
 alias sshsnowy='ssh -Y -C gchen@snowy.rsmas.miami.edu'
 alias sshares='ssh -Y -C gchen@ares.ccs.miami.edu'
-alias sshkaos='ssh -Y -C gchen@kaos.ccs.miami.edu'
+alias sshkaos='ssh -Y -C gchen@kaos.rsmas.miami.edu'
 alias sshpeg2='ssh -Y -C gchen@pegasus2.ccs.miami.edu'
 alias sshvisx='ssh -Y -C gchen@visx.ccs.miami.edu' #10.141.249.4
 alias sshys='ssh -YC -l ginochen yellowstone.ucar.edu'
@@ -96,6 +109,14 @@ function winname {
 ##
 # Your previous /Users/ginochen/.profile file was backed up as /Users/ginochen/.profile.macports-saved_2012-06-05_at_16:54:26
 ##
+
+
+# Useful functions
+# make a long path and cd to it at the same time
+function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; } # mkdir -p /this/is/a/long/path; cd /this/is/a/long/path
+
+
+
 
 # MacPorts Installer addition on 2012-06-05_at_16:54:26: adding an appropriate PATH variable for use with MacPorts.
 #export PATH=/opt/local/bin:/opt/local/sbin:$PATH

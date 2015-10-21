@@ -12,3 +12,7 @@ $ pdflatex filename.tex
 $ bibtex filename
 # 6.
 $ pdflatex filename.tex 
+
+
+# bibtex default sorts alphabetically by author, change to the order of appearance using
+\bibliographystyle{unsrt}

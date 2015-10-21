@@ -1,3 +1,6 @@
-user (u) group (g) other (o)
-writable (w) readable (r) executable (x)
+# user (u) group (g) other (o)
+# writable (w) readable (r) executable (x)
 $ chmod g-x-r-w fname
+
+# remove rwx for u and g
+$ chmod ug-rwx

@@ -1,6 +1,11 @@
 # ignore case 
-$ grep -i 
-# exclude directory with keyword 'key'
-$ grep --exclude-dir=*key* 'some pattern' /path/to/search
+$ grep -i
+ 
+# exclude directory including pattern 'word'
+$ grep --exclude-dir=*word* 'some pattern' /path/to/search
+
 # grep multiple words under <dir>
 $ grep 'word1' <dir> | grep 'word2' | grep 'word3'
+
+# grep 5 lines before and 10 lines after a 'word'
+$ grep -B 5 -A 10 'word'

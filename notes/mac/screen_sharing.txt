@@ -1,0 +1,3 @@
+# Tell user (mush) to go to: System Preferences -> Sharing -> share the "vnc://..." with me
+# I need to go to: Finder -> Go -> Connect to Server -> type the "vnc://..." and connect
+

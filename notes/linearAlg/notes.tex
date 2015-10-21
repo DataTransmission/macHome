@@ -1,4 +1,25 @@
 
+\subsection{dot product}
+\begin{derv*} Geometrically speaking the dot product shows how much two vectors are covarying in the same
+direction. Given two vectors $v$ and $w$,
+\begin{equation}
+   v \cdot w = ||w|| \big(||v||\cos \theta \big).
+\end{equation}
+When written as 
+\begin{equation} \label{eq:vdotwn} %normalized w
+   v \cdot \frac{w}{||w||} = ||v|||\cos \theta,
+\end{equation}
+this shows how much $v$ is projected in the direction of $w$. This demonstrates if the magitude of
+both vectors are fixed, then the closer they are oriented, the more $v$ is projected onto $w$. The
+greatest magnitude occurs when they overlap in the same direction $v \cdot w = ||v||||w||$. The
+product is subject to the size of $v$ and $w$, so to compare how much one varies in the direction of
+the other will need normalization as \eqref{eq:vdotwn}.
+\begin{figure}[H]
+   \includegraphics[width=0.3\textwidth, height=0.3\textwidth]{vdotw.png}
+   \caption{\label{fig:vdotw}
+      Dot product is a projection without normalization.}
+\end{figure}
+\end{derv*}
 
 \subsection{Visualize linear transformation of a function as a matrix} 
 Suppose $T: V \in \mathcal{R}^n \rightarrow W \in \mathcal{R}^m$, hence $T(x_1,\ldots,x_n) =

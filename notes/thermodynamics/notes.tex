@@ -76,7 +76,7 @@ where $R_d = 287$ J kg$^{-1}$ K$^{-1}$. This also applies to water vapor
 
 \begin{figure}[H]
    \includegraphics[width=1\textwidth, height=0.3\textwidth]{pVT.png}
-   \caption{\label{pVT}
+   \caption{\label{fig:pVT}
       left to right: Boyle's Law, Gay-Lussac's Law and Charles's Law.}
 \end{figure}
 \end{defn*}
@@ -103,7 +103,7 @@ energy. The change depends only on the initial and final states of the system. C
 measured, but can be prepared by taking partial derivative of entropy, volume, and its mole number. \\
 \end{defn*}
 
-{\bf Explanation} During a isothermal process with no change in volume (no work involved), then the
+During a isothermal process with no change in volume (no work involved), then the
 change in internal energy must be from heat exchange. If the system is adiabatic (no heat involved),
 then the internal energy change must be from expansion/compression.
 
@@ -384,17 +384,9 @@ August-Roche-Magnus formula (approximation from Clausius-Claperon Relation): \\
 \end{defn*}
 
 \subsection{virtual temperature}
-\begin{defn*} $T_v(p,\rho)$, temperature at which a dry parcel would have at $p$ and $\rho$ of a
-moist parcel. \\
+\begin{defn*} 
+$T_v(p,\rho)$, temperature at which a dry parcel would have at $p$ and $\rho$ of a moist parcel. 
 \end{defn*}
-
-
-
-\subsection{virtual potential temperature}
-\begin{defn*}
-\end{defn*}
-
-
 
 \begin{derv*} Suppose a moist parcel has density $\rho$ and pressure $p$.
 Dalton's law of partial pressure gives $p = e + p_d$, combined with \eqref{eq:idealgas2} and
@@ -409,11 +401,24 @@ Solving this gives
 \end{equation}
 where, $\frac{R_d}{R_v} \approx 0.622$ in the atmosphere. \\
 \end{derv*}
-{\bf Purpose}:
+This can be written as a function of specific humidity
+\begin{equation}
+   T_v = T(1 + 0.61q). 
+\end{equation}
 The gas constant for moist air (a mix of pure water vapor and dry air) depends strongly on the
 amount of water vapor, so it is convenient to use a fictitious temperature with the dry-air equation
 of state to represent how "heavy" a moist parcel is (i.e., the more water vapor means a dry air
 needs to heat more to reach same pressure and density to become "light"). \\
+
+
+\subsection{virtual potential temperature}
+\begin{defn*}
+$\theta_v = T_v (\frac{p_0}{p})^\kappa$, and $\theta_v = \theta(1+0.61q)$, by using dry air
+constant, the virtual potential temperature is just the potential temperature using $T=T_v$, 
+\end{defn*}
+
+
+
 
 \subsection{lifting condensation level (LCL)}
 \begin{defn*} $z_l$, height at which an unsaturated parcel reaches saturation, $RH=100\%$, dry
@@ -429,9 +434,11 @@ adiabatically, then starts following moist adiabatic lapse rate upward.
 and temperature increases faster than the environment. 
 \end{defn*}
 
-{\bf Example} The unsaturated parcel in Figure {\ref{sounding}} is lifted dry adiabatically from A
+\begin{exmp*} 
+The unsaturated parcel in Figure {\ref{sounding}} is lifted dry adiabatically from A
 to B to saturation, and further lifted moist adiabatically to C until surpassing the environmental
 temperature.
+\end{exmp*}
 
 \subsection{equilibrium level (EL)}
 \begin{defn*} $z_e$, height at which the moist parcel lapse rate is greater than environment.
@@ -447,9 +454,9 @@ and a wet cloth through evaporative cooling, i.e., air cooled by cloth warming (
 the air). 
 \end{defn*}
 
-{\bf Interpretation} $T_w$ is reached by evaporative cooling, whereas $T_d$ is
-reached by expansion cooling (constant pressure). $T_d \le T_w$ since when a parcel saturates by
-evaporation, the dew point inside increases which is higher than the original dew point $T_d$.
+$T_w$ is reached by evaporative cooling, whereas $T_d$ is reached by expansion cooling (constant
+pressure). $T_d \le T_w$ since when a parcel saturates by evaporation, the dew point inside
+increases which is higher than the original dew point $T_d$.
 
 \subsection{convective inhibition (CIN)}
 \begin{defn*} 
@@ -457,8 +464,8 @@ CIN $=\int_{z_0}^{z_f} g \frac{T_{v,\text{parcel}} - T_{v,\text{env}}}{T_{v,\tex
 a negative energy value measuring how much a parcel is prevented to rise to LFC from the surface. \\
 \end{defn*}
 
-{\bf Interpretation} The term $\frac{T_{v,\text{parcel}}}{T_{v,\text{env}}} -
-1$ shows when the parcel is moister (larger $T_{v,\text{parcel}}$, more buoyant), CIN is less negative.
+The term $\frac{T_{v,\text{parcel}}}{T_{v,\text{env}}} - 1$ shows when the parcel is moister (larger
+$T_{v,\text{parcel}}$, more buoyant), CIN is less negative.
 
 \subsection{convective available potential energy (CAPE)}
 \begin{defn*} 
