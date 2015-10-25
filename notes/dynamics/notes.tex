@@ -341,7 +341,15 @@ The force (stress per unit area multiplied by the area) per unit volume on an in
    \frac{\partial \tau_{j1}}{\partial x_j}.
 \end{equation}
 %
-Therefore, a non-rotating system has  
+Therefore, the equation of motion in a non-rotating system becomes (from symmetry of stress tensor
+proven in \cite{kundu2008fluid} p91, $\tau_{ij}=\tau_{ji}$)
+%
+\begin{equation}
+   \boxed{ 
+      \rho \frac{D u_i}{Dt} = \rho g_k  + \frac{\partial \tau_{ij}}{\partial x_j}.
+   }
+\end{equation}
+%
 %
 \begin{figure}[H] 
    \includegraphics[width=0.5\textwidth,height=0.4\textwidth]{stress.png} 
@@ -351,7 +359,16 @@ Therefore, a non-rotating system has
 \end{defn*}
 
 
-
+\subsection{down gradient turbulent trasport}
+\begin{defn*}
+%
+\begin{equation}
+   \overline{w's'} = - K \frac{\partial \bar{s}}{\partial z}
+\end{equation}
+%
+Notice that when the vertical gradient of the mean quantity $s$ is positive (negative), then the
+mean turbulent vertical transport is downward (upward), and negatively (positively) correlated.
+\end{defn*}
 
 
 

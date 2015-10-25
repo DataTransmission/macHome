@@ -4,6 +4,7 @@
   use myncread
   
   implicit none
+! Contact gchen@rsmas.miami.edu
 ! thresholds:
 !  pick summer season JJA for NH, DJF for SH, merge daily data into a singal matrix (Basinwise)
 !  1) 850h-Pa vort > vort threshold (neg in SH)
