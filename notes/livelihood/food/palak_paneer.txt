@@ -1,89 +1,41 @@
 
 Palak Paneer (http://www.foodnetwork.com/recipes/aarti-sequeira/saag-paneer-spinach-with-indian-cheese-recipe.html)
 ------------
-turmeric*1ts, cayenne_pepper*1/2ts, Kosher_salt*3ts, veg_oil*1/2ts, paneer*12oz,
-spinach*16oz(frozen_chopped), white_onion*1(finely_chopped), ginger*1inch(minced), garlic*4(minced),
-green_serrano_chile*1(finely_chopped), garam_masala*1/2ts, coriander*2ts(ground), cumin*1ts(ground),
-yogurt*1/2cup
+I. turmeric*1ts, cayenne_pepper*1/2ts, salt*3ts, veg_oil*1/2ts, paneer*12oz
 
-Paneer:
-Cheesecloth, whole_milk*8cup, lemon_juice*1/4cup(fresh_squeezed)
 
-Garam Masala:
-cinnamon_sticks*3(or_cinnamon_bark_bits*3ts), ground_cloves*3ts,
-green_cardamom_pods*1/4cup(shelled&husks_discarded~=seed*2ts),
-optional(black_cardamom_pods(shelled&husks_discarded~=seed*1ts))
+II. onion*1(finely_chopped), ginger*1inch(minced), garlic*4(minced),
+    green_serrano_chile*1(finely_chopped), 
 
--------------------------------------------------------------------
 
-In a large bowl, whisk together the turmeric, cayenne, 1 teaspoon salt and 3 tablespoons oil.
-Gently, drop in the cubes of paneer and gently toss, taking care not to break the cubes if you're
-using the homemade kind. Let the cubes marinate while you get the rest of your ingredients together
-and prepped.
+III. garam_masala*1/2ts, coriander*2ts(ground), cumin*1ts(ground), salt*1ts 
 
-Thaw the spinach in the microwave in a microwave-safe dish, 5 minutes on high, then puree in a food
-processor until smooth. Alternatively, you can chop it up very finely with your knife.
+IV. spinach*16oz(frozen_chopped)
 
-Place a large nonstick skillet over medium heat, and add the paneer as the pan warms. In a couple of
-minutes give the pan a toss; each piece of paneer should be browned on one side. Fry another minute
-or so, and then remove the paneer from the pan onto a plate.
+V. yogurt*1/2cup
 
-Add the remaining 1 1/2 tablespoons oil to the pan. Add the onions, ginger, garlic and chile. Now
-here's the important part: saute the mixture until it's evenly toffee-coloured, which should take
-about 15 minutes. Don't skip this step - this is the foundation of the dish! If you feel like the
-mixture is drying out and burning, add a couple of tablespoons of water.
+1. whisk I. with paneer tossed -> stir fry until paneer brown -> plate
+2. stir fry II. -> add III. and stir (5 min)
+3. blend IV. and add to 2. (5min) -> turn off heat
+4. add V. to 3. mix well -> add 1.
 
-Add the garam masala, coriander and cumin. If you haven't already, sprinkle a little water to keep
-the spices from burning. Cook, stirring often, until the raw scent of the spices cook out, and it
-all smells a bit more melodious, 3 to 5 minutes.
 
-Add the spinach and stir well, incorporating the spiced onion mixture into the spinach. Add a little
-salt and 1/2 cup of water, stir, and cook about 5 minutes with the lid off.
-
-Turn the heat off. Add the yogurt, a little at a time to keep it from curdling. Once the yogurt is
-well mixed into the spinach, add the paneer. Turn the heat back on, cover and cook until everything
-is warmed through, about 5 minutes. Serve.
-
-*Cook's Note: Paneer is very easy to make at home, and my recipe is quick, easy, and delicious. I
-also think homemade has a better texture than anything store-bought. If you'd like to buy it, this
-cheese is available in better supermarkets as well as specialty Asian markets.
 
 Paneer
 ------
-Line a large colander with a large double layer of cheesecloth, and set it in your sink.
+Cheesecloth, whole_milk*8cup, lemon_juice*1/4cup(fresh_squeezed)
 
-In a large wide pot, bring the milk to a gentle boil over medium heat, stirring frequently to avoid
-burning the bottom (a nonstick pot works really well for this purpose). This will take a little
-while so be patient!
-
-Add the lemon juice and turn the heat down to low. Stirring gently, you should almost immediately
-see the curds (white milk solids) and whey (the greenish liquid) separate. Don't fret, this is
-perfect!
-
-*Cook's Note: If the milk doesn't separate juice some more lemons and add another tablespoon or two.
-Boost the heat again and the milk should separate. Stir in a motion that gathers the curds together
-rather than breaks them up.
-
-Remove the pot from the heat and carefully pour the contents into the cheesecloth-lined colander.
-Gently rinse with cool water to get rid of the lemon flavor. At this point, you could squeeze out
-some of the liquid, and serve with some honey and some nuts, almost like a fresh ricotta!
-
-Grab the ends of the cheesecloth and twist the ball of cheese to squeeze out the excess whey. Tie
-the cheesecloth to your kitchen faucet and allow the cheese to drain for about 5 minutes.
-
-Twisting the ball to compact the cheese into a block, place it on a plate with the twisted part of
-the cheesecloth on the side (this will ensure your block of cheese is nice and smooth!) and set
-another plate on top. Weigh the second plate down with cans of beans or a heavy pot. Move to the
-refrigerator and let it sit about 20 minutes.
-
-Yield: Makes 12 ounces of cheese.
+1. line a large colander with 2 layers of cheesecloth 
+2. heat the milk until gently boiled
+3. add the lemon juice and turn off heat, stir until curd.
+4. pour on cheesecloth and wait for drainage -> put a weight on top to further drain -> put in
+   fridge (20 min)
 
 Garam Masala
 ---------------
-Combine the cinnamon sticks, cloves, green cardamom seeds, black cardamom seeds, if using into a
-spice grinder or coffee grinder and grind until fine. Store the spice mix in an airtight container
-away from direct sunlight.
+cinnamon_sticks*3(or_cinnamon_bark_bits*3ts), ground_cloves*3ts,
+green_cardamom_pods*1/4cup(shelled&husks_discarded~=seed*2ts) <----- hard to buy, can neglect
+optional(black_cardamom_pods(shelled&husks_discarded~=seed*1ts))
 
-Yield: about 1/2 cup.
 
 
