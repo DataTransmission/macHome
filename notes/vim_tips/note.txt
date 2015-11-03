@@ -11,3 +11,11 @@ $ g~$
 $ g~3w
 # Toggle case to the current line
 $ g~~
+
+
+line number
+-----------
+# set line number on
+$set nu
+# set line number off
+$set nonumber

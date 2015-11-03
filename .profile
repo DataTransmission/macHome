@@ -32,7 +32,7 @@ alias tree='tree -C'
 
 homedir='/Users/ginochen/'
 
-export CDPATH=$homedir/notes
+#export CDPATH=$homedir/notes # use cautiously since this will have conflict when path name not under CDPATH has the same name
 
 alias cdqj='cd $homedir/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
 alias cdnote='cd $homedir/notes'

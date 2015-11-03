@@ -9,3 +9,6 @@ $ grep 'word1' <dir> | grep 'word2' | grep 'word3'
 
 # grep 5 lines before and 10 lines after a 'word'
 $ grep -B 5 -A 10 'word'
+
+# color grep with linenumber
+$ grep --color=always -n -r

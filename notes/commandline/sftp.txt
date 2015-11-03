@@ -1,3 +1,6 @@
+# Purpose : login to the remote host to move files around
+sftp <gchen@host.edu>
+
 # a list of commands
 $ ?
 
