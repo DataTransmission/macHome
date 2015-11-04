@@ -136,6 +136,20 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     | |~state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt 
  |     |              ! update dry static energy here
  |     |~convect_shallow_tend [physics/cam/convect_shallow~]
+ |     | |~pbuf_get_field(pbuf, pblh_idx, pblh) []
+ |     | |~case('UW') ! use UW shallow cumulus scheme
+ |     | |~compute_uwshcu_inv(...,tke,...) [physics/cam/uwshcu~]
+ |     |   |          ! (in) : tke
+ |     |   |~compute_uwshcu(...,tke,...) 
+ |     |              ! (in) : tke
+ |     |              ! tkeavg : CALC column average tke       
+ |     |              !   ke = rbuoy / ( rkfre * tkeavg + epsvarw ) 
+ |     |              !   sigmaw = sqrt( rkfre * tkeavg + epsvarw )
+ |     |              !     cbmf = (rho0inv*sigmaw/2.5066_r8)*exp(-mu**2)
+ |     |              !     mumin0 = sqrt(-log(2.5066_r8*cbmflimit/rho0inv/sigmaw)) 
+ |     |              !     mumin0 = sqrt(-log(2.5066_r8*cbmflimit/rho0inv/sigmaw)) 
+ |     |              !     mulcl = sqrt(2._r8*cinlcl*rbuoy)/1.4142_r8/sigmaw
+ |     |              !     winv = sigmaw*(2._r8/2.5066_r8)*exp(-mu**2)/erfc(mu)
  |     |~physics_update(...)   
  |     |~stratiform_tend [physics/cam/stratiform~]
  |     | |            ! CALC totcw by cldice and cldliq
@@ -640,3 +654,12 @@ TODO
 20150915
 TODO
 1. figure out how CAM computed TKE (Bretherton and Park 09, Grenier and Bretherton 01)
+
+20151103
+TODO
+1. figure out 20150915TODO1
+CONCLUSION
+1. TKE is needed during shallow cumulus parm before turbulent diffusion in tphysac takes place.
+   i.e., convect_shallow actually uses TKE before vertical_diffusion_tend calc TKE.
+ISSUE
+1. TKE before and after scam changes <----------why????
