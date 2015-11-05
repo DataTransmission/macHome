@@ -199,6 +199,12 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |   | |~compute_eddy_diff(...) [physics/cam/eddy_diff~]
  | |   | | |~caleddy(...,pblh,tke,tpert,...) [physics/cam/eddy_diff~]
  | |   | |            ! CALC PBLH, TKE, TPERT
+ | |   | |            ! kvm, khm can be calculated without previous timestep values.
+ | |   | |            ! bprod : buoyancy production of tke <---| updated through the calculation by some first guess
+ | |   | |            ! sprod : shear production of tke <------|
+ | |   | |            !  
+ | |   | |            ! 
+ | |   | |            !
  | |   | |~compute_hb_diff(...,tke,...) [physics/cam/hb_diff~]
  | |   |   |          ! Interface routines for calcualtion and diagnostics of turbulence related coefficients
  | |   |   |~pblintd(...,pblh,...) [physics/cam/hb_diff~] 
@@ -662,4 +668,11 @@ CONCLUSION
 1. TKE is needed during shallow cumulus parm before turbulent diffusion in tphysac takes place.
    i.e., convect_shallow actually uses TKE before vertical_diffusion_tend calc TKE.
 ISSUE
-1. TKE before and after scam changes <----------why????
+1. TKE before and after scam changes <----------due to the after TKE is calculated with all the processes (e.g., u, v, \theta) updated
+
+20151104
+TODO
+1. How to obtain all the (in) variables for 'eddy_diff.F90' 
+
+
+
