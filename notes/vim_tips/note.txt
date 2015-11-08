@@ -13,9 +13,91 @@ $ g~3w
 $ g~~
 
 
-line number
+line number 
 -----------
 # set line number on
-$set nu
+:set nu
 # set line number off
-$set nonumber
+:set nonumber
+
+# replace
+ shift + r
+# insert
+ i
+# replace-one-character
+ r # then type in whatever character to replace
+# record-and-repeat
+ esc
+ qq # start-recording
+ q  # stop-recording
+ shift + 2
+ q  # repeat
+ shift + 22 # keep-repeating 
+# page forward
+ ctrl + f
+# page backward
+ ctrl + b
+# end-of-line
+ shift + a
+# start-of-line
+ shift + i
+# end-of-previous line from below line
+ shift + left
+# start-of-next line from above line
+ shift + right
+# end-of-page
+ shift + l 
+# start-of-page
+ shift + h
+# start-of-file
+ gg
+# end-of-file
+ shift + g
+# undo
+ u
+# redo 
+ ctrl + r
+# delete
+ x
+# left,down,up,right 
+ h,j,k,l
+# save
+ esc 
+ :w
+# save all files opened
+ esc  
+ :wa
+# quit 
+ esc  
+ :q
+# save and quit all
+ esc 
+ :wqa
+# wrap line to new line after :set textwidth  
+ gqgq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

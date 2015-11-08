@@ -58,7 +58,8 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | | |                ! get file from archive
  | | |~read_restart_dynamics(File, dyn_in, dyn_out, NLFileName) [dynamics/*/restart_dynamics~]                
  | | |~read_restart_physics(File, cam_out, pbuf2d) [physics/cam/restart_dynamics~]                
- | | |                ! read (FSNT,FSNS,FSDS,FLNT,FLNS,LANDM,SGH,SGH30,TREFMXAV,TREFMNAV,FLWDS,SOLS,SOLL,SOLSD,SOLLD,BCPHIDRY, BCPHODRY,OCPHIDRY,OCPHODRY,DSTDRY1,...,DSTDRY4)
+ | | |                ! read (FSNT,FSNS,FSDS,FLNT,FLNS,LANDM,SGH,SGH30,TREFMXAV,TREFMNAV,
+ | | |                !       FLWDS,SOLS,SOLL,SOLSD,SOLLD,BCPHIDRY, BCPHODRY,OCPHIDRY,OCPHODRY,DSTDRY1,...,DSTDRY4)
  | | |                ! cam_out contains only surface variables 
  | | |~read_restart_history (File) [control/cam_history~]
  | | |~initialize_iop_history() [control/history_defaults~]
@@ -196,15 +197,32 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |   |~physics_update(...)
  | |   |~vertical_diffusion_tend(ztodt, state ,cam_in%wsx, cam_in%wsy, cam_in%shf, cam_in%cflx, 
  | |   | |                       surfric, obklen, ptend, ast, cam_in%ocnfrac, cam_in%landfrac, sgh30, pbuf) [physics/cam/vertical_diffusion~]
- | |   | |~compute_eddy_diff(...) [physics/cam/eddy_diff~]
- | |   | | |~caleddy(...,pblh,tke,tpert,...) [physics/cam/eddy_diff~]
+ | |   | |~init_eddy_diff( kind, pver, gravx, cpairx, rairx, zvirx, &
+ | |   | |                 latvapx, laticex, ntop_eddy, nbot_eddy, vkx, &
+ | |   | |                 eddy_lbulk_max, eddy_leng_max, eddy_max_bot_pressure) [physics/cam/eddy_diff~]
+ | |   | | ... 
+ | |   | | select case (eddy_scheme)
+ | |   | | case ('diag_TKE') ...
+ | |   | | kvinit = .true. ... 
+ | |   | |~compute_eddy_diff(...,tke,...) [physics/cam/eddy_diff~]
+ | |   | |            ! compute_eddy_diff( lchnk      ,                                                      &
+ | |   | |            !        pcols    , pver        , ncol       , state%t    , state%q(:,:,1) , ztodt   , &
+ | |   | |            !        state%q(:,:,ixcldliq)  , state%q(:,:,ixcldice)   ,                            &
+ | |   | |            !        state%s  , state%rpdel , cldn       , qrl        , wsedl          ,           &
+ | |   | |            !        state%zm , state%zi    , state%pmid , state%pint , state%u        , state%v , &
+ | |   | |            !        taux     , tauy        , shflx      , cflx(:,1)  , wstarent       , nturb   , &
+ | |   | |            !        rrho     , ustar       , pblh       , kvm_in     , kvh_in         , kvm     , &
+ | |   | |            !        kvh      , kvq         , cgh        ,                                         &
+ | |   | |            !        cgs      , tpert       , qpert      , wpert      , tke            , bprod   , &
+ | |   | |            !        sprod    , sfi         , kvinit     ,                                         &
+ | |   | |            !        tauresx  , tauresy     , ksrftms    ,                                         &
+ | |   | |            !        ipbl(:)  , kpblh(:)    , wstarPBL(:), turbtype   , smaw )
+ | |   | | |~caleddy(...,pblh,tke,tpert,...) 
  | |   | |            ! CALC PBLH, TKE, TPERT
  | |   | |            ! kvm, khm can be calculated without previous timestep values.
  | |   | |            ! bprod : buoyancy production of tke <---| updated through the calculation by some first guess
  | |   | |            ! sprod : shear production of tke <------|
- | |   | |            !  
- | |   | |            ! 
- | |   | |            !
+ | |   | |            ! tkes(i) = max(b1*vk*z(i,pver)*(bprod(i,pver+1)+sprod(i,pver+1)), 1.e-7_r8)**(2._r8/3._r8) 
  | |   | |~compute_hb_diff(...,tke,...) [physics/cam/hb_diff~]
  | |   |   |          ! Interface routines for calcualtion and diagnostics of turbulence related coefficients
  | |   |   |~pblintd(...,pblh,...) [physics/cam/hb_diff~] 
@@ -673,6 +691,8 @@ ISSUE
 20151104
 TODO
 1. How to obtain all the (in) variables for 'eddy_diff.F90' 
-
+CONCLUSION
+1. variable name rule : coefficients starts with 'c'
+2. turn off the prior scheme doing the physics_update and just use the vertical_diffusion_tend 
 
 
