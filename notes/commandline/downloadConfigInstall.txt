@@ -13,7 +13,9 @@ $ make install altinstall
 ISSUE DESC : cannot find './configure' file instead of './configure.ac', this needed 'autoconf' to resolve
 SOLUTION : install autoconf newest version and add /mypath/autoconf/bin/ it to the $PATH
 
-
+# Purpose: install .bin file on Linux
+$ chmod a+x name_of_file.bin
+$ ./name_of_file.bin -i # the flag is for system specific
 
 
 

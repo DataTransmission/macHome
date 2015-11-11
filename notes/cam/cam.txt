@@ -186,6 +186,10 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |                    ! Write export state to history file
  |~cam_run2(cam_in,cam_out) [control/cam_comp~]    
  | |~phys_run2(phys_state, dtime, phys_tend, pbuf2d,  cam_out, cam_in) [physics/cam/physpkg~]    
+ | | |
+ | | | if offline mode set SHFLX QFLX TAUX TAUY for vert diffusion 
+ | | |~get_met_srf2( cam_in ) [dynamics/fv/metdata~]
+ | | |                ! this uses metadata to calculate taux, tauy
  | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
  | |   |              ! Tendency physics after coupling to land, sea, and ice models.
  | |   |              ! Computes (1) Radon surface flux and decay (optional) (2) Vertical diffusion and planetary boundary layer (3) Multiple gravity wave drag
@@ -205,18 +209,18 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |   | | case ('diag_TKE') ...
  | |   | | kvinit = .true. ... 
  | |   | |~compute_eddy_diff(...,tke,...) [physics/cam/eddy_diff~]
- | |   | |            ! compute_eddy_diff( lchnk      ,                                                      &
- | |   | |            !        pcols    , pver        , ncol       , state%t    , state%q(:,:,1) , ztodt   , &
- | |   | |            !        state%q(:,:,ixcldliq)  , state%q(:,:,ixcldice)   ,                            &
- | |   | |            !        state%s  , state%rpdel , cldn       , qrl        , wsedl          ,           &
- | |   | |            !        state%zm , state%zi    , state%pmid , state%pint , state%u        , state%v , &
- | |   | |            !        taux     , tauy        , shflx      , cflx(:,1)  , wstarent       , nturb   , &
- | |   | |            !        rrho     , ustar       , pblh       , kvm_in     , kvh_in         , kvm     , &
- | |   | |            !        kvh      , kvq         , cgh        ,                                         &
- | |   | |            !        cgs      , tpert       , qpert      , wpert      , tke            , bprod   , &
- | |   | |            !        sprod    , sfi         , kvinit     ,                                         &
- | |   | |            !        tauresx  , tauresy     , ksrftms    ,                                         &
- | |   | |            !        ipbl(:)  , kpblh(:)    , wstarPBL(:), turbtype   , smaw )
+ | |   | | |          ! compute_eddy_diff( lchnk      ,                                                      &
+ | |   | | |          !        pcols    , pver        , ncol       , state%t    , state%q(:,:,1) , ztodt   , &
+ | |   | | |          !        state%q(:,:,ixcldliq)  , state%q(:,:,ixcldice)   ,                            &
+ | |   | | |          !        state%s  , state%rpdel , cldn       , qrl        , wsedl          ,           &
+ | |   | | |          !        state%zm , state%zi    , state%pmid , state%pint , state%u        , state%v , &
+ | |   | | |          !        taux     , tauy        , shflx      , cflx(:,1)  , wstarent       , nturb   , &
+ | |   | | |          !        rrho     , ustar       , pblh       , kvm_in     , kvh_in         , kvm     , &
+ | |   | | |          !        kvh      , kvq         , cgh        ,                                         &
+ | |   | | |          !        cgs      , tpert       , qpert      , wpert      , tke            , bprod   , &
+ | |   | | |          !        sprod    , sfi         , kvinit     ,                                         &
+ | |   | | |          !        tauresx  , tauresy     , ksrftms    ,                                         &
+ | |   | | |          !        ipbl(:)  , kpblh(:)    , wstarPBL(:), turbtype   , smaw )
  | |   | | |~caleddy(...,pblh,tke,tpert,...) 
  | |   | |            ! CALC PBLH, TKE, TPERT
  | |   | |            ! kvm, khm can be calculated without previous timestep values.
@@ -695,4 +699,15 @@ CONCLUSION
 1. variable name rule : coefficients starts with 'c'
 2. turn off the prior scheme doing the physics_update and just use the vertical_diffusion_tend 
 
+20151108
+CONCLUSION
+CRM VARIABLES
+-------------
+PP(pressure_perturbation), QN(nonprecipitating_condensate_water+ice), QP(precipitating_water_rain+snow), QRAD(radiative_heating_rate), QV(water_vapor), TABS, U, V, W
 
+
+
+20151109
+CONCLUSION
+1. interpolate theta_tendency_cumulus in time, to compare with CAM generated next-timestep theta_tendency_cumulus. <----- check smoothness!!!!
+2. in phys_run2 the taux and tauy are called from metdata.F90 which finds data to use. <------- just set the flag to use taux tauy from data  
