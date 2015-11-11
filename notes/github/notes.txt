@@ -27,8 +27,8 @@ $ git remote -v
 $ git push -u origin master
 
 # if this ERROR pops up, two solutions
-$ error: The requested URL returned error: 403 Forbidden while accessing http://github.com/ginochen/SAM.git/info/refs
-$ fatal: HTTP request failed
+# error: The requested URL returned error: 403 Forbidden while accessing http://github.com/ginochen/SAM.git/info/refs
+# fatal: HTTP request failed
 # Solution 1 (this works for pegasus2 scratch dir)
 # give the remote repo a SSH-KEY, follow the steps
 $ ls -al ~/.ssh
@@ -100,6 +100,14 @@ $ git branch -d <branch name>
 # enter a branch
 $ git checkout master
 
+CHECKOUT A REPO TO A EXISTING FOLDER, UPDATE
+--------------------------------------------
+# checking out machome to current directory .
+$ git init .
+$ git remote add -t \* -f origin <repository-url>
+$ git checkout master
+# update the remote repo
+$ 
 
 CHECK TRACKED FILES
 -------------------
