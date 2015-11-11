@@ -703,7 +703,9 @@ CONCLUSION
 CONCLUSION
 CRM VARIABLES
 -------------
-PP(pressure_perturbation), QN(nonprecipitating_condensate_water+ice), QP(precipitating_water_rain+snow), QRAD(radiative_heating_rate), QV(water_vapor), TABS, U, V, W
+PP(pressure_perturbation), QN(nonprecipitating_condensate_water+ice), 
+QP(precipitating_water_rain+snow), QRAD(radiative_heating_rate), 
+QV(water_vapor), TABS, U, V, W
 
 
 
@@ -711,3 +713,8 @@ PP(pressure_perturbation), QN(nonprecipitating_condensate_water+ice), QP(precipi
 CONCLUSION
 1. interpolate theta_tendency_cumulus in time, to compare with CAM generated next-timestep theta_tendency_cumulus. <----- check smoothness!!!!
 2. in phys_run2 the taux and tauy are called from metdata.F90 which finds data to use. <------- just set the flag to use taux tauy from data  
+
+20151111
+TODO
+1. use the WRF state at X(t) to generate the next timestep (30min) CAM output Q(X(t)), use this to compare with WRF Q(X(t-1))_averaged
+2. generate Q(X(t)) for SAM for 30min and repeat 1 for CAM output to compare
