@@ -1,0 +1,3 @@
+# OSX 10.11.1
+System Preferences -> Accessibility -> Mouse & Trackpad -> Trackpad
+Options -> Enable Dragging with drag lock

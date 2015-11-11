@@ -100,14 +100,17 @@ $ git branch -d <branch name>
 # enter a branch
 $ git checkout master
 
-CHECKOUT A REPO TO A EXISTING FOLDER, UPDATE
---------------------------------------------
-# checking out machome to current directory .
+COPY A REPO TO ANOTHER COMPUTER, UPDATE, and PUSH
+-------------------------------------------------
+# checking out ginochen/machome.git to current directory .
 $ git init .
-$ git remote add -t \* -f origin <repository-url>
+$ git remote add -t \* -f origin https://github.com/ginochen/macHome.git
 $ git checkout master
-# update the remote repo
-$ 
+# update the remote repo, make sure the url in .git/config is
+# https://github.com/ginochen/macHome.git
+$ git pull 
+# push to the remote repo
+$ git push origin master
 
 CHECK TRACKED FILES
 -------------------
