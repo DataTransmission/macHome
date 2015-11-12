@@ -21,7 +21,7 @@ export PATH=$GOPATH:$GOPATH/bin:$GOROOT:$GOROOT/bin:$PATH
 alias lsf='ls -F'
 alias safari='open /Applications/Safari.app/'
 alias iphone='ssh -XY root@192.168.1.69'
-alias mat='/Applications/MATLAB_R2015a.app/bin/matlab -nodesktop -nosplash'
+alias mat='/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop -nosplash'
 alias mkdirp='mkdir -p' # make a full tree path ($ mkdirp /this/is/a/tree/path)
 alias tarf='tar -cvf' # tar -cvf filename.tar files*
 alias grep='grep --color=always -n -r'
@@ -30,18 +30,17 @@ alias webmount='mount -t smbfs //gchen@krystal.rsmas.miami.edu/gchen ~/WebShare'
 alias webumount='umount ~/WebShare'
 alias tree='tree -C'
 
-homedir='/Users/ginochen/'
 
-#export CDPATH=$homedir/notes # use cautiously since this will have conflict when path name not under CDPATH has the same name
+#export CDPATH=$HOME/notes # use cautiously since this will have conflict when path name not under CDPATH has the same name
 
-alias cdqj='cd $homedir/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
-alias cdnote='cd $homedir/notes'
-alias cdconvex='cd $homedir/notes/convex'
-alias cdlinearalg='cd $homedir/notes/linearAlg'
-alias cdbook='cd $homedir/books'
-alias cdpaper='cd $homedir/paper'
-alias cdmvim='cd $homedir/vimfiles/MacVim-snapshot-74/./mvim'
-alias cdreciept='cd $homedir/Documents/Reciept'
+alias cdqj='cd $HOME/Gino/Paper/Paper_QJRMS/paper_revision2/submitted/Supplementary_Material_not_for_Review/Tex_documents/'
+alias cdnote='cd $HOME/notes'
+alias cdconvex='cd $HOME/notes/convex'
+alias cdlinearalg='cd $HOME/notes/linearAlg'
+alias cdbook='cd $HOME/books'
+alias cdpaper='cd $HOME/paper'
+alias cdmvim='cd $HOME/vimfiles/MacVim-snapshot-74/./mvim'
+alias cdreciept='cd $HOME/Documents/Reciept'
 
 #alias ..="cd .."
 #alias ..2="cd ../.."
@@ -137,6 +136,15 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 ##
 
 # MacPorts Installer addition on 2015-06-06_at_09:28:41: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+##
+# Your previous /Users/g/.profile file was backed up as /Users/g/.profile.macports-saved_2015-11-11_at_22:46:29
+##
+
+# MacPorts Installer addition on 2015-11-11_at_22:46:29: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
