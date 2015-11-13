@@ -1,2 +1,5 @@
+# compress a directory <dir> to a tar file <dir_tar>
+$ tar czf <dir> <dir_tar>
+
 # untar file.tar to <dir>
 $ tar xvf file.tar -C <dir>

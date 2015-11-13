@@ -1,0 +1,3 @@
+# Purpose : switch between multiple windows for an application
+1. Command + left/right <--------------best solution
+2. Command + tab (hold on) -> hit the desired app and press up/down (and let go of Command) -> pick the window desired

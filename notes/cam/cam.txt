@@ -19,7 +19,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 | 1. Search \~ to highlight the branches and MOD              |
 |_____________________________________________________________|
 
-
+ atm_comp_esmf.F90/atm_comp_mct.F90  
  |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
  | |~init_pio_subsystem(filein) [utils/cam_pio_utils~]   
  | |                  ! Do appropriate dynamics and history initialization depending on whether initial, restart, or 
@@ -99,12 +99,12 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |   | |              ! (inout) cam_out,pbuf2d,phys_state
  |   | |              ! The place for parameterizations to call per timestep initializations. 
  |   | |              ! Generally this is used to update time interpolated fields from boundary datasets.                   
- |   | |~( Chemistry surface values, Solar irradiance, Time interpolate for chemistry, a bunch of prescribed tracers, 
- |   | |    prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
- |   | |    CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
- |   | |    Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
- |   | |    Time interpolate for tracers if appropriate, age of air tracers )
- |   | 
+ |   | |~{ ! Chemistry surface values, Solar irradiance, Time interpolate for chemistry, a bunch of prescribed tracers, 
+ |   |     ! prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
+ |   |     ! CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
+ |   |     ! Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
+ |   |     ! Time interpolate for tracers if appropriate, age of air tracers 
+ |   |   }
  |   | 
  |   |~tphysbc(ztodt, fsns, fsnt, flns, flnt, state, tend, pbuf, fsds, landm, sgh30, cam_out, cam_in) [physics/cam/physpkg~]  
  |     |              ! (inout) cam_out,flns,flnt,fsns,fsnt,pbuf,state,tend, (in) cam_in,landm,sgh30,ztodt
@@ -186,9 +186,10 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |                    ! Write export state to history file
  |~cam_run2(cam_in,cam_out) [control/cam_comp~]    
  | |~phys_run2(phys_state, dtime, phys_tend, pbuf2d,  cam_out, cam_in) [physics/cam/physpkg~]    
- | | |
- | | | if offline mode set SHFLX QFLX TAUX TAUY for vert diffusion 
- | | |~get_met_srf2( cam_in ) [dynamics/fv/metdata~]
+ | | |~{ #if ( defined OFFLINE_DYN )
+ | | |       ! if offline mode set SHFLX QFLX TAUX TAUY for vert diffusion 
+ | | |   get_met_srf2( cam_in ) [dynamics/fv/metdata~]
+ | | | }
  | | |                ! this uses metadata to calculate taux, tauy
  | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
  | |   |              ! Tendency physics after coupling to land, sea, and ice models.
@@ -201,14 +202,17 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |   |~physics_update(...)
  | |   |~vertical_diffusion_tend(ztodt, state ,cam_in%wsx, cam_in%wsy, cam_in%shf, cam_in%cflx, 
  | |   | |                       surfric, obklen, ptend, ast, cam_in%ocnfrac, cam_in%landfrac, sgh30, pbuf) [physics/cam/vertical_diffusion~]
+ | |   | |            ! (in) : state, taux, tauy, shflx, cflx, ztodt, cldn, landfrac, sgh
+ | |   | |            
  | |   | |~init_eddy_diff( kind, pver, gravx, cpairx, rairx, zvirx, &
  | |   | |                 latvapx, laticex, ntop_eddy, nbot_eddy, vkx, &
  | |   | |                 eddy_lbulk_max, eddy_leng_max, eddy_max_bot_pressure) [physics/cam/eddy_diff~]
- | |   | | ... 
- | |   | | select case (eddy_scheme)
- | |   | | case ('diag_TKE') ...
- | |   | | kvinit = .true. ... 
- | |   | |~compute_eddy_diff(...,tke,...) [physics/cam/eddy_diff~]
+ | |   | |~{... 
+ | |   | |  select case (eddy_scheme)
+ | |   | |  case ('diag_TKE') ...
+ | |   | |  kvinit = .true. ... 
+ | |   | |  compute_eddy_diff(...,tke,...) [physics/cam/eddy_diff~]
+ | |   | | } 
  | |   | | |          ! compute_eddy_diff( lchnk      ,                                                      &
  | |   | | |          !        pcols    , pver        , ncol       , state%t    , state%q(:,:,1) , ztodt   , &
  | |   | | |          !        state%q(:,:,ixcldliq)  , state%q(:,:,ixcldice)   ,                            &
@@ -276,6 +280,7 @@ cam_out          : pointer, Output from CAM to surface (Atmosphere to surface in
 cam_out_t        : a bunch of surface variables
 cflx_srf(:,:)    : constituent flux at surface (kg/m2/s) [physics/cam/physics_type]
 cflx_top(:,:)    : constituent flux at top of model (kg/m2/s) [physics/cam/physics_type]
+cldn/ast         : New stratus fraction; relative humidity cloud fraction
 cme(pcols,pver)  : cmf condensation - evaporation [convect_deep]
 DTCORE           : T tendency due to dynamical core
 DTCOND           : T tendency due to convection <---------------------------this is what I want
@@ -315,6 +320,7 @@ ql               : wg grid slice of cloud liquid water. [convect_deep]
 rliq(pcols)      : reserved liquid (not yet in cldliq) for energy integrals [convect_deep]
 rprd             : rain production rate [convect_deep]
 s(:,:)           : dry static energy, heating rate (J/kg/s) [physics/cam/physics_type]
+sgh              : Standard deviation of orography 
 snow(:)          : snow from ZM convection [convect_deep]
 state            : could be the current state or the forward state depending whether it is updated
 taux_srf(:)      : net zonal stress at surface (Pa) [physics/cam/physics_type]
@@ -718,3 +724,7 @@ CONCLUSION
 TODO
 1. use the WRF state at X(t) to generate the next timestep (30min) CAM output Q(X(t)), use this to compare with WRF Q(X(t-1))_averaged
 2. generate Q(X(t)) for SAM for 30min and repeat 1 for CAM output to compare
+3. set { aoa_tracers_flag, tracers_flag, carma_do_emission, chem_is_active } to false, and don't call cam_run1 with phys_run1 (go into atm_comp_esmf.F90/atm_comp_mct.F90 to silent)
+4. Maybe its easier to just use the two subroutines (1) get_met_srf2(
+   cam_in ) in physpkg.F90 and (2) vertical_diffusion.F90 to generate TKE
+   field, figure out all the parameters needed (calc by hand)
