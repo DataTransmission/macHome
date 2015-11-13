@@ -4,6 +4,9 @@ $ grep -i
 # exclude directory including pattern 'word'
 $ grep --exclude-dir=*word* 'some pattern' /path/to/search
 
+# exclude line with 'exludeword' but include 'includeword'
+$ grep 'includeword' * | grep -v 'excludeword'
+
 # grep multiple words under <dir>
 $ grep 'word1' <dir> | grep 'word2' | grep 'word3'
 

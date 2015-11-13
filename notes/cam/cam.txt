@@ -21,6 +21,13 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 
  atm_comp_esmf.F90/atm_comp_mct.F90  
  |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
+ | |~phys_register [physics/cam/physpkg~]
+ | | |~{ if( microp_scheme == 'RK' ) then
+ | |     call stratiform_register [physics/cam/stratiform~]
+ | |   }
+ | |   |~cnst_add(...ixcldliq/ixcldice...)
+ | |                  ! Register cloud water and save indices.
+ | |                  ! (out) : ixcldliq, ixcldice
  | |~init_pio_subsystem(filein) [utils/cam_pio_utils~]   
  | |                  ! Do appropriate dynamics and history initialization depending on whether initial, restart, or 
  | |                  ! branch.  On restart run intht need not be called because all the info is on restart dataset.
@@ -157,8 +164,9 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     | |            ! totcw(:ncol,:pver) = state1%q(:ncol,:pver,ixcldice) + state1%q(:ncol,:pver,ixcldliq)
  |     | |~cldfrc(...,state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
  |     | |~cldfrc_fice(...state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
- |     |  
- |     |  
+ |     | |~cld_sediment_vel(ncol,icefrac,landfrac,ocnfrac,state1%pmid,state1%pdel,state1%t,cld,state1%q(:,:,ixcldliq),state1%q(:,:,ixcldice) [physics/cam/pkg_cld_sediment~] 
+ |     | |            ! ixcldliq is the latitude index obtained from constituents.F90 cnst_add(...ixcldliq)
+ |     | |~{ wsedl(:ncol,:pver) = pvliq(:ncol,:pver)/gravit/(state1%pmid(:ncol,:pver)/(287.15_r8*state1%t(:ncol,:pver))) }
  |     |  
  |     |~physics_update(...)   
  |     |~( a bunch of different micro-macro-physics scheme )
@@ -728,3 +736,10 @@ TODO
 4. Maybe its easier to just use the two subroutines (1) get_met_srf2(
    cam_in ) in physpkg.F90 and (2) vertical_diffusion.F90 to generate TKE
    field, figure out all the parameters needed (calc by hand)
+
+20151112
+TODO
+1. use phys_register.F90 to get 'ixcldliq/ixcldice'
+2. use pkg_cld_sediment.F90 to get 'pvliq/pvice' for stratiform.F90 to calc 'wsedl'
+3. calc 'taux,tauy,shflx,qflx' from metdata.F90
+4. 
