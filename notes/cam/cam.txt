@@ -23,9 +23,8 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
  | |~phys_register [physics/cam/physpkg~]
  | | |~{ if( microp_scheme == 'RK' ) then
- | |     call stratiform_register [physics/cam/stratiform~]
- | |   }
- | |   |~cnst_add(...ixcldliq/ixcldice...)
+ | |   stratiform_register [physics/cam/stratiform~]  }
+ | |   |~cnst_add(...ixcldliq/ixcldice...) [physics/cam/constituents~] 
  | |                  ! Register cloud water and save indices.
  | |                  ! (out) : ixcldliq, ixcldice
  | |~init_pio_subsystem(filein) [utils/cam_pio_utils~]   
@@ -74,8 +73,13 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | | |                ! Initialization of physics package, phys_state and phys_tend are null pointer inputs
  | | |~physics_type_alloc(phys_state, phys_tend, begchunk, endchunk, pcols) [physics/cam/physics_types~]   
  | | | |              ! this is the only place it's used, and the only place "phys_state", "phys_tend" and "state" are defined as pointer 
- | | | |~allocate(phys_state(begchunk:endchunk), stat=ierr) 
- | | |                ! allocate the proper chunk size for phys_state and phys_tend
+ | | | |~physics_state_alloc(phys_state(lchnk),lchnk,pcols)   
+ | | | | |~{ allocate(state%q(psetcols,pver,pcnst), stat=ierr) }
+ | | | |              ! all the state variables (), the 'pcnst' is the number of constituents in 'q' variable (e.g., ice & liq). 
+ | | | |~{ allocate(phys_state(begchunk:endchunk), stat=ierr) }
+ | | | |              ! allocate the proper chunk size for phys_state and phys_tend
+ | | | |~physics_tend_alloc(phys_tend(lchnk),phys_state(lchnk)%psetcols)   
+ | | |   |~{ allocate(tend%dtdt(psetcols,pver), stat=ierr) }
  | | |~tracers_init()
  | | |~cloud_rad_props_init()
  | | |~aerosol_init(pbuf2d)
@@ -110,9 +114,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |   |     ! prescribed aerosol deposition fluxes, CAM3 prescribed aerosol masses, 
  |   |     ! CAM3 prescribed ozone data, Time interpolate data models of gasses in pbuf2d, Upper atmosphere radiative processes, 
  |   |     ! Time interpolate for vertical diffusion upper boundary condition, Compute the electric field, update QBO data for this time step
- |   |     ! Time interpolate for tracers if appropriate, age of air tracers 
- |   |   }
- |   | 
+ |   |     ! Time interpolate for tracers if appropriate, age of air tracers }
  |   |~tphysbc(ztodt, fsns, fsnt, flns, flnt, state, tend, pbuf, fsds, landm, sgh30, cam_out, cam_in) [physics/cam/physpkg~]  
  |     |              ! (inout) cam_out,flns,flnt,fsns,fsnt,pbuf,state,tend, (in) cam_in,landm,sgh30,ztodt
  |     |              ! before coupling (bc) to surface (land, sea, ice)
@@ -162,9 +164,11 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     |~stratiform_tend [physics/cam/stratiform~]
  |     | |            ! CALC totcw by cldice and cldliq
  |     | |            ! totcw(:ncol,:pver) = state1%q(:ncol,:pver,ixcldice) + state1%q(:ncol,:pver,ixcldliq)
- |     | |~cldfrc(...,state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
+ |     | |~cldfrc(...,state1%q(:,:,ixcldice),clst/cldn...) [physics/cam/cloud_fraction~]
  |     | |~cldfrc_fice(...state1%q(:,:,ixcldice),...) [physics/cam/cloud_fraction~]
- |     | |~cld_sediment_vel(ncol,icefrac,landfrac,ocnfrac,state1%pmid,state1%pdel,state1%t,cld,state1%q(:,:,ixcldliq),state1%q(:,:,ixcldice) [physics/cam/pkg_cld_sediment~] 
+ |     | |~cld_sediment_vel(ncol,icefrac,landfrac,ocnfrac,state1%pmid,state1%pdel,state1%t,cld,
+ |     | |                  state1%q(:,:,ixcldliq),state1%q(:,:,ixcldice),pvliq,pvice,landm,snowh) [physics/cam/pkg_cld_sediment~] 
+ |     | |            ! get pvliq and pvice for 'wsedl' 
  |     | |            ! ixcldliq is the latitude index obtained from constituents.F90 cnst_add(...ixcldliq)
  |     | |~{ wsedl(:ncol,:pver) = pvliq(:ncol,:pver)/gravit/(state1%pmid(:ncol,:pver)/(287.15_r8*state1%t(:ncol,:pver))) }
  |     |  
@@ -279,8 +283,9 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 |                |                                                                                                                                         |
 | VARIABLE       | VARIABLE DESCRIPTION      [MODULEName1, MODULEName2,..~]                                                                                |
 |________________|_________________________________________________________________________________________________________________________________________|
-
+apcnst(pcnst)    : constituents after physics  (FV core only) [physics/cam/constituents~]
 begchunk         : defined in [ppgrid] and updated in [phys_grid]
+bpcnst(pcnst)    : constituents before physics (FV core only) [physics/cam/constituents~]
 c                : chunk index
 cam_in           : pointer, Merged input state of sea-ice, land and ocean surface parameterizations to CAM, with type cam_in_t 
 cam_in_t         : the type for cam_in [control/camsrfexch]  
@@ -288,8 +293,10 @@ cam_out          : pointer, Output from CAM to surface (Atmosphere to surface in
 cam_out_t        : a bunch of surface variables
 cflx_srf(:,:)    : constituent flux at surface (kg/m2/s) [physics/cam/physics_type]
 cflx_top(:,:)    : constituent flux at top of model (kg/m2/s) [physics/cam/physics_type]
-cldn/ast         : New stratus fraction; relative humidity cloud fraction
+cldn/ast/cldst   : Stratus cloud fraction; New stratus fraction; relative humidity cloud fraction [physics/cam/cloud_fraction]
 cme(pcols,pver)  : cmf condensation - evaporation [convect_deep]
+dcconnam(pcnst)  : names of convection tendencies [physics/cam/constituents~]
+dmetendnam(pcnst): names of dme adjusted tracers (FV) [physics/cam/constituents~]
 DTCORE           : T tendency due to dynamical core
 DTCOND           : T tendency due to convection <---------------------------this is what I want
 dyn_in           : Dynamics import container, intent(out), with type dyn_import_t
@@ -299,19 +306,24 @@ dyn_export_t     : The type for dyn_out, with additional variables (omega, mfx, 
 dlf(pcols,pver)  : scattrd version of the detraining cld h2o tend [convect_deep]
 evapcdp          : Evaporation of deep convective precipitation [convect_deep]
 filein           : Determine input namelist filename (e.g. filein= "atm_in" // trim(inst_suffix))
+fixcnam(pcnst)   : names of species slt fixer tendencies [physics/cam/constituents~]
 fh_ini           : ncid, with type file_desc_t
 file_desc_t      : the type for fh_ini. [../../../utils/pio/pio]
 fracis           : fraction of transported species that are insoluble [physics/cam/convect_deep]
+hadvnam(pcnst)   : names of horizontal advection tendencies [physics/cam/constituents~]
 hflux_srf(:)     : net heat flux at surface (W/m2) [physics/cam/physics_type]
 hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_type]
+indcol           : Default is the index for each column (no sub-columns)
 kvf(:,:)         : free atmospheric eddy diffsvty [m2/s] [physics/cam/hb_diff]
 kvm(:,:)         : eddy diffusivity for momentum [m2/s] [physics/cam/hb_diff]
 lchnk            : chunk identifier
 locfn            : local filename
-mcon(pcols,pverp):  Convective mass flux--m sub c [convect_deep]
+mcon(pcols,pverp): Convective mass flux--m sub c [convect_deep]
+ngrdcol          : Number of grid columns
 NLFileName       : Input namelist filename, "atm_in"
 pflx(pcols,pverp): scattered precip flux at each level [convect_deep]
 pblh(:)          : Planetary boundary layer height [m] [convect_deep]
+pcnst            : number of advected constituents (including water vapor) [physics/cam/constituents!]
 phys_ptend       : tendencies returned from individual parameterizations, (s,u,v,q,hflux_srf,hflux_top,taux_srf,taux_top,tauy_srf,tauy_top,cflx_srf,cflx_top)
 phys_tend        : the parameterized tendency on the rhs (dtdt,dudt,dvdt,flx_net,te_tnd,tw_tnd,psetcols) [physics/cam/physics_type]
 phys_state       : has the type of physics_state [physics/cam/physics_type]
@@ -322,27 +334,34 @@ pname            : full restart pathname
 prec(:)          : total precipitation [convect_deep]
 psetcols         : max number of columns set- if subcols = pcols*psubcols, else = pcols [physics/cam/physics_type]
 ptend            : 
+ptendnam(pcnst)  : names of total physics tendencies of species [physics/cam/constituents~]
 PT               : virtual potential temperature (http://glossary.ametsoc.org/wiki/Virtual_potential_temperature)
 q(:,:,:)         : consituent tendencies (kg/kg/s) [physics/cam/physics_type]
 ql               : wg grid slice of cloud liquid water. [convect_deep]
 rliq(pcols)      : reserved liquid (not yet in cldliq) for energy integrals [convect_deep]
 rprd             : rain production rate [convect_deep]
 s(:,:)           : dry static energy, heating rate (J/kg/s) [physics/cam/physics_type]
+sflxnam(pcnst)   : names of surface fluxes of species [physics/cam/constituents~]
 sgh              : Standard deviation of orography 
 snow(:)          : snow from ZM convection [convect_deep]
 state            : could be the current state or the forward state depending whether it is updated
+state%           : lchnk,psetcols,ngrdcol,indcol,lat,lon,ps,psdry,phis,ulat,ulon,t,u,v,s,omega,pmid,pmiddry,pdel,pdeldry,
+                   rpdel,rpdeldry,lnpmid,lnpmiddry,exner,zm,q,pint,pintdry,zi,te_ini,te_cur,tw_ini,tw_cur,latmapback,lonmapback,cid [physics/cam/physics_types~]
 taux_srf(:)      : net zonal stress at surface (Pa) [physics/cam/physics_type]
 taux_top(:)      : net zonal stress at top of model (Pa) [physics/cam/physics_type]
 tauy_srf(:)      : net meridional stress at surface (Pa) [physics/cam/physics_type]
 tauy_top(:)      : net meridional stress at top of model (Pa) [physics/cam/physics_type]
+tendnam(pcnst)   : names of total tendencies of species [physics/cam/constituents~]
 TCWAT            : cloud water temperature K? <- must be miss labeled by kg/kb
 tend             : Physics tendencies over timestep, the tendency on the rhs (not the forward state yet), has the type of physics_ptend [physics/cam/physics_type]          
+tottnam(pcnst)   : names for horz + vert + fixer tendencies [physics/cam/constituents~]
 tpert(:)         : Convective/Thermal temperature excess; perturbation temperature by pbl processes [physics/cam/convect_deep, hb_buff]
 TEOUT            : Total energy of physics output, W/m2
 te_tnd(:)        : cumulative boundary flux of total energy
 tw_tnd(:)        : cumulative boundary flux of total water
 u(:,:)           : u momentum tendency (m/s/s) [physics/cam/physics_type]
 v(:,:)           : v momentum tendency (m/s/s) [physics/cam/physics_type]
+vadvnam(pcnst)   : names of vertical advection tendencies [physics/cam/constituents~]
 zdu(pcols,pver)  : detraining mass flux [convect_deep]
 ztodt            : timestep for computing physics tendencies
 
@@ -740,6 +759,16 @@ TODO
 20151112
 TODO
 1. use phys_register.F90 to get 'ixcldliq/ixcldice'
-2. use pkg_cld_sediment.F90 to get 'pvliq/pvice' for stratiform.F90 to calc 'wsedl'
-3. calc 'taux,tauy,shflx,qflx' from metdata.F90
-4. 
+2. 'wsedl'               : stratiform.F90, use physics/cam/pkg_cld_sediment.F90 to get 'pvliq/pvice'
+3. 'taux,tauy,shflx,qflx': dynamics/fv/metdata.F90
+4. 'cldn/cldst/ast'      : physics/cam/cloud_fraction.F90
+5. 'z,zi'                : physics/cam/geopotential.F90
+6. 'pmi, pi': advection/slt/plevs0.F90
+unkown: kvm_in, kvh_in, ksrftms, qrl
+known: u, v, lchnk, pcols, pver, ncol, nturb, wstarent, kvinit, ztodt
+2. find the .o files
+
+
+202151115
+TODO
+1. figure out ixcldliq/ixcldice in stratiform.F90, what kind of index (latitude or counter?)
