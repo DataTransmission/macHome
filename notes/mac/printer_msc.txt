@@ -1,0 +1,16 @@
+I.
+Printers & Scanners -> click add Printer -> IP -> 
+Address: 129.171.98.121, 
+Protocal: Line Printer Protocal - LPD, 
+Name: msc3rdfloor
+Use: Canon 5240 (download from Canon website)
+-> click Add -> go back to Printers & Scanners ->  
+
+II.
+Options & Supplies -> Utility -> Open Printer Utility -> check 'Use
+Department ID Management' -> Department ID: 7013199 (click Save
+Settings three times and turn off and repeat II three times to get
+around the glitch)
+
+III. 
+Options & Supplies -> Options -> check 'Department ID Management' -> OK

@@ -22,8 +22,10 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  atm_comp_esmf.F90/atm_comp_mct.F90  
  |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
  | |~phys_register [physics/cam/physpkg~]
+ | | |~pbuf_add_field('TINI','physpkg',dtype_r8,(/pcols,pver/),tini_idx) [physics/cam/physics_buffer~] 
+ | | |                ! Fields for physics package diagnostics, 'TINI','QINI','CLDLIQINI','CLDICEINI'
  | | |~{ if( microp_scheme == 'RK' ) then
- | |   stratiform_register [physics/cam/stratiform~]  }
+ | |   stratiform_register() [physics/cam/stratiform~]  }
  | |   |~cnst_add(...ixcldliq/ixcldice...) [physics/cam/constituents~] 
  | |                  ! Register cloud water and save indices.
  | |                  ! (out) : ixcldliq, ixcldice
@@ -46,6 +48,8 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~cam_initial(dyn_in, dyn_out, NLFileName=filein) [dynamics/*/inital~]
  | | |~dyn_init(initial_file_get_id(), dyn_state, dyn_in, dyn_out, NLFileName) [dynamics/*/dyn_comp~]
  | | |                ! Initialize the FV dynamical core
+ | | |~phys_grid_init [physics/cam/phys_grid~]
+ | | |                ! initialize chunk'ed data structure; Purpose: Physics mapping initialization routine
  | | |~initial_conds(dyn_in) [control/startup_initialconds~]
  | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/*/inidat~] 
  | |   |              ! Read initial dataset (PS,PHIS,US,VS,T) and spectrally truncate as appropriate.
@@ -100,9 +104,18 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~stepon_run1( dtime, phys_state, phys_tend, pbuf2d, dyn_in, dyn_out ) [dynamics/*/stepon~]
  | | |                ! First phase of dynamics (at least couple from dynamics to physics)
  | | |                ! Return time-step for physics from dynamics.
+ | | |~{ ztodt = 2.0_r8*dtime }
  | | |~d_p_coupling(ps, t3, u3, v3, q3, omga, phis, phys_state, phys_tend,  pbuf2d, pdeld) [dynamics/*/dp_coupling~]
- | |                  ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
- | |                  ! also writes dynamics variables (on physics grid) to history file
+ | |   |              ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
+ | |   |              ! also writes dynamics variables (on physics grid) to history file
+ | |   |~{ for [dynamics/fv/dp_coupling]
+ | |       ! Copy data from dynamics data structure to physics data structure 
+ | |       ic = lons(i)
+ | |       jc = lats(i)
+ | |       phys_state(lchnk)%ps(i)   = psxy(ic,jc)
+ | |       phys_state(lchnk)%phis(i) = phisxy(ic,jc) }
+ | |                  ! This is where the normal grid of dynamics turns into chunks for physics
+ | |                  ! the q constituents is called 'tracer' here 
  | |~phys_run1(phys_state, ztodt, phys_tend, pbuf2d,  cam_in, cam_out) [physics/cam/physpkg~]             
  |   |                ! (inout) phys_state,phys_tend (pointer) pbuf2d (unknown) cam_in,cam_out (in) ztodt
  |   |~pbuf_allocate(pbuf2d, 'physpkg') [physics/cam/physics_buffer~]
@@ -143,11 +156,13 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     |~physics_update(state, ptend, ztodt, tend) [physics/cam/physics_types~]  
  |     | |            ! (inout) ptend, state, tend, ...
  |     | |            ! Update the state (or tendency) with parameterization tendencies, 
- |     | |~state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt 
+ |     | |~{ state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt }
  |     |              ! update dry static energy here
  |     |~convect_shallow_tend [physics/cam/convect_shallow~]
- |     | |~pbuf_get_field(pbuf, pblh_idx, pblh) []
- |     | |~case('UW') ! use UW shallow cumulus scheme
+ |     | |~{ pbuf_get_field(pbuf, pblh_idx, pblh) [] 
+ |     | |   ... 
+ |     | |   case('UW') } 
+ |     | |            ! use UW shallow cumulus scheme
  |     | |~compute_uwshcu_inv(...,tke,...) [physics/cam/uwshcu~]
  |     |   |          ! (in) : tke
  |     |   |~compute_uwshcu(...,tke,...) 
@@ -200,8 +215,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~phys_run2(phys_state, dtime, phys_tend, pbuf2d,  cam_out, cam_in) [physics/cam/physpkg~]    
  | | |~{ #if ( defined OFFLINE_DYN )
  | | |       ! if offline mode set SHFLX QFLX TAUX TAUY for vert diffusion 
- | | |   get_met_srf2( cam_in ) [dynamics/fv/metdata~]
- | | | }
+ | | |   get_met_srf2( cam_in ) [dynamics/fv/metdata~]    }
  | | |                ! this uses metadata to calculate taux, tauy
  | | |~tphysac(ztodt, cam_in(c), sgh(1,c), sgh30(1,c), cam_out(c), phys_state(c), phys_tend(c), phys_buffer_chunk, fsds(1,c)) [physics/cam/physpkg~]
  | |   |              ! Tendency physics after coupling to land, sea, and ice models.
@@ -284,7 +298,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 | VARIABLE       | VARIABLE DESCRIPTION      [MODULEName1, MODULEName2,..~]                                                                                |
 |________________|_________________________________________________________________________________________________________________________________________|
 apcnst(pcnst)    : constituents after physics  (FV core only) [physics/cam/constituents~]
-begchunk         : defined in [ppgrid] and updated in [phys_grid]
+begchunk         : defined in [ppgrid] and updated in [physics/cam/phys_grid~]
 bpcnst(pcnst)    : constituents before physics (FV core only) [physics/cam/constituents~]
 c                : chunk index
 cam_in           : pointer, Merged input state of sea-ice, land and ocean surface parameterizations to CAM, with type cam_in_t 
@@ -316,14 +330,15 @@ hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_typ
 indcol           : Default is the index for each column (no sub-columns)
 kvf(:,:)         : free atmospheric eddy diffsvty [m2/s] [physics/cam/hb_diff]
 kvm(:,:)         : eddy diffusivity for momentum [m2/s] [physics/cam/hb_diff]
-lchnk            : chunk identifier
+lchnk            : chunk identifier/index [physics/cam/phys_grid~]
 locfn            : local filename
 mcon(pcols,pverp): Convective mass flux--m sub c [convect_deep]
 ngrdcol          : Number of grid columns
 NLFileName       : Input namelist filename, "atm_in"
-pflx(pcols,pverp): scattered precip flux at each level [convect_deep]
-pblh(:)          : Planetary boundary layer height [m] [convect_deep]
-pcnst            : number of advected constituents (including water vapor) [physics/cam/constituents!]
+padv             : index pointer to last advected tracer [physics/cam/constituents~]
+pflx(pcols,pverp): scattered precip flux at each level [convect_deep~]
+pblh(:)          : Planetary boundary layer height [m] [convect_deep~]
+pcnst            : number of advected constituents (including water vapor) [physics/cam/constituents~]
 phys_ptend       : tendencies returned from individual parameterizations, (s,u,v,q,hflux_srf,hflux_top,taux_srf,taux_top,tauy_srf,tauy_top,cflx_srf,cflx_top)
 phys_tend        : the parameterized tendency on the rhs (dtdt,dudt,dvdt,flx_net,te_tnd,tw_tnd,psetcols) [physics/cam/physics_type]
 phys_state       : has the type of physics_state [physics/cam/physics_type]
@@ -769,6 +784,12 @@ known: u, v, lchnk, pcols, pver, ncol, nturb, wstarent, kvinit, ztodt
 2. find the .o files
 
 
-202151115
+20151115
 TODO
 1. figure out ixcldliq/ixcldice in stratiform.F90, what kind of index (latitude or counter?)
+
+20151117
+CONCLUSION
+1. SST in SAM_CRM simultion 27*(cos^2(lat/60) + cos^4(lat/60))/2
+TODO
+1. Find out whether stepon_run1 needed to be silent, and keep checking which physical parameterization in phys_run1 could be silented

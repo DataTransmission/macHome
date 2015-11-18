@@ -3,3 +3,9 @@ $ tar czf <dir> <dir_tar>
 
 # untar file.tar to <dir>
 $ tar xvf file.tar -C <dir>
+
+# check the list of files in file.tar
+$ tar --list --file=file.tar
+
+# append file_append.txt to file.tar
+$ tar --append --file=file.tar file_append.txt
