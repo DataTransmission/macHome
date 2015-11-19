@@ -805,17 +805,7 @@ TODO
 
 
 
-Abstract: A Comparison of the Moist Convective Heating between a climate model, and the coarse-grained near-global cloud resolving models - related to the stochastic parameterization problem.
+Abstract: Comparing diabatic heating: global climate model versus global cloud resolving model - related to the stochastic parameterization problem.
 
-The forecast error due to convective parameterizations remains a major
-uncertainty in weather and climate predictions. In order to understand
-how the convective parameterization in the Community Atmospheric Model 
-(CAM) deviates from reality, we focus on the moist convective heating 
-term. This is conducted by comparing with the heating terms from two
-of the more realistic coarse-grained high resolution cloud resolving
-models, System for Atmospheric Modeling (SAM), and Weather Research
-and Forecasting Model (WRF). The statistical relationships between the
-heating term of the low and high resolution simulations will be
-studied for the purpose of stochastic parameterization.
+The forecast error due to convective and radiative parameterizations remains a major uncertainty in weather and climate model predictions. A general approach to correct the model errors due to the parameterized tendency terms is to add informative stochastic perturbations to mimic the missing subgrid-scale physics. The first-step to this approach is to derive an informative/realistic perturbation time-series by calculating the differences between the model tendency and the realistic tendency. We can eventually obtain the probabilistic and statistical properties of the model errors through these perturbation time-series. The model tendencies are generated from the Community Atmosphere Model (CAM), and the realistic tendencies are from two cloud resolving models, System for Atmospheric Modeling (SAM), and Weather Research and Forecasting Model (WRF). The coarse-grained method is applied to the cloud-scale tendency outputs to match the grid-scale of CAM, this allows one to derive the perturbation time-series for the entire spatial grid. Previous studies applied the state-dependent stochastic perturbations in a variety of fashions and improved the forecasts in different models. Given this success, our goal is to use the perturbation time-series to develop a comparable stochastic perturbation scheme to enhance the long term prediction for CAM.
 
- 
