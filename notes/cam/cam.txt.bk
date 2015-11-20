@@ -19,7 +19,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 | 1. Search \~ to highlight the branches and MOD              |
 |_____________________________________________________________|
 
- cpl_esmf/atm_comp_mct; atm_comp_esmf (coupling libraries MCT(Larson et al., 2005), ESMF(Hill et al., 2004))
+ atm_comp_esmf.F90/atm_comp_mct.F90  
  |~cam_init(cam_out, cam_in, mpicom_atm, start_ymd, start_tod, ref_ymd, ref_tod, stop_ymd, stop_tod, perpetual_run, perpetual_ymd, calendar) [control/cam_comp~]   
  | |~phys_register [physics/cam/physpkg~]
  | | |~pbuf_add_field('TINI','physpkg',dtype_r8,(/pcols,pver/),tini_idx) [physics/cam/physics_buffer~] 
@@ -48,8 +48,6 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~cam_initial(dyn_in, dyn_out, NLFileName=filein) [dynamics/*/inital~]
  | | |~dyn_init(initial_file_get_id(), dyn_state, dyn_in, dyn_out, NLFileName) [dynamics/*/dyn_comp~]
  | | |                ! Initialize the FV dynamical core
- | | |~phys_grid_init [physics/cam/phys_grid~]
- | | |                ! initialize chunk'ed data structure; Purpose: Physics mapping initialization routine
  | | |~initial_conds(dyn_in) [control/startup_initialconds~]
  | |   |~read_inidat(fh_ini, fh_topo, dyn_in) [dynamics/*/inidat~] 
  | |   |              ! Read initial dataset (PS,PHIS,US,VS,T) and spectrally truncate as appropriate.
@@ -104,18 +102,9 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  | |~stepon_run1( dtime, phys_state, phys_tend, pbuf2d, dyn_in, dyn_out ) [dynamics/*/stepon~]
  | | |                ! First phase of dynamics (at least couple from dynamics to physics)
  | | |                ! Return time-step for physics from dynamics.
- | | |~{ ztodt = 2.0_r8*dtime }
  | | |~d_p_coupling(ps, t3, u3, v3, q3, omga, phis, phys_state, phys_tend,  pbuf2d, pdeld) [dynamics/*/dp_coupling~]
- | |   |              ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
- | |   |              ! also writes dynamics variables (on physics grid) to history file
- | |   |~{ for [dynamics/fv/dp_coupling]
- | |       ! Copy data from dynamics data structure to physics data structure 
- | |       ic = lons(i)
- | |       jc = lats(i)
- | |       phys_state(lchnk)%ps(i)   = psxy(ic,jc)
- | |       phys_state(lchnk)%phis(i) = phisxy(ic,jc) }
- | |                  ! This is where the normal grid of dynamics turns into chunks for physics
- | |                  ! the q constituents is called 'tracer' here 
+ | |                  ! Coupler (dynamics-physics_coupling) for converting dynamics output variables into physics input variables
+ | |                  ! also writes dynamics variables (on physics grid) to history file
  | |~phys_run1(phys_state, ztodt, phys_tend, pbuf2d,  cam_in, cam_out) [physics/cam/physpkg~]             
  |   |                ! (inout) phys_state,phys_tend (pointer) pbuf2d (unknown) cam_in,cam_out (in) ztodt
  |   |~pbuf_allocate(pbuf2d, 'physpkg') [physics/cam/physics_buffer~]
@@ -298,7 +287,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
 | VARIABLE       | VARIABLE DESCRIPTION      [MODULEName1, MODULEName2,..~]                                                                                |
 |________________|_________________________________________________________________________________________________________________________________________|
 apcnst(pcnst)    : constituents after physics  (FV core only) [physics/cam/constituents~]
-begchunk         : defined in [ppgrid] and updated in [physics/cam/phys_grid~]
+begchunk         : defined in [ppgrid] and updated in [phys_grid]
 bpcnst(pcnst)    : constituents before physics (FV core only) [physics/cam/constituents~]
 c                : chunk index
 cam_in           : pointer, Merged input state of sea-ice, land and ocean surface parameterizations to CAM, with type cam_in_t 
@@ -330,7 +319,7 @@ hflux_top(:)     : net heat flux at top of model (W/m2) [physics/cam/physics_typ
 indcol           : Default is the index for each column (no sub-columns)
 kvf(:,:)         : free atmospheric eddy diffsvty [m2/s] [physics/cam/hb_diff]
 kvm(:,:)         : eddy diffusivity for momentum [m2/s] [physics/cam/hb_diff]
-lchnk            : chunk identifier/index [physics/cam/phys_grid~]
+lchnk            : chunk identifier
 locfn            : local filename
 mcon(pcols,pverp): Convective mass flux--m sub c [convect_deep]
 ngrdcol          : Number of grid columns
@@ -390,14 +379,9 @@ ztodt            : timestep for computing physics tendencies
 
 namelist
 --------
-http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/
-http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/nl_cam.html
 http://www.cesm.ucar.edu/cgi-bin/eaton/namelist/nldef2html-pub
+http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/nl_cam.html
 http://www.cesm.ucar.edu/models/atm-cam/docs/usersguide/node45.html   <-- CAM
-
-grid/resolution setup
----------------------
-http://www.cesm.ucar.edu/models/cesm1.1/cesm/doc/modelnl/grid.html
 
 history field
 -------------
@@ -450,10 +434,6 @@ CUSH, CONCLD, KVH, KVM, LCWAT, QCWAT, QPERT, P0, TBOT, TCWAT, TSOCN, TSICERAD, T
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Abstract: Comparing diabatic heating: global climate model versus global cloud resolving model - related to the stochastic parameterization problem.
-
-The forecast error due to convective and radiative parameterizations remains a major uncertainty in weather and climate model predictions. A general approach to correct the model errors due to the parameterized tendency terms is to add informative stochastic perturbations to mimic the missing subgrid-scale physics. The first-step to this approach is to derive an informative/realistic perturbation time-series by calculating the differences between the model tendency and the realistic tendency. We can eventually obtain the probabilistic and statistical properties of the model errors through these perturbation time-series. The model tendencies are generated from the Community Atmosphere Model (CAM), and the realistic tendencies are from two cloud resolving models, System for Atmospheric Modeling (SAM), and Weather Research and Forecasting Model (WRF). The coarse-grained method is applied to the cloud-scale tendency outputs to match the grid-scale of CAM, this allows one to derive the perturbation time-series for the entire spatial grid. Previous studies applied the state-dependent stochastic perturbations in a variety of fashions and improved the forecasts in different models. Moreover, we developed an efficient and comparable perturbation scheme in an idealized model framework. Therefore our goal is to apply our scheme with the help of the perturbation time-series to enhance the long term operational forecast for CAM.
 
 
 isccp_prs, isccp_tau, isccp_prstau, co2vmr
@@ -793,24 +773,6 @@ known: u, v, lchnk, pcols, pver, ncol, nturb, wstarent, kvinit, ztodt
 2. find the .o files
 
 
-20151115
+202151115
 TODO
 1. figure out ixcldliq/ixcldice in stratiform.F90, what kind of index (latitude or counter?)
-
-20151117
-CONCLUSION
-1. SST in SAM_CRM simultion 27*(cos^2(lat/60) + cos^4(lat/60))/2
-TODO
-1. Find out whether stepon_run1 needed to be silent, and keep checking which physical parameterization in phys_run1 could be silented
-
-20151118
-ISSUE
-1. the state variables are all updated after vertical_diffusion, I can't get the states right before the vertical_diffusion... what now...
-TODO
-1. Suppose intialize the model field with coarse-grained states at t=0, run this for dt=3hrs and replace the field with coarse-grained states at t=3hrs and run for anther dt=3hrs, this should generate a good approximation of TKE and other missing fields from that t onwards. 
-2. Run a control run for a month. do 1. and check if TKE and other fields look like the control run ones
-
-
-
-
-

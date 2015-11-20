@@ -2,3 +2,6 @@
 To: Cape Orient
 315 Ocean St., Cape May, NJ, 08204
 From: Glendy Hwang
+
+
+Juan Pinales <j.pinales@rsmas.miami.edu> : neural network

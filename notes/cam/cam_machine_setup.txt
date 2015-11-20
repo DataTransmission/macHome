@@ -1,0 +1,7 @@
+go to /nethome/gchen/CESM/cesm/scripts/ccsm_utils/Machines
+
+copy the three files from /nethome/dmin
+
+env_mach_specific.pegasus2
+mkbatch.pegasus2
+config_machines.xml

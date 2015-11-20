@@ -1,0 +1,13 @@
+# CAM only compset
+$ CASEROOT = 'cam_only_aquaplanet'
+$ ./create_newcase -case $CASEROOT -mach yellowstone -compset F_2000_CAM5_AQUAPLANET -res f09_f09
+$ cd $CASEROOT 
+$ ./cesm_setup
+$ vim env_build.xml # (optional) modify build settings
+$ ./$CASE.build
+$ vim env_run.xml 
+   # STOP_OPTION='ndays'
+   # STOP_N=40
+   # REST_OPTION='nhour'
+   # REST_N=3
+$ ./$CASE.submit
