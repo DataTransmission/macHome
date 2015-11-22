@@ -1,0 +1,2 @@
+(http://www.mathworks.com/help/matlab/ref/ncread.html)
+$ vardata = ncread(filename,varname)

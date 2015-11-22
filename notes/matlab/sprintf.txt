@@ -1,0 +1,4 @@
+# Purpose : concat %s %d into a string and evaluate the string
+$ eval(sprintf('%s = ncread(ncfile,varname{iv});',varname{iv})); 
+# notice the ';' inside sprintf silences the 'eval'. Make sure don't do
+# 'evalc', since it slows the process by large.
