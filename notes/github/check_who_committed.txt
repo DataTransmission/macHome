@@ -1,0 +1,3 @@
+# New Macbook User Name is currently 'gino_macbookair', and old
+# macbook is 'gchen'
+$ vim ~/.gitconfig # where ~/ is the master directory
