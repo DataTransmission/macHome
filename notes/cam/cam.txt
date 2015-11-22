@@ -156,8 +156,12 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     |~physics_update(state, ptend, ztodt, tend) [physics/cam/physics_types~]  
  |     | |            ! (inout) ptend, state, tend, ...
  |     | |            ! Update the state (or tendency) with parameterization tendencies, 
- |     | |~{ state%s(:ncol,k) = state%s(:ncol,k) + ptend%s(:ncol,k) * dt }
- |     |              ! update dry static energy here
+ |     | |~{ state%u  (:ncol,k) = state%u  (:ncol,k) + ptend%u(:ncol,k) * dt 
+ |     |     if (present(tend)) tend%dudt(:ncol,k) = tend%dudt(:ncol,k) + ptend%u(:ncol,k) ...
+ |     |     state%q(:ncol,k,m) = state%q(:ncol,k,m) + ptend%q(:ncol,k,m) * dt ... ! constituent mixing ratio 
+ |     |     state%s(:ncol,k)   = state%s(:ncol,k)   + ptend%s(:ncol,k) * dt ! dry static energy
+ |     |     if (present(tend)) tend%dtdt(:ncol,k) = tend%dtdt(:ncol,k) + ptend%s(:ncol,k)/cpairv(:ncol,k,state%lchnk) ...
+ |     |     physics_ptend_dealloc(ptend) ! Deallocate ptend   }
  |     |~convect_shallow_tend [physics/cam/convect_shallow~]
  |     | |~{ pbuf_get_field(pbuf, pblh_idx, pblh) [] 
  |     | |   ... 

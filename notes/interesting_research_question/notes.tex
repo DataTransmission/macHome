@@ -20,6 +20,12 @@
     \item Neural Network
     1. Find the functional (e.g.,PCE?) dependence jumping from one function to the other to the final state
     2. Topological path from one input to the output, using some kind of cost function to allow error tolerance?
+    3. machine learning approach to correct the Q for CAM, by treating inputs as all the X. This could create an automated system that learns the Q from observation
+       I. input prognostic X and output Q, compare with Qtruth, and minimize e = Q-Qtruth.
+       II. obtain the weights for linear combination of X to generate Q
+    
+    \item SVM
+    1. Generate state dependent hyperplane for e 
 
     \item Slow and Fast stochastic process (with hidden Markov Chain). 
     1. decompose modes based on time-scale

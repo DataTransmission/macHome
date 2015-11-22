@@ -13,7 +13,8 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # For Go using Google Drive
-export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin # for google Go
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$GOROOT:$GOROOT/bin:$PATH
 

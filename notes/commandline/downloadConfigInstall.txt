@@ -1,6 +1,6 @@
-(http://stackoverflow.com/questions/26597527/how-to-install-libpython2-7-so)
+# (http://stackoverflow.com/questions/26597527/how-to-install-libpython2-7-so)
 
-An Example to download python, configure, and install
+# Example to download python, configure, and install
 ------------------------------------------------------
 $ wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2
 $ tar -xvjf Python-2.7.5.tar.bz2
@@ -10,8 +10,8 @@ $ make
 $ make install altinstall
 
 
-ISSUE DESC : cannot find './configure' file instead of './configure.ac', this needed 'autoconf' to resolve
-SOLUTION : install autoconf newest version and add /mypath/autoconf/bin/ it to the $PATH
+# ISSUE DESC : cannot find './configure' file instead of './configure.ac', this needed 'autoconf' to resolve
+# SOLUTION : install autoconf newest version and add /mypath/autoconf/bin/ it to the $PATH
 
 # Purpose: install .bin file on Linux
 $ chmod a+x name_of_file.bin

@@ -1,0 +1,27 @@
+# Purpose : install commandline 'go' and 'drive' to download google drive files
+# (https://github.com/odeke-em/drive)
+#
+# install latest version of 'go'
+$ brew install go
+#
+# set GOPATH and GOROOT in ~/.bashrc or ~/.profile with the following
+# lines : 
+$ export PATH=$PATH:/usr/local/opt/go/libexec/bin
+$ export GOROOT=/usr/local/opt/go/libexec # shouldn't be set to /usr/local/opt/go
+$ export GOPATH=$HOME/gopath
+$ export PATH=$GOPATH:$GOPATH/bin:$GOROOT:$GOROOT/bin:$PATH
+#
+# install 'drive'
+$ go get -u github.com/odeke-em/drive/cmd/drive
+#
+# Initializing/Mounting Google Drive directory on your local system
+$ drive init ~/googledrive
+# a prompt will tell you to "Visit this URL to get an authorization
+# code", copy and paste to get the code
+#
+$ cd ~/googledrive
+# follow the instructions on ( https://github.com/odeke-em/drive ) to pull
+# and push files from Google Drive
+# 
+# pull specific 'file.txt' or 'path/to/pull'
+$ drive pull file.txt path/to/pull
