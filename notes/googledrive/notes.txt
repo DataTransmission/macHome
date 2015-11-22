@@ -1,0 +1,10 @@
+# download to external drive
+# (http://gappstips.com/google-drive/change-the-google-drive-default-folder/)
+#1. Click on the Google Drive icon in your system tray (usually bottom right of your Windows task bar)
+#2. Click on the 3 dots icon top right and choose Preferences
+#3. Click on the Account tab and choose Disconnect account, your Drive will be disconnected but your files will stay on your PC
+#4. Click on the Google Drive icon again
+#5. Sign in when asked, step through the set up until you reach a screen with the option Advanced setup or Finished – click on Advanced setup
+#6. Click Change to choose the folder name and location – if you choose an existing folder it must be empty
+#7. Your files will now be re-synced down to your PC in this new location
+#8. Delete the old folder and files – if you want to.

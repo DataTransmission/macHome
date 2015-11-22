@@ -1,0 +1,9 @@
+# make new sections for Defintion, Derivation and Example through \newtheorem
+\newtheorem{defn}{Definition}
+# without numbering
+\newtheorem*{defn*}{Definition}
+# to use it
+\begin{defn*}
+  type some definition here
+\end{defn*}
+

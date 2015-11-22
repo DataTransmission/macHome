@@ -1,0 +1,12 @@
+
+# Open a ncfile.nc 
+$ ncid = netcdf.open(ncfile.nc,mode)
+# modes: 'WRITE' for read-write access, 'SHARE' for synchronous file
+# updates, 'NOWRITE' for read-only access
+#
+# Get dim
+$ [dimname, dimlen] = netcdf.inqDim(ncid,dimid)
+
+# Read a variable from file.nc
+$ var = netcdf.getVar(ncid,
+

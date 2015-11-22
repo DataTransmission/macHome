@@ -1,0 +1,8 @@
+#
+# Purpose : list filesnames in a directory <dirName> and save it into
+# a structure variable
+$ d = dir(dirName);
+# save all the filenames into a structure variable <listOfFiles>
+$ listOfFiles = {d.name}; 
+#
+#

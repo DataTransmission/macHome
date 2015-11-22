@@ -1,0 +1,12 @@
+REMOVE A VARIABLE (-x)
+-----------------
+$ ncks -x -v var1,var2 in.nc out.nc
+
+APPEND A VARIABLE (-A)
+-----------------
+$ ncks -A -v var in.nc out.nc
+
+SUBTRACTION
+------------
+$ ncdiff 1.nc 2.nc 1subtract2.nc 
+

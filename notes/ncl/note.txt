@@ -1,0 +1,2 @@
+# NCL read_colormap_file not working on pegasus2, just do in ~/.bashrc this instead
+$ export NCARG_COLORMAPS=/nethome/gchen/downloads/ncl_test2/ncl_ncarg-6.3.0/ni/src/db/colormaps/:/share/apps/ncl/6.1.2/lib/ncarg/colormaps/
