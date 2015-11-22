@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}
+\doublespacing
+\usepackage[margin=0.5in]{geometry}
+\usepackage{rotating} % rotate figures to landscape view
+%\usepackage[top=15pt, bottom=10pt, left=20pt, right=20pt]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{cancel,comment,alltt}
+\usepackage{mathtools,amsmath,amsthm,bm,amsfonts}
+
+\usepackage{url,hyperref,breakurl}
+
+\usepackage{float,subfig,color,array,multirow,tikz}
+
+\usepackage{multirow}
+%\linenumbers
+
+\usepackage {pdfsync}
+
+\begin{document}
+
+\section{Crop White Margin}
+
+\begin{enumerate}
+   \item View $->$ Thumbnails
+   \item Tools $->$ Select Tool
+   \item Drag out the region without white margin on a single page
+   \item Select all Thumbnails (Cmd+a)
+   \item Crop apply to all pages (Cmd+k)
+\end{enumerate}
+
+\section{Fortran compilation error}
+
+\begin{enumerate}
+  \item ISSUE: Pegasus2 netcdf library not found 
+  \item SOL: manually add flags : mpif90 -O3 -xHost -ip -no-prec-div -static-intel filename.f90 -o filename -I$NETCDF/include -L$NETCDF/lib -lnetcdff -funroll-loops -heap-arrays
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

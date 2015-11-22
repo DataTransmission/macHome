@@ -1,0 +1,4 @@
+# compiling main.f90 on pegasus when 'use netcdf', 
+# make sure to export $NETCDF_INC and $NETCDF_LIB in .bashrc file
+$ ifort -I/$NETCDF_INC -L/$NETCDF_LIB main.f90
+

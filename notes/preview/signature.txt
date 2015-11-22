@@ -1,0 +1,6 @@
+
+open the file you want to sign with Preview -> Tools -> Annotate ->
+Signature -> Manage Signatures -> (+) Create a New Signature -> take a
+photo of your signature on a white paper -> align the bottom of the
+signature to the line on the screen (hit accept) -> go back to the
+document and drag out the signature

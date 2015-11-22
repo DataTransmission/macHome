@@ -1,0 +1,26 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ WRF CODE HEIRARCHY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BASEDIR = '/nethome/gchen/WRF/WRFV3.4'
+
+ |~microphysics_driver() [phys/module_microphysics_driver]
+
+ |~gfscgce(...) [phys/module_mp_gsfcgce]
+
+
+
+------------------------------------------------------------------------------------------------
+                            
+                                       websites and directories
+
+------------------------------------------------------------------------------------------------
+
+namelist variables
+------------------
+/nethome/gchen/WRF/WRFV3.7.1/run/README.namelist 
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ DAILY NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+TODO
+check ice number concentration in phys/module_mp_lin.F

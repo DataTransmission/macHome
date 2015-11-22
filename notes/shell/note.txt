@@ -1,0 +1,30 @@
+REDIRECTING stdout stderr
+-------------------------
+# exclamation ! forces overwrite even if noclobber is set
+$ cmd > file # will fail if file exist
+$ cmd >! file # will write stdout to file, and overwriting any existing file
+$ cmd >> file # will fail if file doesn't exist
+$ cmd >>! file # will append stdout to file, creating the file if it doesn't exist
+
+TEST DIRECTORY SIZE (by cramming it)
+-------------------
+# append "Hello world" to the text.txt file ni times 
+$ i=0; ni=100000; while [ $i -lt $ni ]; do echo "Hello world" >> text.txt; i=$[$i+1]; done
+
+
+APPEND LINES TO THE EOF
+-----------------------
+$ cat << EOF
+
+
+ADD INPLICIT PATH
+-----------------
+# enable cd to search directly under subdirectories without typing explicit path
+$ export CDPATH=$HOME/notes
+$ cd cam #goes directly to $HOME/notes/cam
+
+
+AUTO-CORRECT cd PATHNAME
+------------------------
+# allow loosely correct path name when mistyped 
+$ shopt -s cdspell

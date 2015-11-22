@@ -1,0 +1,60 @@
+Power:
+
+    Battery Information:
+
+      Model Information:
+          Serial Number: W0039T3K7E1LA
+          Manufacturer: SMP
+          Device Name: bq20z451
+          Pack Lot Code: 0
+          PCB Lot Code: 0
+          Firmware Version: 201
+          Hardware Revision: 000a
+          Cell Revision: 165
+      Charge Information:
+          Charge Remaining (mAh): 2728
+          Fully Charged: No
+          Charging: Yes
+          Full Charge Capacity (mAh): 4513
+      Health Information:
+          Cycle Count: 216
+          Condition: Normal
+      Battery Installed: Yes
+      Amperage (mA): 2773
+      Voltage (mV): 12088
+
+    System Power Settings:
+
+      AC Power:
+          System Sleep Timer (Minutes): 0
+          Disk Sleep Timer (Minutes): 0
+          Display Sleep Timer (Minutes): 0
+          Wake on AC Change: No
+          Wake on Clamshell Open: Yes
+          Wake on LAN: Yes
+          Current Power Source: Yes
+          Display Sleep Uses Dim: Yes
+          PrioritizeNetworkReachabilityOverSleep: 0
+      Battery Power:
+          System Sleep Timer (Minutes): 20
+          Disk Sleep Timer (Minutes): 10
+          Display Sleep Timer (Minutes): 5
+          Wake on AC Change: No
+          Wake on Clamshell Open: Yes
+          Display Sleep Uses Dim: Yes
+          Reduce Brightness: Yes
+
+    Hardware Configuration:
+
+      UPS Installed: No
+
+    AC Charger Information:
+
+      Connected: Yes
+      ID: 0x0100
+      Wattage (W): 60
+      Revision: 0x0000
+      Family: 0x0085
+      Serial Number: 0x00947f53
+      Charging: Yes
+

@@ -1,0 +1,10 @@
+
+# Purpose : If ~/.bashrc not executed on start, include the following in
+# ~/.profile (create a .profile if it's missing)
+
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi

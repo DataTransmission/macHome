@@ -1,0 +1,15 @@
+\BOOKMARK [2][-]{subsection.0.1}{dot product}{}% 1
+\BOOKMARK [2][-]{subsection.0.2}{Visualize linear transformation of a function as a matrix}{}% 2
+\BOOKMARK [2][-]{subsection.0.3}{What is linear algebra?}{}% 3
+\BOOKMARK [2][-]{subsection.0.4}{Invertible function}{}% 4
+\BOOKMARK [2][-]{subsection.0.5}{How to solve eigenvalues of a matrix without determinant}{}% 5
+\BOOKMARK [2][-]{subsection.0.6}{Karhunen Luoeve Expansion}{}% 6
+\BOOKMARK [3][-]{subsubsection.0.6.1}{Mercer's Thm:}{subsection.0.6}% 7
+\BOOKMARK [3][-]{subsubsection.0.6.2}{Karhunen Luoeve's Thm:}{subsection.0.6}% 8
+\BOOKMARK [2][-]{subsection.0.7}{Lyapunov Exponent}{}% 9
+\BOOKMARK [2][-]{subsection.0.8}{Self-Adjoint and Normal Operator}{}% 10
+\BOOKMARK [2][-]{subsection.0.9}{Kernel PCA}{}% 11
+\BOOKMARK [2][-]{subsection.0.10}{Generalized Eigenvalue Decomposition \(2nd kind\)}{}% 12
+\BOOKMARK [3][-]{subsubsection.0.10.1}{Definition}{subsection.0.10}% 13
+\BOOKMARK [3][-]{subsubsection.0.10.2}{Special case}{subsection.0.10}% 14
+\BOOKMARK [1][-]{section.1}{Chapter 8 Operators on Complex Vector Space}{}% 15
