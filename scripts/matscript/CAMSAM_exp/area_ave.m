@@ -1,28 +1,47 @@
-ncfile = 'MJO_5120x2560x32_4km_10s_QOBS_EQX_nopert_1280_0000135000_U.nc';
-mode = 'NC_NOWRITE';
-varname = {'x','y','z','time','p','U'}
-nx = numel(x);
-ny = numel(y);
-nz = numel(z);
-ndx = 27; % ndx of 4km boxes adds up to ndx*4 = 108km approximately one degree
-%function (ncfile,mode,varname,edge)
-% read in CRM data and coarse-grain to SCAM resolution
-% x, y, z, time, p, U (V,W)
-% U(time, z, y, x)
-nv = numel(varname);
-
-for iv = 1:nv 
-% get var value
-   eval(sprintf('%s = ncread(ncfile,varname{iv});',varname{iv})); 
+%ncfile = 'MJO_5120x2560x32_4km_10s_QOBS_EQX_nopert_1280_0000135000_U.nc';
+ncfile_CAM = '/projects/rsmas/kirtman/gchen/cesm/run/cam_only_aquaplanet/cam_only_aquaplanet.cam.rh0.0001-01-01-10800.nc' 
+lev = ncread(ncfile_CAM,'lev')
+lat = ncread(ncfile_CAM,'lat')
+lon = ncread(ncfile_CAM,'lon')
+varname = 'U' % V, W
+ncfile = [varname '_sum.nc'];
+dimname = {'x','y','z','time','p'}
+for id = 1:numel(dimname) 
+   eval(sprintf('%s = ncread(ncfile,dimname{id});',dimname{id})); 
 end
-% find the spaced-index corresponding to the coars grid of 1 degree
+nx = numel(x); % nx = 5120; x_crm = 20480000m; earth circumference = 39690000m
+ny = numel(y); % ny = 2560; y_crm = 10240000m;
+nz = numel(z);
+nt = 240; % number of time samples 2592000/10800 = 240 = 30 days
+nbox_x = 32; % nbox_x of 4km boxes adds up to nbox_x*4 = 128km approximately 1.16 degrees
+nbox_y = 32; 
+var = ncread(ncfile,varname); % time-summed var
+var = squeeze(var(1,:,:,:))/nt; % average of the time-summed var
+% var(time, z, y, x)
 %
-% grid spacing for each level of CRM (dxj,dyj)_k
-for ix = 1:ndx-1:nx
-   for iy =
-      Ub() = U();
+% CRM xy average (xy bar)
+% Purpose : treat turbulence to be locally deviated from local box
+% climatology
+for iz = 1:nz
+   ii = 1; 
+   for ix = 1:nbox_x:nx
+      jj = 1;
+      for iy = 1:nbox_y:ny
+         varxyb(ii,jj,iz) = mean(mean(var(iz,iy:iy+nbox-1,ix:ix+nbox-1),2),3); 
+         jj = jj + 1;
+      end
+      ii = ii + 1;
    end
 end
-% dx
-% dy
-% dz
+%
+% CRM y average (y bar)
+% Purpose : treat turbulence to be locally deviated from latitudinal 
+% climatology (zonally symmetric)
+varyb_tmp = squeeze(mean(var,3)); % remove zonal dependence
+for iz = 1:nz
+   jj = 1;
+   for iy = 1:nbox:ny
+      varyb(jj,iz) = mean(varyb_tmp(iz,iy:iy+nbox-1),2);
+      jj = jj + 1;
+   end
+end
