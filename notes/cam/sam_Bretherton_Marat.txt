@@ -1,0 +1,10 @@
+# East-west domain extent Lx                  : 20480 km
+# North-south domain extent Ly                : 10240 km (46S - 46N)
+# Horizontal grid spacing dx = dy             : 4 km
+# Time step dt                                : 10 s
+# Vertical grid                               : 32 variably-spaced levels up to 32.5 km
+# Lateral boundary conditions                 : N and S: Wall; E and W: periodic
+# Top boundary condition                      : Wall; damping layer above 20 km
+# Specified (QOBS) SST [degreesC]             : 27 * (cos^2(lat/60) + cos^4(lat/60)) / 2
+# Control (CTRL) simulation length            : 30 days
+# Humidity perturbation used for QPERT branch : 0.1 g kg^-1 at 700 hPa grid level

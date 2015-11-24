@@ -814,7 +814,14 @@ TODO
 1. Suppose intialize the model field with coarse-grained states at t=0, run this for dt=3hrs and replace the field with coarse-grained states at t=3hrs and run for anther dt=3hrs, this should generate a good approximation of TKE and other missing fields from that t onwards. 
 2. Run a control run for a month. do 1. and check if TKE and other fields look like the control run ones
 
-
-
-
+20151123
+CONCLUSION
+1. the (lat,lon) index for TOGOII is (ilon,ilat) = (55,31), generated from pegasus2:/nethome/gchen/SCAM/temp/SRC/findIOPpoint.ncl
+ISSUE
+1. no restart
+2. not global, can't run CAM
+3. only hope is fix TKE and TPERT and see if that's the only two variables affecting the field
+TODO
+1. run with NEEDED VAR for 3 hours and Full VAR for 3 hours see how the heating term changes!!!!!!!! If the field mode isn't drastically different, then it's worth a shot!!!!
+2. SPCAM!!!!!!!!!!!!!!/glade/p/work/ginochen/spcam2_0-cesm1_1_1/scripts
 
