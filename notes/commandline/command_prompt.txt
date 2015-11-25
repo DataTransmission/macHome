@@ -1,0 +1,1 @@
+# Purpose : change the prompt in front of User name (http://stackoverflow.com/questions/26229576/modify-bash-prompt-prefix-in-osx-terminal)

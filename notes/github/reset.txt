@@ -1,0 +1,7 @@
+
+UNDO COMMITTED STATUS 
+---------------------
+# reset all staged files
+git reset 
+# reset specific <file>
+git reset <file>

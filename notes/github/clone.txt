@@ -1,0 +1,7 @@
+
+CLONE REPO
+----------
+# clone a "forked" gitRepoDir to local localRepoDir (fork happens when you go to that person's 
+# repo and click on the fork repo, it does not allow you to push to their repo unless you are a contributer.
+# So everything that are pushed are to your own remote repo)
+$ git clone gitRepoDir localRepoDir

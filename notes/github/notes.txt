@@ -49,23 +49,7 @@ $ git init --bare macHome.git
 $ git push ssh://gchen@pegasus2.ccs.miami.edu:/nethome/gchen/macHome.git master
 
 
-REMOVE REPO
------------
-# just delete the .git/ folder in the master path
 
-REMOVE ADDED <file>
-------------------
-$ git rm --cached <file>
-# only rm the staged <file>
-$ git rm -f <file> 
-# used when staging and permanently deleting the <file> at the same time
-
-UNDO COMMITTED STATUS 
----------------------
-# reset all staged files
-git reset 
-# reset specific <file>
-git reset <file>
 
 REMOVE REMOTE REPO (on github.com)
 ----------------------------------
@@ -77,18 +61,6 @@ SHORTNAME (origin) FOR REMOTE REPO
 $ git remote add origin https://github.com/ginochen/gino.git
 $ vim ~/.git/config # check if the shortname is added to the local repo
 
-RETURN VERSION
---------------
-# back to older version
-$ git log #print out versionNumber
-$ git checkout versionNumber
-
-CLONE REPO
-----------
-# clone a "forked" gitRepoDir to local localRepoDir (fork happens when you go to that person's 
-# repo and click on the fork repo, it does not allow you to push to their repo unless you are a contributer.
-# So everything that are pushed are to your own remote repo)
-$ git clone gitRepoDir localRepoDir
 
 CREATE/REMOVE/ENTER A BRANCH
 ----------------------

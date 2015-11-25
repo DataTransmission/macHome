@@ -202,6 +202,7 @@ BASEDIR = '/nethome/gchen/CESM/cesm/models/atm/cam/src/'
  |     |~diag_phys_writeout(state, cam_out%psl) [physics/cam/cam_diagnostics~]   
  |     |              ! Moist physical parameteriztions complete!!       
  |     |~diag_conv(state, ztodt, pbuf) [physics/cam/cam_diagnostics~]      
+ |     | |~{ dtcond(i,k,lchnk) = (state%s(i,k) - dtcond(i,k,lchnk))*rtdt / cpair }
  |     | |~outfld('DTCOND'...) 
  |     |              ! total convection tendency state%s
  |     |~cloud_diagnostics_calc(state, pbuf) [physics/cam/cloud_diagnostics~]  
@@ -455,9 +456,8 @@ CUSH, CONCLD, KVH, KVM, LCWAT, QCWAT, QPERT, P0, TBOT, TCWAT, TSOCN, TSICERAD, T
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RANDOM NOTES BELOW THIS LINE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Abstract: Comparing diabatic heating: global climate model versus global cloud resolving model - related to the stochastic parameterization problem.
-
-The forecast error due to convective and radiative parameterizations remains a major uncertainty in weather and climate model predictions. A general approach to correct the model errors due to the parameterized tendency terms is to add informative stochastic perturbations to mimic the missing subgrid-scale physics. The first-step to this approach is to derive an informative/realistic perturbation time-series by calculating the differences between the model tendency and the realistic tendency. We can eventually obtain the probabilistic and statistical properties of the model errors through these perturbation time-series. The model tendencies are generated from the Community Atmosphere Model (CAM), and the realistic tendencies are from two cloud resolving models, System for Atmospheric Modeling (SAM), and Weather Research and Forecasting Model (WRF). The coarse-grained method is applied to the cloud-scale tendency outputs to match the grid-scale of CAM, this allows one to derive the perturbation time-series for the entire spatial grid. Previous studies applied the state-dependent stochastic perturbations in a variety of fashions and improved the forecasts in different models. Moreover, we developed an efficient and comparable perturbation scheme in an idealized model framework. Therefore our goal is to apply our scheme with the help of the perturbation time-series to enhance the long term operational forecast for CAM.
+Abstract: Comparing diabatic heating: conventional versus superparameterized global climate model - related to the stochastic parameterization problem.
+The forecast error due to convective and radiative parameterizations remains a major uncertainty in weather and climate model predictions. A general approach to correct the model errors due to the parameterized tendency terms is to add informative stochastic perturbations to mimic the missing subgrid-scale physics. The first-step to this approach is to derive an informative/realistic perturbation time-series by calculating the differences between the model tendency and the realistic tendency. We can eventually obtain the probabilistic and statistical properties of the model errors through these perturbation time-series. The model tendencies are generated from the Community Atmosphere Model (CAM), and the realistic tendencies are from the 2-D cloud resolving model embedded CAM. Using the same CAM model allows one to easily derive the perturbation time-series for the entire spatial grid. In our previous study, we developed an efficient and reliable scheme by applying the stochastic perturbations in an idealized model framework. Our goal is to further employ our scheme with the help of the perturbation time-series to enhance the long term operational forecast for CAM.
 
 
 isccp_prs, isccp_tau, isccp_prstau, co2vmr
@@ -824,4 +824,5 @@ ISSUE
 TODO
 1. run with NEEDED VAR for 3 hours and Full VAR for 3 hours see how the heating term changes!!!!!!!! If the field mode isn't drastically different, then it's worth a shot!!!!
 2. SPCAM!!!!!!!!!!!!!!/glade/p/work/ginochen/spcam2_0-cesm1_1_1/scripts
+3. run branch from cam resolution 0.9x1.25 from cesm1.0/cesm1_0_ctrl_0.9x1.25_gx1v6/rest/0035-01-01-00000/cesm1_0_ctrl_0.9x1.25_gx1v6.cpl.r.0035-01-01-00000.nc
 

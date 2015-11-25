@@ -1,0 +1,22 @@
+# repeat commands in the 22 line in 'history'
+$ !22
+#
+# repeat previous command
+$ !!
+#
+# repeat under sudo
+$ sudo !!
+#
+# run the last command that starts with cat
+$ !cat
+# or with ls
+$ !ls
+#
+# run the last command containing bash but replace it with csh
+$ !!:s/bash/csh/
+#
+# execute a command which is typed before 3 commands 
+$ !-3
+#
+# show line number
+$ PS1="\!$ "

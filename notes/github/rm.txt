@@ -1,0 +1,12 @@
+
+REMOVE ADDED <file>
+------------------
+$ git rm --cached <file>
+# only rm the staged <file>
+$ git rm -f <file> 
+# used when staging and permanently deleting the <file> at the same time
+
+
+REMOVE REPO
+-----------
+# just delete the .git/ folder in the master path

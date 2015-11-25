@@ -1,0 +1,13 @@
+1. cam_only_aquaplanet_test
+  # Purpose : Test if the subgrid fields could be nudged back by the
+  # prognostic field replaced every 3 hours. 
+  # Exp : run simulations for 20 days until spin-up, and start the
+  # control simulation for  5 days and save restart every 3 hours.
+  # Then repeat the experiment starting at the 20th day by removing
+  # all the fields except U, V, Q, T, PS, PHI, CLOUD, CLDICE, CLDLIQ,
+  # NUMICE, NUMLIQ, PBLH, TKE, TPERT.
+
+2. spcam_m2005_f09f09
+  # Purpose : Treate SPCAM full fields as the truth and rerun CAM
+  # using the restart every timestep (30 mins).
+  # Exp : run 
